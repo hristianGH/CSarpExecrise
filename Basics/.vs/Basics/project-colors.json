@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "1c77b709-e001-4358-a154-c6acc4db64c6": {
+      "ProjectGuid": "1c77b709-e001-4358-a154-c6acc4db64c6",
+      "DisplayName": "CountToN",
+      "ColorIndex": 0
+    },
+    "d479203e-3c6c-45bc-afa7-c8dc63ec6474": {
+      "ProjectGuid": "d479203e-3c6c-45bc-afa7-c8dc63ec6474",
+      "DisplayName": "AreaOfRectangle",
+      "ColorIndex": 1
+    },
+    "97ab67e0-2d33-433d-80f1-b6a230bf8713": {
+      "ProjectGuid": "97ab67e0-2d33-433d-80f1-b6a230bf8713",
+      "DisplayName": "InchToCm",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

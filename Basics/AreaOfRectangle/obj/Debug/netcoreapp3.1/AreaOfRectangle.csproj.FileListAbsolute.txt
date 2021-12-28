@@ -1,0 +1,14 @@
+C:\Users\1\source\repos\Basics\AreaOfRectangle\bin\Debug\netcoreapp3.1\AreaOfRectangle.exe
+C:\Users\1\source\repos\Basics\AreaOfRectangle\bin\Debug\netcoreapp3.1\AreaOfRectangle.deps.json
+C:\Users\1\source\repos\Basics\AreaOfRectangle\bin\Debug\netcoreapp3.1\AreaOfRectangle.runtimeconfig.json
+C:\Users\1\source\repos\Basics\AreaOfRectangle\bin\Debug\netcoreapp3.1\AreaOfRectangle.runtimeconfig.dev.json
+C:\Users\1\source\repos\Basics\AreaOfRectangle\bin\Debug\netcoreapp3.1\AreaOfRectangle.dll
+C:\Users\1\source\repos\Basics\AreaOfRectangle\bin\Debug\netcoreapp3.1\AreaOfRectangle.pdb
+C:\Users\1\source\repos\Basics\AreaOfRectangle\obj\Debug\netcoreapp3.1\AreaOfRectangle.csproj.AssemblyReference.cache
+C:\Users\1\source\repos\Basics\AreaOfRectangle\obj\Debug\netcoreapp3.1\AreaOfRectangle.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\source\repos\Basics\AreaOfRectangle\obj\Debug\netcoreapp3.1\AreaOfRectangle.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\Basics\AreaOfRectangle\obj\Debug\netcoreapp3.1\AreaOfRectangle.AssemblyInfo.cs
+C:\Users\1\source\repos\Basics\AreaOfRectangle\obj\Debug\netcoreapp3.1\AreaOfRectangle.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\Basics\AreaOfRectangle\obj\Debug\netcoreapp3.1\AreaOfRectangle.dll
+C:\Users\1\source\repos\Basics\AreaOfRectangle\obj\Debug\netcoreapp3.1\AreaOfRectangle.pdb
+C:\Users\1\source\repos\Basics\AreaOfRectangle\obj\Debug\netcoreapp3.1\AreaOfRectangle.genruntimeconfig.cache

@@ -1,0 +1,14 @@
+C:\Users\1\source\repos\Basics\CountToN\bin\Debug\netcoreapp3.1\CountToN.exe
+C:\Users\1\source\repos\Basics\CountToN\bin\Debug\netcoreapp3.1\CountToN.deps.json
+C:\Users\1\source\repos\Basics\CountToN\bin\Debug\netcoreapp3.1\CountToN.runtimeconfig.json
+C:\Users\1\source\repos\Basics\CountToN\bin\Debug\netcoreapp3.1\CountToN.runtimeconfig.dev.json
+C:\Users\1\source\repos\Basics\CountToN\bin\Debug\netcoreapp3.1\CountToN.dll
+C:\Users\1\source\repos\Basics\CountToN\bin\Debug\netcoreapp3.1\CountToN.pdb
+C:\Users\1\source\repos\Basics\CountToN\obj\Debug\netcoreapp3.1\CountToN.csproj.AssemblyReference.cache
+C:\Users\1\source\repos\Basics\CountToN\obj\Debug\netcoreapp3.1\CountToN.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\source\repos\Basics\CountToN\obj\Debug\netcoreapp3.1\CountToN.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\Basics\CountToN\obj\Debug\netcoreapp3.1\CountToN.AssemblyInfo.cs
+C:\Users\1\source\repos\Basics\CountToN\obj\Debug\netcoreapp3.1\CountToN.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\Basics\CountToN\obj\Debug\netcoreapp3.1\CountToN.dll
+C:\Users\1\source\repos\Basics\CountToN\obj\Debug\netcoreapp3.1\CountToN.pdb
+C:\Users\1\source\repos\Basics\CountToN\obj\Debug\netcoreapp3.1\CountToN.genruntimeconfig.cache

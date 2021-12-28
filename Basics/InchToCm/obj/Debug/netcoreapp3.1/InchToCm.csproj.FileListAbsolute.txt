@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\Basics\InchToCm\bin\Debug\netcoreapp3.1\InchToCm.exe
+C:\Users\1\source\repos\Basics\InchToCm\bin\Debug\netcoreapp3.1\InchToCm.deps.json
+C:\Users\1\source\repos\Basics\InchToCm\bin\Debug\netcoreapp3.1\InchToCm.runtimeconfig.json
+C:\Users\1\source\repos\Basics\InchToCm\bin\Debug\netcoreapp3.1\InchToCm.runtimeconfig.dev.json
+C:\Users\1\source\repos\Basics\InchToCm\bin\Debug\netcoreapp3.1\InchToCm.dll
+C:\Users\1\source\repos\Basics\InchToCm\bin\Debug\netcoreapp3.1\InchToCm.pdb
+C:\Users\1\source\repos\Basics\InchToCm\obj\Debug\netcoreapp3.1\InchToCm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\source\repos\Basics\InchToCm\obj\Debug\netcoreapp3.1\InchToCm.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\Basics\InchToCm\obj\Debug\netcoreapp3.1\InchToCm.AssemblyInfo.cs
+C:\Users\1\source\repos\Basics\InchToCm\obj\Debug\netcoreapp3.1\InchToCm.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\Basics\InchToCm\obj\Debug\netcoreapp3.1\InchToCm.dll
+C:\Users\1\source\repos\Basics\InchToCm\obj\Debug\netcoreapp3.1\InchToCm.pdb
+C:\Users\1\source\repos\Basics\InchToCm\obj\Debug\netcoreapp3.1\InchToCm.genruntimeconfig.cache
