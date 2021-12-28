@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\1\\source\\repos\\Basics\\CountToN\\CountToN.csproj": {}
+    "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\CountToN\\CountToN.csproj": {}
   },
   "projects": {
-    "C:\\Users\\1\\source\\repos\\Basics\\CountToN\\CountToN.csproj": {
+    "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\CountToN\\CountToN.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\1\\source\\repos\\Basics\\CountToN\\CountToN.csproj",
+        "projectUniqueName": "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\CountToN\\CountToN.csproj",
         "projectName": "CountToN",
-        "projectPath": "C:\\Users\\1\\source\\repos\\Basics\\CountToN\\CountToN.csproj",
+        "projectPath": "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\CountToN\\CountToN.csproj",
         "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\1\\source\\repos\\Basics\\CountToN\\obj\\",
+        "outputPath": "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\CountToN\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

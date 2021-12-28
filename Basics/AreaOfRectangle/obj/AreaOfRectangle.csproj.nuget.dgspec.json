@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\1\\source\\repos\\Basics\\AreaOfRectangle\\AreaOfRectangle.csproj": {}
+    "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\AreaOfRectangle\\AreaOfRectangle.csproj": {}
   },
   "projects": {
-    "C:\\Users\\1\\source\\repos\\Basics\\AreaOfRectangle\\AreaOfRectangle.csproj": {
+    "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\AreaOfRectangle\\AreaOfRectangle.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\1\\source\\repos\\Basics\\AreaOfRectangle\\AreaOfRectangle.csproj",
+        "projectUniqueName": "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\AreaOfRectangle\\AreaOfRectangle.csproj",
         "projectName": "AreaOfRectangle",
-        "projectPath": "C:\\Users\\1\\source\\repos\\Basics\\AreaOfRectangle\\AreaOfRectangle.csproj",
+        "projectPath": "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\AreaOfRectangle\\AreaOfRectangle.csproj",
         "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\1\\source\\repos\\Basics\\AreaOfRectangle\\obj\\",
+        "outputPath": "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\AreaOfRectangle\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\1\\source\\repos\\Basics\\InchToCm\\InchToCm.csproj",
+      "projectUniqueName": "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\InchToCm\\InchToCm.csproj",
       "projectName": "InchToCm",
-      "projectPath": "C:\\Users\\1\\source\\repos\\Basics\\InchToCm\\InchToCm.csproj",
+      "projectPath": "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\InchToCm\\InchToCm.csproj",
       "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\1\\source\\repos\\Basics\\InchToCm\\obj\\",
+      "outputPath": "C:\\Users\\1\\Documents\\GitHub\\CSarpExecrise\\Basics\\InchToCm\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

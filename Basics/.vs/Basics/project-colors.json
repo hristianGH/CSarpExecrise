@@ -15,7 +15,17 @@
       "ProjectGuid": "97ab67e0-2d33-433d-80f1-b6a230bf8713",
       "DisplayName": "InchToCm",
       "ColorIndex": 2
+    },
+    "e236cc57-6a96-4109-9b5f-66af9e354c71": {
+      "ProjectGuid": "e236cc57-6a96-4109-9b5f-66af9e354c71",
+      "DisplayName": "PersonInfoFromConsole",
+      "ColorIndex": 3
+    },
+    "58ec00e0-5404-49e9-9f5a-a34d06b38ca6": {
+      "ProjectGuid": "58ec00e0-5404-49e9-9f5a-a34d06b38ca6",
+      "DisplayName": "Architect",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 5
 }
