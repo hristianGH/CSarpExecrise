@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AreaOfRectangle", "AreaOfRe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InchToCm", "InchToCm\InchToCm.csproj", "{97AB67E0-2D33-433D-80F1-B6A230BF8713}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonInfoFromConsole", "PersonInfoFromConsole\PersonInfoFromConsole.csproj", "{E236CC57-6A96-4109-9B5F-66AF9E354C71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonInfoFromConsole", "PersonInfoFromConsole\PersonInfoFromConsole.csproj", "{E236CC57-6A96-4109-9B5F-66AF9E354C71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Architect", "Architect\Architect.csproj", "{58EC00E0-5404-49E9-9F5A-A34D06B38CA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Architect", "Architect\Architect.csproj", "{58EC00E0-5404-49E9-9F5A-A34D06B38CA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooShopExpences", "ZooShopExpences\ZooShopExpences.csproj", "{8FDA27D5-CDFF-4F11-90D5-E91392116456}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gardener", "Gardener\Gardener.csproj", "{E1248010-95DB-4FB2-9C34-69A08AF94D5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{58EC00E0-5404-49E9-9F5A-A34D06B38CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58EC00E0-5404-49E9-9F5A-A34D06B38CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58EC00E0-5404-49E9-9F5A-A34D06B38CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FDA27D5-CDFF-4F11-90D5-E91392116456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FDA27D5-CDFF-4F11-90D5-E91392116456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FDA27D5-CDFF-4F11-90D5-E91392116456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FDA27D5-CDFF-4F11-90D5-E91392116456}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1248010-95DB-4FB2-9C34-69A08AF94D5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1248010-95DB-4FB2-9C34-69A08AF94D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1248010-95DB-4FB2-9C34-69A08AF94D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1248010-95DB-4FB2-9C34-69A08AF94D5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
