@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooShopExpences", "ZooShopE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gardener", "Gardener\Gardener.csproj", "{E1248010-95DB-4FB2-9C34-69A08AF94D5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "USDtoBGN", "USDtoBGN\USDtoBGN.csproj", "{469600BA-2B95-498A-A5BF-161C4E74F304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadianCelciusOrKelvin", "RadianCelciusOrKelvin\RadianCelciusOrKelvin.csproj", "{F6BFA287-2A61-4891-9446-861C8A21EC5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{E1248010-95DB-4FB2-9C34-69A08AF94D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1248010-95DB-4FB2-9C34-69A08AF94D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1248010-95DB-4FB2-9C34-69A08AF94D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{469600BA-2B95-498A-A5BF-161C4E74F304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{469600BA-2B95-498A-A5BF-161C4E74F304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{469600BA-2B95-498A-A5BF-161C4E74F304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{469600BA-2B95-498A-A5BF-161C4E74F304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6BFA287-2A61-4891-9446-861C8A21EC5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6BFA287-2A61-4891-9446-861C8A21EC5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6BFA287-2A61-4891-9446-861C8A21EC5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6BFA287-2A61-4891-9446-861C8A21EC5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
