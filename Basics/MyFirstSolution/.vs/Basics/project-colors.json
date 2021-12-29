@@ -1,0 +1,56 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "1c77b709-e001-4358-a154-c6acc4db64c6": {
+      "ProjectGuid": "1c77b709-e001-4358-a154-c6acc4db64c6",
+      "DisplayName": "CountToN",
+      "ColorIndex": 0
+    },
+    "d479203e-3c6c-45bc-afa7-c8dc63ec6474": {
+      "ProjectGuid": "d479203e-3c6c-45bc-afa7-c8dc63ec6474",
+      "DisplayName": "AreaOfRectangle",
+      "ColorIndex": 1
+    },
+    "97ab67e0-2d33-433d-80f1-b6a230bf8713": {
+      "ProjectGuid": "97ab67e0-2d33-433d-80f1-b6a230bf8713",
+      "DisplayName": "InchToCm",
+      "ColorIndex": 2
+    },
+    "e236cc57-6a96-4109-9b5f-66af9e354c71": {
+      "ProjectGuid": "e236cc57-6a96-4109-9b5f-66af9e354c71",
+      "DisplayName": "PersonInfoFromConsole",
+      "ColorIndex": 3
+    },
+    "58ec00e0-5404-49e9-9f5a-a34d06b38ca6": {
+      "ProjectGuid": "58ec00e0-5404-49e9-9f5a-a34d06b38ca6",
+      "DisplayName": "Architect",
+      "ColorIndex": 4
+    },
+    "8fda27d5-cdff-4f11-90d5-e91392116456": {
+      "ProjectGuid": "8fda27d5-cdff-4f11-90d5-e91392116456",
+      "DisplayName": "ZooShopExpences",
+      "ColorIndex": 5
+    },
+    "e1248010-95db-4fb2-9c34-69a08af94d5e": {
+      "ProjectGuid": "e1248010-95db-4fb2-9c34-69a08af94d5e",
+      "DisplayName": "Gardener",
+      "ColorIndex": 6
+    },
+    "469600ba-2b95-498a-a5bf-161c4e74f304": {
+      "ProjectGuid": "469600ba-2b95-498a-a5bf-161c4e74f304",
+      "DisplayName": "USDtoBGN",
+      "ColorIndex": 7
+    },
+    "f6bfa287-2a61-4891-9446-861c8a21ec5f": {
+      "ProjectGuid": "f6bfa287-2a61-4891-9446-861c8a21ec5f",
+      "DisplayName": "RadianCelciusOrKelvin",
+      "ColorIndex": 8
+    },
+    "9ea94819-0015-492a-ab43-61c641d069bc": {
+      "ProjectGuid": "9ea94819-0015-492a-ab43-61c641d069bc",
+      "DisplayName": "DepositCalc",
+      "ColorIndex": 9
+    }
+  },
+  "NextColorIndex": 10
+}

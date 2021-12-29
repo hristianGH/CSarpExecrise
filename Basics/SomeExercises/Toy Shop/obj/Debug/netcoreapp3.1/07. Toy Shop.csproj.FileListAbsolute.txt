@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\bin\Debug\netcoreapp3.1\07. Toy Shop.exe
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\bin\Debug\netcoreapp3.1\07. Toy Shop.deps.json
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\bin\Debug\netcoreapp3.1\07. Toy Shop.runtimeconfig.json
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\bin\Debug\netcoreapp3.1\07. Toy Shop.runtimeconfig.dev.json
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\bin\Debug\netcoreapp3.1\07. Toy Shop.dll
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\bin\Debug\netcoreapp3.1\07. Toy Shop.pdb
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\obj\Debug\netcoreapp3.1\07. Toy Shop.csprojAssemblyReference.cache
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\obj\Debug\netcoreapp3.1\07. Toy Shop.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\obj\Debug\netcoreapp3.1\07. Toy Shop.AssemblyInfo.cs
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\obj\Debug\netcoreapp3.1\07. Toy Shop.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\obj\Debug\netcoreapp3.1\07. Toy Shop.dll
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\obj\Debug\netcoreapp3.1\07. Toy Shop.pdb
+C:\Users\1\source\repos\Excellent Result\07. Toy Shop\obj\Debug\netcoreapp3.1\07. Toy Shop.genruntimeconfig.cache

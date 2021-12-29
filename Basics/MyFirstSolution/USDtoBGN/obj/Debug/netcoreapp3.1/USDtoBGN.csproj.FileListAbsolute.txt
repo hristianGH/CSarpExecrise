@@ -1,0 +1,14 @@
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\bin\Debug\netcoreapp3.1\USDtoBGN.exe
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\bin\Debug\netcoreapp3.1\USDtoBGN.deps.json
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\bin\Debug\netcoreapp3.1\USDtoBGN.runtimeconfig.json
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\bin\Debug\netcoreapp3.1\USDtoBGN.runtimeconfig.dev.json
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\bin\Debug\netcoreapp3.1\USDtoBGN.dll
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\bin\Debug\netcoreapp3.1\USDtoBGN.pdb
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\obj\Debug\netcoreapp3.1\USDtoBGN.csproj.AssemblyReference.cache
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\obj\Debug\netcoreapp3.1\USDtoBGN.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\obj\Debug\netcoreapp3.1\USDtoBGN.AssemblyInfoInputs.cache
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\obj\Debug\netcoreapp3.1\USDtoBGN.AssemblyInfo.cs
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\obj\Debug\netcoreapp3.1\USDtoBGN.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\obj\Debug\netcoreapp3.1\USDtoBGN.dll
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\obj\Debug\netcoreapp3.1\USDtoBGN.pdb
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\USDtoBGN\obj\Debug\netcoreapp3.1\USDtoBGN.genruntimeconfig.cache

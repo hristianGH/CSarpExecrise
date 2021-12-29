@@ -1,0 +1,46 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7a08fe98-22d8-4110-9de1-1ca89fbd383f": {
+      "ProjectGuid": "7a08fe98-22d8-4110-9de1-1ca89fbd383f",
+      "DisplayName": "Greater Number",
+      "ColorIndex": 0
+    },
+    "116752ab-d6f7-4342-8759-9b5657dfc796": {
+      "ProjectGuid": "116752ab-d6f7-4342-8759-9b5657dfc796",
+      "DisplayName": "Even or Odd",
+      "ColorIndex": 1
+    },
+    "3ad90ae6-a8f7-4122-8a2b-6997389923e9": {
+      "ProjectGuid": "3ad90ae6-a8f7-4122-8a2b-6997389923e9",
+      "DisplayName": "Number one to nine",
+      "ColorIndex": 2
+    },
+    "2fcd790f-31d9-4bad-993e-bf310eda0eeb": {
+      "ProjectGuid": "2fcd790f-31d9-4bad-993e-bf310eda0eeb",
+      "DisplayName": "Password Guess",
+      "ColorIndex": 3
+    },
+    "9565f097-9178-47de-a236-01956479ede9": {
+      "ProjectGuid": "9565f097-9178-47de-a236-01956479ede9",
+      "DisplayName": "Area of Figures",
+      "ColorIndex": 4
+    },
+    "82e4e1e0-67a5-4d3c-9686-2e9dea842e9f": {
+      "ProjectGuid": "82e4e1e0-67a5-4d3c-9686-2e9dea842e9f",
+      "DisplayName": "Toy Shop",
+      "ColorIndex": 5
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "75a0de88-6cde-4f2a-8163-4eac8350fd55": {
+      "ProjectGuid": "75a0de88-6cde-4f2a-8163-4eac8350fd55",
+      "DisplayName": "Number 100 200",
+      "ColorIndex": 6
+    }
+  },
+  "NextColorIndex": 7
+}

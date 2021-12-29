@@ -1,0 +1,14 @@
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\bin\Debug\netcoreapp3.1\RadianCelciusOrKelvin.exe
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\bin\Debug\netcoreapp3.1\RadianCelciusOrKelvin.deps.json
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\bin\Debug\netcoreapp3.1\RadianCelciusOrKelvin.runtimeconfig.json
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\bin\Debug\netcoreapp3.1\RadianCelciusOrKelvin.runtimeconfig.dev.json
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\bin\Debug\netcoreapp3.1\RadianCelciusOrKelvin.dll
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\bin\Debug\netcoreapp3.1\RadianCelciusOrKelvin.pdb
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\obj\Debug\netcoreapp3.1\RadianCelciusOrKelvin.csproj.AssemblyReference.cache
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\obj\Debug\netcoreapp3.1\RadianCelciusOrKelvin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\obj\Debug\netcoreapp3.1\RadianCelciusOrKelvin.AssemblyInfoInputs.cache
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\obj\Debug\netcoreapp3.1\RadianCelciusOrKelvin.AssemblyInfo.cs
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\obj\Debug\netcoreapp3.1\RadianCelciusOrKelvin.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\obj\Debug\netcoreapp3.1\RadianCelciusOrKelvin.dll
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\obj\Debug\netcoreapp3.1\RadianCelciusOrKelvin.pdb
+C:\Users\1\Documents\GitHub\CSarpExecrise\Basics\RadianCelciusOrKelvin\obj\Debug\netcoreapp3.1\RadianCelciusOrKelvin.genruntimeconfig.cache
