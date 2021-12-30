@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\bin\Debug\netcoreapp3.1\01. Sum Seconds.exe
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\bin\Debug\netcoreapp3.1\01. Sum Seconds.deps.json
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\bin\Debug\netcoreapp3.1\01. Sum Seconds.runtimeconfig.json
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\bin\Debug\netcoreapp3.1\01. Sum Seconds.runtimeconfig.dev.json
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\bin\Debug\netcoreapp3.1\01. Sum Seconds.dll
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\bin\Debug\netcoreapp3.1\01. Sum Seconds.pdb
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\obj\Debug\netcoreapp3.1\01. Sum Seconds.csprojAssemblyReference.cache
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\obj\Debug\netcoreapp3.1\01. Sum Seconds.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\obj\Debug\netcoreapp3.1\01. Sum Seconds.AssemblyInfo.cs
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\obj\Debug\netcoreapp3.1\01. Sum Seconds.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\obj\Debug\netcoreapp3.1\01. Sum Seconds.dll
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\obj\Debug\netcoreapp3.1\01. Sum Seconds.pdb
+C:\Users\1\source\repos\01. Sum Seconds\01. Sum Seconds\obj\Debug\netcoreapp3.1\01. Sum Seconds.genruntimeconfig.cache
