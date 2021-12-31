@@ -1,0 +1,12 @@
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\bin\Debug\netcoreapp3.1\08.Cinema Ticket.exe
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\bin\Debug\netcoreapp3.1\08.Cinema Ticket.deps.json
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\bin\Debug\netcoreapp3.1\08.Cinema Ticket.runtimeconfig.json
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\bin\Debug\netcoreapp3.1\08.Cinema Ticket.runtimeconfig.dev.json
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\bin\Debug\netcoreapp3.1\08.Cinema Ticket.dll
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\bin\Debug\netcoreapp3.1\08.Cinema Ticket.pdb
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\obj\Debug\netcoreapp3.1\08.Cinema Ticket.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\obj\Debug\netcoreapp3.1\08.Cinema Ticket.AssemblyInfo.cs
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\obj\Debug\netcoreapp3.1\08.Cinema Ticket.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\obj\Debug\netcoreapp3.1\08.Cinema Ticket.dll
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\obj\Debug\netcoreapp3.1\08.Cinema Ticket.pdb
+C:\Users\1\source\repos\ConsoleApp8\08.Cinema Ticket\obj\Debug\netcoreapp3.1\08.Cinema Ticket.genruntimeconfig.cache
