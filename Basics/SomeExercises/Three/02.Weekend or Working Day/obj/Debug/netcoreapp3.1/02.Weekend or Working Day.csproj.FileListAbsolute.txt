@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\bin\Debug\netcoreapp3.1\02.Weekend or Working Day.exe
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\bin\Debug\netcoreapp3.1\02.Weekend or Working Day.deps.json
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\bin\Debug\netcoreapp3.1\02.Weekend or Working Day.runtimeconfig.json
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\bin\Debug\netcoreapp3.1\02.Weekend or Working Day.runtimeconfig.dev.json
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\bin\Debug\netcoreapp3.1\02.Weekend or Working Day.dll
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\bin\Debug\netcoreapp3.1\02.Weekend or Working Day.pdb
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\obj\Debug\netcoreapp3.1\02.Weekend or Working Day.csprojAssemblyReference.cache
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\obj\Debug\netcoreapp3.1\02.Weekend or Working Day.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\obj\Debug\netcoreapp3.1\02.Weekend or Working Day.AssemblyInfo.cs
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\obj\Debug\netcoreapp3.1\02.Weekend or Working Day.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\obj\Debug\netcoreapp3.1\02.Weekend or Working Day.dll
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\obj\Debug\netcoreapp3.1\02.Weekend or Working Day.pdb
+C:\Users\1\source\repos\ConsoleApp8\02.Weekend or Working Day\obj\Debug\netcoreapp3.1\02.Weekend or Working Day.genruntimeconfig.cache

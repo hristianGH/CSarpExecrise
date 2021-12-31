@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\bin\Debug\netcoreapp3.1\03. Animal Type.exe
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\bin\Debug\netcoreapp3.1\03. Animal Type.deps.json
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\bin\Debug\netcoreapp3.1\03. Animal Type.runtimeconfig.json
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\bin\Debug\netcoreapp3.1\03. Animal Type.runtimeconfig.dev.json
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\bin\Debug\netcoreapp3.1\03. Animal Type.dll
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\bin\Debug\netcoreapp3.1\03. Animal Type.pdb
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\obj\Debug\netcoreapp3.1\03. Animal Type.csprojAssemblyReference.cache
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\obj\Debug\netcoreapp3.1\03. Animal Type.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\obj\Debug\netcoreapp3.1\03. Animal Type.AssemblyInfo.cs
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\obj\Debug\netcoreapp3.1\03. Animal Type.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\obj\Debug\netcoreapp3.1\03. Animal Type.dll
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\obj\Debug\netcoreapp3.1\03. Animal Type.pdb
+C:\Users\1\source\repos\ConsoleApp8\03. Animal Type\obj\Debug\netcoreapp3.1\03. Animal Type.genruntimeconfig.cache
