@@ -1,0 +1,12 @@
+C:\Users\1\source\repos\ConsoleApp9\naamed\bin\Debug\netcoreapp3.1\naamed.exe
+C:\Users\1\source\repos\ConsoleApp9\naamed\bin\Debug\netcoreapp3.1\naamed.deps.json
+C:\Users\1\source\repos\ConsoleApp9\naamed\bin\Debug\netcoreapp3.1\naamed.runtimeconfig.json
+C:\Users\1\source\repos\ConsoleApp9\naamed\bin\Debug\netcoreapp3.1\naamed.runtimeconfig.dev.json
+C:\Users\1\source\repos\ConsoleApp9\naamed\bin\Debug\netcoreapp3.1\naamed.dll
+C:\Users\1\source\repos\ConsoleApp9\naamed\bin\Debug\netcoreapp3.1\naamed.pdb
+C:\Users\1\source\repos\ConsoleApp9\naamed\obj\Debug\netcoreapp3.1\naamed.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\ConsoleApp9\naamed\obj\Debug\netcoreapp3.1\naamed.AssemblyInfo.cs
+C:\Users\1\source\repos\ConsoleApp9\naamed\obj\Debug\netcoreapp3.1\naamed.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\ConsoleApp9\naamed\obj\Debug\netcoreapp3.1\naamed.dll
+C:\Users\1\source\repos\ConsoleApp9\naamed\obj\Debug\netcoreapp3.1\naamed.pdb
+C:\Users\1\source\repos\ConsoleApp9\naamed\obj\Debug\netcoreapp3.1\naamed.genruntimeconfig.cache
