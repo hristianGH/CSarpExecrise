@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\bin\Debug\netcoreapp3.1\08. On Time for the Exam.exe
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\bin\Debug\netcoreapp3.1\08. On Time for the Exam.deps.json
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\bin\Debug\netcoreapp3.1\08. On Time for the Exam.runtimeconfig.json
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\bin\Debug\netcoreapp3.1\08. On Time for the Exam.runtimeconfig.dev.json
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\bin\Debug\netcoreapp3.1\08. On Time for the Exam.dll
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\bin\Debug\netcoreapp3.1\08. On Time for the Exam.pdb
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\obj\Debug\netcoreapp3.1\08. On Time for the Exam.csprojAssemblyReference.cache
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\obj\Debug\netcoreapp3.1\08. On Time for the Exam.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\obj\Debug\netcoreapp3.1\08. On Time for the Exam.AssemblyInfo.cs
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\obj\Debug\netcoreapp3.1\08. On Time for the Exam.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\obj\Debug\netcoreapp3.1\08. On Time for the Exam.dll
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\obj\Debug\netcoreapp3.1\08. On Time for the Exam.pdb
+C:\Users\1\source\repos\ConsoleApp9\08. On Time for the Exam\obj\Debug\netcoreapp3.1\08. On Time for the Exam.genruntimeconfig.cache
