@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\netcoreapp3.1\01. Cinema.exe
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\netcoreapp3.1\01. Cinema.deps.json
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\netcoreapp3.1\01. Cinema.runtimeconfig.json
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\netcoreapp3.1\01. Cinema.runtimeconfig.dev.json
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\netcoreapp3.1\01. Cinema.dll
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\bin\Debug\netcoreapp3.1\01. Cinema.pdb
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\netcoreapp3.1\01. Cinema.csprojAssemblyReference.cache
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\netcoreapp3.1\01. Cinema.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\netcoreapp3.1\01. Cinema.AssemblyInfo.cs
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\netcoreapp3.1\01. Cinema.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\netcoreapp3.1\01. Cinema.dll
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\netcoreapp3.1\01. Cinema.pdb
+C:\Users\1\source\repos\ConsoleApp9\ConsoleApp9\obj\Debug\netcoreapp3.1\01. Cinema.genruntimeconfig.cache
