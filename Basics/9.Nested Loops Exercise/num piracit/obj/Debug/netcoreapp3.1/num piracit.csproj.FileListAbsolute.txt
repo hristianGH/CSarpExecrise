@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\bin\Debug\netcoreapp3.1\num piracit.exe
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\bin\Debug\netcoreapp3.1\num piracit.deps.json
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\bin\Debug\netcoreapp3.1\num piracit.runtimeconfig.json
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\bin\Debug\netcoreapp3.1\num piracit.runtimeconfig.dev.json
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\bin\Debug\netcoreapp3.1\num piracit.dll
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\bin\Debug\netcoreapp3.1\num piracit.pdb
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\obj\Debug\netcoreapp3.1\num piracit.csprojAssemblyReference.cache
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\obj\Debug\netcoreapp3.1\num piracit.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\obj\Debug\netcoreapp3.1\num piracit.AssemblyInfo.cs
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\obj\Debug\netcoreapp3.1\num piracit.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\obj\Debug\netcoreapp3.1\num piracit.dll
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\obj\Debug\netcoreapp3.1\num piracit.pdb
+C:\Users\1\source\repos\Nested Loops - Exercise\num piracit\obj\Debug\netcoreapp3.1\num piracit.genruntimeconfig.cache
