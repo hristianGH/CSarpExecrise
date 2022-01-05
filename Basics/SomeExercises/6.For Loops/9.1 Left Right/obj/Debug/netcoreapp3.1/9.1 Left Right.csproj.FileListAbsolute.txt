@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\bin\Debug\netcoreapp3.1\9.1 Left Right.exe
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\bin\Debug\netcoreapp3.1\9.1 Left Right.deps.json
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\bin\Debug\netcoreapp3.1\9.1 Left Right.runtimeconfig.json
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\bin\Debug\netcoreapp3.1\9.1 Left Right.runtimeconfig.dev.json
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\bin\Debug\netcoreapp3.1\9.1 Left Right.dll
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\bin\Debug\netcoreapp3.1\9.1 Left Right.pdb
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\obj\Debug\netcoreapp3.1\9.1 Left Right.csprojAssemblyReference.cache
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\obj\Debug\netcoreapp3.1\9.1 Left Right.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\obj\Debug\netcoreapp3.1\9.1 Left Right.AssemblyInfo.cs
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\obj\Debug\netcoreapp3.1\9.1 Left Right.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\obj\Debug\netcoreapp3.1\9.1 Left Right.dll
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\obj\Debug\netcoreapp3.1\9.1 Left Right.pdb
+C:\Users\1\source\repos\ConsoleApp10\9.1 Left Right\obj\Debug\netcoreapp3.1\9.1 Left Right.genruntimeconfig.cache

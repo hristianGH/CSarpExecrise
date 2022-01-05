@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "001ffd34-0609-43da-8074-15b7e427b347": {
+      "ProjectGuid": "001ffd34-0609-43da-8074-15b7e427b347",
+      "DisplayName": "01. Sum Seconds",
+      "ColorIndex": 0
+    },
+    "ccfed50e-3c79-4d76-a438-7212bdd123ee": {
+      "ProjectGuid": "ccfed50e-3c79-4d76-a438-7212bdd123ee",
+      "DisplayName": "05. Time + 15 Minutes",
+      "ColorIndex": 1
+    },
+    "1dfaef13-2b73-41a8-a4c2-e63f74a74896": {
+      "ProjectGuid": "1dfaef13-2b73-41a8-a4c2-e63f74a74896",
+      "DisplayName": "07. World Swimming Record",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

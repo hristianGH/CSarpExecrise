@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b1e3c0e2-6fa0-4aa9-8301-00fbd59e7ee3": {
+      "ProjectGuid": "b1e3c0e2-6fa0-4aa9-8301-00fbd59e7ee3",
+      "DisplayName": "11. Fruit Shop 2",
+      "ColorIndex": 0
+    },
+    "1c2f6fbc-0bdc-4156-a1ae-03c6d461b4f2": {
+      "ProjectGuid": "1c2f6fbc-0bdc-4156-a1ae-03c6d461b4f2",
+      "DisplayName": "11. Fruit Shop",
+      "ColorIndex": 1
+    },
+    "23a8ba22-8424-4afc-99c6-b2f6ab1a8ef5": {
+      "ProjectGuid": "23a8ba22-8424-4afc-99c6-b2f6ab1a8ef5",
+      "DisplayName": "09. Fruit or Vegetable",
+      "ColorIndex": 2
+    },
+    "a809a98a-6a53-44b9-abc8-38fe41558cff": {
+      "ProjectGuid": "a809a98a-6a53-44b9-abc8-38fe41558cff",
+      "DisplayName": "08.Cinema Ticket",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\bin\Debug\netcoreapp3.1\03. Numbers.exe
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\bin\Debug\netcoreapp3.1\03. Numbers.deps.json
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\bin\Debug\netcoreapp3.1\03. Numbers.runtimeconfig.json
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\bin\Debug\netcoreapp3.1\03. Numbers.runtimeconfig.dev.json
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\bin\Debug\netcoreapp3.1\03. Numbers.dll
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\bin\Debug\netcoreapp3.1\03. Numbers.pdb
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\obj\Debug\netcoreapp3.1\03. Numbers.csprojAssemblyReference.cache
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\obj\Debug\netcoreapp3.1\03. Numbers.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\obj\Debug\netcoreapp3.1\03. Numbers.AssemblyInfo.cs
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\obj\Debug\netcoreapp3.1\03. Numbers.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\obj\Debug\netcoreapp3.1\03. Numbers.dll
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\obj\Debug\netcoreapp3.1\03. Numbers.pdb
+C:\Users\1\source\repos\ConsoleApp10\03. Numbers\obj\Debug\netcoreapp3.1\03. Numbers.genruntimeconfig.cache

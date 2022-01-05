@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "64ac9d0a-946f-4e4d-93d0-9ee7958ff512": {
+      "ProjectGuid": "64ac9d0a-946f-4e4d-93d0-9ee7958ff512",
+      "DisplayName": "9. Volleyball",
+      "ColorIndex": 0
+    },
+    "82452043-ce0c-4d87-9357-9c4079e6dd49": {
+      "ProjectGuid": "82452043-ce0c-4d87-9357-9c4079e6dd49",
+      "DisplayName": "08. On Time for the Exam",
+      "ColorIndex": 1
+    },
+    "16e07063-4499-4877-94db-5290a5ffcde3": {
+      "ProjectGuid": "16e07063-4499-4877-94db-5290a5ffcde3",
+      "DisplayName": "07. Hotel Room",
+      "ColorIndex": 2
+    },
+    "6d351c8b-29bf-454e-9a00-5589b6a8a20b": {
+      "ProjectGuid": "6d351c8b-29bf-454e-9a00-5589b6a8a20b",
+      "DisplayName": "06. Operations Between Numbers",
+      "ColorIndex": 3
+    },
+    "7fedbe84-3849-4236-a85b-bef161b07af8": {
+      "ProjectGuid": "7fedbe84-3849-4236-a85b-bef161b07af8",
+      "DisplayName": "05. Journey",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

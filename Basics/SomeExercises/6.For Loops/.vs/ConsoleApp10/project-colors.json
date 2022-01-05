@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3f29dc74-cd50-4961-8a75-f3b27d1b08d0": {
+      "ProjectGuid": "3f29dc74-cd50-4961-8a75-f3b27d1b08d0",
+      "DisplayName": "04. Even Powers of 2",
+      "ColorIndex": 0
+    },
+    "83c07eef-3f55-46ba-b50b-7a95333d784c": {
+      "ProjectGuid": "83c07eef-3f55-46ba-b50b-7a95333d784c",
+      "DisplayName": "07. Sum Numbers",
+      "ColorIndex": 1
+    },
+    "1898d11d-513e-40db-bce1-ba017d2a1a0b": {
+      "ProjectGuid": "1898d11d-513e-40db-bce1-ba017d2a1a0b",
+      "DisplayName": "10. Odd Even Sum",
+      "ColorIndex": 2
+    },
+    "856e6776-f9ac-4b56-b1db-2cd71eeed07a": {
+      "ProjectGuid": "856e6776-f9ac-4b56-b1db-2cd71eeed07a",
+      "DisplayName": "9.1 Left Right",
+      "ColorIndex": 3
+    },
+    "c9a87034-9c3e-4b44-947c-f077c7564355": {
+      "ProjectGuid": "c9a87034-9c3e-4b44-947c-f077c7564355",
+      "DisplayName": "03. Numbers",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

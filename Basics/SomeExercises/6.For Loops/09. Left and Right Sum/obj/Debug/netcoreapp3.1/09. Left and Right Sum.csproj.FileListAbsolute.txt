@@ -1,0 +1,12 @@
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\bin\Debug\netcoreapp3.1\09. Left and Right Sum.exe
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\bin\Debug\netcoreapp3.1\09. Left and Right Sum.deps.json
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\bin\Debug\netcoreapp3.1\09. Left and Right Sum.runtimeconfig.json
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\bin\Debug\netcoreapp3.1\09. Left and Right Sum.runtimeconfig.dev.json
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\bin\Debug\netcoreapp3.1\09. Left and Right Sum.dll
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\bin\Debug\netcoreapp3.1\09. Left and Right Sum.pdb
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\obj\Debug\netcoreapp3.1\09. Left and Right Sum.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\obj\Debug\netcoreapp3.1\09. Left and Right Sum.AssemblyInfo.cs
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\obj\Debug\netcoreapp3.1\09. Left and Right Sum.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\obj\Debug\netcoreapp3.1\09. Left and Right Sum.dll
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\obj\Debug\netcoreapp3.1\09. Left and Right Sum.pdb
+C:\Users\1\source\repos\ConsoleApp10\09. Left and Right Sum\obj\Debug\netcoreapp3.1\09. Left and Right Sum.genruntimeconfig.cache
