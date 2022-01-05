@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "whileloop", "whileloop\whileloop.csproj", "{FA4E1308-8DDC-41A1-BD45-D17BE34E5893}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Password", "02. Password\02. Password.csproj", "{60119E18-619D-4276-A5E9-EEF13B8DF234}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Sequence 2k+1", "04. Sequence 2k+1\04. Sequence 2k+1.csproj", "{3B785B14-DA72-48FE-803C-9AB313CD7BF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Account Balance", "05. Account Balance\05. Account Balance.csproj", "{8F66337E-C0DA-49F4-B48A-945D6135BD2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. Max Number", "06. Max Number\06. Max Number.csproj", "{104B4B0C-DBFE-42EF-A5CD-D4A6B75BB5D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "andhfas]f[asdfg", "andhfas]f[asdfg\andhfas]f[asdfg.csproj", "{37D9D367-E50B-4A60-B689-A7E86737D82D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08. Graduation pt.2", "08. Graduation pt.2\08. Graduation pt.2.csproj", "{7552C38E-DB96-40C2-A7B7-286113E4E00F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA4E1308-8DDC-41A1-BD45-D17BE34E5893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA4E1308-8DDC-41A1-BD45-D17BE34E5893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA4E1308-8DDC-41A1-BD45-D17BE34E5893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA4E1308-8DDC-41A1-BD45-D17BE34E5893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60119E18-619D-4276-A5E9-EEF13B8DF234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60119E18-619D-4276-A5E9-EEF13B8DF234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60119E18-619D-4276-A5E9-EEF13B8DF234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60119E18-619D-4276-A5E9-EEF13B8DF234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B785B14-DA72-48FE-803C-9AB313CD7BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B785B14-DA72-48FE-803C-9AB313CD7BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B785B14-DA72-48FE-803C-9AB313CD7BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B785B14-DA72-48FE-803C-9AB313CD7BF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F66337E-C0DA-49F4-B48A-945D6135BD2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F66337E-C0DA-49F4-B48A-945D6135BD2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F66337E-C0DA-49F4-B48A-945D6135BD2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F66337E-C0DA-49F4-B48A-945D6135BD2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104B4B0C-DBFE-42EF-A5CD-D4A6B75BB5D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104B4B0C-DBFE-42EF-A5CD-D4A6B75BB5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104B4B0C-DBFE-42EF-A5CD-D4A6B75BB5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104B4B0C-DBFE-42EF-A5CD-D4A6B75BB5D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37D9D367-E50B-4A60-B689-A7E86737D82D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D9D367-E50B-4A60-B689-A7E86737D82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37D9D367-E50B-4A60-B689-A7E86737D82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37D9D367-E50B-4A60-B689-A7E86737D82D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7552C38E-DB96-40C2-A7B7-286113E4E00F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7552C38E-DB96-40C2-A7B7-286113E4E00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7552C38E-DB96-40C2-A7B7-286113E4E00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7552C38E-DB96-40C2-A7B7-286113E4E00F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7EBE7E3E-75C0-40CD-B265-2253FB1B7F14}
+	EndGlobalSection
+EndGlobal
