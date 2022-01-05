@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b641b505-808d-4551-91a1-b0ee9a07825b": {
+      "ProjectGuid": "b641b505-808d-4551-91a1-b0ee9a07825b",
+      "DisplayName": "05. Coins",
+      "ColorIndex": 0
+    },
+    "68b7eda9-9aad-4c10-9975-dbd58250e80c": {
+      "ProjectGuid": "68b7eda9-9aad-4c10-9975-dbd58250e80c",
+      "DisplayName": "04. Walking",
+      "ColorIndex": 1
+    },
+    "2d16dbbe-0d50-4198-99b6-79f28f9e3216": {
+      "ProjectGuid": "2d16dbbe-0d50-4198-99b6-79f28f9e3216",
+      "DisplayName": "03. Vacation",
+      "ColorIndex": 2
+    },
+    "eabb5e42-fb78-4a4c-81a7-22322b062bb9": {
+      "ProjectGuid": "eabb5e42-fb78-4a4c-81a7-22322b062bb9",
+      "DisplayName": "02. Exam Preparation",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
