@@ -1,0 +1,12 @@
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\bin\Debug\netcoreapp3.1\3. Elevator the actual.exe
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\bin\Debug\netcoreapp3.1\3. Elevator the actual.deps.json
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\bin\Debug\netcoreapp3.1\3. Elevator the actual.runtimeconfig.json
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\bin\Debug\netcoreapp3.1\3. Elevator the actual.runtimeconfig.dev.json
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\bin\Debug\netcoreapp3.1\3. Elevator the actual.dll
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\bin\Debug\netcoreapp3.1\3. Elevator the actual.pdb
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\obj\Debug\netcoreapp3.1\3. Elevator the actual.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\obj\Debug\netcoreapp3.1\3. Elevator the actual.AssemblyInfo.cs
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\obj\Debug\netcoreapp3.1\3. Elevator the actual.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\obj\Debug\netcoreapp3.1\3. Elevator the actual.dll
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\obj\Debug\netcoreapp3.1\3. Elevator the actual.pdb
+C:\Users\1\source\repos\DataTypesNVariables\3. Elevator the actual\obj\Debug\netcoreapp3.1\3. Elevator the actual.genruntimeconfig.cache
