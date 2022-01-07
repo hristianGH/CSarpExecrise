@@ -1,0 +1,13 @@
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\bin\Debug\netcoreapp3.1\06. Triples of Latin Letters.exe
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\bin\Debug\netcoreapp3.1\06. Triples of Latin Letters.deps.json
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\bin\Debug\netcoreapp3.1\06. Triples of Latin Letters.runtimeconfig.json
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\bin\Debug\netcoreapp3.1\06. Triples of Latin Letters.runtimeconfig.dev.json
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\bin\Debug\netcoreapp3.1\06. Triples of Latin Letters.dll
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\bin\Debug\netcoreapp3.1\06. Triples of Latin Letters.pdb
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\obj\Debug\netcoreapp3.1\06. Triples of Latin Letters.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\obj\Debug\netcoreapp3.1\06. Triples of Latin Letters.AssemblyInfo.cs
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\obj\Debug\netcoreapp3.1\06. Triples of Latin Letters.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\obj\Debug\netcoreapp3.1\06. Triples of Latin Letters.dll
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\obj\Debug\netcoreapp3.1\06. Triples of Latin Letters.pdb
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\obj\Debug\netcoreapp3.1\06. Triples of Latin Letters.genruntimeconfig.cache
+C:\Users\1\source\repos\DataTypesNVariables\06. Triples of Latin Letters\obj\Debug\netcoreapp3.1\06. Triples of Latin Letters.csprojAssemblyReference.cache

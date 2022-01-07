@@ -1,0 +1,12 @@
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\bin\Debug\netcoreapp3.1\SumNumValue.exe
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\bin\Debug\netcoreapp3.1\SumNumValue.deps.json
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\bin\Debug\netcoreapp3.1\SumNumValue.runtimeconfig.json
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\bin\Debug\netcoreapp3.1\SumNumValue.runtimeconfig.dev.json
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\bin\Debug\netcoreapp3.1\SumNumValue.dll
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\bin\Debug\netcoreapp3.1\SumNumValue.pdb
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\obj\Debug\netcoreapp3.1\SumNumValue.AssemblyInfoInputs.cache
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\obj\Debug\netcoreapp3.1\SumNumValue.AssemblyInfo.cs
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\obj\Debug\netcoreapp3.1\SumNumValue.csproj.CoreCompileInputs.cache
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\obj\Debug\netcoreapp3.1\SumNumValue.dll
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\obj\Debug\netcoreapp3.1\SumNumValue.pdb
+C:\Users\1\source\repos\DataTypesNVariables\SumNumValue\obj\Debug\netcoreapp3.1\SumNumValue.genruntimeconfig.cache
