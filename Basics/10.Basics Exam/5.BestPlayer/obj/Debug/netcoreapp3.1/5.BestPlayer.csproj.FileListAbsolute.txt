@@ -1,0 +1,13 @@
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\bin\Debug\netcoreapp3.1\5.BestPlayer.exe
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\bin\Debug\netcoreapp3.1\5.BestPlayer.deps.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\bin\Debug\netcoreapp3.1\5.BestPlayer.runtimeconfig.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\bin\Debug\netcoreapp3.1\5.BestPlayer.runtimeconfig.dev.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\bin\Debug\netcoreapp3.1\5.BestPlayer.dll
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\bin\Debug\netcoreapp3.1\5.BestPlayer.pdb
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\obj\Debug\netcoreapp3.1\5.BestPlayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\obj\Debug\netcoreapp3.1\5.BestPlayer.AssemblyInfoInputs.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\obj\Debug\netcoreapp3.1\5.BestPlayer.AssemblyInfo.cs
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\obj\Debug\netcoreapp3.1\5.BestPlayer.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\obj\Debug\netcoreapp3.1\5.BestPlayer.dll
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\obj\Debug\netcoreapp3.1\5.BestPlayer.pdb
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\5.BestPlayer\obj\Debug\netcoreapp3.1\5.BestPlayer.genruntimeconfig.cache
