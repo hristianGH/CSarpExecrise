@@ -1,0 +1,13 @@
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\bin\Debug\netcoreapp3.1\Balls.exe
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\bin\Debug\netcoreapp3.1\Balls.deps.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\bin\Debug\netcoreapp3.1\Balls.runtimeconfig.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\bin\Debug\netcoreapp3.1\Balls.runtimeconfig.dev.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\bin\Debug\netcoreapp3.1\Balls.dll
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\bin\Debug\netcoreapp3.1\Balls.pdb
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\obj\Debug\netcoreapp3.1\Balls.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\obj\Debug\netcoreapp3.1\Balls.AssemblyInfoInputs.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\obj\Debug\netcoreapp3.1\Balls.AssemblyInfo.cs
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\obj\Debug\netcoreapp3.1\Balls.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\obj\Debug\netcoreapp3.1\Balls.dll
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\obj\Debug\netcoreapp3.1\Balls.pdb
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Balls\obj\Debug\netcoreapp3.1\Balls.genruntimeconfig.cache

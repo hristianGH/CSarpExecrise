@@ -1,0 +1,14 @@
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\bin\Debug\netcoreapp3.1\AddBags.exe
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\bin\Debug\netcoreapp3.1\AddBags.deps.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\bin\Debug\netcoreapp3.1\AddBags.runtimeconfig.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\bin\Debug\netcoreapp3.1\AddBags.runtimeconfig.dev.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\bin\Debug\netcoreapp3.1\AddBags.dll
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\bin\Debug\netcoreapp3.1\AddBags.pdb
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\obj\Debug\netcoreapp3.1\AddBags.csproj.AssemblyReference.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\obj\Debug\netcoreapp3.1\AddBags.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\obj\Debug\netcoreapp3.1\AddBags.AssemblyInfoInputs.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\obj\Debug\netcoreapp3.1\AddBags.AssemblyInfo.cs
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\obj\Debug\netcoreapp3.1\AddBags.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\obj\Debug\netcoreapp3.1\AddBags.dll
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\obj\Debug\netcoreapp3.1\AddBags.pdb
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\AddBags\obj\Debug\netcoreapp3.1\AddBags.genruntimeconfig.cache

@@ -12,3 +12,17 @@ C:\Users\1\source\repos\Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency
 C:\Users\1\source\repos\Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.dll
 C:\Users\1\source\repos\Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.pdb
 C:\Users\1\source\repos\Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.genruntimeconfig.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\bin\Debug\netcoreapp3.1\Agency Income.exe
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\bin\Debug\netcoreapp3.1\Agency Income.deps.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\bin\Debug\netcoreapp3.1\Agency Income.runtimeconfig.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\bin\Debug\netcoreapp3.1\Agency Income.runtimeconfig.dev.json
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\bin\Debug\netcoreapp3.1\Agency Income.dll
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\bin\Debug\netcoreapp3.1\Agency Income.pdb
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.csproj.AssemblyReference.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.AssemblyInfoInputs.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.AssemblyInfo.cs
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.dll
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.pdb
+C:\Users\1\Documents\GitHub\SoftUni C#\Basics\10.Basics Exam\Agency Income\obj\Debug\netcoreapp3.1\Agency Income.genruntimeconfig.cache

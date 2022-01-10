@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\1\\source\\repos\\Basics Exam\\Agency Income\\Agency Income.csproj": {}
+    "C:\\Users\\1\\Documents\\GitHub\\SoftUni C#\\Basics\\10.Basics Exam\\Agency Income\\Agency Income.csproj": {}
   },
   "projects": {
-    "C:\\Users\\1\\source\\repos\\Basics Exam\\Agency Income\\Agency Income.csproj": {
+    "C:\\Users\\1\\Documents\\GitHub\\SoftUni C#\\Basics\\10.Basics Exam\\Agency Income\\Agency Income.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\1\\source\\repos\\Basics Exam\\Agency Income\\Agency Income.csproj",
+        "projectUniqueName": "C:\\Users\\1\\Documents\\GitHub\\SoftUni C#\\Basics\\10.Basics Exam\\Agency Income\\Agency Income.csproj",
         "projectName": "Agency Income",
-        "projectPath": "C:\\Users\\1\\source\\repos\\Basics Exam\\Agency Income\\Agency Income.csproj",
+        "projectPath": "C:\\Users\\1\\Documents\\GitHub\\SoftUni C#\\Basics\\10.Basics Exam\\Agency Income\\Agency Income.csproj",
         "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\1\\source\\repos\\Basics Exam\\Agency Income\\obj\\",
+        "outputPath": "C:\\Users\\1\\Documents\\GitHub\\SoftUni C#\\Basics\\10.Basics Exam\\Agency Income\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
