@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7b82373e-1e59-487e-a175-2eef7265897c": {
+      "ProjectGuid": "7b82373e-1e59-487e-a175-2eef7265897c",
+      "DisplayName": "AddBags",
+      "ColorIndex": 0
+    },
+    "23768981-33ae-47b9-ad39-0e9e805e7512": {
+      "ProjectGuid": "23768981-33ae-47b9-ad39-0e9e805e7512",
+      "DisplayName": "Agency Income",
+      "ColorIndex": 1
+    },
+    "c11acab1-661c-425e-88bc-b66360fa49ec": {
+      "ProjectGuid": "c11acab1-661c-425e-88bc-b66360fa49ec",
+      "DisplayName": "Balls",
+      "ColorIndex": 2
+    },
+    "d09e564c-56c8-495d-9eaf-6a4554b2c47b": {
+      "ProjectGuid": "d09e564c-56c8-495d-9eaf-6a4554b2c47b",
+      "DisplayName": "5.BestPlayer",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
