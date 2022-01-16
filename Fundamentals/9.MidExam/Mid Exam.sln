@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Reception", "01.Reception\01.Reception.csproj", "{03D142F9-762F-4CF4-AFA7-06B2EC98C596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Array Modifier", "02. Array Modifier\02. Array Modifier.csproj", "{4EC427A1-CD49-445E-8767-3A3EB4A7E51D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.Numbers", "03.Numbers\03.Numbers.csproj", "{DFA405A0-F1F7-460D-BDED-103E8343851F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03D142F9-762F-4CF4-AFA7-06B2EC98C596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03D142F9-762F-4CF4-AFA7-06B2EC98C596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03D142F9-762F-4CF4-AFA7-06B2EC98C596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03D142F9-762F-4CF4-AFA7-06B2EC98C596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EC427A1-CD49-445E-8767-3A3EB4A7E51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EC427A1-CD49-445E-8767-3A3EB4A7E51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EC427A1-CD49-445E-8767-3A3EB4A7E51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EC427A1-CD49-445E-8767-3A3EB4A7E51D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA405A0-F1F7-460D-BDED-103E8343851F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA405A0-F1F7-460D-BDED-103E8343851F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA405A0-F1F7-460D-BDED-103E8343851F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA405A0-F1F7-460D-BDED-103E8343851F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCC3ADAD-48AA-4921-A6CF-BF64B76FA056}
+	EndGlobalSection
+EndGlobal
