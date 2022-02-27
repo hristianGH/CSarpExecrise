@@ -1,0 +1,7 @@
+﻿namespace _1.CommandPattern.Core.Contracts
+{
+    public interface ICommand
+    {
+        string Execute(string[] args);
+    }
+}
