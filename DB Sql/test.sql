@@ -1,0 +1,18 @@
+
+CREATE TRIGGER AgeChecK
+ON RENTAL
+AFTER INSERT
+ AS
+DECLARE @Tax REAL
+SET @Tax=(
+ SELECT 
+ CASE WHEN Age<25 OR AGE >75 
+ THEN 1.3
+ ELSE 1
+ END
+ FROM inserted I
+ JOIN Customer C
+ ON I.CustomerId=C.Id
+ )
+ UPDATE Rental
+ SET Price=Price*@Tax;
