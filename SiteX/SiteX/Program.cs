@@ -18,6 +18,8 @@ builder.Services.AddControllersWithViews()
     {
         opt.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
         opt.ModelBinderProviders.Insert(1, new DoubleModelBinderProvider());
+        opt.ModelBinderProviders.Insert(2, new DateTimeModelBinderProvider("dd.MM.yyyy"));
+
     });
 
 var app = builder.Build();
