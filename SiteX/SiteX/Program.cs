@@ -15,8 +15,10 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews()
     .AddMvcOptions(opt=>
-    opt.ModelBinderProviders.Insert(0,new DecimalModelBinderProvider()
-    ));
+    {
+        opt.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+        opt.ModelBinderProviders.Insert(1, new DoubleModelBinderProvider());
+    });
 
 var app = builder.Build();
 

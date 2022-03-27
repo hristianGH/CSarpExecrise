@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace SiteX.ModelBinders
 {
-    public class DecimalModelBinder : IModelBinder
+    public class DoubleModelBinder:IModelBinder
     {
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
@@ -13,7 +13,7 @@ namespace SiteX.ModelBinders
 
             if (valueResult != ValueProviderResult.None && !String.IsNullOrEmpty(valueResult.FirstValue))
             {
-                decimal actualValue = 0;
+                double actualValue = 0;
                 bool success = false;
 
                 try
@@ -22,7 +22,7 @@ namespace SiteX.ModelBinders
                     decValue = decValue.Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
                     decValue = decValue.Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
 
-                    actualValue = Convert.ToDecimal(decValue, CultureInfo.CurrentCulture);
+                    actualValue = Convert.ToDouble(decValue, CultureInfo.CurrentCulture);
                     success = true;
                 }
                 catch (FormatException fe)
@@ -38,7 +38,5 @@ namespace SiteX.ModelBinders
 
             return Task.CompletedTask;
         }
-
-       
     }
 }
