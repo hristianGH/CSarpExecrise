@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteX", "SiteX\SiteX.csproj", "{83AB6DB9-FDCA-41C4-BD5C-3BA72182A266}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteX", "SiteX\SiteX.csproj", "{83AB6DB9-FDCA-41C4-BD5C-3BA72182A266}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteX.Data", "SiteX.Data\SiteX.Data.csproj", "{66D5A976-4D19-4FD4-9649-27C757D2F119}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{83AB6DB9-FDCA-41C4-BD5C-3BA72182A266}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83AB6DB9-FDCA-41C4-BD5C-3BA72182A266}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83AB6DB9-FDCA-41C4-BD5C-3BA72182A266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D5A976-4D19-4FD4-9649-27C757D2F119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D5A976-4D19-4FD4-9649-27C757D2F119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D5A976-4D19-4FD4-9649-27C757D2F119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D5A976-4D19-4FD4-9649-27C757D2F119}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
