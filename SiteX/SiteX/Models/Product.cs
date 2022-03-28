@@ -7,6 +7,7 @@
         public double Price { get; set; }
 
         public bool IsSoldOut { get; set; }
+        public string Size { get; set; }
         public TypeProd TypeProduct { get; set; }
     }
     public enum TypeProd
