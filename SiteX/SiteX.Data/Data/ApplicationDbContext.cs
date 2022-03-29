@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SiteX.Data.Models.Blog;
 using SiteX.Data.Models.Shop;
 
-namespace SiteX.Dataa
+namespace SiteX.Data.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

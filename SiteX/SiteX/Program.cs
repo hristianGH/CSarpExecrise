@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SiteX.Dataa;
+using SiteX.Data.Data;
 using SiteX.ModelBinders;
 
 var builder = WebApplication.CreateBuilder(args);
