@@ -1,11 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SiteX.Data.Data;
 using SiteX.Models;
+using SiteX.ViewModels;
 using System.Diagnostics;
 
 namespace SiteX.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext db;
+        public HomeController(ApplicationDbContext db)
+        {
+            this.db = db;
+        }
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -15,6 +22,7 @@ namespace SiteX.Controllers
 
         public IActionResult Index()
         {
+            var vm = new IndexViewModel();
             return View();
         }
 
