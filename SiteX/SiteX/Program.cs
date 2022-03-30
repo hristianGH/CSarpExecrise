@@ -13,10 +13,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
-    //options.SignIn.RequireConfirmedAccount = false;
-    //options.Password.RequiredLength = 8;
-    //options.Password.RequireNonAlphanumeric=false;
-    //options.Password.RequireUppercase = false;
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
 
 })
     .AddEntityFrameworkStores<ApplicationDbContext>();

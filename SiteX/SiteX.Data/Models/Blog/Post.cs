@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SiteX.Data.Models.Blog
 {
-    public class Post
+    public class Post 
     {
         [Key]
         public int Id { get; set; }
@@ -13,12 +14,11 @@ namespace SiteX.Data.Models.Blog
 
         [Required,MaxLength(10_000),MinLength(100)]
         public string Body { get; set; }
-        
-        public Guid UserId { get; set; }
-        [ForeignKey(nameof(UserId))]
-        public Poster Poster { get; set; }
+
+        public string UserId { get; set; }
+        public UserX User { get; set; }
         [MaxLength(15)]
-        public ICollection<PostImage> Images { get; set; } = new List<PostImage>();
+        public virtual ICollection<PostImage> Images { get; set; } = new List<PostImage>();
 
     }
 }
