@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+
 using SiteX.Data.Models.Blog;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace SiteX.Data.Seeding
 {
     public class PostSeeder : ISeeder
     {
-       
+
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             dbContext.Database.EnsureCreated();
@@ -18,15 +19,21 @@ namespace SiteX.Data.Seeding
             {
                 return;
             }
-            var hasher = new PasswordHasher<IdentityUser>();
-            string body = "This body is about somethingThis body is about somethingThis body is about somethingThis body is about something";
-            //await dbContext.Posts.AddAsync(new Post
-            //{
-            //    Title = "Post about something",
-            //    Body = body
-            //    ,
-            //    User = new() { Email = "Elonmusk@abv.bg", UserName = "ElonMusk", PasswordHash = hasher.HashPassword(new IdentityUser(), "1234567") }
-            //});
+            if (dbContext.Users.Count() > 0)
+            {
+                string title = "Grand opening of our online shop SiteX";
+                string body = "This online shop is like no other.Our locations are all over the world.You are welcomed at every single one of them.How lucky.";
+                var images = new List<PostImage>();
+
+                images.Add(new PostImage() { Path = "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F084%2F732%2Foriginal%2Fvector-grand-opening-retro-style-background.jpg&f=1&nofb=1" });
+                var user = dbContext.Users.FirstOrDefault();
+                var posts = new Post(){Title=title,Body=body,User=user,Images= images };
+               await dbContext.Posts.AddAsync(posts);
+
+
+            }
+            
+
         }
 
 

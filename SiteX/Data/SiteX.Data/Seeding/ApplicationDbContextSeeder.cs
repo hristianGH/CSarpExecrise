@@ -29,6 +29,10 @@
                               new SettingsSeeder(),
                               new CategorySeeder(),
                               new LocationSeeder(),
+                              new GenderSeeder(),
+                              new PostSeeder(),
+
+
                           };
 
             foreach (var seeder in seeders)
