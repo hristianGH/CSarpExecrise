@@ -1,0 +1,43 @@
+﻿@model SiteX.Web.ViewModels.ShopViewModels.ProductViewModel
+@{
+    this.ViewData["Title"] = "Creating Product";
+
+ SelectList genderItems = new SelectList(Model.Genders.OrderBy(x => x.Value), "Key", "Value");
+
+}
+
+<p>@Model.User.UserName;</p>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Pictures"></label>
+        <input asp-for="Pictures" class="form-control" />
+        <span asp-validation-for="Pictures"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Genders"></label>
+        <select asp-for="Genders" class="form-control" asp-items="genderItems" />
+        <span asp-validation-for="Genders"></span>
+    </div>
+
+
+
+</form>

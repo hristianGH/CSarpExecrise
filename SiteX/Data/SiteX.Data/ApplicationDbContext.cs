@@ -35,8 +35,8 @@
         public DbSet<Location> Locations { get; set; }
         public DbSet<Picture> Pictures { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<SoldProduct> SoldProducts { get; set; }
-       
+        public DbSet<Gender> Genders { get; set; }
+
 
 
 

@@ -1,9 +1,10 @@
-﻿using SiteX.Data.Common.Models;
-using System.ComponentModel.DataAnnotations;
-
-namespace SiteX.Data.Models.Shop
+﻿namespace SiteX.Data.Models.Shop
 {
-    public class Picture:BaseModel<int>
+    using System.ComponentModel.DataAnnotations;
+
+    using SiteX.Data.Common.Models;
+
+    public class Picture : BaseModel<int>
     {
      
         [Required]

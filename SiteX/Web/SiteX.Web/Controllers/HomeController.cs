@@ -5,11 +5,23 @@
     using SiteX.Web.ViewModels;
 
     using Microsoft.AspNetCore.Mvc;
+    using SiteX.Data;
+    using System.Linq;
 
     public class HomeController : BaseController
+
     {
-        public IActionResult Index()
+        //TODO Make it repository
+        private readonly ApplicationDbContext _dbContext;
+        public HomeController(ApplicationDbContext dbContext)
         {
+            this._dbContext = dbContext;
+        }
+        public IActionResult Index(IndexViewModel viewModel)
+        {
+            var count = 0;
+
+            ViewBag.Count = _dbContext.Users.Count();
             return this.View();
         }
         //TODO Make List of 5 articles to show on Home page

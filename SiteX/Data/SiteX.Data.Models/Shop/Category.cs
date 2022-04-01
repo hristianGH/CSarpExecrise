@@ -1,12 +1,15 @@
-﻿using SiteX.Data.Common.Models;
-using System.ComponentModel.DataAnnotations;
-
-namespace SiteX.Data.Models.Shop
+﻿namespace SiteX.Data.Models.Shop
 {
-    public class Category:BaseModel<int>
+    using System.ComponentModel.DataAnnotations;
+
+    using SiteX.Data.Common.Models;
+
+    public class Category : BaseModel<int>
     {
-        
-        [Required,MaxLength(100),MinLength(3)]
+
+        [Required]
+        [MaxLength(100)]
+        [MinLength(3)]
         public string Name { get; set; }
 
     }

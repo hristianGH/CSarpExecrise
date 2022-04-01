@@ -416,6 +416,23 @@ namespace SiteX.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("SiteX.Data.Models.Shop.Gender", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genders");
+                });
+
             modelBuilder.Entity("SiteX.Data.Models.Shop.Location", b =>
                 {
                     b.Property<int>("Id")
@@ -493,6 +510,9 @@ namespace SiteX.Data.Migrations
                         .HasMaxLength(400)
                         .HasColumnType("nvarchar(400)");
 
+                    b.Property<int>("GenderId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsAvalable")
                         .HasColumnType("bit");
 
@@ -515,34 +535,13 @@ namespace SiteX.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GenderId");
+
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("SiteX.Data.Models.Shop.SoldProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("SoldProducts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -644,20 +643,19 @@ namespace SiteX.Data.Migrations
 
             modelBuilder.Entity("SiteX.Data.Models.Shop.Product", b =>
                 {
+                    b.HasOne("SiteX.Data.Models.Shop.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("SiteX.Data.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
+                    b.Navigation("Gender");
+
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("SiteX.Data.Models.Shop.SoldProduct", b =>
-                {
-                    b.HasOne("SiteX.Data.Models.Shop.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("SiteX.Data.Models.ApplicationUser", b =>
