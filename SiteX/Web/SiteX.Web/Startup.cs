@@ -9,6 +9,7 @@
     using SiteX.Data.Repositories;
     using SiteX.Data.Seeding;
     using SiteX.Services.Data;
+    using SiteX.Services.Data.Interface;
     using SiteX.Services.Mapping;
     using SiteX.Services.Messaging;
     using SiteX.Web.ViewModels;
@@ -65,7 +66,7 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
-            services.AddTransient<IGenderToDictionary,GenderService>();
+            services.AddTransient<IGenderToDictionary, GenderService>();
             services.AddTransient<ICategoryToDictionary, CategoryService>();
 
         }

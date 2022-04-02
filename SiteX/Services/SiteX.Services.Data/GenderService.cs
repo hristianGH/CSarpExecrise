@@ -1,5 +1,6 @@
 ﻿using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models.Shop;
+using SiteX.Services.Data.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SiteX.Services.Data
+namespace SiteX.Services.Data.Interface
 {
     public interface IGenderToDictionary
     {

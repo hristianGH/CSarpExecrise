@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SiteX.Data;
 using SiteX.Services.Data;
+using SiteX.Services.Data.Interface;
 using SiteX.Web.ViewModels.ShopViewModels;
 using System.Linq;
 
