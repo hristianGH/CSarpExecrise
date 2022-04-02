@@ -22,10 +22,17 @@ namespace SiteX.Services.Data
             return dictionary;
 
         }
-        public IEnumerable<string> GetCategories()
+        public IEnumerable<string> GetCategoriesName()
         {
-            var genders = this.categoryRepository.AllAsNoTracking().Select(x => x.Name).ToArray();
-            return genders;
+            var category = this.categoryRepository.AllAsNoTracking().Select(x => x.Name).ToArray();
+            return category;
         }
+        public IEnumerable<Category> GetCategories()
+        {
+            var category = this.categoryRepository.AllAsNoTracking().ToArray();
+            return category;
+        }
+
+   
     }
 }

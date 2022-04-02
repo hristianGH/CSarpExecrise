@@ -45,8 +45,9 @@ namespace SiteX.Web.Controllers
         public async Task<IActionResult> CreateProduct()
         {
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
-            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategoryAsKVP());
+            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(),"Id","Name");
             this.ViewBag.Locations = new SelectList(this.locationService.GetLocations());
+            
 
 
             return this.View();
@@ -68,7 +69,7 @@ namespace SiteX.Web.Controllers
             viewModel.User = this.dbcontext.Users.FirstOrDefault(x => x.UserName == username);
 
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenderAsKVP());
-            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategoryAsKVP());
+            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
             this.ViewBag.Locations = new SelectList(this.locationService.GetLocations());
 
             await this.productService.CreateAsync(viewModel);
