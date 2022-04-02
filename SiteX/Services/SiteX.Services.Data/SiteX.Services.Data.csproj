@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\SiteX.Data.Common\SiteX.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\SiteX.Data.Models\SiteX.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\SiteX.Web.ViewModels\SiteX.Web.ViewModels.csproj" />
     <ProjectReference Include="..\SiteX.Services.Mapping\SiteX.Services.Mapping.csproj" />
   </ItemGroup>
 

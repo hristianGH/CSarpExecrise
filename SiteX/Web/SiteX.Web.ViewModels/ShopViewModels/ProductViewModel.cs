@@ -24,19 +24,16 @@ namespace SiteX.Web.ViewModels.ShopViewModels
         [MaxLength(400)]
         [MinLength(3)]
         public string Description { get; set; }
-        public int UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-        public int GenderId { get; set; }
-        public Gender Gender { get; set; }
-
+        public string Gender { get; set; }
 
         [MaxLength(4)]
         public virtual ICollection<Picture> Pictures { get; set; } = new List<Picture>();
 
         public virtual ICollection<Location> Locations { get; set; } = new List<Location>();
 
-        
+
         public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
     }
 }

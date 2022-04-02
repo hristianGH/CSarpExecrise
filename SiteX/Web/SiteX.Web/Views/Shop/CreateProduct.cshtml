@@ -26,15 +26,17 @@
 
       
         <div class=form-group>
-            <select class="form-control" asp-for="GenderId" asp-items="@ViewBag.Genders" required>
-                <option value="" disabled selected> Select Gender</option>
+            <label asp-for="Gender"></label>
+            <select class="form-control"  asp-for="Gender" asp-items="@ViewBag.Genders" required>
+                <option value="" > Select Gender</option>
             </select>
         </div>
         
        
         <div class=form-group>
+            <label asp-for="Categories"></label>
             <select class="form-control" asp-for="Categories" asp-items="@ViewBag.Categories" required>
-                <option value="" disabled selected> Select Category</option>
+                <option value=""> Select Category</option>
             </select>
         </div>
          

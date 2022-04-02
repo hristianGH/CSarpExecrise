@@ -68,6 +68,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IGenderToDictionary, GenderService>();
             services.AddTransient<ICategoryToDictionary, CategoryService>();
+            services.AddTransient<IProductService, ProductService>();
 
         }
 
