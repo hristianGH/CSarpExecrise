@@ -39,7 +39,7 @@ namespace SiteX.Data.Models.Shop
         
         public ICollection<Location>  Locations { get; set; } = new List<Location>();
         
-        public ICollection<Category> Categories { get; set; } = new List<Category>();
+        public ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
 
     }
 }

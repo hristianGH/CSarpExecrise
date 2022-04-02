@@ -88,8 +88,10 @@
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
+            builder.Entity<ProductCategory>().HasKey(x => x.Id);
+            
 
-            builder.Entity<Product>().HasMany(x => x.Categories);
+
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

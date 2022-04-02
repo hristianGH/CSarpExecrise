@@ -8,13 +8,12 @@ namespace SiteX.Data.Models.Shop
 {
     public class ProductCategory:BaseModel<int>
     {
-        [ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
 
-        [ForeignKey(nameof(Product))]
-        public int ProductId { get; set; }
+        
+        public Guid ProductId { get; set; }
 
         public Product Product { get; set; }
     }
