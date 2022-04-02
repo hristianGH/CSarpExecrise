@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SiteX.Data;
 using SiteX.Services.Data;
 using SiteX.Web.ViewModels.ShopViewModels;
@@ -10,14 +11,17 @@ namespace SiteX.Web.Controllers
     public class ShopController : Controller
     {
         private readonly ApplicationDbContext dbcontext;
-        private readonly IGenderService genderService;
+        private readonly IGenderToDictionary genderService;
+        private readonly ICategoryToDictionary categoryService;
+
 
 
         //TODO IdeletableEntityRepository
-        public ShopController(ApplicationDbContext dbContext, IGenderService genderService)
+        public ShopController(ApplicationDbContext dbContext, IGenderToDictionary genderService, ICategoryToDictionary categoryService)
         {
             dbcontext = dbContext;
             this.genderService = genderService;
+            this.categoryService = categoryService;
         }
 
 
@@ -27,22 +31,35 @@ namespace SiteX.Web.Controllers
             return View();
         }
 
+        [Authorize]
+        public IActionResult CreateProduct()
+        {
+            this.ViewBag.Genders = new SelectList(this.genderService.GetGenderAsKVP());
+            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategoryAsKVP());
+
+            return this.View();
+
+        }
+
 
         [Authorize]
+        [HttpPost]
         public IActionResult CreateProduct(ProductViewModel viewModel)
         {
 
-            if (!ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 var username = this.User.Identity.Name;
 
-                viewModel.User = dbcontext.Users.FirstOrDefault(x => x.UserName == username);
+                viewModel.User = this.dbcontext.Users.FirstOrDefault(x => x.UserName == username);
 
-                viewModel.Genders = genderService.GetGenderAsKVP();
+                this.ViewBag.Genders = new SelectList(this.genderService.GetGenderAsKVP());
+                this.ViewBag.Categories = new SelectList(this.categoryService.GetCategoryAsKVP());
 
-                return View(viewModel);
+                return this.View(viewModel);
             }
             return this.BadRequest();
         }
+
     }
 }

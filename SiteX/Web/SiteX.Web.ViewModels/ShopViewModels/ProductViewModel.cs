@@ -27,8 +27,8 @@ namespace SiteX.Web.ViewModels.ShopViewModels
         public int UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-
-        public Dictionary<string,string> Genders { get; set; }
+        public int GenderId { get; set; }
+        public Gender Gender { get; set; }
 
 
         [MaxLength(4)]
@@ -36,6 +36,7 @@ namespace SiteX.Web.ViewModels.ShopViewModels
 
         public virtual ICollection<Location> Locations { get; set; } = new List<Location>();
 
+        
         public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
     }
 }

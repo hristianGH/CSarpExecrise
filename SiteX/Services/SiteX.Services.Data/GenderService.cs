@@ -7,26 +7,18 @@ using System.Text;
 
 namespace SiteX.Services.Data
 {
-    public class GenderService : IGenderService
+    public class GenderService : IGenderToDictionary
     {
         private readonly IRepository<Gender> genderRepository;
-        public GenderService(IRepository<Gender> gender)
+        public GenderService(IRepository<Gender> repository)
         {
-            this.genderRepository = gender;
+            this.genderRepository = repository;
         }
         public Dictionary<string, string> GetGenderAsKVP()
         {
-
-            return this.genderRepository.All().Select(x => new { x.Id, x.Name }).ToList().ToDictionary(x=>x.Id.ToString(),x=>x.Name);
-
-                // return this.categoriesRepository.AllAsNoTracking()
-                //.Select(x => new
-                //{
-                //    x.Id,
-                //    x.Name,
-                //})
-                //.OrderBy(x => x.Name)
-                //.ToList().Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
+            var dictionary = this.genderRepository.AllAsNoTracking().Select(x => new { x.Id, x.Name }).ToDictionary(x => x.Id.ToString(), x => x.Name);
+            return dictionary;
+ 
         }
 
 
