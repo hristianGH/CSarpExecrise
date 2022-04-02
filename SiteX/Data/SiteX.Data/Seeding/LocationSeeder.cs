@@ -12,7 +12,6 @@ namespace SiteX.Data.Seeding
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
 
-             
             if (dbContext.Locations.Any())
             {
                 return;

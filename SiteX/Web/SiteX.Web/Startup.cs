@@ -66,8 +66,10 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
-            services.AddTransient<IGenderToDictionary, GenderService>();
-            services.AddTransient<ICategoryToDictionary, CategoryService>();
+            //ShopServices
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IGenderService, GenderService>();
+            services.AddTransient<ILocationService,LocationService>();
             services.AddTransient<IProductService, ProductService>();
 
         }

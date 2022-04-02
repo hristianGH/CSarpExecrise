@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SiteX.Services.Data
 {
-    public class GenderService : IGenderToDictionary
+    public class GenderService : IGenderService
     {
         private readonly IRepository<Gender> genderRepository;
         public GenderService(IRepository<Gender> repository)
@@ -20,6 +20,11 @@ namespace SiteX.Services.Data
             var dictionary = this.genderRepository.AllAsNoTracking().Select(x => new { x.Id, x.Name }).ToDictionary(x => x.Id.ToString(), x => x.Name);
             return dictionary;
  
+        }
+        public IEnumerable<string> GetGenders()
+        {
+            var genders = this.genderRepository.AllAsNoTracking().Select(x => x.Name).ToArray();
+            return genders;
         }
 
 

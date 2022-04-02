@@ -4,8 +4,9 @@ using System.Text;
 
 namespace SiteX.Services.Data.Interface
 {
-    public interface ICategoryToDictionary
+    public interface ICategoryService
     {
       public  Dictionary<string, string> GetCategoryAsKVP();
+        public IEnumerable<string> GetCategories();
     }
 }

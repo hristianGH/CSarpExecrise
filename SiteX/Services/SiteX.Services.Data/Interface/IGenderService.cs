@@ -4,8 +4,9 @@ using System.Text;
 
 namespace SiteX.Services.Data.Interface
 {
-    public interface IGenderToDictionary
+    public interface IGenderService
     {
         Dictionary<string, string> GetGenderAsKVP();
+        public IEnumerable<string> GetGenders();
     }
 }

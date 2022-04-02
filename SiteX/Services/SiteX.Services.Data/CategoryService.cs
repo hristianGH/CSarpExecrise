@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SiteX.Services.Data
 {
-    public class CategoryService : ICategoryToDictionary
+    public class CategoryService : ICategoryService
     {
         private readonly IRepository<Category> categoryRepository;
 
@@ -21,6 +21,11 @@ namespace SiteX.Services.Data
             var dictionary = this.categoryRepository.AllAsNoTracking().Select(x => new { x.Id, x.Name }).ToDictionary(x => x.Id.ToString(), x => x.Name);
             return dictionary;
 
+        }
+        public IEnumerable<string> GetCategories()
+        {
+            var genders = this.categoryRepository.AllAsNoTracking().Select(x => x.Name).ToArray();
+            return genders;
         }
     }
 }

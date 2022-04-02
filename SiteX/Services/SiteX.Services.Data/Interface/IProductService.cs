@@ -9,5 +9,6 @@ namespace SiteX.Services.Data.Interface
     public interface IProductService
     {
         public Task CreateAsync(ProductViewModel viewModel);
+
     }
 }

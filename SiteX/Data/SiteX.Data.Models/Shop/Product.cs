@@ -1,16 +1,16 @@
-﻿namespace SiteX.Data.Models.Shop
+﻿
+namespace SiteX.Data.Models.Shop
 {
+    using SiteX.Data.Common.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    using Microsoft.AspNetCore.Identity;
-    using SiteX.Data.Common.Models;
 
-    public class Product:BaseDeletableModel<Guid>
+    public class Product : BaseDeletableModel<Guid>
+
     {
-
         [Required]
         [MaxLength(50)]
         [MinLength(3)]
@@ -29,19 +29,17 @@
 
         public ApplicationUser User { get; set; }
 
-        [ForeignKey(nameof(Gender))]
-        public int GenderId { get; set; }
 
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         public bool IsAvalable { get; set; } = true;
 
         [MaxLength(4)]
         public virtual ICollection<Picture> Pictures { get; set; } = new List<Picture>();
-
-        public virtual ICollection<Location> Locations { get; set; } = new List<Location>();
-
-        public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
+        
+        public ICollection<Location>  Locations { get; set; } = new List<Location>();
+        
+        public ICollection<Category> Categories { get; set; } = new List<Category>();
 
     }
 }
