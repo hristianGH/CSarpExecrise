@@ -1,4 +1,8 @@
-﻿@using SiteX.Common
+﻿@using Microsoft.AspNetCore.Identity
+@using SiteX.Common
+@using SiteX.Data.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,28 +33,40 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="index">Shop</a>
                         </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateProduct">CreateProd</a>
+                        @if (this.SignInManager.IsSignedIn(this.User))
+                       {
+                           
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateProduct">Create Product</a>
                         </li>
-                         
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateCategory">Create Category</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateLocation">Create Location</a>
+                        </li>
+                       }
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
 
-             
+
             </div>
         </nav>
     </header>
-    
+
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @this.RenderBody()
         </main>
     </div>
-    
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

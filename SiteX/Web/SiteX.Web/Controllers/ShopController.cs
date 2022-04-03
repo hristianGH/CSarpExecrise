@@ -50,10 +50,8 @@ namespace SiteX.Web.Controllers
         public async Task<IActionResult> CreateProduct()
         {
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
-            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(),"Id","Name");
+            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
             this.ViewBag.Locations = new SelectList(this.locationService.GetLocations());
-            
-
 
             return this.View();
 
@@ -67,7 +65,7 @@ namespace SiteX.Web.Controllers
 
             if (!this.ModelState.IsValid)
             {
-               return this.BadRequest();
+                return this.BadRequest();
             }
             viewModel.User = await this.userManager.GetUserAsync(this.User);
 
@@ -78,6 +76,48 @@ namespace SiteX.Web.Controllers
             await this.productService.CreateAsync(viewModel);
             return this.Redirect("/");
         }
+        [Authorize]
+        public async Task<IActionResult> CreateCategory()
+        {
 
+            return this.View();
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory(CategoryViewModel viewModel)
+        {
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+            await this.categoryService.CreateAsync(viewModel);
+            return this.Redirect("/");
+
+        }
+
+        [Authorize]
+        public async Task<IActionResult> CreateLocation()
+        {
+
+            return this.View();
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreateLocation(LocationViewModel viewModel)
+        {
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+            await this.locationService.CreateAsync(viewModel);
+            return this.Redirect("/");
+
+        }
     }
 }

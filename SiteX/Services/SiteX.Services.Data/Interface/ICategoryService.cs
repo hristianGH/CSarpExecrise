@@ -1,7 +1,9 @@
 ﻿using SiteX.Data.Models.Shop;
+using SiteX.Web.ViewModels.ShopViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SiteX.Services.Data.Interface
 {
@@ -11,6 +13,7 @@ namespace SiteX.Services.Data.Interface
         public IEnumerable<string> GetCategoriesName();
   
         public IEnumerable<Category> GetCategories();
+        public  Task CreateAsync(CategoryViewModel viewModel);
 
     }
 }
