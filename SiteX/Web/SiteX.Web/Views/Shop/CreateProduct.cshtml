@@ -1,7 +1,7 @@
 ﻿@model SiteX.Web.ViewModels.ShopViewModels.ProductViewModel
 @{
     this.ViewData["Title"] = "Creating Product";
-     
+
 }
 
 <form method="post" class=align-content-md-center>
@@ -18,48 +18,40 @@
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
+
+
+    <div class=form-group>
+        <label asp-for="Gender"></label>
+        <select class="form-control" asp-for="Gender" asp-items="@ViewBag.Genders" required>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+
+        </select>
+    </div>
+
+
+    <div class=form-group>
+        <label asp-for="Categories"></label>
+        <select class="form-control" asp-for="Categories" asp-items="@ViewBag.Categories" required>
+            <span asp-validation-for="Categories" class="text-danger"></span>
+
+        </select>
+    </div>
+
+    <div class=form-group>
+        <label asp-for="Locations"></label>
+        <select class="form-control" asp-for="Locations" asp-items="@ViewBag.Locations" required>
+            <span asp-validation-for="Locations" class="text-danger"></span>
+
+        </select>
+    </div>
+
     <div class="form-group">
         <label asp-for="Description"></label>
         <textarea asp-for="Description" class="form-control"> </textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-      
-        <div class=form-group>
-            <label asp-for="Gender"></label>
-            <select class="form-control"  asp-for="Gender" asp-items="@ViewBag.Genders" required>
-                <option value="" > Select Gender</option>
-        <span asp-validation-for="Gender" class="text-danger"></span>
 
-            </select>
-        </div>
-        
-       
-        <div class=form-group>
-            <label asp-for="Categories"></label>
-            <select class="form-control" asp-for="Categories" asp-items="@ViewBag.Categories" required>
-                <option value=""> Select Category</option>
-        <span asp-validation-for="Categories" class="text-danger"></span>
-
-            </select>
-        </div>
-          
-        <div class=form-group>
-            <label asp-for="Locations"></label>
-            <select class="form-control" asp-for="Locations" asp-items="@ViewBag.Locations" required>
-                <option value=""> Select Location</option>
-        <span asp-validation-for="Locations" class="text-danger"></span>
-
-            </select>
-        </div>  
-      @*  <div class=form-group>
-            <label asp-for="Categories"></label>
-            <select class="form-control" asp-for="Categories" asp-items="@ViewBag.Categories" required>
-                <option value=""> Select Category</option>
-            </select>
-        </div>*@
-         
-
-        <input type="submit" class="btn btn-primary" />
+    <input type="submit" class="btn btn-primary" />
 
 </form>
