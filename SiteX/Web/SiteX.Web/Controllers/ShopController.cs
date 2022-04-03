@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SiteX.Data;
+using SiteX.Data.Models;
 using SiteX.Services.Data;
 using SiteX.Services.Data.Interface;
 using SiteX.Web.ViewModels.ShopViewModels;
@@ -17,6 +19,7 @@ namespace SiteX.Web.Controllers
         private readonly ICategoryService categoryService;
         private readonly IProductService productService;
         private readonly ILocationService locationService;
+        private readonly UserManager<ApplicationUser> userManager;
 
 
 
@@ -25,13 +28,15 @@ namespace SiteX.Web.Controllers
             IGenderService genderService,
             ICategoryService categoryService,
             IProductService productService,
-            ILocationService locationService)
+            ILocationService locationService,
+            UserManager<ApplicationUser> userManager)
         {
             dbcontext = dbContext;
             this.genderService = genderService;
             this.categoryService = categoryService;
             this.productService = productService;
             this.locationService = locationService;
+            this.userManager = userManager;
         }
 
 
@@ -62,11 +67,9 @@ namespace SiteX.Web.Controllers
 
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest();
+               return this.BadRequest();
             }
-            var username = this.User.Identity.Name;
-
-            viewModel.User = this.dbcontext.Users.FirstOrDefault(x => x.UserName == username);
+            viewModel.User = await this.userManager.GetUserAsync(this.User);
 
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenderAsKVP());
             this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");

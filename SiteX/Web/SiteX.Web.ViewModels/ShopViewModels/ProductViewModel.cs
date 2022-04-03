@@ -31,9 +31,12 @@ namespace SiteX.Web.ViewModels.ShopViewModels
         [MaxLength(4)]
         public virtual ICollection<Picture> Pictures { get; set; } = new List<Picture>();
 
-        public ICollection<Location> Locations { get; set; } = new List<Location>();
+        [MaxLength(4)]
 
-        public ICollection<int> Categories { get; set; } = new List<int>();
+        public virtual ICollection<Location> Locations { get; set; } = new List<Location>();
+
+        [MinLength(1),MaxLength(4)]
+        public virtual ICollection<int> Categories { get; set; } = new List<int>();
 
     }
 }
