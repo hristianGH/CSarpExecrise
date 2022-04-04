@@ -60,5 +60,24 @@ namespace SiteX.Services.Data
             }
             await this.productCategoryRepo.SaveChangesAsync();
         }
+
+        public ICollection<ProductOutputViewModel> ToList(int page, int itemsPerPage = 6)
+        {
+           return this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
+               .Take((page - 1) * itemsPerPage)
+               .Select(x => new ProductOutputViewModel()
+               {
+                   Id = x.Id,
+                   Name = x.Name,
+                   Category = x.Category,
+                   ImageUrl = x.Pictures.OrderBy(x => x.Id).Select(x => x.Path).FirstOrDefault(),
+                   Locations = x.Locations,
+               }).ToList();
+        }
+
+        ICollection<ProductListViewModel> IProductService.ToList(int page, int itemsPerPage)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
