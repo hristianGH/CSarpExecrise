@@ -120,11 +120,11 @@ namespace SiteX.Web.Controllers
 
         }
 
-        
+
         public async Task<IActionResult> All(int page)
         {
-            ProductListViewModel productViewModel=new ProductListViewModel() {Products=productService.ToList(1),Page=1};
-
+            ProductListViewModel productViewModel = new ProductListViewModel() { Products = productService.ToList(1, 20), Page = 1 };
+            //productViewModel.Products.Select(x => x.Category = categoryService.CategoryById(x.Category.Id));
             return this.View(productViewModel);
 
         }
