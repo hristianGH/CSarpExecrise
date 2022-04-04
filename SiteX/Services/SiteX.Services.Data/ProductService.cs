@@ -25,6 +25,11 @@ namespace SiteX.Services.Data
         public async Task CreateAsync(ProductViewModel viewModel)
         {
 
+            var pics = new List<Picture>();
+            foreach (var pic in viewModel.Pictures.Where(x => x != null))
+            {
+                pics.Add(new Picture() { Path = pic });
+            }
             var product = new Product
             {
                 Name = viewModel.Name,
