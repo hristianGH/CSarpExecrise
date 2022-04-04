@@ -37,6 +37,7 @@ namespace SiteX.Data.Models.Shop
         [MaxLength(4)]
         public virtual ICollection<Picture> Pictures { get; set; } = new List<Picture>();
         
+        //TODO LOCATION SHOW PRODUCT ID IN SQL 
         public ICollection<Location>  Locations { get; set; } = new List<Location>();
         
         public ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();

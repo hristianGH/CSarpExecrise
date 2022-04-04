@@ -31,6 +31,7 @@
                               new LocationSeeder(),
                               new GenderSeeder(),
                               new PostSeeder(),
+                              new ProductSeeder(),
 
 
                           };
