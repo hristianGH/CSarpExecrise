@@ -9,6 +9,7 @@ namespace SiteX.Services.Data.Interface
     public interface IProductService
     {
         public Task CreateAsync(ProductViewModel viewModel);
-        public ICollection<ProductListViewModel> ToList(int page, int itemsPerPage = 6);
+        public ICollection<ProductOutputViewModel> ToList(int page, int itemsPerPage = 6);
+
     }
 }

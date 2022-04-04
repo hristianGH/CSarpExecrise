@@ -24,7 +24,6 @@ namespace SiteX.Services.Data
         }
         public async Task CreateAsync(ProductViewModel viewModel)
         {
-
             var pics = new List<Picture>();
             foreach (var pic in viewModel.Pictures.Where(x => x != null))
             {
@@ -38,7 +37,7 @@ namespace SiteX.Services.Data
                 Gender = viewModel.Gender,
                 Locations = viewModel.Locations,
                 Price = viewModel.Price,
-                Pictures = viewModel.Pictures,
+                Pictures = pics,
 
             };
 
@@ -63,21 +62,19 @@ namespace SiteX.Services.Data
 
         public ICollection<ProductOutputViewModel> ToList(int page, int itemsPerPage = 6)
         {
-           return this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
-               .Take((page - 1) * itemsPerPage)
-               .Select(x => new ProductOutputViewModel()
-               {
-                   Id = x.Id,
-                   Name = x.Name,
-                   Category = x.Category,
-                   ImageUrl = x.Pictures.OrderBy(x => x.Id).Select(x => x.Path).FirstOrDefault(),
-                   Locations = x.Locations,
-               }).ToList();
+            var output= this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
+                .Select(x => new ProductOutputViewModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Category = x.ProductCategories.Select(x=>new Category() {Id=x.CategoryId }).FirstOrDefault(),
+                    ImageUrl = x.Pictures.OrderBy(x => x.Id).Select(x => x.Path).FirstOrDefault(),
+                    Locations = x.Locations,
+                    Price=x.Price
+                }).Take(6).ToList();
+            return output;
         }
 
-        ICollection<ProductListViewModel> IProductService.ToList(int page, int itemsPerPage)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
