@@ -1,4 +1,5 @@
-﻿using SiteX.Data.Common.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SiteX.Data.Common.Models;
 using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models.Shop;
 using SiteX.Services.Data.Interface;
@@ -60,21 +61,46 @@ namespace SiteX.Services.Data
             await this.productCategoryRepo.SaveChangesAsync();
         }
 
+        public async Task RemoveALLAsync()
+        {
+
+
+        }
+        public List<Product> ReturnAll()
+        {
+            var prods = new List<Product>();
+            foreach (var product in productRepo.AllWithDeleted())
+            {
+                prods.Add(product);
+            }
+            return prods;
+        }
+
+        public async Task RemoveProductAsync(Product product)
+        {
+            product.IsAvalable = false;
+            productRepo.Delete(product);
+            await productRepo.SaveChangesAsync();
+        }
+
         public ICollection<ProductOutputViewModel> ToList(int page, int itemsPerPage = 6)
         {
-            var output= this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
+
+            var output = this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
                 .Select(x => new ProductOutputViewModel()
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    Category = x.ProductCategories.Select(x=>new Category() {Id=x.CategoryId }).FirstOrDefault(),
+                    Category = x.ProductCategories.Select(x => new Category() { Id = x.CategoryId }).FirstOrDefault(),
                     ImageUrl = x.Pictures.OrderBy(x => x.Id).Select(x => x.Path).FirstOrDefault(),
                     Locations = x.Locations,
-                    Price=x.Price
-                }).Take(6).ToList();
+                    Price = x.Price
+                }).ToList();
             return output;
         }
+      
 
-        
+
+
     }
 }
