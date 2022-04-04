@@ -14,6 +14,8 @@ namespace SiteX.Services.Data.Interface
   
         public IEnumerable<Category> GetCategories();
         public  Task CreateAsync(CategoryViewModel viewModel);
+        
+
 
     }
 }
