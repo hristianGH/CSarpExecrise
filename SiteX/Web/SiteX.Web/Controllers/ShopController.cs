@@ -119,5 +119,14 @@ namespace SiteX.Web.Controllers
             return this.Redirect("/");
 
         }
+
+        
+        public async Task<IActionResult> All(int page)
+        {
+            ProductListViewModel productViewModel=new ProductListViewModel() {Products=productService.ToList(1),Page=1};
+
+            return this.View(productViewModel);
+
+        }
     }
 }
