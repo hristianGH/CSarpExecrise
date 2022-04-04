@@ -42,5 +42,6 @@ namespace SiteX.Services.Data
             await this.categoryRepository.SaveChangesAsync();
 
         }
+        
     }
 }
