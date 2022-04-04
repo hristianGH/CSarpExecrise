@@ -15,7 +15,7 @@ namespace SiteX.Data.Seeding
          
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            if (dbContext.Users.Count() > 0)
+            if (dbContext.Users.Count() > 0&&dbContext.Products.Count()<5)
             {
                 var locations = new List<Location>();
                 locations.Add(dbContext.Locations.Select(x => new Location { Name = x.Name, Address = x.Address }).FirstOrDefault());
