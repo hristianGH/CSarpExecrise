@@ -27,9 +27,7 @@
         public IActionResult Index(int page)
         {
 
-            ProductListViewModel productViewModel = new ProductListViewModel() { Products = productService.ToList(1, 20), Page = 1 };
-            
-            return this.View(productViewModel);
+            return this.View();
 
         }
         //TODO Make List of 5 articles to show on Home page
