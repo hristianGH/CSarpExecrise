@@ -1,11 +1,11 @@
 ﻿
 namespace SiteX.Data.Models.Shop
 {
+    using SiteX.Data.Common.Models;
     using System.ComponentModel.DataAnnotations;
 
-    public class Gender
+    public class Gender:BaseModel<int>
     {
-        public int Id { get; set; }
 
         [Required]
         [MaxLength(15)]
