@@ -418,6 +418,12 @@ namespace SiteX.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -435,7 +441,7 @@ namespace SiteX.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
+                    b.Property<string>("Adress")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -451,41 +457,9 @@ namespace SiteX.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("SiteX.Data.Models.Shop.Picture", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Path")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Pictures");
                 });
 
             modelBuilder.Entity("SiteX.Data.Models.Shop.Product", b =>
@@ -539,13 +513,25 @@ namespace SiteX.Data.Migrations
 
             modelBuilder.Entity("SiteX.Data.Models.Shop.ProductCategory", b =>
                 {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("SiteX.Data.Models.Shop.ProductImage", b =>
+                {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -553,16 +539,33 @@ namespace SiteX.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ProductId")
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductCategories");
+                    b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("SiteX.Data.Models.Shop.ProductLocation", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "LocationId");
+
+                    b.HasIndex("LocationId");
+
+                    b.ToTable("ProductLocations");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -641,20 +644,6 @@ namespace SiteX.Data.Migrations
                         .HasForeignKey("PostId");
                 });
 
-            modelBuilder.Entity("SiteX.Data.Models.Shop.Location", b =>
-                {
-                    b.HasOne("SiteX.Data.Models.Shop.Product", null)
-                        .WithMany("Locations")
-                        .HasForeignKey("ProductId");
-                });
-
-            modelBuilder.Entity("SiteX.Data.Models.Shop.Picture", b =>
-                {
-                    b.HasOne("SiteX.Data.Models.Shop.Product", null)
-                        .WithMany("Pictures")
-                        .HasForeignKey("ProductId");
-                });
-
             modelBuilder.Entity("SiteX.Data.Models.Shop.Product", b =>
                 {
                     b.HasOne("SiteX.Data.Models.ApplicationUser", "User")
@@ -683,6 +672,34 @@ namespace SiteX.Data.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("SiteX.Data.Models.Shop.ProductImage", b =>
+                {
+                    b.HasOne("SiteX.Data.Models.Shop.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("SiteX.Data.Models.Shop.ProductLocation", b =>
+                {
+                    b.HasOne("SiteX.Data.Models.Shop.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SiteX.Data.Models.Shop.Product", "Product")
+                        .WithMany("ProductLocations")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("SiteX.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Claims");
@@ -704,11 +721,11 @@ namespace SiteX.Data.Migrations
 
             modelBuilder.Entity("SiteX.Data.Models.Shop.Product", b =>
                 {
-                    b.Navigation("Locations");
-
-                    b.Navigation("Pictures");
-
                     b.Navigation("ProductCategories");
+
+                    b.Navigation("ProductImages");
+
+                    b.Navigation("ProductLocations");
                 });
 #pragma warning restore 612, 618
         }

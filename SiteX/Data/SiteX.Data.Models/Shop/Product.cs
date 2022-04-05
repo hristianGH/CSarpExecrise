@@ -35,12 +35,13 @@ namespace SiteX.Data.Models.Shop
         public bool IsAvalable { get; set; } = true;
 
         [MaxLength(4)]
-        public virtual ICollection<Picture> Pictures { get; set; } = new List<Picture>();
-        
-        //TODO LOCATION SHOW PRODUCT ID IN SQL 
-        public ICollection<Location>  Locations { get; set; } = new List<Location>();
-        
+        public virtual ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
+
         public ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
+
+        //TODO LOCATION SHOW PRODUCT ID IN SQL 
+        public ICollection<ProductLocation> ProductLocations { get; set; } = new List<ProductLocation>();
+
 
     }
 }

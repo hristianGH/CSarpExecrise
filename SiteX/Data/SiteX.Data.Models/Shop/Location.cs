@@ -1,12 +1,13 @@
-﻿namespace SiteX.Data.Models.Shop
+﻿using SiteX.Data.Common.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+
+namespace SiteX.Data.Models.Shop
 {
-    using System.ComponentModel.DataAnnotations;
-
-    using SiteX.Data.Common.Models;
-
-    public class Location : BaseModel<int>
+    public class Location:BaseModel<int>
     {
-
         [Required]
         [MaxLength(100)]
         [MinLength(3)]
@@ -16,7 +17,6 @@
         [Required]
         [MaxLength(100)]
         [MinLength(10)]
-        public string Address { get; set; }
-
+        public string Adress { get; set; }
     }
 }
