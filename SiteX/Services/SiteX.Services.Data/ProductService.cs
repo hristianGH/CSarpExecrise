@@ -16,19 +16,26 @@ namespace SiteX.Services.Data
     {
         private readonly IDeletableEntityRepository<Product> productRepo;
         private readonly IRepository<ProductCategory> productCategoryRepo;
+        private readonly IRepository<ProductLocation> productLocationRepo;
+        private readonly IRepository<Category> categoryRepo;
 
         public ProductService(IDeletableEntityRepository<Product> productRepo,
-            IRepository<ProductCategory> productCategoryRepo)
+            IRepository<ProductCategory> productCategoryRepo,
+            IRepository<ProductLocation> productLocationRepo,
+            IRepository<Category> categoryRepo
+            )
         {
             this.productRepo = productRepo;
             this.productCategoryRepo = productCategoryRepo;
+            this.productLocationRepo = productLocationRepo;
+            this.categoryRepo = categoryRepo;
         }
         public async Task CreateAsync(ProductViewModel viewModel)
         {
-            var pics = new List<Picture>();
+            var pics = new List<ProductImage>();
             foreach (var pic in viewModel.Pictures.Where(x => x != null))
             {
-                pics.Add(new Picture() { Path = pic });
+                pics.Add(new ProductImage() { Path = pic });
             }
             var product = new Product
             {
@@ -36,9 +43,10 @@ namespace SiteX.Services.Data
                 User = viewModel.User,
                 Description = viewModel.Description,
                 Gender = viewModel.Gender,
-                Locations = viewModel.Locations,
+                //Locations = viewModel.Locations, 
+                //TODO ADD LOCATIONS 
                 Price = viewModel.Price,
-                Pictures = pics,
+                ProductImages = pics,
 
             };
 
@@ -46,19 +54,9 @@ namespace SiteX.Services.Data
             await this.productRepo.SaveChangesAsync();
 
             await CreatingProductCategory(viewModel, product);
+            await CreatingProductLocation(viewModel, product);
 
-        }
-        public async Task CreatingProductCategory(ProductViewModel viewModel, Product product)
-        {
-            foreach (var item in viewModel.Categories)
-            {
-                var entity = new ProductCategory();
-                entity.ProductId = product.Id;
-                entity.CategoryId = item;
 
-                await this.productCategoryRepo.AddAsync(entity);
-            }
-            await this.productCategoryRepo.SaveChangesAsync();
         }
 
         public async Task RemoveALLAsync()
@@ -69,8 +67,9 @@ namespace SiteX.Services.Data
         public List<Product> ReturnAll()
         {
             var prods = new List<Product>();
-            foreach (var product in productRepo.AllWithDeleted())
+            foreach (var product in productRepo.AllAsNoTracking())
             {
+
                 prods.Add(product);
             }
             return prods;
@@ -85,22 +84,44 @@ namespace SiteX.Services.Data
 
         public ICollection<ProductOutputViewModel> ToList(int page, int itemsPerPage = 6)
         {
-
+            var listCategory = categoryRepo.AllAsNoTracking().Select(x => new { Name = x.Name, Id = x.Id }).ToList();
             var output = this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
                 .Select(x => new ProductOutputViewModel()
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    Category = x.ProductCategories.Select(x => new Category() { Id = x.CategoryId }).FirstOrDefault(),
-                    ImageUrl = x.Pictures.OrderBy(x => x.Id).Select(x => x.Path).FirstOrDefault(),
-                    Locations = x.Locations,
+                    Categories = x.ProductCategories.Select(x => x.Category).ToList(),
+                    ImageUrl = x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).FirstOrDefault(),
+                    Locations = x.ProductLocations.Select(x => x.Location).ToList(),
+                    Description = x.Description,
                     Price = x.Price
                 }).ToList();
             return output;
         }
-      
 
+        public async Task CreatingProductLocation(ProductViewModel viewModel, Product product)
+        {
+            foreach (var item in viewModel.Locations)
+            {
+                var entity = new ProductLocation();
+                entity.ProductId = product.Id;
+                entity.LocationId = item;
 
+                await this.productLocationRepo.AddAsync(entity);
+            }
+            await this.productLocationRepo.SaveChangesAsync();
+        }
+        public async Task CreatingProductCategory(ProductViewModel viewModel, Product product)
+        {
+            foreach (var item in viewModel.Categories)
+            {
+                var entity = new ProductCategory();
+                entity.ProductId = product.Id;
+                entity.CategoryId = item;
 
+                await this.productCategoryRepo.AddAsync(entity);
+            }
+            await this.productCategoryRepo.SaveChangesAsync();
+        }
     }
 }

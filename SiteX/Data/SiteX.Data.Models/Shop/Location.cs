@@ -17,6 +17,6 @@ namespace SiteX.Data.Models.Shop
         [Required]
         [MaxLength(100)]
         [MinLength(10)]
-        public string Adress { get; set; }
+        public string Address { get; set; }
     }
 }
