@@ -10,13 +10,14 @@ namespace SiteX.Services.Data.Interface
     public interface IProductService
     {
         public Task CreateAsync(ProductViewModel viewModel);
-        public ICollection<ProductOutputViewModel> ToList(int page, int itemsPerPage = 6);
+        public ICollection<ProductOutputViewModel> ToList(int page = 1, int itemsPerPage = 6);
         public Task RemoveProductAsync(Product product);
         public Task RemoveALLAsync();
         public List<Product> ReturnAll();
         public Task CreatingProductCategory(ProductViewModel viewModel, Product product);
 
         public Task CreatingProductLocation(ProductViewModel viewModel, Product product);
+        public int GetProductCount();
 
     }
 }

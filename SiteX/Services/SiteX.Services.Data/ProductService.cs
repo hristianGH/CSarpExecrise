@@ -59,9 +59,14 @@ namespace SiteX.Services.Data
 
         }
 
-        public async Task RemoveALLAsync()
+        public async Task   RemoveALLAsync()
         {
-
+            var all = productRepo.All().ToArray();
+            for (int i = 0; i < all.Length-1; i++)
+            {
+                productRepo.Delete(all[i]);
+            }
+            productRepo.SaveChangesAsync();
 
         }
         public List<Product> ReturnAll()
@@ -82,9 +87,8 @@ namespace SiteX.Services.Data
             await productRepo.SaveChangesAsync();
         }
 
-        public ICollection<ProductOutputViewModel> ToList(int page, int itemsPerPage = 6)
+        public ICollection<ProductOutputViewModel> ToList(int page=1, int itemsPerPage = 6)
         {
-            var listCategory = categoryRepo.AllAsNoTracking().Select(x => new { Name = x.Name, Id = x.Id }).ToList();
             var output = this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
                 .Select(x => new ProductOutputViewModel()
                 {
@@ -95,7 +99,7 @@ namespace SiteX.Services.Data
                     Locations = x.ProductLocations.Select(x => x.Location).ToList(),
                     Description = x.Description,
                     Price = x.Price
-                }).ToList();
+                }).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToList();
             return output;
         }
 
@@ -122,6 +126,11 @@ namespace SiteX.Services.Data
                 await this.productCategoryRepo.AddAsync(entity);
             }
             await this.productCategoryRepo.SaveChangesAsync();
+        }
+
+        public int GetProductCount()
+        {
+           return productRepo.AllAsNoTracking().Count();
         }
     }
 }
