@@ -15,13 +15,16 @@ namespace SiteX.Data.Seeding
          
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            if (dbContext.Users.Count() > 0&&dbContext.Products.Count()<5)
+            if (dbContext.Users.Count() > 0&&dbContext.Products.Count()<=6)
             {
                 var locations = new List<Location>();
                 locations.Add(dbContext.Locations.Select(x => new Location { Name = x.Name, Address = x.Address }).FirstOrDefault());
                 Gender gender = dbContext.Genders.Select(x => new Gender {  Name = x.Name }).FirstOrDefault();
                 var pictures = new List<ProductImage>();
-                pictures.Add(new ProductImage() { Path = "Pic" });
+                pictures.Add(new ProductImage() { Path = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F47%2F8e%2F46%2F478e46507d40bf9540538726d8f74afc--rat-rat-rats.jpg&f=1&nofb=1" });
+                pictures.Add(new ProductImage() { Path = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F47%2F8e%2F46%2F478e46507d40bf9540538726d8f74afc--rat-rat-rats.jpg&f=1&nofb=1" });
+                pictures.Add(new ProductImage() { Path = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F47%2F8e%2F46%2F478e46507d40bf9540538726d8f74afc--rat-rat-rats.jpg&f=1&nofb=1" });
+                pictures.Add(new ProductImage() { Path = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F47%2F8e%2F46%2F478e46507d40bf9540538726d8f74afc--rat-rat-rats.jpg&f=1&nofb=1" });
 
                 var products = new List<Product>();
                 for (int i = 0; i < 8; i++)
@@ -42,7 +45,7 @@ namespace SiteX.Data.Seeding
                         ProductImages = pictures
                       ,
                        
-                    }) ;
+                    }); ;
             }
                   dbContext.AddRange(products);
 
