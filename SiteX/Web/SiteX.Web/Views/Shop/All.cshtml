@@ -8,16 +8,6 @@
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         
-        
-        
-
-        
-        
-        
-
-        
-        
-
 @foreach (var product in this.Model.Products)
 {
     <div class="col">
@@ -30,9 +20,9 @@
                 <p class="card-text">@product.Name</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        @if(product.Category!=null)
+                        @if(product.Categories!=null)
                         {
-                            <button type="button" class="btn btn-sm btn-outline-secondary">@product.Category.Name</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">@product.Categories</button>
                         }
                     </div>
                     <small class="text-muted">@product.Id</small>
