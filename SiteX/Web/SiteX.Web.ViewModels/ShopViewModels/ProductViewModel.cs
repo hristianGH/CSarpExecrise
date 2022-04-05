@@ -17,6 +17,7 @@ namespace SiteX.Web.ViewModels.ShopViewModels
         public string Name { get; set; }
 
         [Required]
+        [Range(1,double.MaxValue-100)]
         [Display(Name = "Price in Bgn")]
         public decimal Price { get; set; }
 
@@ -34,7 +35,7 @@ namespace SiteX.Web.ViewModels.ShopViewModels
 
         [Required,MaxLength(4)]
 
-        public virtual ICollection<Location> Locations { get; set; } = new List<Location>();
+        public virtual ICollection<int> Locations { get; set; } = new List<int>();
 
         [MinLength(1),MaxLength(3)]
         public virtual ICollection<int> Categories { get; set; } = new List<int>();

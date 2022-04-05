@@ -1,4 +1,5 @@
-﻿using SiteX.Web.ViewModels.ShopViewModels;
+﻿using SiteX.Data.Models.Shop;
+using SiteX.Web.ViewModels.ShopViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ namespace SiteX.Services.Data.Interface
     public interface ILocationService
     {
         Dictionary<string, string> GetLocationAsKVP();
-        public IEnumerable<string> GetLocations();
+        public IEnumerable<Location> GetLocations();
         public Task CreateAsync(LocationViewModel viewModel);
 
 

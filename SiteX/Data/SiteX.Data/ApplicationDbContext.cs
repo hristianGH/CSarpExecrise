@@ -34,7 +34,9 @@
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Location> Locations { get; set; }
-        public DbSet<Picture> Pictures { get; set; }
+        public DbSet<ProductLocation> ProductLocations { get; set; }
+
+        public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Gender> Genders { get; set; }
 
@@ -87,10 +89,8 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
-
-            builder.Entity<ProductCategory>().HasKey(x => x.Id);
-            
-
+            builder.Entity<ProductCategory>().HasKey(x => new { x.ProductId, x.CategoryId });
+            builder.Entity<ProductLocation>().HasKey(x => new { x.ProductId, x.LocationId });
 
         }
 

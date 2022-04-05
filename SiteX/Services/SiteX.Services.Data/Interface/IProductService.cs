@@ -14,7 +14,9 @@ namespace SiteX.Services.Data.Interface
         public Task RemoveProductAsync(Product product);
         public Task RemoveALLAsync();
         public List<Product> ReturnAll();
+        public Task CreatingProductCategory(ProductViewModel viewModel, Product product);
 
+        public Task CreatingProductLocation(ProductViewModel viewModel, Product product);
 
     }
 }

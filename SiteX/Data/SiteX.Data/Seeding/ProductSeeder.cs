@@ -20,8 +20,8 @@ namespace SiteX.Data.Seeding
                 var locations = new List<Location>();
                 locations.Add(dbContext.Locations.Select(x => new Location { Name = x.Name, Address = x.Address }).FirstOrDefault());
                 Gender gender = dbContext.Genders.Select(x => new Gender {  Name = x.Name }).FirstOrDefault();
-                var pictures = new List<Picture>();
-                pictures.Add(new Picture() { Path = "Pic" });
+                var pictures = new List<ProductImage>();
+                pictures.Add(new ProductImage() { Path = "Pic" });
 
                 var products = new List<Product>();
                 for (int i = 0; i < 8; i++)
@@ -35,13 +35,11 @@ namespace SiteX.Data.Seeding
                        ,
                         User = null
                        ,
-                        Locations = locations
-                       ,
                         Price = 12
                        ,
                         Description = "This is a test item"
                        ,
-                        Pictures = pictures
+                        ProductImages = pictures
                       ,
                        
                     }) ;

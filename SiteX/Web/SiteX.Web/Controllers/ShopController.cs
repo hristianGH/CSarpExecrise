@@ -51,7 +51,7 @@ namespace SiteX.Web.Controllers
         {
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
             this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
-            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations());
+            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
 
             return this.View();
 
@@ -67,15 +67,17 @@ namespace SiteX.Web.Controllers
             {
                 return this.BadRequest();
             }
+
             viewModel.User = await this.userManager.GetUserAsync(this.User);
 
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenderAsKVP());
             this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
-            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations());
+            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
 
             await this.productService.CreateAsync(viewModel);
             return this.Redirect("/");
         }
+
         [Authorize]
         public async Task<IActionResult> CreateCategory()
         {

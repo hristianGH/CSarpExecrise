@@ -7,22 +7,30 @@
     using Microsoft.AspNetCore.Mvc;
     using SiteX.Data;
     using System.Linq;
+    using SiteX.Web.ViewModels.ShopViewModels;
+    using SiteX.Services.Data;
+    using SiteX.Services.Data.Interface;
+    using SiteX.Data.Models.Shop;
 
     public class HomeController : BaseController
 
     {
         //TODO Make it repository
         private readonly ApplicationDbContext _dbContext;
-        public HomeController(ApplicationDbContext dbContext)
+        private readonly IProductService productService;
+
+        public HomeController(ApplicationDbContext dbContext,IProductService productService)
         {
             this._dbContext = dbContext;
+            this.productService = productService;
         }
-        public IActionResult Index(IndexViewModel viewModel)
+        public IActionResult Index(int page)
         {
-            var count = 0;
 
-            ViewBag.Count = _dbContext.Users.Count();
-            return this.View();
+            ProductListViewModel productViewModel = new ProductListViewModel() { Products = productService.ToList(1, 20), Page = 1 };
+            
+            return this.View(productViewModel);
+
         }
         //TODO Make List of 5 articles to show on Home page
         //Service,View,Model
@@ -37,5 +45,7 @@
             return this.View(
                 new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
+
+
     }
 }

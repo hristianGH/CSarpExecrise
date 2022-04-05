@@ -13,12 +13,12 @@ namespace SiteX.Web.ViewModels.ShopViewModels
 
         public string ImageUrl { get; set; }
 
-        public int Categoryid { get; set; }
-        public Category Category{ get; set; }
+        public ICollection<Category> Categories{ get; set; }
 
         public decimal Price { get; set; }
 
         public ICollection<Location> Locations { get; set; }
+        public string Description { get; set; }
 
 
     }
