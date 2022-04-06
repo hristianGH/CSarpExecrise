@@ -12,6 +12,8 @@ namespace SiteX.Services.Data.Interface
         Dictionary<string, string> GetLocationAsKVP();
         public IEnumerable<Location> GetLocations();
         public Task CreateAsync(LocationViewModel viewModel);
+        public Task EditAsync(LocationEditViewModel location);
+
 
 
         //ToDO MAKE I CATEGORY,IGENDER,ILOCATION,IPICTURES SERVICES ONE MAIN KEYVALUEPAIR SERVICE INTERFACE

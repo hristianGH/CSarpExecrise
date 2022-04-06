@@ -18,6 +18,7 @@ namespace SiteX.Services.Data.Interface
 
         public Task CreatingProductLocation(ProductViewModel viewModel, Product product);
         public int GetProductCount();
+        public Product GetProductById(Guid id);
 
     }
 }

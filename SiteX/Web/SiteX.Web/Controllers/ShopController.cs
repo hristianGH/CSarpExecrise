@@ -145,11 +145,24 @@ namespace SiteX.Web.Controllers
             return this.Redirect("/");
 
         }
+        [Authorize]
         public async Task<IActionResult> EditLocation()
         {
-            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
+            var viewModel = new LocationEditViewModel();
+            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(),"Id","Address");
+            return this.View(viewModel);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditLocation(LocationEditViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+            await locationService.EditAsync(viewModel);
 
-            return this.View();
+            return this.Redirect("/");
         }
 
 

@@ -29,9 +29,18 @@ namespace SiteX.Services.Data
 
         }
 
+        public async Task EditAsync(LocationEditViewModel location)
+        {
+            var locationEdit = locationRepository.All().FirstOrDefault(x => x.Id == location.OldId);
+            locationEdit.Name = location.NewName;
+            locationEdit.Address = location.NewAddress;
+
+            await this.locationRepository.SaveChangesAsync();
+        }
+
         public Dictionary<string, string> GetLocationAsKVP()
         {
-            var dictionary = this.locationRepository.AllAsNoTracking().Select(x => new { x.Name, x.Address }).ToDictionary(x => x.Name, x => x.Address);
+            var dictionary = this.locationRepository.AllAsNoTracking().Select(x => new {x.Id, x.Address }).ToDictionary(x => x.Id.ToString(),x=>x.Address);
             return dictionary;
 
         }
