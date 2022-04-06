@@ -7,6 +7,7 @@ using SiteX.Data.Models;
 using SiteX.Services.Data;
 using SiteX.Services.Data.Interface;
 using SiteX.Web.ViewModels.ShopViewModels;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -86,6 +87,7 @@ namespace SiteX.Web.Controllers
 
         }
 
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CategoryViewModel viewModel)
@@ -99,6 +101,28 @@ namespace SiteX.Web.Controllers
             return this.Redirect("/");
 
         }
+
+        [Authorize]
+        public async Task<IActionResult> EditCategory()
+        {
+            var viewModel = new CategoryEditViewModel();
+            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
+            return this.View(viewModel);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditCategory(CategoryEditViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+           await categoryService.EditAsync(viewModel);
+
+            return this.Redirect("/");
+        }
+
+
 
         [Authorize]
         public async Task<IActionResult> CreateLocation()
@@ -121,14 +145,25 @@ namespace SiteX.Web.Controllers
             return this.Redirect("/");
 
         }
+        public async Task<IActionResult> EditLocation()
+        {
+            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
+
+            return this.View();
+        }
 
 
         public async Task<IActionResult> All(int id = 1)
         {
-            ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = productService.ToList(id, 6), PageNumber =id,ItemsPerPage=6 };
+            ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = productService.ToList(id, 6), PageNumber = id, ItemsPerPage = 6 };
             productViewModel.RecipesCount = productService.GetProductCount();
             return this.View(productViewModel);
 
+        }
+        public IActionResult ProductById(Guid id)
+        {
+            var product = productService.GetProductById(id);
+            return this.View(product);
         }
     }
 }

@@ -37,11 +37,17 @@ namespace SiteX.Services.Data
 
         public async Task CreateAsync(CategoryViewModel viewModel)
         {
-            var category = new Category() {Name = viewModel.Name};
-           await categoryRepository.AddAsync(category);
+            var category = new Category() { Name = viewModel.Name };
+            await categoryRepository.AddAsync(category);
             await this.categoryRepository.SaveChangesAsync();
 
         }
-        
+
+        public async Task EditAsync(CategoryEditViewModel category)
+        {
+            var categoryEdit = categoryRepository.All().FirstOrDefault(x => x.Id == category.OldId);
+            categoryEdit.Name = category.NewName;
+           await this.categoryRepository.SaveChangesAsync();
+        }
     }
 }

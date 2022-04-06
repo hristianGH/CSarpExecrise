@@ -9,12 +9,13 @@ namespace SiteX.Services.Data.Interface
 {
     public interface ICategoryService
     {
-      public  Dictionary<string, string> GetCategoryAsKVP();
+        public Dictionary<string, string> GetCategoryAsKVP();
         public IEnumerable<string> GetCategoriesName();
-  
+
         public IEnumerable<Category> GetCategories();
-        public  Task CreateAsync(CategoryViewModel viewModel);
-        
+        public Task EditAsync(CategoryEditViewModel category);
+        public Task CreateAsync(CategoryViewModel viewModel);
+
 
 
     }

@@ -132,5 +132,10 @@ namespace SiteX.Services.Data
         {
            return productRepo.AllAsNoTracking().Count();
         }
+
+        public Product GetProductById(Guid id)
+        {
+           return productRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
+        }
     }
 }
