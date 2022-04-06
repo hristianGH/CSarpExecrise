@@ -1,0 +1,78 @@
+﻿@model SiteX.Web.ViewModels.ShopViewModels.ProductEditViewModel
+@{
+    this.ViewData["Title"] = "Edit Product";
+    int countOptions = ViewBag.CategoriesCount;
+  }
+
+<form method="post" class=align-content-md-center>
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" value="@Model.OldProduct.Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" value="@Model.OldProduct.Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class=form-group>
+        <label asp-for="Categories"></label>
+        <select class="form-control" value="ViewBag.CategoriesId" asp-for="Categories" asp-items="@ViewBag.Categories" required>
+            <span asp-validation-for="Categories" class="text-danger"></span>
+
+        </select>
+    </div>
+
+    <div class=form-group>
+        <label asp-for="Locations"></label>
+        <select class="form-control" value="ViewBag.LocationsId" asp-for="Locations" asp-items="@ViewBag.Locations" required>
+            <span asp-validation-for="Locations" class="text-danger"></span>
+
+        </select>
+    </div>
+
+    @foreach (var item in Model.Pictures)
+    {
+        <div class="form-group">
+            <label asp-for="Pictures"></label>
+            <input asp-for="Pictures" value="@item.Path" class="form-control" />
+            <span asp-validation-for="Pictures" class="text-danger"></span>
+        </div>
+    }
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" value="@Model.OldProduct.Description" class="form-control"> </textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+  
+
+    <input type="submit" class="btn btn-primary" />
+
+</form>
+
+    <script src="~/js~/js/jquery-3.6.0.js"> </script>
+ 
+
+<script>
+   function Selected(id) {
+    $('body').find("option").eq(id).css({"background":"gray", "color":"black"});
+ }
+</script>
+
+@foreach (var item in Model.Categories)
+{
+    <script> Selected("@(item.Id)") </script>
+}
+
+@foreach (var item in Model.Locations)
+{
+        <script>Selected("@(item.Id+countOptions)")</script>
+}
+
+ 
+
+ 

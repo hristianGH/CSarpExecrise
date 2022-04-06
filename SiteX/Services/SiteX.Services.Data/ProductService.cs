@@ -69,10 +69,10 @@ namespace SiteX.Services.Data
             productRepo.SaveChangesAsync();
 
         }
-        public List<Product> ReturnAll()
+        public ICollection<Product> ReturnAll()
         {
             var prods = new List<Product>();
-            foreach (var product in productRepo.AllAsNoTracking())
+            foreach (var product in productRepo.AllAsNoTracking().OrderByDescending(x=>x.CreatedOn))
             {
 
                 prods.Add(product);
@@ -130,12 +130,26 @@ namespace SiteX.Services.Data
 
         public int GetProductCount()
         {
-           return productRepo.AllAsNoTracking().Count();
+           return this.productRepo.AllAsNoTracking().Count();
         }
 
         public Product GetProductById(Guid id)
         {
-           return productRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
+           return this.productRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public async Task EditAsync(ProductEditViewModel viewModel)
+        {
+
+            var product = this.productRepo.All().FirstOrDefault(x => x.Id == viewModel.OldProductId);
+            product.Name= viewModel.Name;
+            product.Description= viewModel.Description;
+            product.Price= viewModel.Price;
+            product.Gender= viewModel.Gender;
+            await this.productRepo.SaveChangesAsync();
+
+            // TODO FINISH EDIT
+ 
         }
     }
 }

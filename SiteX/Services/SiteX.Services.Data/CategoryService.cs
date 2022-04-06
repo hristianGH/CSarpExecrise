@@ -13,10 +13,13 @@ namespace SiteX.Services.Data
     public class CategoryService : ICategoryService
     {
         private readonly IRepository<Category> categoryRepository;
+        private readonly IRepository<ProductCategory> productCategoryRepository;
 
-        public CategoryService(IRepository<Category> repository)
+        public CategoryService(IRepository<Category> categoryRepository
+            ,IRepository<ProductCategory>productCategoryRepository )
         {
-            this.categoryRepository = repository;
+            this.categoryRepository = categoryRepository;
+            this.productCategoryRepository = productCategoryRepository;
         }
         public Dictionary<string, string> GetCategoryAsKVP()
         {
@@ -48,6 +51,24 @@ namespace SiteX.Services.Data
             var categoryEdit = categoryRepository.All().FirstOrDefault(x => x.Id == category.OldId);
             categoryEdit.Name = category.NewName;
            await this.categoryRepository.SaveChangesAsync();
+        }
+
+        public ICollection<Category> GetCategoriesByProductId(Guid id)
+        {
+            var productCategories = productCategoryRepository.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
+            List<Category> categories = new List<Category>();
+            var all = categoryRepository.AllAsNoTracking().ToList();
+            foreach (var category in productCategories)
+            {
+                var name = all.Where(x => x.Id == category. CategoryId).Select(x => x.Name).ToString();
+                categories.Add(new Category { Id = category. CategoryId, Name = name });
+            }
+            return categories;
+        }
+
+        public int GetCategoryCount()
+        {
+           return categoryRepository.AllAsNoTracking().Count();
         }
     }
 }

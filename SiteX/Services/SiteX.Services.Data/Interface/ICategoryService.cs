@@ -15,8 +15,9 @@ namespace SiteX.Services.Data.Interface
         public IEnumerable<Category> GetCategories();
         public Task EditAsync(CategoryEditViewModel category);
         public Task CreateAsync(CategoryViewModel viewModel);
+        public ICollection<Category> GetCategoriesByProductId(Guid id);
 
-
+        public int GetCategoryCount();
 
     }
 }

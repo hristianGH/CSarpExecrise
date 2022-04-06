@@ -13,10 +13,13 @@ namespace SiteX.Services.Data
     public class LocationService : ILocationService
     {
         private readonly IRepository<Location> locationRepository;
+        private readonly IRepository<ProductLocation> productLocationRepository;
 
-        public LocationService(IRepository<Location> locationRepository)
+        public LocationService(IRepository<Location> locationRepository,
+            IRepository<ProductLocation> productLocationRepository)
         {
             this.locationRepository = locationRepository;
+            this.productLocationRepository = productLocationRepository;
         }
 
         public async Task CreateAsync(LocationViewModel viewModel)
@@ -50,5 +53,17 @@ namespace SiteX.Services.Data
             return locations;
         }
 
+        public ICollection<Location> GetLocationsByProductId(Guid id)
+        {
+            var productLocations = productLocationRepository.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
+            List<Location> locations = new List<Location>();
+            var all = locationRepository.AllAsNoTracking().ToList();
+            foreach (var location in productLocations)
+            {
+                var name = all.Where(x => x.Id == location.LocationId).Select(x=>x.Name).ToString();
+                locations.Add(new Location { Id = location.LocationId, Name = name });
+            }
+            return locations;
+        }
     }
 }

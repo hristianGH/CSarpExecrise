@@ -73,6 +73,8 @@
             services.AddTransient<IGenderService, GenderService>();
             services.AddTransient<ILocationService,LocationService>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IPictureService, ProductImageService>();
+
 
         }
 
