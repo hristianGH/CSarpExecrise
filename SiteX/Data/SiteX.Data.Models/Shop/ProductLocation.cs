@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SiteX.Data.Models.Shop
 {
-    public class ProductLocation 
+    public class ProductLocation :BaseDeletableModel<int>
     {
         public Guid ProductId { get; set; }
         public Product Product { get; set; }

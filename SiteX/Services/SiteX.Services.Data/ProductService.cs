@@ -15,14 +15,14 @@ namespace SiteX.Services.Data
     public class ProductService : IProductService
     {
         private readonly IDeletableEntityRepository<Product> productRepo;
-        private readonly IRepository<ProductCategory> productCategoryRepo;
-        private readonly IRepository<ProductLocation> productLocationRepo;
+        private readonly IDeletableEntityRepository<ProductCategory> productCategoryRepo;
+        private readonly IDeletableEntityRepository<ProductLocation> productLocationRepo;
         private readonly IRepository<Category> categoryRepo;
         private readonly IDeletableEntityRepository<ProductImage> prodImageRepo;
 
         public ProductService(IDeletableEntityRepository<Product> productRepo,
-            IRepository<ProductCategory> productCategoryRepo,
-            IRepository<ProductLocation> productLocationRepo,
+            IDeletableEntityRepository<ProductCategory> productCategoryRepo,
+            IDeletableEntityRepository<ProductLocation> productLocationRepo,
             IRepository<Category> categoryRepo,
             IDeletableEntityRepository<ProductImage> prodImageRepo
             )
@@ -189,7 +189,7 @@ namespace SiteX.Services.Data
             var locations = productLocationRepo.All().Where(x => x.ProductId == productId).ToList();
             foreach (var location in locations)
             {
-                productLocationRepo.Delete(location);
+                productLocationRepo.HardDelete(location);
             }
             await productLocationRepo.SaveChangesAsync();
         }
@@ -199,7 +199,7 @@ namespace SiteX.Services.Data
             var categories = productCategoryRepo.All().Where(x => x.ProductId == productId).ToList();
             foreach (var category in categories)
             {
-                productCategoryRepo.Delete(category);
+                productCategoryRepo.HardDelete(category);
             }
             await productCategoryRepo.SaveChangesAsync();
              categories = productCategoryRepo.All().Where(x => x.ProductId == productId).ToList();
@@ -211,7 +211,7 @@ namespace SiteX.Services.Data
             var images = prodImageRepo.All().Where(x => x.Product.Id == productId).ToList();
             foreach (var image in images)
             {
-                prodImageRepo.Delete(image);
+                prodImageRepo.HardDelete(image);
             }
              await prodImageRepo.SaveChangesAsync();
 

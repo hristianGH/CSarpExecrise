@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SiteX.Data.Models.Shop
 {
-    public class ProductCategory 
+    public class ProductCategory  :BaseDeletableModel<int>
     {
         public int CategoryId { get; set; }
 

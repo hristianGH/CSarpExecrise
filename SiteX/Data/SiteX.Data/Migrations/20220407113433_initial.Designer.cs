@@ -10,8 +10,8 @@ using SiteX.Data;
 namespace SiteX.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220405101456_Initial")]
-    partial class Initial
+    [Migration("20220407113433_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -521,9 +521,26 @@ namespace SiteX.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("ProductId", "CategoryId");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("ProductCategories");
                 });
@@ -538,6 +555,12 @@ namespace SiteX.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
@@ -545,10 +568,12 @@ namespace SiteX.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("ProductId")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("ProductId");
 
@@ -563,7 +588,24 @@ namespace SiteX.Data.Migrations
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("ProductId", "LocationId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("LocationId");
 
@@ -678,7 +720,9 @@ namespace SiteX.Data.Migrations
                 {
                     b.HasOne("SiteX.Data.Models.Shop.Product", "Product")
                         .WithMany("ProductImages")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Product");
                 });
