@@ -12,17 +12,7 @@ namespace SiteX.Data.Seeding
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            if(dbContext.Users.Any())
-            {
-                return;
-            }
-            var hasher = new PasswordHasher<IdentityUser>();
-
-            //await dbContext.Users.AddAsync(new UserX
-            //{
-                
-            //     Email = "Elonmusk@abv.bg", UserName = "ElonMusk", PasswordHash = hasher.HashPassword(new IdentityUser(), "1234567") 
-            //});
+            
 
         }
     }

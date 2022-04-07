@@ -266,19 +266,43 @@ namespace SiteX.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("PostId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("SiteX.Data.Models.Blog.Genre", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("SiteX.Data.Models.Blog.Post", b =>
@@ -305,6 +329,9 @@ namespace SiteX.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("MyProperty")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -320,6 +347,42 @@ namespace SiteX.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("SiteX.Data.Models.Blog.PostGenre", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("PostGenres");
                 });
 
             modelBuilder.Entity("SiteX.Data.Models.Blog.PostImage", b =>
@@ -346,6 +409,9 @@ namespace SiteX.Data.Migrations
 
                     b.Property<int?>("PostId")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -663,9 +729,17 @@ namespace SiteX.Data.Migrations
 
             modelBuilder.Entity("SiteX.Data.Models.Blog.Comment", b =>
                 {
+                    b.HasOne("SiteX.Data.Models.Blog.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("SiteX.Data.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });
@@ -679,11 +753,32 @@ namespace SiteX.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("SiteX.Data.Models.Blog.PostGenre", b =>
+                {
+                    b.HasOne("SiteX.Data.Models.Blog.Genre", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SiteX.Data.Models.Blog.Post", "Post")
+                        .WithMany("PostGenres")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Post");
+                });
+
             modelBuilder.Entity("SiteX.Data.Models.Blog.PostImage", b =>
                 {
-                    b.HasOne("SiteX.Data.Models.Blog.Post", null)
-                        .WithMany("Images")
+                    b.HasOne("SiteX.Data.Models.Blog.Post", "Post")
+                        .WithMany("PostImages")
                         .HasForeignKey("PostId");
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("SiteX.Data.Models.Shop.Product", b =>
@@ -755,7 +850,9 @@ namespace SiteX.Data.Migrations
 
             modelBuilder.Entity("SiteX.Data.Models.Blog.Post", b =>
                 {
-                    b.Navigation("Images");
+                    b.Navigation("PostGenres");
+
+                    b.Navigation("PostImages");
                 });
 
             modelBuilder.Entity("SiteX.Data.Models.Shop.Category", b =>

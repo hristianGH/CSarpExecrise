@@ -32,7 +32,7 @@
                               new GenderSeeder(),
                               new PostSeeder(),
                               new ProductSeeder(),
-
+                              new GenreSeeder(),
 
                           };
 

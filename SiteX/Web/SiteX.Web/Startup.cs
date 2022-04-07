@@ -67,13 +67,17 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
 
-            //ShopServices
+            // ShopServices
 
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IGenderService, GenderService>();
             services.AddTransient<ILocationService,LocationService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IPictureService, ProductImageService>();
+
+            // BlogServices
+            services.AddTransient<IGenreService, GenreService>();
+            services.AddTransient<IPostService, PostService>();
 
 
         }
