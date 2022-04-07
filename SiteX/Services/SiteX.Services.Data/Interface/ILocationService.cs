@@ -16,6 +16,7 @@ namespace SiteX.Services.Data.Interface
         public ICollection<Location> GetLocationsByProductId(Guid id);
 
 
+
         //ToDO MAKE I CATEGORY,IGENDER,ILOCATION,IPICTURES SERVICES ONE MAIN KEYVALUEPAIR SERVICE INTERFACE
     }
 }
