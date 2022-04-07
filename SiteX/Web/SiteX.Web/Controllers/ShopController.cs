@@ -48,7 +48,6 @@ namespace SiteX.Web.Controllers
 
         public IActionResult Index()
         {
-            IndexViewModel vm = new IndexViewModel() { };
             return View();
         }
 
@@ -76,10 +75,6 @@ namespace SiteX.Web.Controllers
 
             viewModel.User = await this.userManager.GetUserAsync(this.User);
 
-            this.ViewBag.Genders = new SelectList(this.genderService.GetGenderAsKVP());
-            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
-            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
-
             await this.productService.CreateAsync(viewModel);
             return this.Redirect("/");
         }
@@ -98,38 +93,49 @@ namespace SiteX.Web.Controllers
             {
                 return this.BadRequest();
             }
-            var modelOut = productService.GetProductById(model.ProductId);
-            return this.RedirectToAction("EditProduct",modelOut);
+            return this.RedirectToAction("EditProduct", model);
         }
 
         [Authorize]
-        public async Task<IActionResult> EditProduct(Product viewModel)
+        public async Task<IActionResult> EditProduct(SelectProductViewModel model)
         {
-            var EditedViewModel = new ProductEditViewModel() {OldProduct=viewModel };
-         var locations=   locationService.GetLocationsByProductId(EditedViewModel.OldProduct.Id);
+            var viewModel = productService.GetProductById(model.ProductId);
+
+            var EditedViewModel = new ProductEditViewModel() {OldProductId=model.ProductId };
+            EditedViewModel.OldProduct = viewModel;
+
+            var locations = locationService.GetLocationsByProductId(EditedViewModel.OldProduct.Id);
             var categories = categoryService.GetCategoriesByProductId(EditedViewModel.OldProduct.Id);
             var pictures = pictureService.GetImagesByProductId(EditedViewModel.OldProduct.Id);
-            this.ViewBag.Genders = new SelectList(this.genderService.GetGenderAsKVP());
+
+            EditedViewModel.Categories = categories.Select(x => x.Id).ToList();
+            EditedViewModel.Locations = locations.Select(x => x.Id).ToList();
+            EditedViewModel.Pictures = pictures.Select(x => x.Path).ToList();
+            if (EditedViewModel.Pictures.Count()==0)
+            {
+                EditedViewModel.Pictures.Add("");
+            }
+            this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
             this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
             this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
             this.ViewBag.CategoriesId = categories.Select(x => x.Id).ToList();
             this.ViewBag.LocationsId = locations.Select(x => x.Id).ToList();
             this.ViewBag.CategoriesCount = categoryService.GetCategoryCount();
+            this.ViewBag.ProductId = viewModel.Id;
 
-            EditedViewModel.Categories = categories;
-            EditedViewModel.Locations = locations;
-            EditedViewModel.Pictures = pictures;
             return this.View(EditedViewModel);
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> EditProduct(ProductEditViewModel viewModel)
+        // PRODUCT ID AND OLD PRODUCT DIDNT SHOW AFTER HTTP POST SO I ADDED FROMQUERY ATTRIBUTE TO BIND IT AFTER
+        public async Task<IActionResult> EditProduct(ProductEditViewModel viewModel,[FromQuery(Name = "ProductId")]Guid id )
         {
             if (!ModelState.IsValid)
             {
                 return this.BadRequest();
             }
+            viewModel.OldProductId = id;
             await productService.EditAsync(viewModel);
 
             return this.Redirect("/");

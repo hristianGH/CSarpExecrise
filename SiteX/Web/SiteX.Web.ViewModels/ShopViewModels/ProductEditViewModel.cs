@@ -9,24 +9,48 @@ namespace SiteX.Web.ViewModels.ShopViewModels
     public class ProductEditViewModel
     {
         public Product OldProduct { get; set; }
-
+        [Required]
         public Guid OldProductId { get; set; }
+
+
+        [Required]
+        [MaxLength(50)]
+        [MinLength(3)]
+        [Display(Name = "Name of product")]
         public string Name { get; set; }
 
+        [Required]
+        [Range(1, double.MaxValue - 100)]
+        [Display(Name = "Price in Bgn")]
         public decimal Price { get; set; }
 
+
+        [Required]
+        [MaxLength(400)]
+        [MinLength(3)]
         public string Description { get; set; }
 
         public Guid UserId { get; set; }
+
+
+        [Required]
         public string Gender { get; set; }
 
-        
-        public virtual ICollection<ProductImage> Pictures { get; set; } = new List<ProductImage>();
 
-        public ICollection<ProductCategory> Locations { get; set; } = new List<ProductCategory>();
+        [Required, MinLength(1)]
+        [Display(Name = "Picture Url")]
 
-        //TODO LOCATION SHOW PRODUCT ID IN SQL 
-        public ICollection<ProductLocation> Categories { get; set; } = new List<ProductLocation>();
+        public virtual ICollection<string> Pictures { get; set; } = new List<string>();
+
+        [Required, MaxLength(4)]
+
+        public virtual ICollection<int> Locations { get; set; } = new List<int>();
+
+        [MinLength(1), MaxLength(3)]
+        public virtual ICollection<int> Categories { get; set; } = new List<int>();
 
     }
 }
+
+
+ 

@@ -2,9 +2,17 @@
 @{
     this.ViewData["Title"] = "Edit Product";
     int countOptions = ViewBag.CategoriesCount;
-  }
+
+}
+
+
 
 <form method="post" class=align-content-md-center>
+
+    <div class="form-group">
+        <label asp-for="OldProductId"></label>
+        <input asp-for="OldProductId" value="@ViewBag.ProductId" disabled readonly />
+    </div>
 
     <div class="form-group">
         <label asp-for="Name"></label>
@@ -16,6 +24,15 @@
         <label asp-for="Price"></label>
         <input asp-for="Price" value="@Model.OldProduct.Price" class="form-control" />
         <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+
+    <div class=form-group>
+        <label asp-for="Gender"></label>
+        <select class="form-control" asp-for="Gender" asp-items="@ViewBag.Genders" required>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+
+        </select>
     </div>
 
     <div class=form-group>
@@ -33,46 +50,59 @@
 
         </select>
     </div>
+   
+    
 
-    @foreach (var item in Model.Pictures)
-    {
-        <div class="form-group">
-            <label asp-for="Pictures"></label>
-            <input asp-for="Pictures" value="@item.Path" class="form-control" />
-            <span asp-validation-for="Pictures" class="text-danger"></span>
-        </div>
-    }
+        @foreach (var pictureUrl in Model.Pictures)
+        {
+            <div class="form-group">
+                <label asp-for="Pictures"></label>
+                <input asp-for="Pictures" value="@pictureUrl" class="form-control" />
+                <span asp-validation-for="Pictures" class="text-danger"></span>
+            </div>
+        }
+    
+
+
 
     <div class="form-group">
         <label asp-for="Description"></label>
-        <textarea asp-for="Description" value="@Model.OldProduct.Description" class="form-control"> </textarea>
+        <textarea asp-for="Description" class="form-control"> </textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
-  
+
+
 
     <input type="submit" class="btn btn-primary" />
 
 </form>
 
-    <script src="~/js~/js/jquery-3.6.0.js"> </script>
- 
+<script src="~/js~/js/jquery-3.6.0.js"> </script>
+
 
 <script>
-   function Selected(id) {
-    $('body').find("option").eq(id).css({"background":"gray", "color":"black"});
- }
+      function Selected(id) {
+       $('body').find("option").eq(id).css({"background":"gray", "color":"black"});
+    }
 </script>
 
-@foreach (var item in Model.Categories)
+<script>
+      function AddTextToArea(valueInput) {
+       document.getElementById("Description").value=valueInput;
+    }
+</script>
+
+@foreach (var categoryId in Model.Categories)
 {
-    <script> Selected("@(item.Id)") </script>
+    <script> Selected("@(categoryId)") </script>
 }
 
-@foreach (var item in Model.Locations)
+@foreach (var locationId in Model.Locations)
 {
-        <script>Selected("@(item.Id+countOptions)")</script>
+    <script>Selected("@(locationId+countOptions)")</script>
 }
 
- 
-
- 
+<script>Selected(@Model.Gender)</script>
+<script>
+    AddTextToArea("@(Model.OldProduct.Description)")
+</script>

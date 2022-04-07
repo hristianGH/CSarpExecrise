@@ -11,16 +11,6 @@ namespace SiteX.Web.ViewModels.ShopViewModels
         [Required]
         public Guid ProductId { get; set; }
 
-        [MaxLength(4)]
-        public virtual ICollection<string> Pictures { get; set; } = new List<string>();
-
-
-        [MaxLength(4)]
-        public virtual ICollection<int> Locations { get; set; } = new List<int>();
-
-
-        [  MaxLength(3)]
-        public virtual ICollection<int> Categories { get; set; } = new List<int>();
 
     }
 }
