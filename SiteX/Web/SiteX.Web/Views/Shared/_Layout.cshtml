@@ -39,47 +39,90 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
                     </ul>
                 </div>
-
 
             </div>
         </nav>
 
+
+
         @if (this.SignInManager.IsSignedIn(this.User))
         {
-            <nav class="justify-content-center navbar navbar-expand-sm navbar-light bg-white border-dark mb-3">
+             <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
+            <div class="dropdown show " >
+                <a class="btn btn-light dropdown-toggle" asp-controller="Shop" asp-action="All" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Shop Menu
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateProduct">Create Product</a>
+
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateCategory">Create Category</a>
+
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="EditCategory">Edit Category</a>
+
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateLocation">Create Location</a>
+
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="EditLocation">Edit Location</a>
+
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="SelectEditProduct">Edit Product</a>
+
+                </div>
+            </div>
+
+            
+                <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="CreateGenre">Create Genre</a>
+                </li>
+            </nav>
+
+            @*<nav class="justify-content-center navbar navbar-expand-sm navbar-light bg-white border-dark mb-3">
 
 
                 <ul class="navbar-nav flex-grow-1 align-align-items-center justify-content-center">
 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateProduct">Create Product</a>
-                    </li>
+                <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateProduct">Create Product</a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateCategory">Create Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="EditCategory">Edit Category</a>
-                    </li>
+                <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateCategory">Create Category</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="EditCategory">Edit Category</a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateLocation">Create Location</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="EditLocation">Edit Location</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="SelectEditProduct">Edit Product</a>
-                    </li>
+                <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateLocation">Create Location</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="EditLocation">Edit Location</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="SelectEditProduct">Edit Product</a>
+                </li>
                 </ul>
 
-            </nav>
+
+                </nav>
+            *@
+
+
+
+
+
+
+
+
+
         }
 
 
     </header>
+
+
 
     <div class="container">
         <partial name="_CookieConsentPartial" />
