@@ -27,17 +27,34 @@
         }
 
         public DbSet<Setting> Settings { get; set; }
+
+
         public DbSet<Post> Posts { get; set; }
+
         public DbSet<PostImage> PostImages { get; set; }
+
         public DbSet<Comment> Comments { get; set; }
 
+       
+
+
+        public DbSet<Genre> Genres { get; set; }
+
+        public DbSet<PostGenre> PostGenres { get; set; }
+
+
         public DbSet<Category> Categories { get; set; }
+
         public DbSet<ProductCategory> ProductCategories { get; set; }
+
         public DbSet<Location> Locations { get; set; }
+
         public DbSet<ProductLocation> ProductLocations { get; set; }
 
         public DbSet<ProductImage> ProductImages { get; set; }
+
         public DbSet<Product> Products { get; set; }
+
         public DbSet<Gender> Genders { get; set; }
 
 

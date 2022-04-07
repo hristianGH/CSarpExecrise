@@ -25,8 +25,16 @@
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-        [MaxLength(15)]
-        public virtual ICollection<PostImage> Images { get; set; } = new List<PostImage>();
+        public int MyProperty { get; set; }
+
+        [MaxLength(4)]
+        public virtual ICollection<PostImage> PostImages { get; set; } = new List<PostImage>();
+
+        public ICollection<PostGenre> PostGenres { get; set; } = new List<PostGenre>();
+
+        //TODO LOCATION SHOW PRODUCT ID IN SQL 
+     
+
 
     }
 }
