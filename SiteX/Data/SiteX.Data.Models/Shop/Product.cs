@@ -11,6 +11,7 @@ namespace SiteX.Data.Models.Shop
     public class Product : BaseDeletableModel<Guid>
 
     {
+        // TODO ADD COLOR AND SIZE PROP
         [Required]
         [MaxLength(50)]
         [MinLength(3)]
