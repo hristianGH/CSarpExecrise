@@ -13,7 +13,7 @@ namespace SiteX.Services.Data.ShopService.Interface
         public IEnumerable<Color> GetColors();
         public ICollection<Color> GetColorsByProductId(Guid id);
         public int GetColorsCount();
-        public async Task CreateAsync(ColorViewModel viewModel);
+        public  Task CreateAsync(ColorViewModel viewModel);
 
 
     }
