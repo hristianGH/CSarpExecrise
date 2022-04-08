@@ -60,8 +60,8 @@ namespace SiteX.Services.Data.ShopService
             var all = categoryRepository.AllAsNoTracking().ToList();
             foreach (var category in productCategories)
             {
-                var name = all.Where(x => x.Id == category. CategoryId).Select(x => x.Name).ToString();
-                categories.Add(new Category { Id = category. CategoryId, Name = name });
+                var name = all.Where(x => x.Id == category.CategoryId).Select(x => x.Name).ToString();
+                categories.Add(new Category { Id = category.CategoryId, Name = name });
             }
             return categories;
         }

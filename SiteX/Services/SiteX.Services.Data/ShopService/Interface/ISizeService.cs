@@ -9,5 +9,9 @@ namespace SiteX.Services.Data.ShopService.Interface
     {
         Dictionary<string, string> GetSizeAsKVP();
         public IEnumerable<Size> GetSizes();
+        public ICollection<Size> GetSizesByProductId(Guid id);
+        public int GetSizesCount();
+
+
     }
 }

@@ -1,7 +1,9 @@
 ﻿using SiteX.Data.Models.Shop;
+using SiteX.Web.ViewModels.ShopViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SiteX.Services.Data.ShopService.Interface
 {
@@ -9,5 +11,10 @@ namespace SiteX.Services.Data.ShopService.Interface
     {
         Dictionary<string, string> GetColorAsKVP();
         public IEnumerable<Color> GetColors();
+        public ICollection<Color> GetColorsByProductId(Guid id);
+        public int GetColorsCount();
+        public async Task CreateAsync(ColorViewModel viewModel);
+
+
     }
 }
