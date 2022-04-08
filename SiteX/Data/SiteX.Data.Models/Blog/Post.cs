@@ -22,10 +22,10 @@
         [MinLength(10)]
         public string Body { get; set; }
 
+        [ForeignKey(nameof(User))]
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-        public int MyProperty { get; set; }
 
         [MaxLength(4)]
         public virtual ICollection<PostImage> PostImages { get; set; } = new List<PostImage>();

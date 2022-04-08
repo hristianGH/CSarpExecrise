@@ -10,7 +10,7 @@ namespace SiteX.Data.Models.Blog
         [Required]
         public string Path { get; set; }
         public Post Post { get; set; }
-        public Guid ProductId { get; set; }
+        public int PostId { get; set; }
 
     }
 }
