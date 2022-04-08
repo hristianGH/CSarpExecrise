@@ -10,8 +10,8 @@ using SiteX.Data;
 namespace SiteX.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220408070005_Initial")]
-    partial class Initial
+    [Migration("20220408102430_AddedColorToProd")]
+    partial class AddedColorToProd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -474,6 +474,27 @@ namespace SiteX.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("SiteX.Data.Models.Shop.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+                });
+
             modelBuilder.Entity("SiteX.Data.Models.Shop.Gender", b =>
                 {
                     b.Property<int>("Id")
@@ -530,6 +551,9 @@ namespace SiteX.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Color")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -606,6 +630,42 @@ namespace SiteX.Data.Migrations
                     b.ToTable("ProductCategories");
                 });
 
+            modelBuilder.Entity("SiteX.Data.Models.Shop.ProductColor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductColors");
+                });
+
             modelBuilder.Entity("SiteX.Data.Models.Shop.ProductImage", b =>
                 {
                     b.Property<int>("Id")
@@ -671,6 +731,63 @@ namespace SiteX.Data.Migrations
                     b.HasIndex("LocationId");
 
                     b.ToTable("ProductLocations");
+                });
+
+            modelBuilder.Entity("SiteX.Data.Models.Shop.ProductSize", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("ProductSizes");
+                });
+
+            modelBuilder.Entity("SiteX.Data.Models.Shop.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -808,6 +925,25 @@ namespace SiteX.Data.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("SiteX.Data.Models.Shop.ProductColor", b =>
+                {
+                    b.HasOne("SiteX.Data.Models.Shop.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SiteX.Data.Models.Shop.Product", "Product")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Color");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("SiteX.Data.Models.Shop.ProductImage", b =>
                 {
                     b.HasOne("SiteX.Data.Models.Shop.Product", "Product")
@@ -838,6 +974,25 @@ namespace SiteX.Data.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("SiteX.Data.Models.Shop.ProductSize", b =>
+                {
+                    b.HasOne("SiteX.Data.Models.Shop.Product", "Product")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SiteX.Data.Models.Shop.Size", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Size");
+                });
+
             modelBuilder.Entity("SiteX.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Claims");
@@ -863,9 +1018,13 @@ namespace SiteX.Data.Migrations
                 {
                     b.Navigation("ProductCategories");
 
+                    b.Navigation("ProductColors");
+
                     b.Navigation("ProductImages");
 
                     b.Navigation("ProductLocations");
+
+                    b.Navigation("ProductSizes");
                 });
 #pragma warning restore 612, 618
         }

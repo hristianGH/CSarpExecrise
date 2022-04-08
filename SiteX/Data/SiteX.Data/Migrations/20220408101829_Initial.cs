@@ -70,6 +70,21 @@ namespace SiteX.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Colors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Colors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Genders",
                 columns: table => new
                 {
@@ -131,6 +146,21 @@ namespace SiteX.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Settings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sizes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sizes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -404,6 +434,36 @@ namespace SiteX.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductColors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ColorId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductColors", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductColors_Colors_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Colors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProductColors_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProductImages",
                 columns: table => new
                 {
@@ -452,6 +512,36 @@ namespace SiteX.Data.Migrations
                         name: "FK_ProductLocations_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductSizes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SizeId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductSizes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductSizes_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProductSizes_Sizes_SizeId",
+                        column: x => x.SizeId,
+                        principalTable: "Sizes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -566,6 +656,21 @@ namespace SiteX.Data.Migrations
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductColors_ColorId",
+                table: "ProductColors",
+                column: "ColorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductColors_IsDeleted",
+                table: "ProductColors",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductColors_ProductId",
+                table: "ProductColors",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductImages_IsDeleted",
                 table: "ProductImages",
                 column: "IsDeleted");
@@ -594,6 +699,21 @@ namespace SiteX.Data.Migrations
                 name: "IX_Products_UserId",
                 table: "Products",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductSizes_IsDeleted",
+                table: "ProductSizes",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductSizes_ProductId",
+                table: "ProductSizes",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductSizes_SizeId",
+                table: "ProductSizes",
+                column: "SizeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Settings_IsDeleted",
@@ -634,10 +754,16 @@ namespace SiteX.Data.Migrations
                 name: "ProductCategories");
 
             migrationBuilder.DropTable(
+                name: "ProductColors");
+
+            migrationBuilder.DropTable(
                 name: "ProductImages");
 
             migrationBuilder.DropTable(
                 name: "ProductLocations");
+
+            migrationBuilder.DropTable(
+                name: "ProductSizes");
 
             migrationBuilder.DropTable(
                 name: "Settings");
@@ -655,10 +781,16 @@ namespace SiteX.Data.Migrations
                 name: "Categories");
 
             migrationBuilder.DropTable(
+                name: "Colors");
+
+            migrationBuilder.DropTable(
                 name: "Locations");
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Sizes");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
