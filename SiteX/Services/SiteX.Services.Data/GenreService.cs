@@ -1,7 +1,7 @@
 ﻿using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models.Blog;
 using SiteX.Services.Data.Interface;
-using SiteX.Web.ViewModels.ShopViewModels;
+using SiteX.Web.ViewModels.BlogViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
