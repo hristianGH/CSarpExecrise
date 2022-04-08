@@ -32,6 +32,8 @@ namespace SiteX.Data.Models.Shop
 
 
         public string Gender { get; set; }
+        public string Color { get; set; }
+
 
         public bool IsAvalable { get; set; } = true;
 
@@ -42,6 +44,8 @@ namespace SiteX.Data.Models.Shop
 
         //TODO LOCATION SHOW PRODUCT ID IN SQL 
         public ICollection<ProductLocation> ProductLocations { get; set; } = new List<ProductLocation>();
+        public ICollection<ProductSize> ProductSizes { get; set; } = new List<ProductSize>();
+        public ICollection<ProductColor> ProductColors { get; set; } = new List<ProductColor>();
 
 
     }
