@@ -11,6 +11,8 @@ namespace SiteX.Services.Data.Interface
         public Task CreatePostAsync(PostViewModel viewModel);
 
         public Task CreatingPostGenre(ICollection<int> genres, int product);
+        
+
 
     }
 }

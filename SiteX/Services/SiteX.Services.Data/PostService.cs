@@ -4,6 +4,7 @@ using SiteX.Services.Data.Interface;
 using SiteX.Web.ViewModels.BlogViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,11 +12,12 @@ namespace SiteX.Services.Data
 {
     public class PostService : IPostService
     {
-        private readonly IRepository<Post> postRepo;
-        private readonly IRepository<PostGenre> postGenreRepo;
+        private readonly IDeletableEntityRepository<Post> postRepo;
+        private readonly IDeletableEntityRepository<PostGenre> postGenreRepo;
 
-        public PostService(IRepository<Post> postRepo,
-            IRepository<PostGenre> postGenreRepo)
+        public PostService(
+            IDeletableEntityRepository<Post> postRepo,
+            IDeletableEntityRepository<PostGenre> postGenreRepo)
         {
             this.postRepo = postRepo;
             this.postGenreRepo = postGenreRepo;
@@ -23,14 +25,29 @@ namespace SiteX.Services.Data
 
         public async Task CreatePostAsync(PostViewModel viewModel)
         {
+            var pics = new List<PostImage>();
+            foreach (var pic in viewModel.PostImages.Where(x => x != null))
+            {
+                pics.Add(new PostImage() { Path = pic });
+            }
+
+
             var post = new Post()
             {
                 Body = viewModel.Body,
-                Title = viewModel.Title
+                Title = viewModel.Title,
+                PostImages = pics,
+                
             };
-           await postRepo.AddAsync(post);
-            await postRepo.SaveChangesAsync();
-            await CreatingPostGenre(viewModel.PostGenres, post.Id);
+
+
+            await this.postRepo.AddAsync(post);
+            await this.postRepo.SaveChangesAsync();
+            ;
+            ;
+            ;
+            await this.CreatingPostGenre(viewModel.PostGenres, post.Id);
+
         }
 
         public async Task CreatingPostGenre(ICollection<int> genres, int post)
@@ -43,7 +60,10 @@ namespace SiteX.Services.Data
 
                 await this.postGenreRepo.AddAsync(entity);
             }
+
             await this.postGenreRepo.SaveChangesAsync();
         }
+
+        
     }
 }
