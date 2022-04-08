@@ -33,7 +33,8 @@
                               new PostSeeder(),
                               new ProductSeeder(),
                               new GenreSeeder(),
-
+                              new SizeSeeder(),
+                              new ColorSeeder(),
                           };
 
             foreach (var seeder in seeders)
