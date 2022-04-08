@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SiteX.Data;
 using SiteX.Data.Models;
-using SiteX.Data.Models.Shop;
-using SiteX.Services.Data;
-using SiteX.Services.Data.Interface;
+using SiteX.Services.Data.ShopService.Interface;
 using SiteX.Web.ViewModels.ShopViewModels;
 using System;
 using System.Linq;
@@ -23,6 +21,8 @@ namespace SiteX.Web.Controllers
         private readonly ILocationService locationService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IPictureService pictureService;
+        private readonly ISizeService sizeService;
+        private readonly IColorService colorService;
 
 
 
@@ -34,7 +34,9 @@ namespace SiteX.Web.Controllers
             IProductService productService,
             ILocationService locationService,
             UserManager<ApplicationUser> userManager,
-            IPictureService pictureService)
+            IPictureService pictureService,
+            ISizeService sizeService,
+            IColorService colorService)
         {
             dbcontext = dbContext;
             this.genderService = genderService;
@@ -43,6 +45,8 @@ namespace SiteX.Web.Controllers
             this.locationService = locationService;
             this.userManager = userManager;
             this.pictureService = pictureService;
+            this.sizeService = sizeService;
+            this.colorService = colorService;
         }
 
 
@@ -57,6 +61,9 @@ namespace SiteX.Web.Controllers
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
             this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
             this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
+            this.ViewBag.Colors = new SelectList(this.colorService.GetColors(), "Id", "Name");
+            this.ViewBag.Sizes = new SelectList(this.sizeService.GetSizes(), "Id", "Name");
+
 
             return this.View();
 
@@ -101,7 +108,7 @@ namespace SiteX.Web.Controllers
         {
             var viewModel = productService.GetProductById(model.ProductId);
 
-            var EditedViewModel = new ProductEditViewModel() {OldProductId=model.ProductId };
+            var EditedViewModel = new ProductEditViewModel() { OldProductId = model.ProductId };
             EditedViewModel.OldProduct = viewModel;
 
             var locations = locationService.GetLocationsByProductId(EditedViewModel.OldProduct.Id);
@@ -111,7 +118,7 @@ namespace SiteX.Web.Controllers
             EditedViewModel.Categories = categories.Select(x => x.Id).ToList();
             EditedViewModel.Locations = locations.Select(x => x.Id).ToList();
             EditedViewModel.Pictures = pictures.Select(x => x.Path).ToList();
-            if (EditedViewModel.Pictures.Count()==0)
+            if (EditedViewModel.Pictures.Count() == 0)
             {
                 EditedViewModel.Pictures.Add("");
             }
@@ -129,7 +136,7 @@ namespace SiteX.Web.Controllers
         [Authorize]
         [HttpPost]
         // PRODUCT ID AND OLD PRODUCT DIDNT SHOW AFTER HTTP POST SO I ADDED FROMQUERY ATTRIBUTE TO BIND IT AFTER
-        public async Task<IActionResult> EditProduct(ProductEditViewModel viewModel,[FromQuery(Name = "ProductId")]Guid id )
+        public async Task<IActionResult> EditProduct(ProductEditViewModel viewModel, [FromQuery(Name = "ProductId")] Guid id)
         {
             if (!ModelState.IsValid)
             {
@@ -235,10 +242,16 @@ namespace SiteX.Web.Controllers
             return this.View(productViewModel);
 
         }
-        public IActionResult ProductById(Guid id)
+
+        public IActionResult ById(Guid id)
         {
-            var product = productService.GetProductById(id);
+            var product = this.productService.GetProductById(id);
+            ViewBag.Categories = productService.GetCategoriesByProductId(id);
+            ViewBag.Images = productService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
+            ViewBag.Locations = productService.GetLocationsByProductId(id);
+
             return this.View(product);
         }
+
     }
 }

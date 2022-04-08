@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SiteX.Data.Models;
-using SiteX.Services.Data.Interface;
+using SiteX.Services.Data.BlogService.Interface;
 using SiteX.Web.ViewModels.BlogViewModels;
 using System.Threading.Tasks;
 

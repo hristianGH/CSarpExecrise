@@ -9,8 +9,8 @@
     using System.Linq;
     using SiteX.Web.ViewModels.ShopViewModels;
     using SiteX.Services.Data;
-    using SiteX.Services.Data.Interface;
     using SiteX.Data.Models.Shop;
+    using SiteX.Services.Data.ShopService.Interface;
 
     public class HomeController : BaseController
 
