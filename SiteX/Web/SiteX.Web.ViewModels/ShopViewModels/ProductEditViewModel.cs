@@ -49,6 +49,12 @@ namespace SiteX.Web.ViewModels.ShopViewModels
         [MinLength(1), MaxLength(3)]
         public virtual ICollection<int> Categories { get; set; } = new List<int>();
 
+        public virtual ICollection<int> Colors { get; set; } = new List<int>();
+
+
+        public virtual ICollection<int> Sizes { get; set; } = new List<int>();
+
+
     }
 }
 

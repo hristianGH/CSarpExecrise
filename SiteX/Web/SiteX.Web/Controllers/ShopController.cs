@@ -106,6 +106,9 @@ namespace SiteX.Web.Controllers
         [Authorize]
         public async Task<IActionResult> EditProduct(SelectProductViewModel model)
         {
+
+            // TODO ADD COLOR AND SIZE TO PRODUCT EDIT
+
             var viewModel = productService.GetProductById(model.ProductId);
 
             var EditedViewModel = new ProductEditViewModel() { OldProductId = model.ProductId };
@@ -114,10 +117,16 @@ namespace SiteX.Web.Controllers
             var locations = locationService.GetLocationsByProductId(EditedViewModel.OldProduct.Id);
             var categories = categoryService.GetCategoriesByProductId(EditedViewModel.OldProduct.Id);
             var pictures = pictureService.GetImagesByProductId(EditedViewModel.OldProduct.Id);
+            var colors = colorService.GetColorsByProductId(EditedViewModel.OldProduct.Id);
+            var sizes = sizeService.GetSizesByProductId(EditedViewModel.OldProduct.Id);
+
 
             EditedViewModel.Categories = categories.Select(x => x.Id).ToList();
             EditedViewModel.Locations = locations.Select(x => x.Id).ToList();
             EditedViewModel.Pictures = pictures.Select(x => x.Path).ToList();
+            EditedViewModel.Colors = colors.Select(x => x.Id).ToList();
+            EditedViewModel.Sizes = sizes.Select(x => x.Id).ToList();
+
             if (EditedViewModel.Pictures.Count() == 0)
             {
                 EditedViewModel.Pictures.Add("");
@@ -125,8 +134,9 @@ namespace SiteX.Web.Controllers
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
             this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
             this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
-            this.ViewBag.CategoriesId = categories.Select(x => x.Id).ToList();
-            this.ViewBag.LocationsId = locations.Select(x => x.Id).ToList();
+            this.ViewBag.Sizes = new SelectList(this.sizeService.GetSizes(), "Id", "Name");
+            this.ViewBag.Colors = new SelectList(this.colorService.GetColors(), "Id", "Name");
+
             this.ViewBag.CategoriesCount = categoryService.GetCategoryCount();
             this.ViewBag.ProductId = viewModel.Id;
 
@@ -190,6 +200,31 @@ namespace SiteX.Web.Controllers
 
             return this.Redirect("/");
         }
+
+        [Authorize]
+        public async Task<IActionResult> CreateColor()
+        {
+
+            return this.View();
+
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreateColor(ColorViewModel viewModel)
+        {
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+            await this.colorService.CreateAsync(viewModel);
+            return this.Redirect("/");
+
+        }
+
+
 
 
 
