@@ -1,7 +1,7 @@
 ﻿@model SiteX.Web.ViewModels.ShopViewModels.ProductEditViewModel
 @{
     this.ViewData["Title"] = "Edit Product";
-    int countOptions = ViewBag.CategoriesCount;
+    int countCategories = ViewBag.CategoriesCount;
 
 }
 
@@ -37,7 +37,7 @@
 
     <div class=form-group>
         <label asp-for="Categories"></label>
-        <select class="form-control" value="ViewBag.CategoriesId" asp-for="Categories" asp-items="@ViewBag.Categories" required>
+        <select class="form-control" asp-for="Categories" asp-items="@ViewBag.Categories" required>
             <span asp-validation-for="Categories" class="text-danger"></span>
 
         </select>
@@ -45,23 +45,39 @@
 
     <div class=form-group>
         <label asp-for="Locations"></label>
-        <select class="form-control" value="ViewBag.LocationsId" asp-for="Locations" asp-items="@ViewBag.Locations" required>
+        <select class="form-control" asp-for="Locations" asp-items="@ViewBag.Locations" required>
             <span asp-validation-for="Locations" class="text-danger"></span>
 
         </select>
     </div>
-   
-    
 
-        @foreach (var pictureUrl in Model.Pictures)
-        {
-            <div class="form-group">
-                <label asp-for="Pictures"></label>
-                <input asp-for="Pictures" value="@pictureUrl" class="form-control" />
-                <span asp-validation-for="Pictures" class="text-danger"></span>
-            </div>
-        }
-    
+    <div class=form-group>
+        <label asp-for="Sizes"></label>
+        <select class="form-control" asp-for="Sizes" asp-items="@ViewBag.Sizes" required>
+            <span asp-validation-for="Sizes" class="text-danger"></span>
+
+        </select>
+    </div>
+
+    <div class=form-group>
+        <label asp-for="Colors"></label>
+        <select class="form-control" asp-for="Colors" asp-items="@ViewBag.Colors" required>
+            <span asp-validation-for="Colors" class="text-danger"></span>
+
+        </select>
+    </div>
+
+
+
+    @foreach (var pictureUrl in Model.Pictures)
+    {
+        <div class="form-group">
+            <label asp-for="Pictures"></label>
+            <input asp-for="Pictures" value="@pictureUrl" class="form-control" />
+            <span asp-validation-for="Pictures" class="text-danger"></span>
+        </div>
+    }
+
 
 
 
@@ -99,8 +115,9 @@
 
 @foreach (var locationId in Model.Locations)
 {
-    <script>Selected("@(locationId+countOptions)")</script>
+    <script>Selected("@(locationId+countCategories)")</script>
 }
+
 
 <script>Selected(@Model.Gender)</script>
 <script>
