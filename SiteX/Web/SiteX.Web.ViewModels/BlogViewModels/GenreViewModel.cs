@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace SiteX.Web.ViewModels.ShopViewModels
+namespace SiteX.Web.ViewModels.BlogViewModels
 {
     public class GenreViewModel
     {
