@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SiteX.Services.Data.Interface
+namespace SiteX.Services.Data.BlogService.Interface
 {
     internal interface IPostImageService
     {

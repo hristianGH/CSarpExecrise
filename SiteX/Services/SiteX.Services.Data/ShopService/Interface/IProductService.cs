@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiteX.Services.Data.Interface
+namespace SiteX.Services.Data.ShopService.Interface
 {
     public interface IProductService
     {
@@ -26,6 +26,12 @@ namespace SiteX.Services.Data.Interface
         public Task CreatingProductImage(ICollection<string> paths, Guid product);
 
 
+        public Task CreatingProductSize(ICollection<int> sizes, Guid product);
+
+        public Task CreatingProductColor(ICollection<int> colors, Guid product);
+
+
+
         public int GetProductCount();
 
         public Product GetProductById(Guid id);
@@ -37,6 +43,11 @@ namespace SiteX.Services.Data.Interface
         public Task RemoveProductCategoriesById(Guid id);
 
         public Task RemoveProductImagesById(Guid id);
+
+        public ICollection<Location> GetLocationsByProductId(Guid id);
+        public ICollection<Category> GetCategoriesByProductId(Guid id);
+        public ICollection<ProductImage> GetImagesByProductId(Guid id);
+
 
 
 
