@@ -25,7 +25,9 @@ namespace SiteX.Web.ViewModels.ShopViewModels
         [MaxLength(400)]
         [MinLength(3)]
         public string Description { get; set; }
+
         public ApplicationUser User { get; set; }
+
         [Required]
         public string Gender { get; set; }
 
@@ -39,6 +41,12 @@ namespace SiteX.Web.ViewModels.ShopViewModels
 
         [MinLength(1),MaxLength(3)]
         public virtual ICollection<int> Categories { get; set; } = new List<int>();
+
+        [MinLength(1)]
+        public virtual ICollection<int> Sizes { get; set; } = new List<int>();
+
+        [MinLength(1)]
+        public virtual ICollection<int> Colors { get; set; } = new List<int>();
 
     }
 }
