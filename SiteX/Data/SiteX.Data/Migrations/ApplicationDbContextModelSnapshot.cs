@@ -298,7 +298,8 @@ namespace SiteX.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -329,9 +330,6 @@ namespace SiteX.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MyProperty")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -356,14 +354,14 @@ namespace SiteX.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -376,7 +374,7 @@ namespace SiteX.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("GenreId");
 
                     b.HasIndex("IsDeleted");
 
@@ -407,11 +405,8 @@ namespace SiteX.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PostId")
+                    b.Property<int>("PostId")
                         .HasColumnType("int");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -755,9 +750,9 @@ namespace SiteX.Data.Migrations
 
             modelBuilder.Entity("SiteX.Data.Models.Blog.PostGenre", b =>
                 {
-                    b.HasOne("SiteX.Data.Models.Blog.Genre", "Category")
+                    b.HasOne("SiteX.Data.Models.Blog.Genre", "Genre")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -767,7 +762,7 @@ namespace SiteX.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("Genre");
 
                     b.Navigation("Post");
                 });
@@ -776,7 +771,9 @@ namespace SiteX.Data.Migrations
                 {
                     b.HasOne("SiteX.Data.Models.Blog.Post", "Post")
                         .WithMany("PostImages")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Post");
                 });

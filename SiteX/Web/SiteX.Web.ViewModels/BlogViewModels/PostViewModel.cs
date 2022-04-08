@@ -24,7 +24,7 @@ namespace SiteX.Web.ViewModels.BlogViewModels
 
        
 
-        [MaxLength(4)]
+        [MinLength(1)]
         [Display(Name = "Picture Url")]
         public virtual ICollection<string> PostImages { get; set; } = new List<string>();
 
