@@ -9,7 +9,6 @@
     using SiteX.Data.Repositories;
     using SiteX.Data.Seeding;
     using SiteX.Services.Data;
-    using SiteX.Services.Data.Interface;
     using SiteX.Services.Mapping;
     using SiteX.Services.Messaging;
     using SiteX.Web.ViewModels;
@@ -22,6 +21,10 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using SiteX.Services.Data.ShopService.Interface;
+    using SiteX.Services.Data.BlogService.Interface;
+    using SiteX.Services.Data.BlogService;
+    using SiteX.Services.Data.ShopService;
 
     public class Startup
     {
@@ -71,9 +74,11 @@
 
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IGenderService, GenderService>();
-            services.AddTransient<ILocationService,LocationService>();
+            services.AddTransient<ILocationService, LocationService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IPictureService, ProductImageService>();
+            services.AddTransient<ISizeService, SizeService>();
+            services.AddTransient<IColorService, ColorService>();
 
             // BlogServices
             services.AddTransient<IGenreService, GenreService>();
