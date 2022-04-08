@@ -1,5 +1,5 @@
 ﻿using SiteX.Data.Models.Blog;
-using SiteX.Web.ViewModels.ShopViewModels;
+using SiteX.Web.ViewModels.BlogViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
