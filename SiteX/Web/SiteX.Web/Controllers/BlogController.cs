@@ -3,10 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SiteX.Data.Models;
-using SiteX.Services.Data;
 using SiteX.Services.Data.Interface;
 using SiteX.Web.ViewModels.BlogViewModels;
-using SiteX.Web.ViewModels.ShopViewModels;
 using System.Threading.Tasks;
 
 namespace SiteX.Web.Controllers
@@ -41,13 +39,13 @@ namespace SiteX.Web.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult CreateGenre(GenreViewModel viewModel)
+        public async Task< IActionResult> CreateGenre(GenreViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
                 return this.BadRequest();
             }
-            this.genreService.CreateAsync(viewModel);
+           await this.genreService.CreateAsync(viewModel);
             return this.Redirect("/");
         }
 
@@ -66,25 +64,11 @@ namespace SiteX.Web.Controllers
             {
                 return this.BadRequest();
             }
-            this.postService.CreatePostAsync(viewModel);
             viewModel.User = await this.userManager.GetUserAsync(this.User);
+           await this.postService.CreatePostAsync(viewModel);
 
             return this.Redirect("/");
         }
 
-
-
-        public async Task<IActionResult> CreateProduct(ProductViewModel viewModel)
-        {
-
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-
-            await this.productService.CreateAsync(viewModel);
-            return this.Redirect("/");
-        }
     }
 }
