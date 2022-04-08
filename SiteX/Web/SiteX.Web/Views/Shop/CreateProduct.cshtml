@@ -41,9 +41,23 @@
         <label asp-for="Locations"></label>
         <select class="form-control" asp-for="Locations" asp-items="@ViewBag.Locations" required>
             <span asp-validation-for="Locations" class="text-danger"></span>
-
         </select>
     </div>
+
+    <div class=form-group>
+        <label asp-for="Colors"></label>
+        <select class="form-control" asp-for="Colors" asp-items="@ViewBag.Colors" required>
+            <span asp-validation-for="Colors" class="text-danger"></span>
+        </select>
+    </div>
+
+    <div class=form-group>
+        <label asp-for="Sizes"></label>
+        <select class="form-control" asp-for="Sizes" asp-items="@ViewBag.Sizes" required>
+            <span asp-validation-for="Sizes" class="text-danger"></span>
+        </select>
+    </div>
+
 
     <div class="form-group">
         <label asp-for="Pictures"></label>
