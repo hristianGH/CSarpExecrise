@@ -17,13 +17,13 @@ namespace SiteX.Data.Seeding
                 return;
             }
 
-            dbContext.Add(new Genre { Name = "Life and Living" });
-            dbContext.Add(new Genre { Name = "Life and Dying" });
-            dbContext.Add(new Genre { Name = "Life and Health" });
-            dbContext.Add(new Genre { Name = "Tech and Living" });
-            dbContext.Add(new Genre { Name = "Tech and Dying" });
-            dbContext.Add(new Genre { Name = "Tech and Health" });
-            dbContext.Add(new Genre { Name = "Misc" });
+           await dbContext.AddAsync(new Genre { Name = "Life and Living" });
+            await dbContext.AddAsync(new Genre { Name = "Life and Dying" });
+            await dbContext.AddAsync(new Genre { Name = "Life and Health" });
+            await dbContext.AddAsync(new Genre { Name = "Tech and Living" });
+            await dbContext.AddAsync(new Genre { Name = "Tech and Dying" });
+            await dbContext.AddAsync(new Genre { Name = "Tech and Health" });
+            await dbContext.AddAsync(new Genre { Name = "Misc" });
 
 
 
