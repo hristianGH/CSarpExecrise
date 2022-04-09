@@ -14,7 +14,6 @@ namespace SiteX.Web.Controllers
 {
     public class ShopController : Controller
     {
-        private readonly ApplicationDbContext dbcontext;
         private readonly IGenderService genderService;
         private readonly ICategoryService categoryService;
         private readonly IProductService productService;
@@ -28,7 +27,6 @@ namespace SiteX.Web.Controllers
 
         // TODO IdeletableEntityRepository
         public ShopController(
-            ApplicationDbContext dbContext,
             IGenderService genderService,
             ICategoryService categoryService,
             IProductService productService,
@@ -38,7 +36,6 @@ namespace SiteX.Web.Controllers
             ISizeService sizeService,
             IColorService colorService)
         {
-            dbcontext = dbContext;
             this.genderService = genderService;
             this.categoryService = categoryService;
             this.productService = productService;
@@ -54,6 +51,26 @@ namespace SiteX.Web.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        public async Task<IActionResult> RemoveProduct()
+        {
+            this.ViewBag.Products = new SelectList(productService.ReturnAll(), "Id", "Name");
+            return this.View();
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> RemoveProduct(SelectProductViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            await productService.SoftDeleteProductByIdAsync(model.ProductId);
+            return Redirect("/");
+        }
+
+
 
         [Authorize]
         public async Task<IActionResult> CreateProduct()
@@ -225,6 +242,28 @@ namespace SiteX.Web.Controllers
         }
 
 
+        [Authorize]
+        public async Task<IActionResult> CreateSize()
+        {
+
+            return this.View();
+
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreateSize(SizeViewModel viewModel)
+        {
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+            await this.sizeService.CreateAsync(viewModel);
+            return this.Redirect("/");
+
+        }
 
 
 
@@ -272,21 +311,53 @@ namespace SiteX.Web.Controllers
 
         public async Task<IActionResult> All(int id = 1)
         {
-            ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = productService.ToList(id, 6), PageNumber = id, ItemsPerPage = 6 };
+            ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = productService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 6 };
             productViewModel.RecipesCount = productService.GetProductCount();
             return this.View(productViewModel);
 
         }
 
+        public IActionResult SearchByCategory(int id = 1)
+        {
+
+            ProductAllViewModel productViewModel = new ProductAllViewModel()
+            {
+                Products = productService.SortedByCategoryId(id)
+            };
+            if (productViewModel != null)
+            {
+                return this.View(productViewModel);
+
+            }
+            return NotFound();
+        }
+
         public IActionResult ById(Guid id)
         {
-            var product = this.productService.GetProductById(id);
-            ViewBag.Categories = productService.GetCategoriesByProductId(id);
+            var product = this.productService.GetOutputProductById(id);
             ViewBag.Images = productService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
-            ViewBag.Locations = productService.GetLocationsByProductId(id);
+            var viewmodel= new BuyingProductViewModel() { Product = product };
 
-            return this.View(product);
+            this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
+            this.ViewBag.Categories = new SelectList(this.productService.GetCategoriesByProductId(id), "Id", "Name");
+            this.ViewBag.Locations = new SelectList(this.productService.GetLocationsByProductId(id), "Id", "Address");
+            this.ViewBag.Sizes = new SelectList(this.sizeService.GetSizes(), "Id", "Name");
+            this.ViewBag.Colors = new SelectList(this.colorService.GetColors(), "Id", "Name");
+
+            return this.View(viewmodel);
         }
+
+        [HttpPost]
+        public IActionResult ById(BuyingProductViewModel viewmodel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+            return Redirect("/");
+        }
+
+
 
     }
 }

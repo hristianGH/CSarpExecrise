@@ -1,4 +1,5 @@
-﻿using SiteX.Web.ViewModels.BlogViewModels;
+﻿using SiteX.Data.Models.Blog;
+using SiteX.Web.ViewModels.BlogViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,8 +12,7 @@ namespace SiteX.Services.Data.BlogService.Interface
         public Task CreatePostAsync(PostViewModel viewModel);
 
         public Task CreatingPostGenre(ICollection<int> genres, int product);
-        
 
-
+        public Post GetPost();
     }
 }

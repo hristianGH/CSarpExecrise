@@ -64,6 +64,9 @@ namespace SiteX.Services.Data.BlogService
             await this.postGenreRepo.SaveChangesAsync();
         }
 
-        
+        public Post GetPost()
+        {
+            return postRepo.AllAsNoTracking().FirstOrDefault();
+        }
     }
 }
