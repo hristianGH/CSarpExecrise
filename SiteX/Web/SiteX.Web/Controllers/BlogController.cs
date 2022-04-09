@@ -26,9 +26,15 @@ namespace SiteX.Web.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var post = postService.GetPost();
+            return View(post);
         }
 
+        public IActionResult IndexTwo()
+        {
+            var post = postService.GetPost();
+            return View(post);
+        }
 
 
         [Authorize]

@@ -13,25 +13,20 @@
     using SiteX.Services.Data.ShopService.Interface;
 
     public class HomeController : BaseController
-
     {
-        //TODO Make it repository
-        private readonly ApplicationDbContext _dbContext;
         private readonly IProductService productService;
 
-        public HomeController(ApplicationDbContext dbContext,IProductService productService)
+        public HomeController(IProductService productService )
         {
-            this._dbContext = dbContext;
             this.productService = productService;
         }
         public IActionResult Index(int page)
         {
-
+            productService.SortedByCategoryId(2);
             return this.View();
 
         }
         //TODO Make List of 5 articles to show on Home page
-        //Service,View,Model
         public IActionResult Privacy()
         {
             return this.View();

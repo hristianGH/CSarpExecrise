@@ -1,0 +1,9 @@
+﻿@model SiteX.Data.Models.Blog.Post
+
+
+
+<div class="form-group">
+        <label asp-for="Body"></label>
+        <input asp-for="Body" value="@Model.Body" class="form-control" />
+        <span asp-validation-for="Body" class="text-danger"></span>
+    </div>
