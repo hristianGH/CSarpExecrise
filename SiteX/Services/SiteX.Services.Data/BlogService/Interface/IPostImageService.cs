@@ -7,6 +7,6 @@ namespace SiteX.Services.Data.BlogService.Interface
 {
     internal interface IPostImageService
     {
-        public ICollection<PostImageService> GetPostImages(int id);
+        public ICollection<PostImage> GetPostImages(int id);
     }
 }

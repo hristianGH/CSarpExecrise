@@ -335,7 +335,8 @@ namespace SiteX.Web.Controllers
         public IActionResult ById(Guid id)
         {
             var product = this.productService.GetOutputProductById(id);
-            ViewBag.Images = productService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
+            ViewBag.ImageOne = productService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
+            ViewBag.Images = productService.GetImagesByProductId(id).Select(x => x.Path).Skip(1);
             var viewmodel= new BuyingProductViewModel() { Product = product };
 
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
@@ -343,6 +344,7 @@ namespace SiteX.Web.Controllers
             this.ViewBag.Locations = new SelectList(this.productService.GetLocationsByProductId(id), "Id", "Address");
             this.ViewBag.Sizes = new SelectList(this.sizeService.GetSizes(), "Id", "Name");
             this.ViewBag.Colors = new SelectList(this.colorService.GetColors(), "Id", "Name");
+            // TODO REPLACE MOST VIEW BAGS WITH MODELS
 
             return this.View(viewmodel);
         }

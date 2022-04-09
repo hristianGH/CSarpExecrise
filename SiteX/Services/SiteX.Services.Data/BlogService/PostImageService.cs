@@ -1,4 +1,5 @@
-﻿using SiteX.Services.Data.BlogService.Interface;
+﻿using SiteX.Data.Models.Blog;
+using SiteX.Services.Data.BlogService.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
