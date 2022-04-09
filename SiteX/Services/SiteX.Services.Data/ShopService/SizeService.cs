@@ -1,10 +1,12 @@
 ﻿using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models.Shop;
 using SiteX.Services.Data.ShopService.Interface;
+using SiteX.Web.ViewModels.ShopViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SiteX.Services.Data.ShopService
 {
@@ -19,6 +21,14 @@ namespace SiteX.Services.Data.ShopService
             this.sizeRepo = sizeRepo;
             this.prodSizeRepo = prodSizeRepo;
         }
+
+        public async Task CreateAsync(SizeViewModel viewModel)
+        {
+            var size = new Size() { Name = viewModel.Name };
+            await sizeRepo.AddAsync(size);
+            await this.sizeRepo.SaveChangesAsync();
+        }
+
         public Dictionary<string, string> GetSizeAsKVP()
         {
             throw new NotImplementedException();
