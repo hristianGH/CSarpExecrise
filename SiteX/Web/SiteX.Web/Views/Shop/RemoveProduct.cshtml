@@ -1,0 +1,18 @@
+﻿@model SiteX.Web.ViewModels.ShopViewModels.SelectProductViewModel
+@{
+    ViewData["Title"] = "Select Product To Delete ";
+}
+
+<form method="post" class="align-content-md-center">
+
+
+     <div class=form-group>
+        <label asp-for="ProductId"></label>
+        <select class="form-control" asp-for="ProductId" asp-items="@ViewBag.Products" required>
+            <span asp-validation-for=" ProductId" class="text-danger"></span>
+        </select>
+    </div>
+
+    <input type="submit" class="btn btn-primary" />
+
+</form>
