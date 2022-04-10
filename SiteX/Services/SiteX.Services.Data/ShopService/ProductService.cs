@@ -178,13 +178,28 @@ namespace SiteX.Services.Data.ShopService
 
         }
 
-        public ICollection<ProductOutputViewModel> SortedByCategoryId(int id)
+        public ICollection<ProductOutputViewModel> FilterByCategoryId(int id)
         {
             var products = this.GetAllProductsAsOutModel().Where(x => x.Categories.Any(x => x.Id == id)).ToList();
             return products;
         }
+        public ICollection<ProductOutputViewModel> FilterByGenderId(string gender)
+        {
+            var products = this.GetAllProductsAsOutModel().Where(x => x.Gender==gender).ToList();
+            return products;
+        }
+        public ICollection<ProductOutputViewModel> FilterBySizeId(int id)
+        {
+            var products = this.GetAllProductsAsOutModel().Where(x => x.Sizes.Any(x => x.Id == id)).ToList();
+            return products;
+        }
+        public ICollection<ProductOutputViewModel> FilterByColorId(int id)
+        {
+            var products = this.GetAllProductsAsOutModel().Where(x => x.Colors.Any(x => x.Id == id)).ToList();
+            return products;
+        }
 
-         
+
     }
 }
 

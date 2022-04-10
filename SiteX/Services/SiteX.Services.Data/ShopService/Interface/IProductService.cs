@@ -17,7 +17,15 @@ namespace SiteX.Services.Data.ShopService.Interface
 
         public ICollection<ProductOutputViewModel> GetAllProductsAsOutModel();
 
-        public ICollection<ProductOutputViewModel> SortedByCategoryId(int id);
+        public ICollection<ProductOutputViewModel> FilterByCategoryId(int id);
+
+        public ICollection<ProductOutputViewModel> FilterByGenderId(string gender);
+
+
+        public ICollection<ProductOutputViewModel> FilterBySizeId(int id);
+
+        public ICollection<ProductOutputViewModel> FilterByColorId(int id);
+
 
         public Task RemoveProductAsync(Product product);
 

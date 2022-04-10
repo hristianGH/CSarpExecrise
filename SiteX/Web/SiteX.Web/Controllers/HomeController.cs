@@ -22,7 +22,7 @@
         }
         public IActionResult Index(int page)
         {
-            productService.SortedByCategoryId(2);
+            productService.FilterByCategoryId(2);
             return this.View();
 
         }

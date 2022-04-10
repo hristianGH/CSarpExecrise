@@ -343,15 +343,61 @@ namespace SiteX.Web.Controllers
 
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
-                Products = productService.SortedByCategoryId(id)
+                Products = productService.FilterByCategoryId(id)
             };
             if (productViewModel != null)
             {
-                return this.View(productViewModel);
+                return this.View("All", productViewModel);
 
             }
             return NotFound();
         }
+
+        public IActionResult SearchByGender(string id="Male")
+        {
+
+            ProductAllViewModel productViewModel = new ProductAllViewModel()
+            {
+                Products = productService.FilterByGenderId(id)
+            };
+            if (productViewModel != null)
+            {
+                return this.View("All", productViewModel);
+
+            }
+            return NotFound();
+        }
+
+        public IActionResult SearchByColor(int id = 1)
+        {
+
+            ProductAllViewModel productViewModel = new ProductAllViewModel()
+            {
+                Products = productService.FilterByColorId(id)
+            };
+            if (productViewModel != null)
+            {
+                return this.View("All", productViewModel);
+
+            }
+            return NotFound();
+        }
+        public IActionResult SearchBySize(int id = 1)
+        {
+
+            ProductAllViewModel productViewModel = new ProductAllViewModel()
+            {
+                Products = productService.FilterBySizeId(id)
+            };
+            if (productViewModel != null)
+            {
+                return this.View("All",productViewModel);
+
+            }
+            return NotFound();
+        }
+
+      
 
         public IActionResult ById(Guid id)
         {
