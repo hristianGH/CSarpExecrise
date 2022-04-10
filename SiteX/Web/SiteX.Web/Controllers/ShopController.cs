@@ -61,13 +61,15 @@ namespace SiteX.Web.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Administrator")]
         [Authorize]
         public async Task<IActionResult> RemoveProduct()
         {
             this.ViewBag.Products = new SelectList(productService.ReturnAll(), "Id", "Name");
             return this.View();
         }
-        [Authorize]
+
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> RemoveProduct(SelectProductViewModel model)
         {
@@ -81,7 +83,7 @@ namespace SiteX.Web.Controllers
 
 
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateProduct()
         {
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
@@ -96,7 +98,7 @@ namespace SiteX.Web.Controllers
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> CreateProduct(ProductViewModel viewModel)
         {
@@ -112,13 +114,13 @@ namespace SiteX.Web.Controllers
             return this.Redirect("/");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> SelectEditProduct()
         {
             this.ViewBag.Products = new SelectList(productService.ReturnAll(), "Id", "Name");
             return this.View();
         }
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> SelectEditProduct(SelectProductViewModel model)
         {
@@ -129,7 +131,7 @@ namespace SiteX.Web.Controllers
             return this.RedirectToAction("EditProduct", model);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> EditProduct(SelectProductViewModel model)
         {
 
@@ -169,7 +171,7 @@ namespace SiteX.Web.Controllers
             return this.View(EditedViewModel);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         // PRODUCT ID AND OLD PRODUCT DIDNT SHOW AFTER HTTP POST SO I ADDED FROMQUERY ATTRIBUTE TO BIND IT AFTER
         public async Task<IActionResult> EditProduct(ProductEditViewModel viewModel, [FromQuery(Name = "ProductId")] Guid id)
@@ -184,7 +186,7 @@ namespace SiteX.Web.Controllers
             return this.Redirect("/");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateCategory()
         {
 
@@ -193,7 +195,7 @@ namespace SiteX.Web.Controllers
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CategoryViewModel viewModel)
         {
@@ -207,14 +209,14 @@ namespace SiteX.Web.Controllers
 
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> EditCategory()
         {
             var viewModel = new CategoryEditViewModel();
             this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
             return this.View(viewModel);
         }
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> EditCategory(CategoryEditViewModel viewModel)
         {
@@ -227,7 +229,7 @@ namespace SiteX.Web.Controllers
             return this.Redirect("/");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateColor()
         {
 
@@ -236,7 +238,7 @@ namespace SiteX.Web.Controllers
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> CreateColor(ColorViewModel viewModel)
         {
@@ -251,7 +253,7 @@ namespace SiteX.Web.Controllers
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateSize()
         {
 
@@ -260,7 +262,7 @@ namespace SiteX.Web.Controllers
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> CreateSize(SizeViewModel viewModel)
         {
@@ -276,7 +278,7 @@ namespace SiteX.Web.Controllers
 
 
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateLocation()
         {
 
@@ -284,7 +286,7 @@ namespace SiteX.Web.Controllers
 
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> CreateLocation(LocationViewModel viewModel)
         {
@@ -297,14 +299,14 @@ namespace SiteX.Web.Controllers
             return this.Redirect("/");
 
         }
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> EditLocation()
         {
             var viewModel = new LocationEditViewModel();
             this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
             return this.View(viewModel);
         }
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> EditLocation(LocationEditViewModel viewModel)
         {

@@ -30,21 +30,17 @@ namespace SiteX.Web.Controllers
             return View(post);
         }
 
-        public IActionResult IndexTwo()
-        {
-            var post = postService.GetPost();
-            return View(post);
-        }
 
 
-        [Authorize]
+
+        [Authorize(Roles = "Administrator")]
         public IActionResult CreateGenre()
         {
             return this.View();
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task< IActionResult> CreateGenre(GenreViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -55,7 +51,7 @@ namespace SiteX.Web.Controllers
             return this.Redirect("/");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreatePost()
         {
             this.ViewBag.Genres = new SelectList(this.genreService.GetGenres(), "Id", "Name");
@@ -63,7 +59,7 @@ namespace SiteX.Web.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreatePost(PostViewModel viewModel)
         {
             if (!ModelState.IsValid)
