@@ -1,5 +1,6 @@
 ﻿using SiteX.Data.Models.Shop;
 using SiteX.Web.ViewModels.ShopViewModels;
+using SiteX.Web.ViewModels.ShopViewModels.SizeModels;
 using System;
 using System.Collections.Generic;
 using System.Text;

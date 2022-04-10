@@ -6,9 +6,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace SiteX.Web.ViewModels.ShopViewModels
+namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
 {
-    public class ProductViewModel
+    public class ProductViewModel:ToSelectList
     {
         [Required]
         [MaxLength(50)]

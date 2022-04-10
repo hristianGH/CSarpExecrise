@@ -2,6 +2,7 @@
 using SiteX.Data.Models.Shop;
 using SiteX.Services.Data.ShopService.Interface;
 using SiteX.Web.ViewModels.ShopViewModels;
+using SiteX.Web.ViewModels.ShopViewModels.ColorModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

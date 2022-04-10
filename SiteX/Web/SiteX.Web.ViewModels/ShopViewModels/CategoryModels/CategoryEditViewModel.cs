@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace SiteX.Web.ViewModels.ShopViewModels
+namespace SiteX.Web.ViewModels.ShopViewModels.CategoryModels
 {
     public class CategoryEditViewModel
     {

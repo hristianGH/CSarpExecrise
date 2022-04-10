@@ -2,10 +2,10 @@
 using SiteX.Data.Models.Shop;
 using SiteX.Services.Data.ShopService.Interface;
 using SiteX.Web.ViewModels.ShopViewModels;
+using SiteX.Web.ViewModels.ShopViewModels.CategoryModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SiteX.Services.Data.ShopService

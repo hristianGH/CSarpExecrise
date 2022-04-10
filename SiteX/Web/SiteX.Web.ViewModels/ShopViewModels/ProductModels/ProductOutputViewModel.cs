@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SiteX.Web.ViewModels.ShopViewModels
+namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
 {
     public class ProductOutputViewModel
     {

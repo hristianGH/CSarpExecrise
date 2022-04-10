@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace SiteX.Web.ViewModels.ShopViewModels
+namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
 {
-    public class ProductEditViewModel
+    public class ProductEditViewModel : ToSelectList
     {
         public Product OldProduct { get; set; }
         [Required]
@@ -57,6 +57,3 @@ namespace SiteX.Web.ViewModels.ShopViewModels
 
     }
 }
-
-
- 

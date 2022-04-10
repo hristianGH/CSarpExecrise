@@ -5,6 +5,7 @@ using SiteX.Data.Models.Shop;
 using SiteX.Services.Data.ShopService.Interface;
 using SiteX.Services.Data.ShopService.Models;
 using SiteX.Web.ViewModels.ShopViewModels;
+using SiteX.Web.ViewModels.ShopViewModels.ProductModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
