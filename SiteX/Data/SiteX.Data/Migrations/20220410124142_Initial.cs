@@ -304,6 +304,7 @@ namespace SiteX.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsAvalable = table.Column<bool>(type: "bit", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),

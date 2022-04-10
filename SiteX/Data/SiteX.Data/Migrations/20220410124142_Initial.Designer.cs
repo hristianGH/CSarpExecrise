@@ -10,8 +10,8 @@ using SiteX.Data;
 namespace SiteX.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220408102430_AddedColorToProd")]
-    partial class AddedColorToProd
+    [Migration("20220410124142_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
