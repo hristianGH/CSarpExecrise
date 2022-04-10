@@ -3,6 +3,7 @@ using SiteX.Data.Common.Models;
 using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models.Shop;
 using SiteX.Services.Data.ShopService.Interface;
+using SiteX.Services.Data.ShopService.Models;
 using SiteX.Web.ViewModels.ShopViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,26 +16,27 @@ namespace SiteX.Services.Data.ShopService
     public class ProductService : IProductService
     {
         private readonly IDeletableEntityRepository<Product> productRepo;
-        private readonly IDeletableEntityRepository<ProductCategory> productCategoryRepo;
-        private readonly IDeletableEntityRepository<ProductLocation> productLocationRepo;
-        private readonly IDeletableEntityRepository<ProductSize> prodSizeRepo;
-        private readonly IDeletableEntityRepository<ProductImage> prodImageRepo;
-        private readonly IDeletableEntityRepository<ProductColor> prodColorRepo;
+        private readonly IProductCategoryService productCategoryService;
+        private readonly IProductLocationService productLocationService;
+        private readonly IProductSizeService productSizeService;
+        private readonly IProductColorService productColorService;
+        private readonly IProductImageService productImageService;
 
-
-        public ProductService(IDeletableEntityRepository<Product> productRepo,
-            IDeletableEntityRepository<ProductCategory> productCategoryRepo,
-            IDeletableEntityRepository<ProductLocation> productLocationRepo,
-            IDeletableEntityRepository<ProductImage> prodImageRepo,
-            IDeletableEntityRepository<ProductColor> prodColorRepo,
-            IDeletableEntityRepository<ProductSize> prodSizeRepo)
+        public ProductService(
+            IDeletableEntityRepository<Product> productRepo,
+            IProductCategoryService productCategoryService,
+            IProductLocationService productLocationService,
+            IProductSizeService productSizeService,
+            IProductColorService productColorService,
+            IProductImageService productImageService)
         {
             this.productRepo = productRepo;
-            this.productCategoryRepo = productCategoryRepo;
-            this.productLocationRepo = productLocationRepo;
-            this.prodSizeRepo = prodSizeRepo;
-            this.prodImageRepo = prodImageRepo;
-            this.prodColorRepo = prodColorRepo;
+
+            this.productCategoryService = productCategoryService;
+            this.productLocationService = productLocationService;
+            this.productSizeService = productSizeService;
+            this.productColorService = productColorService;
+            this.productImageService = productImageService;
         }
         public async Task CreateAsync(ProductViewModel viewModel)
         {
@@ -57,10 +59,10 @@ namespace SiteX.Services.Data.ShopService
             await this.productRepo.AddAsync(product);
             await this.productRepo.SaveChangesAsync();
 
-            await CreatingProductCategoryAsync(viewModel.Categories, product.Id);
-            await CreatingProductLocationAsync(viewModel.Locations, product.Id);
-            await CreatingProductColorAsync(viewModel.Colors, product.Id);
-            await CreatingProductSizeAsync(viewModel.Sizes, product.Id);
+            await productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, product.Id);
+            await productLocationService.CreatingProductLocationAsync(viewModel.Locations, product.Id);
+            await productColorService.CreatingProductColorAsync(viewModel.Colors, product.Id);
+            await productSizeService.CreatingProductSizeAsync(viewModel.Sizes, product.Id);
 
 
 
@@ -73,7 +75,7 @@ namespace SiteX.Services.Data.ShopService
             {
                 productRepo.Delete(all[i]);
             }
-           await productRepo.SaveChangesAsync();
+            await productRepo.SaveChangesAsync();
 
         }
         public ICollection<Product> ReturnAll()
@@ -101,10 +103,9 @@ namespace SiteX.Services.Data.ShopService
             if (product != null)
             {
                 await RemoveProductAsync(product);
-                 
+
             }
         }
-
 
         public ICollection<ProductOutputViewModel> ToPage(int page = 1, int itemsPerPage = 6)
         {
@@ -126,84 +127,10 @@ namespace SiteX.Services.Data.ShopService
                     Sizes = x.ProductSizes.Select(x => x.Size).ToList(),
                     Description = x.Description,
                     Gender = x.Gender,
-                    Price = x.Price
+                    Price = x.Price,
 
                 }).ToList();
             return output;
-        }
-
-
-        // TODO MAKE CREATE GENERIC
-
-        public async Task CreatingProductLocationAsync(ICollection<int> locations, Guid product)
-        {
-
-            foreach (var item in locations)
-            {
-                var entity = new ProductLocation();
-                entity.ProductId = product;
-                entity.LocationId = item;
-
-                await this.productLocationRepo.AddAsync(entity);
-            }
-            await this.productLocationRepo.SaveChangesAsync();
-        }
-        // TODO MAKE CREATE GENERIC
-
-        public async Task CreatingProductCategoryAsync(ICollection<int> categories, Guid product)
-        {
-
-
-            foreach (var item in categories)
-            {
-                var entity = new ProductCategory();
-                entity.ProductId = product;
-                entity.CategoryId = item;
-
-                await this.productCategoryRepo.AddAsync(entity);
-            }
-            await this.productCategoryRepo.SaveChangesAsync();
-        }
-        // TODO MAKE CREATE GENERIC
-
-        public async Task CreatingProductImageAsync(ICollection<string> paths, Guid product)
-        {
-            foreach (var item in paths)
-            {
-                var entity = new ProductImage();
-                entity.ProductId = product;
-                entity.Path = item;
-
-                await this.prodImageRepo.AddAsync(entity);
-            }
-            await this.prodImageRepo.SaveChangesAsync();
-        }
-        // TODO MAKE CREATE GENERIC
-        public async Task CreatingProductSizeAsync(ICollection<int> sizes, Guid product)
-        {
-            foreach (var item in sizes)
-            {
-                var entity = new ProductSize();
-                entity.ProductId = product;
-                entity.SizeId = item;
-
-                await this.prodSizeRepo.AddAsync(entity);
-            }
-            await this.prodSizeRepo.SaveChangesAsync();
-        }
-        // TODO MAKE CREATE GENERIC
-
-        public async Task CreatingProductColorAsync(ICollection<int> colors, Guid product)
-        {
-            foreach (var item in colors)
-            {
-                var entity = new ProductColor();
-                entity.ProductId = product;
-                entity.ColorId = item;
-
-                await this.prodColorRepo.AddAsync(entity);
-            }
-            await this.prodColorRepo.SaveChangesAsync();
         }
 
         public int GetProductCount()
@@ -236,69 +163,17 @@ namespace SiteX.Services.Data.ShopService
 
             await this.productRepo.SaveChangesAsync();
 
-            HardDeleteProductLocationByIdAsync(viewModel.OldProductId);
+            await this.productLocationService.HardDeleteProductLocationByIdAsync(viewModel.OldProductId);
 
-            HardDeleteProductCategoriesByIdAsync(viewModel.OldProductId);
+            await this.productCategoryService.HardDeleteProductCategoriesByIdAsync(viewModel.OldProductId);
 
-            HardDeleteProductImagesByIdAsync(viewModel.OldProductId);
+            await this.productImageService.HardDeleteProductImagesByIdAsync(viewModel.OldProductId);
 
+            await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, product.Id);
 
+            await this.productLocationService.CreatingProductLocationAsync(viewModel.Locations, product.Id);
 
-            await CreatingProductCategoryAsync(viewModel.Categories, product.Id);
-            await CreatingProductLocationAsync(viewModel.Locations, product.Id);
-            await CreatingProductImageAsync(viewModel.Pictures, product.Id);
-
-
-
-        }
-
-        public async Task HardDeleteProductLocationByIdAsync(Guid productId)
-        {
-            var locations = productLocationRepo.All().Where(x => x.ProductId == productId).ToList();
-            foreach (var location in locations)
-            {
-                productLocationRepo.HardDelete(location);
-            }
-            await productLocationRepo.SaveChangesAsync();
-        }
-
-        public async Task HardDeleteProductCategoriesByIdAsync(Guid productId)
-        {
-            var categories = productCategoryRepo.All().Where(x => x.ProductId == productId).ToList();
-            foreach (var category in categories)
-            {
-                productCategoryRepo.HardDelete(category);
-            }
-            await productCategoryRepo.SaveChangesAsync();
-            categories = productCategoryRepo.All().Where(x => x.ProductId == productId).ToList();
-
-        }
-
-        public async Task HardDeleteProductImagesByIdAsync(Guid productId)
-        {
-            var images = prodImageRepo.All().Where(x => x.Product.Id == productId).ToList();
-            foreach (var image in images)
-            {
-                prodImageRepo.HardDelete(image);
-            }
-            await prodImageRepo.SaveChangesAsync();
-
-        }
-
-        public ICollection<Location> GetLocationsByProductId(Guid id)
-        {
-            return productLocationRepo.AllAsNoTracking().Where(x => x.ProductId == id).Select(x => x.Location).ToList();
-        }
-
-        public ICollection<Category> GetCategoriesByProductId(Guid id)
-        {
-            return productCategoryRepo.AllAsNoTracking().Where(x => x.ProductId == id).Select(x => x.Category).ToList();
-
-        }
-
-        public ICollection<ProductImage> GetImagesByProductId(Guid id)
-        {
-            return prodImageRepo.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
+            await this.productImageService.CreatingProductImageAsync(viewModel.Pictures, product.Id);
 
         }
 
@@ -307,6 +182,9 @@ namespace SiteX.Services.Data.ShopService
             var products = this.GetAllProductsAsOutModel().Where(x => x.Categories.Any(x => x.Id == id)).ToList();
             return products;
         }
-    }
 
+         
+    }
 }
+
+ 

@@ -1,4 +1,5 @@
 ﻿using SiteX.Data.Models.Shop;
+using SiteX.Services.Data.ShopService.Models;
 using SiteX.Web.ViewModels.ShopViewModels;
 using System;
 using System.Collections.Generic;
@@ -23,42 +24,14 @@ namespace SiteX.Services.Data.ShopService.Interface
 
         public Task SoftDeleteProductByIdAsync(Guid id);
 
-        public Task HardDeleteProductLocationByIdAsync(Guid id);
-
-        public Task HardDeleteProductCategoriesByIdAsync(Guid id);
-
-        public Task HardDeleteProductImagesByIdAsync(Guid id);
-
         public ICollection<Product> ReturnAll();
-
-        public Task CreatingProductCategoryAsync(ICollection<int> categories, Guid product);
-
-        public Task CreatingProductLocationAsync(ICollection<int> locations, Guid product);
-
-        public Task CreatingProductImageAsync(ICollection<string> paths, Guid product);
-
-
-        public Task CreatingProductSizeAsync(ICollection<int> sizes, Guid product);
-
-        public Task CreatingProductColorAsync(ICollection<int> colors, Guid product);
-
-
 
         public int GetProductCount();
 
         public Product GetProductById(Guid id);
         public ProductOutputViewModel GetOutputProductById(Guid id);
 
-
         public Task EditAsync(ProductEditViewModel viewModel);
-
-
-        public ICollection<Location> GetLocationsByProductId(Guid id);
-        public ICollection<Category> GetCategoriesByProductId(Guid id);
-        public ICollection<ProductImage> GetImagesByProductId(Guid id);
-
-
-
 
     }
 }

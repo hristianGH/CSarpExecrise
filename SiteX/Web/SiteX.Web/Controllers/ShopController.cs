@@ -19,9 +19,12 @@ namespace SiteX.Web.Controllers
         private readonly IProductService productService;
         private readonly ILocationService locationService;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IPictureService pictureService;
+        private readonly IProductImageService pictureService;
         private readonly ISizeService sizeService;
         private readonly IColorService colorService;
+        private readonly IProductImageService productImageService;
+        private readonly IProductCategoryService productCategoryService;
+        private readonly IProductLocationService productLocationService;
 
 
 
@@ -32,9 +35,12 @@ namespace SiteX.Web.Controllers
             IProductService productService,
             ILocationService locationService,
             UserManager<ApplicationUser> userManager,
-            IPictureService pictureService,
+            IProductImageService pictureService,
             ISizeService sizeService,
-            IColorService colorService)
+            IColorService colorService,
+            IProductImageService productImageService,
+            IProductCategoryService productCategoryService,
+            IProductLocationService productLocationService)
         {
             this.genderService = genderService;
             this.categoryService = categoryService;
@@ -44,6 +50,9 @@ namespace SiteX.Web.Controllers
             this.pictureService = pictureService;
             this.sizeService = sizeService;
             this.colorService = colorService;
+            this.productImageService = productImageService;
+            this.productCategoryService = productCategoryService;
+            this.productLocationService = productLocationService;
         }
 
 
@@ -146,7 +155,7 @@ namespace SiteX.Web.Controllers
 
             if (EditedViewModel.Pictures.Count() == 0)
             {
-                EditedViewModel.Pictures.Add("");
+                EditedViewModel.Pictures.Add(string.Empty);
             }
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
             this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
@@ -335,13 +344,13 @@ namespace SiteX.Web.Controllers
         public IActionResult ById(Guid id)
         {
             var product = this.productService.GetOutputProductById(id);
-            ViewBag.ImageOne = productService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
-            ViewBag.Images = productService.GetImagesByProductId(id).Select(x => x.Path).Skip(1);
+            ViewBag.ImageOne = productImageService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
+            ViewBag.Images = productImageService.GetImagesByProductId(id).Select(x => x.Path).Skip(1);
             var viewmodel= new BuyingProductViewModel() { Product = product };
 
             this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
-            this.ViewBag.Categories = new SelectList(this.productService.GetCategoriesByProductId(id), "Id", "Name");
-            this.ViewBag.Locations = new SelectList(this.productService.GetLocationsByProductId(id), "Id", "Address");
+            this.ViewBag.Categories = new SelectList(this.productCategoryService.GetCategoriesByProductId(id), "Id", "Name");
+            this.ViewBag.Locations = new SelectList(this.productLocationService.GetLocationsByProductId(id), "Id", "Address");
             this.ViewBag.Sizes = new SelectList(this.sizeService.GetSizes(), "Id", "Name");
             this.ViewBag.Colors = new SelectList(this.colorService.GetColors(), "Id", "Name");
             // TODO REPLACE MOST VIEW BAGS WITH MODELS
