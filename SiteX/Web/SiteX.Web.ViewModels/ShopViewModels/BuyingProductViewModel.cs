@@ -9,6 +9,5 @@ namespace SiteX.Web.ViewModels.ShopViewModels
         public ProductOutputViewModel Product { get; set; }
         public string Color { get; set; }
         public string Size { get; set; }
-
     }
 }
