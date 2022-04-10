@@ -3,12 +3,19 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using SiteX.Data.Models;
 
     public class ApplicationDbContextSeeder : ISeeder
     {
+        private readonly UserManager<ApplicationUser> userManager;
+
+        public ApplicationDbContextSeeder(UserManager<ApplicationUser> userManager)
+        {
+            this.userManager = userManager;
+        }
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             if (dbContext == null)
@@ -35,6 +42,7 @@
                               new GenreSeeder(),
                               new SizeSeeder(),
                               new ColorSeeder(),
+                              new UserSeeder(this.userManager),
                           };
 
             foreach (var seeder in seeders)

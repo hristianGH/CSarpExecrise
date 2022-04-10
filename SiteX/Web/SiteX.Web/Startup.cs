@@ -25,6 +25,7 @@
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Services.Data.BlogService;
     using SiteX.Services.Data.ShopService;
+    using Microsoft.AspNetCore.Identity;
 
     public class Startup
     {
@@ -76,9 +77,15 @@
             services.AddTransient<IGenderService, GenderService>();
             services.AddTransient<ILocationService, LocationService>();
             services.AddTransient<IProductService, ProductService>();
-            services.AddTransient<IPictureService, ProductImageService>();
             services.AddTransient<ISizeService, SizeService>();
             services.AddTransient<IColorService, ColorService>();
+            services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            services.AddTransient<IProductColorService, ProductColorService>();
+            services.AddTransient<IProductImageService, ProductImageService>();
+            services.AddTransient<IProductLocationService, ProductLocationService>();
+            services.AddTransient<IProductSizeService, ProductSizeService>();
+
+
 
             // BlogServices
             services.AddTransient<IGenreService, GenreService>();
@@ -91,13 +98,13 @@
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
-
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 dbContext.Database.Migrate();
-                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                new ApplicationDbContextSeeder(userManager).SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
 
             if (env.IsDevelopment())
