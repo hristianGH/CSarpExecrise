@@ -1,7 +1,13 @@
-﻿@model SiteX.Web.ViewModels.ShopViewModels.ProductEditViewModel
+﻿@model SiteX.Web.ViewModels.ShopViewModels.ProductModels.ProductEditViewModel
 @{
     this.ViewData["Title"] = "Edit Product";
     int countCategories = ViewBag.CategoriesCount;
+
+    var gendersList = new SelectList(Model.GendersToList);
+    var categoriesList = new SelectList(Model.CategoriesToList, "Id", "Name");
+    var locationsList = new SelectList(Model.LocationsToList, "Id", "Address");
+    var sizesList = new SelectList(Model.SizesToList, "Id", "Name");
+    var colorsList = new SelectList(Model.ColorsToList, "Id", "Name");
 
 }
 
@@ -11,7 +17,7 @@
 
     <div class="form-group">
         <label asp-for="OldProductId"></label>
-        <input asp-for="OldProductId" value="@ViewBag.ProductId" disabled readonly />
+        <input asp-for="OldProductId" value="@ViewBag.ProductId" readonly />
     </div>
 
     <div class="form-group">
@@ -29,7 +35,7 @@
 
     <div class=form-group>
         <label asp-for="Gender"></label>
-        <select class="form-control" asp-for="Gender" asp-items="@ViewBag.Genders" required>
+        <select class="form-control" asp-for="Gender" asp-items="@gendersList" required>
             <span asp-validation-for="Gender" class="text-danger"></span>
 
         </select>
@@ -37,7 +43,7 @@
 
     <div class=form-group>
         <label asp-for="Categories"></label>
-        <select class="form-control" asp-for="Categories" asp-items="@ViewBag.Categories" required>
+        <select class="form-control" asp-for="Categories" asp-items="@categoriesList" required>
             <span asp-validation-for="Categories" class="text-danger"></span>
 
         </select>
@@ -45,7 +51,7 @@
 
     <div class=form-group>
         <label asp-for="Locations"></label>
-        <select class="form-control" asp-for="Locations" asp-items="@ViewBag.Locations" required>
+        <select class="form-control" asp-for="Locations" asp-items="@locationsList" required>
             <span asp-validation-for="Locations" class="text-danger"></span>
 
         </select>
@@ -53,7 +59,7 @@
 
     <div class=form-group>
         <label asp-for="Sizes"></label>
-        <select class="form-control" asp-for="Sizes" asp-items="@ViewBag.Sizes" required>
+        <select class="form-control" asp-for="Sizes" asp-items="@sizesList" required>
             <span asp-validation-for="Sizes" class="text-danger"></span>
 
         </select>
@@ -61,7 +67,7 @@
 
     <div class=form-group>
         <label asp-for="Colors"></label>
-        <select class="form-control" asp-for="Colors" asp-items="@ViewBag.Colors" required>
+        <select class="form-control" asp-for="Colors" asp-items="@colorsList" required>
             <span asp-validation-for="Colors" class="text-danger"></span>
 
         </select>

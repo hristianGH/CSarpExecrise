@@ -2,10 +2,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SiteX.Data;
 using SiteX.Data.Models;
 using SiteX.Services.Data.ShopService.Interface;
-using SiteX.Web.ViewModels.ShopViewModels;
+using SiteX.Web.ViewModels.ShopViewModels.CategoryModels;
+using SiteX.Web.ViewModels.ShopViewModels.ColorModels;
+using SiteX.Web.ViewModels.ShopViewModels.LocationModels;
+using SiteX.Web.ViewModels.ShopViewModels.ProductModels;
+using SiteX.Web.ViewModels.ShopViewModels.SizeModels;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -86,14 +89,17 @@ namespace SiteX.Web.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateProduct()
         {
-            this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
-            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
-            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
-            this.ViewBag.Colors = new SelectList(this.colorService.GetColors(), "Id", "Name");
-            this.ViewBag.Sizes = new SelectList(this.sizeService.GetSizes(), "Id", "Name");
+            var viewModel= new ProductViewModel();
+ 
+
+            viewModel.GendersToList = this.genderService.GetGenders();
+            viewModel.CategoriesToList = this.categoryService.GetCategories();
+            viewModel.LocationsToList = this.locationService.GetLocations();
+            viewModel.SizesToList = this.sizeService.GetSizes();
+            viewModel.ColorsToList = this.colorService.GetColors();
 
 
-            return this.View();
+            return this.View(viewModel);
 
         }
 
@@ -135,7 +141,7 @@ namespace SiteX.Web.Controllers
         public async Task<IActionResult> EditProduct(SelectProductViewModel model)
         {
 
-            // TODO ADD COLOR AND SIZE TO PRODUCT EDIT
+            // TODO Fix ViewBAG problem
 
             var viewModel = productService.GetProductById(model.ProductId);
 
@@ -159,11 +165,15 @@ namespace SiteX.Web.Controllers
             {
                 EditedViewModel.Pictures.Add(string.Empty);
             }
-            this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
-            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
-            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
-            this.ViewBag.Sizes = new SelectList(this.sizeService.GetSizes(), "Id", "Name");
-            this.ViewBag.Colors = new SelectList(this.colorService.GetColors(), "Id", "Name");
+
+            
+
+            EditedViewModel.GendersToList = this.genderService.GetGenders();
+            EditedViewModel.CategoriesToList = this.categoryService.GetCategories();
+            EditedViewModel.LocationsToList = this.locationService.GetLocations();
+            EditedViewModel.SizesToList = this.sizeService.GetSizes();
+            EditedViewModel.ColorsToList = this.colorService.GetColors();
+
 
             this.ViewBag.CategoriesCount = categoryService.GetCategoryCount();
             this.ViewBag.ProductId = viewModel.Id;
@@ -348,14 +358,13 @@ namespace SiteX.Web.Controllers
             var product = this.productService.GetOutputProductById(id);
             ViewBag.ImageOne = productImageService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
             ViewBag.Images = productImageService.GetImagesByProductId(id).Select(x => x.Path).Skip(1);
-            var viewmodel= new BuyingProductViewModel() { Product = product };
+            var viewmodel= new BuyingProductViewModel() {ProductId=product.Id,Product=product};
 
-            this.ViewBag.Genders = new SelectList(this.genderService.GetGenders());
-            this.ViewBag.Categories = new SelectList(this.productCategoryService.GetCategoriesByProductId(id), "Id", "Name");
-            this.ViewBag.Locations = new SelectList(this.productLocationService.GetLocationsByProductId(id), "Id", "Address");
-            this.ViewBag.Sizes = new SelectList(this.sizeService.GetSizes(), "Id", "Name");
-            this.ViewBag.Colors = new SelectList(this.colorService.GetColors(), "Id", "Name");
-            // TODO REPLACE MOST VIEW BAGS WITH MODELS
+            viewmodel.CategoriesToList = product.Categories;
+            viewmodel.LocationsToList = product.Locations;
+            viewmodel.SizesToList = product.Sizes;
+            viewmodel.ColorsToList = product.Colors;
+             
 
             return this.View(viewmodel);
         }
@@ -367,10 +376,14 @@ namespace SiteX.Web.Controllers
             {
                 return this.BadRequest();
             }
-            return Redirect("/");
+            return RedirectToAction("Buy",viewmodel);
         }
 
+        public IActionResult Buy()
+        {
 
+            return this.View();
+        }
 
     }
 }

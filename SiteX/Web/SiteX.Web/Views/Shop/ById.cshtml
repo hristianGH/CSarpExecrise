@@ -1,11 +1,20 @@
-﻿@model SiteX.Web.ViewModels.ShopViewModels.BuyingProductViewModel
+﻿@model SiteX.Web.ViewModels.ShopViewModels.ProductModels.BuyingProductViewModel
 
 @{
     this.ViewData["Title"] = $"{@Model.Product.Name}";
-
-
+    var categoriesList = new SelectList(Model.CategoriesToList,"Id","Name");
+    var locationsList = new SelectList(Model.LocationsToList, "Id", "Address");
+    var sizesList = new SelectList(Model.SizesToList, "Id", "Name");
+    var colorsList = new SelectList(Model.ColorsToList, "Id", "Name");
 }
 
+<form method="post" class="align-content-md-center">
+
+   
+    <div class="form-group">
+        <label asp-for="ProductId"></label>
+        <input asp-for="ProductId" value="@Model.ProductId"  readonly />
+    </div>
 
 <div class="row featurette">
 
@@ -13,12 +22,16 @@
 
         <h2 class="featurette-heading">@Model.Product.Name </h2>
 
+
         <button type="button" class="btn btn-primary btn-lg">@Model.Product.Price лв</button>
 
         <p>Gender: @Model.Product.Gender </p>
 
 
-
+       <div class="pull-right postreply">
+                <div class="pull-left"><button type="submit" class="btn btn-primary">Buy</button></div>
+                <div class="clearfix"></div>
+            </div>
 
 
         <div id="Categories" class="btn-group">
@@ -29,12 +42,11 @@
             }
 
         </div>
-        <div id="Description" class=></div>
 
 
         <div class=form-group>
             <label asp-for="Size"></label>
-            <select class="form-control" asp-for="Size" asp-items="ViewBag.Sizes" required>
+            <select class="form-control" asp-for="Size" asp-items="@sizesList" required>
                 <span asp-validation-for="Size" class="text-danger"></span>
             </select>
         </div>
@@ -42,7 +54,7 @@
 
         <div class=form-group>
             <label asp-for="Color"></label>
-            <select class="form-control" asp-for="Color" asp-items="ViewBag.Colors" required>
+            <select class="form-control" asp-for="Color" asp-items="@colorsList" required>
                 <span asp-validation-for="Color" class="text-danger"></span>
             </select>
         </div>
@@ -98,3 +110,5 @@
         </div>
     </div>
 </div>
+
+</form>
