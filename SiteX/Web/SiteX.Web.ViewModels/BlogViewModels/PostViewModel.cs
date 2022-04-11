@@ -22,7 +22,6 @@ namespace SiteX.Web.ViewModels.BlogViewModels
 
         public ApplicationUser User { get; set; }
 
-       
 
         [MinLength(1)]
         [Display(Name = "Picture Url")]
