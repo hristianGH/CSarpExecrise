@@ -41,13 +41,13 @@ namespace SiteX.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator")]
-        public async Task< IActionResult> CreateGenre(GenreViewModel viewModel)
+        public async Task<IActionResult> CreateGenre(GenreViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
                 return this.BadRequest();
             }
-           await this.genreService.CreateAsync(viewModel);
+            await this.genreService.CreateAsync(viewModel);
             return this.Redirect("/");
         }
 
@@ -67,10 +67,26 @@ namespace SiteX.Web.Controllers
                 return this.BadRequest();
             }
             viewModel.User = await this.userManager.GetUserAsync(this.User);
-           await this.postService.CreatePostAsync(viewModel);
+            await this.postService.CreatePostAsync(viewModel);
 
             return this.Redirect("/");
         }
+
+
+
+        public async Task<IActionResult> All(int id = 1)
+        {
+
+            PostAllViewModel postViewModel = new PostAllViewModel() { Posts = postService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 8 };
+
+            postViewModel.ItemsCount = postService.GetPostCount();
+
+            // postViewModel.ToSelectList = toListService.ToSelectList();
+            return this.View(postViewModel);
+
+        }
+
+        
 
     }
 }
