@@ -1,16 +1,17 @@
-﻿using SiteX.Data.Models.Shop;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiteX.Services.Data.ShopService.Interface
+﻿namespace SiteX.Services.Data.ShopService.Interface
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using SiteX.Data.Models.Shop;
+
     public interface IProductCategoryService
     {
-
         public Task CreatingProductCategoryAsync(ICollection<int> categories, Guid product);
-        public  Task HardDeleteProductCategoriesByIdAsync(Guid productId);
+
+        public Task HardDeleteProductCategoriesByIdAsync(Guid productId);
+
         public ICollection<Category> GetCategoriesByProductId(Guid id);
     }
 }

@@ -1,9 +1,8 @@
 ﻿namespace SiteX.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using SiteX.Data.Models;
     using SiteX.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

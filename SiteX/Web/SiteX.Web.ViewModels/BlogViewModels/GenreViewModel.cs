@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace SiteX.Web.ViewModels.BlogViewModels
+﻿namespace SiteX.Web.ViewModels.BlogViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class GenreViewModel
     {
         [Required]

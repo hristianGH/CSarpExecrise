@@ -3,9 +3,8 @@ namespace SiteX.Data.Models
 {
     using System;
 
-    using SiteX.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using SiteX.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {

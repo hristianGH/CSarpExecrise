@@ -1,11 +1,8 @@
-﻿using SiteX.Services.Data.ShopService.Interface;
-using SiteX.Web.ViewModels.ShopViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiteX.Services.Data.ShopService
+﻿namespace SiteX.Services.Data.ShopService
 {
+    using SiteX.Services.Data.ShopService.Interface;
+    using SiteX.Web.ViewModels.ShopViewModels;
+
     public class ToListService : IToListService
     {
         private readonly IGenderService genderService;
@@ -24,11 +21,11 @@ namespace SiteX.Services.Data.ShopService
             this.sizeService = sizeService;
             this.colorService = colorService;
         }
+
         public ToSelectList ToSelectList()
         {
             var selectedList = new ToSelectList()
             {
-
                 GendersToList = this.genderService.GetGenders(),
 
                 CategoriesToList = this.categoryService.GetCategories(),
@@ -36,8 +33,8 @@ namespace SiteX.Services.Data.ShopService
                 SizesToList = this.sizeService.GetSizes(),
 
                 ColorsToList = this.colorService.GetColors(),
-
             };
+
             return selectedList;
         }
     }

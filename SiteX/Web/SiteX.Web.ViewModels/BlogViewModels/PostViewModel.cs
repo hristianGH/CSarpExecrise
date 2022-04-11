@@ -1,15 +1,12 @@
-﻿using SiteX.Data.Models;
-using SiteX.Data.Models.Blog;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace SiteX.Web.ViewModels.BlogViewModels
+﻿namespace SiteX.Web.ViewModels.BlogViewModels
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using SiteX.Data.Models;
+
     public class PostViewModel
     {
-
         [Required]
         [MaxLength(100)]
         [MinLength(10)]
@@ -22,7 +19,6 @@ namespace SiteX.Web.ViewModels.BlogViewModels
 
         public ApplicationUser User { get; set; }
 
-
         [MinLength(1)]
         [Display(Name = "Picture Url")]
         public virtual ICollection<string> PostImages { get; set; } = new List<string>();
@@ -30,7 +26,5 @@ namespace SiteX.Web.ViewModels.BlogViewModels
         [Display(Name = "Genres")]
         [MaxLength(2)]
         public ICollection<int> PostGenres { get; set; } = new List<int>();
-
-
     }
 }

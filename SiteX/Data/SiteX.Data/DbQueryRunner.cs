@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using SiteX.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using SiteX.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

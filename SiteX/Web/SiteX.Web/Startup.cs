@@ -2,6 +2,15 @@
 {
     using System.Reflection;
 
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using SiteX.Data;
     using SiteX.Data.Common;
     using SiteX.Data.Common.Repositories;
@@ -9,23 +18,13 @@
     using SiteX.Data.Repositories;
     using SiteX.Data.Seeding;
     using SiteX.Services.Data;
+    using SiteX.Services.Data.BlogService;
+    using SiteX.Services.Data.BlogService.Interface;
+    using SiteX.Services.Data.ShopService;
+    using SiteX.Services.Data.ShopService.Interface;
     using SiteX.Services.Mapping;
     using SiteX.Services.Messaging;
     using SiteX.Web.ViewModels;
-
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
-    using SiteX.Services.Data.ShopService.Interface;
-    using SiteX.Services.Data.BlogService.Interface;
-    using SiteX.Services.Data.BlogService;
-    using SiteX.Services.Data.ShopService;
-    using Microsoft.AspNetCore.Identity;
 
     public class Startup
     {
@@ -72,7 +71,6 @@
             services.AddTransient<ISettingsService, SettingsService>();
 
             // ShopServices
-
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IGenderService, GenderService>();
             services.AddTransient<ILocationService, LocationService>();
@@ -86,21 +84,17 @@
             services.AddTransient<IProductSizeService, ProductSizeService>();
             services.AddTransient<IToListService, ToListService>();
 
-
-
-
             // BlogServices
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IPostGenreService, PostGenreSevice>();
             services.AddTransient<IPostService, PostService>();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {

@@ -1,13 +1,13 @@
-﻿using SiteX.Data.Common.Repositories;
-using SiteX.Data.Models.Blog;
-using SiteX.Services.Data.BlogService.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SiteX.Services.Data.BlogService
+﻿namespace SiteX.Services.Data.BlogService
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using SiteX.Data.Common.Repositories;
+    using SiteX.Data.Models.Blog;
+    using SiteX.Services.Data.BlogService.Interface;
+
     public class PostGenreSevice : IPostGenreService
     {
         private readonly IDeletableEntityRepository<PostGenre> postGenreRepository;
@@ -34,10 +34,12 @@ namespace SiteX.Services.Data.BlogService
         public async Task HardDeletePostGenreByIdAsync(int postid)
         {
             var locations = this.postGenreRepository.All().Where(x => x.PostId == postid).ToList();
+
             foreach (var location in locations)
             {
                 this.postGenreRepository.HardDelete(location);
             }
+
             await this.postGenreRepository.SaveChangesAsync();
         }
     }

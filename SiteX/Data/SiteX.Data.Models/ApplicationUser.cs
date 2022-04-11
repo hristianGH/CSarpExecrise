@@ -4,9 +4,8 @@ namespace SiteX.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using SiteX.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using SiteX.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {

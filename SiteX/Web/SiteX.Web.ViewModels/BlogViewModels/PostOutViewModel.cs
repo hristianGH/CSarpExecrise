@@ -1,10 +1,11 @@
-﻿using SiteX.Data.Models;
-using SiteX.Data.Models.Blog;
-using System;
-using System.Collections.Generic;
-
-namespace SiteX.Web.ViewModels.BlogViewModels
+﻿namespace SiteX.Web.ViewModels.BlogViewModels
 {
+    using System;
+    using System.Collections.Generic;
+
+    using SiteX.Data.Models;
+    using SiteX.Data.Models.Blog;
+
     public class PostOutViewModel
     {
         public int Id { get; set; }
@@ -14,12 +15,13 @@ namespace SiteX.Web.ViewModels.BlogViewModels
         public string Body { get; set; }
 
         public ApplicationUser User { get; set; }
+
         public DateTime Date { get; set; }
 
         public string PreviewImage { get; set; }
+
         public ICollection<PostGenre> PostGenres { get; set; } = new List<PostGenre>();
-        public ICollection<PostImage> PostImages { get; set; }=new List<PostImage>();
 
-
+        public ICollection<PostImage> PostImages { get; set; } = new List<PostImage>();
     }
 }

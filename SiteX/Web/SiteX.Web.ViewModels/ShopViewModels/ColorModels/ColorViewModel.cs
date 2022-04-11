@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace SiteX.Web.ViewModels.ShopViewModels.ColorModels
+﻿namespace SiteX.Web.ViewModels.ShopViewModels.ColorModels
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class ColorViewModel
     {
-        [Required, MaxLength(100), MinLength(3)]
+        [Required]
+        [MaxLength(100)]
+        [MinLength(3)]
         public string Name { get; set; }
     }
 }

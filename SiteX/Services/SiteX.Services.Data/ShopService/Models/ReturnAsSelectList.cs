@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using SiteX.Data.Models.Shop;
-
-namespace SiteX.Services.Data.ShopService.Models
+﻿namespace SiteX.Services.Data.ShopService.Models
 {
+    using System.Collections.Generic;
+
+    using SiteX.Data.Models.Shop;
+
     public class ReturnAsSelectList
     {
         public IEnumerable<string> Genders { get; set; }
@@ -14,7 +15,5 @@ namespace SiteX.Services.Data.ShopService.Models
         public IEnumerable<Size> Sizes { get; set; }
 
         public IEnumerable<Color> Colors { get; set; }
-
     }
 }
- 

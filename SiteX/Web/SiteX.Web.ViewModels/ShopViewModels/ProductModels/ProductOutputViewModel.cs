@@ -1,10 +1,11 @@
-﻿using SiteX.Data.Models.Shop;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
+﻿namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
 {
+    using System;
+
+    using System.Collections.Generic;
+
+    using SiteX.Data.Models.Shop;
+
     public class ProductOutputViewModel
     {
         public Guid Id { get; set; }
@@ -12,7 +13,6 @@ namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
         public string Name { get; set; }
 
         public string ImageUrl { get; set; }
-
 
         public string Gender { get; set; }
 
@@ -27,8 +27,5 @@ namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
         public ICollection<Size> Sizes { get; set; }
 
         public ICollection<Color> Colors { get; set; }
-
-
-
     }
 }

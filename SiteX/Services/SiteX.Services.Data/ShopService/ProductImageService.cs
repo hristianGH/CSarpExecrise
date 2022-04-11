@@ -1,15 +1,14 @@
-﻿using SiteX.Data.Common.Repositories;
-using SiteX.Data.Models.Shop;
-using SiteX.Services.Data.ShopService.Interface;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiteX.Services.Data.ShopService
+﻿namespace SiteX.Services.Data.ShopService
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using SiteX.Data.Common.Repositories;
+    using SiteX.Data.Models.Shop;
+    using SiteX.Services.Data.ShopService.Interface;
+
     public class ProductImageService : IProductImageService
     {
         private readonly IDeletableEntityRepository<ProductImage> prodImageRepo;
@@ -26,28 +25,26 @@ namespace SiteX.Services.Data.ShopService
                 var entity = new ProductImage();
                 entity.ProductId = product;
                 entity.Path = item;
-
                 await this.prodImageRepo.AddAsync(entity);
             }
+
             await this.prodImageRepo.SaveChangesAsync();
         }
 
-
         public async Task HardDeleteProductImagesByIdAsync(Guid productId)
         {
-            var images = prodImageRepo.All().Where(x => x.Product.Id == productId).ToList();
+            var images = this.prodImageRepo.All().Where(x => x.Product.Id == productId).ToList();
             foreach (var image in images)
             {
-                prodImageRepo.HardDelete(image);
+                this.prodImageRepo.HardDelete(image);
             }
-            await prodImageRepo.SaveChangesAsync();
 
+            await this.prodImageRepo.SaveChangesAsync();
         }
 
         public ICollection<ProductImage> GetImagesByProductId(Guid id)
         {
-            return prodImageRepo.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
-
+            return this.prodImageRepo.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
         }
     }
 }

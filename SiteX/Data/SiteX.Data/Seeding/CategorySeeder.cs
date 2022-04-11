@@ -1,23 +1,22 @@
-﻿using SiteX.Data.Models.Shop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiteX.Data.Seeding
+﻿namespace SiteX.Data.Seeding
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using SiteX.Data.Models.Shop;
+
     internal class CategorySeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-
-            
             if (dbContext.Categories.Any())
             {
                 return;
             }
-           List<Category> categories = new List<Category>();
+
+            List<Category> categories = new List<Category>();
             categories.Add(new Category() { Name = "T-shirt/Top" });
             categories.Add(new Category() { Name = "Shorts" });
             categories.Add(new Category() { Name = "Hoodies" });
@@ -25,10 +24,8 @@ namespace SiteX.Data.Seeding
             categories.Add(new Category() { Name = "Bottoms" });
             foreach (var item in categories)
             {
-              await  dbContext.Categories.AddAsync(item);
-
+                await dbContext.Categories.AddAsync(item);
             }
-
         }
     }
 }

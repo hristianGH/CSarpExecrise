@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiteX.Web.ViewModels
+﻿namespace SiteX.Web.ViewModels
 {
     public class IndexViewModel
     {

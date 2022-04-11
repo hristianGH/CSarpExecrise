@@ -1,17 +1,17 @@
-﻿using SiteX.Data.Models.Shop;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
+﻿namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using SiteX.Data.Models.Shop;
+
     public class ProductEditViewModel : ToSelectList
     {
         public Product OldProduct { get; set; }
+
         [Required]
         public Guid OldProductId { get; set; }
-
 
         [Required]
         [MaxLength(50)]
@@ -24,7 +24,6 @@ namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
         [Display(Name = "Price in Bgn")]
         public decimal Price { get; set; }
 
-
         [Required]
         [MaxLength(400)]
         [MinLength(3)]
@@ -32,28 +31,25 @@ namespace SiteX.Web.ViewModels.ShopViewModels.ProductModels
 
         public Guid UserId { get; set; }
 
-
         [Required]
         public string Gender { get; set; }
 
-
-        [Required, MinLength(1)]
+        [Required]
+        [MinLength(1)]
         [Display(Name = "Picture Url")]
-
         public virtual ICollection<string> Pictures { get; set; } = new List<string>();
 
-        [Required, MaxLength(4)]
+        [Required]
+        [MaxLength(4)]
 
         public virtual ICollection<int> Locations { get; set; } = new List<int>();
 
-        [MinLength(1), MaxLength(3)]
+        [MinLength(1)]
+        [MaxLength(3)]
         public virtual ICollection<int> Categories { get; set; } = new List<int>();
 
         public virtual ICollection<int> Colors { get; set; } = new List<int>();
 
-
         public virtual ICollection<int> Sizes { get; set; } = new List<int>();
-
-
     }
 }

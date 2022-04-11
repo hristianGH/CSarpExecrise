@@ -1,14 +1,12 @@
-﻿using SiteX.Data.Models.Shop;
-using SiteX.Services.Data.ShopService.Models;
-using SiteX.Web.ViewModels.ShopViewModels;
-using SiteX.Web.ViewModels.ShopViewModels.ProductModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiteX.Services.Data.ShopService.Interface
+﻿namespace SiteX.Services.Data.ShopService.Interface
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using SiteX.Data.Models.Shop;
+    using SiteX.Web.ViewModels.ShopViewModels.ProductModels;
+
     public interface IProductService
     {
         public Task CreateAsync(ProductViewModel viewModel);
@@ -21,11 +19,9 @@ namespace SiteX.Services.Data.ShopService.Interface
 
         public ICollection<ProductOutputViewModel> FilterByGenderId(string gender);
 
-
         public ICollection<ProductOutputViewModel> FilterBySizeId(int id);
 
         public ICollection<ProductOutputViewModel> FilterByColorId(int id);
-
 
         public Task RemoveProductAsync(Product product);
 
@@ -38,11 +34,9 @@ namespace SiteX.Services.Data.ShopService.Interface
         public int GetProductCount();
 
         public Product GetProductById(Guid id);
+
         public ProductOutputViewModel GetOutputProductById(Guid id);
 
         public Task EditAsync(ProductEditViewModel viewModel);
-
-
-
     }
 }

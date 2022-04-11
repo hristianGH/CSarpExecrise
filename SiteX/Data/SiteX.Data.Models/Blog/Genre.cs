@@ -1,12 +1,10 @@
-﻿using SiteX.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace SiteX.Data.Models.Blog
+﻿namespace SiteX.Data.Models.Blog
 {
-    public class Genre :BaseModel<int>
+    using System.ComponentModel.DataAnnotations;
+
+    using SiteX.Data.Common.Models;
+
+    public class Genre : BaseModel<int>
     {
         [Required]
         [MaxLength(100)]

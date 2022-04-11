@@ -1,9 +1,8 @@
 ﻿namespace SiteX.Web.Areas.Administration.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     using SiteX.Services.Data;
     using SiteX.Web.ViewModels.Administration.Dashboard;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController
     {

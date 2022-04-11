@@ -1,12 +1,12 @@
-﻿using SiteX.Data.Models.Shop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiteX.Data.Seeding
+﻿namespace SiteX.Data.Seeding
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using SiteX.Data.Models.Shop;
+
     public class SizeSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
@@ -15,6 +15,7 @@ namespace SiteX.Data.Seeding
             {
                 return;
             }
+
             var sizes = new List<Size>();
             sizes.Add(new Size() { Name = "S" });
             sizes.Add(new Size() { Name = "M" });
@@ -24,9 +25,8 @@ namespace SiteX.Data.Seeding
             sizes.Add(new Size() { Name = "XLLL" });
             foreach (var item in sizes)
             {
-               await dbContext.AddAsync(item);
+                await dbContext.AddAsync(item);
             }
-
         }
     }
 }

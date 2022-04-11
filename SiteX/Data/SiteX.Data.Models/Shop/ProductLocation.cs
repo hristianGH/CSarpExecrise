@@ -1,16 +1,17 @@
-﻿using SiteX.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiteX.Data.Models.Shop
+﻿namespace SiteX.Data.Models.Shop
 {
-    public class ProductLocation :BaseDeletableModel<int>
+    using System;
+
+    using SiteX.Data.Common.Models;
+
+    public class ProductLocation : BaseDeletableModel<int>
     {
         public Guid ProductId { get; set; }
+
         public Product Product { get; set; }
 
         public int LocationId { get; set; }
+
         public Location Location { get; set; }
     }
 }

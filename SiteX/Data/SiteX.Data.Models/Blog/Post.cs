@@ -1,17 +1,13 @@
 ﻿namespace SiteX.Data.Models.Blog
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    using Microsoft.AspNetCore.Identity;
     using SiteX.Data.Common.Models;
 
     public class Post : BaseDeletableModel<int>
     {
-
-
         [Required]
         [MaxLength(100)]
         [MinLength(10)]
@@ -24,17 +20,12 @@
 
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
-        public ApplicationUser User { get; set; }
 
+        public ApplicationUser User { get; set; }
 
         [MaxLength(4)]
         public virtual ICollection<PostImage> PostImages { get; set; } = new List<PostImage>();
 
         public ICollection<PostGenre> PostGenres { get; set; } = new List<PostGenre>();
-
-        //TODO LOCATION SHOW PRODUCT ID IN SQL 
-     
-
-
     }
 }

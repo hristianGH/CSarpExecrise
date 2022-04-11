@@ -1,15 +1,14 @@
-﻿using SiteX.Data.Common.Repositories;
-using SiteX.Data.Models.Blog;
-using SiteX.Services.Data.BlogService.Interface;
-using SiteX.Web.ViewModels.BlogViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiteX.Services.Data.BlogService
+﻿namespace SiteX.Services.Data.BlogService
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using SiteX.Data.Common.Repositories;
+    using SiteX.Data.Models.Blog;
+    using SiteX.Services.Data.BlogService.Interface;
+    using SiteX.Web.ViewModels.BlogViewModels;
+
     public class PostService : IPostService
     {
         private readonly IDeletableEntityRepository<Post> postRepo;
@@ -31,34 +30,27 @@ namespace SiteX.Services.Data.BlogService
                 pics.Add(new PostImage() { Path = pic });
             }
 
-
             var post = new Post()
             {
                 Body = viewModel.Body,
                 Title = viewModel.Title,
                 PostImages = pics,
-
             };
-
 
             await this.postRepo.AddAsync(post);
             await this.postRepo.SaveChangesAsync();
             await this.postGenreService.CreatingPostGenreAsync(viewModel.PostGenres, post.Id);
-
         }
-
-
 
         public Post GetPost()
         {
-            return postRepo.AllAsNoTracking().FirstOrDefault();
+            return this.postRepo.AllAsNoTracking().FirstOrDefault();
         }
 
         public int GetPostCount()
         {
             return this.postRepo.AllAsNoTracking().Count();
         }
-
 
         public ICollection<PostOutViewModel> GetAllPostsAsOutModel()
         {
@@ -73,8 +65,8 @@ namespace SiteX.Services.Data.BlogService
                     User = x.User,
                     Date = x.CreatedOn,
                     PreviewImage = x.PostImages.Select(x => x.Path).FirstOrDefault(),
-
                 }).ToList();
+
             return output;
         }
 

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiteX.Services.Data.ShopService.Interface
+﻿namespace SiteX.Services.Data.ShopService.Interface
 {
+    using System.Collections.Generic;
+
     public interface IGenderService
     {
         Dictionary<string, string> GetGenderAsKVP();
+
         public IEnumerable<string> GetGenders();
     }
 }

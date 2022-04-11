@@ -1,15 +1,15 @@
-﻿using SiteX.Data.Common.Repositories;
-using SiteX.Data.Models.Shop;
-using SiteX.Services.Data.ShopService.Interface;
-using SiteX.Web.ViewModels.ShopViewModels;
-using SiteX.Web.ViewModels.ShopViewModels.ProductModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SiteX.Services.Data.ShopService
+﻿namespace SiteX.Services.Data.ShopService
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using SiteX.Data.Common.Repositories;
+    using SiteX.Data.Models.Shop;
+    using SiteX.Services.Data.ShopService.Interface;
+    using SiteX.Web.ViewModels.ShopViewModels.ProductModels;
+
     public class ProductService : IProductService
     {
         private readonly IDeletableEntityRepository<Product> productRepo;
@@ -35,6 +35,7 @@ namespace SiteX.Services.Data.ShopService
             this.productColorService = productColorService;
             this.productImageService = productImageService;
         }
+
         public async Task CreateAsync(ProductViewModel viewModel)
         {
             var pics = new List<ProductImage>();
@@ -42,6 +43,7 @@ namespace SiteX.Services.Data.ShopService
             {
                 pics.Add(new ProductImage() { Path = pic });
             }
+
             var product = new Product
             {
                 Name = viewModel.Name,
@@ -50,57 +52,51 @@ namespace SiteX.Services.Data.ShopService
                 Gender = viewModel.Gender,
                 Price = viewModel.Price,
                 ProductImages = pics,
-
             };
 
             await this.productRepo.AddAsync(product);
             await this.productRepo.SaveChangesAsync();
-
-            await productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, product.Id);
-            await productLocationService.CreatingProductLocationAsync(viewModel.Locations, product.Id);
-            await productColorService.CreatingProductColorAsync(viewModel.Colors, product.Id);
-            await productSizeService.CreatingProductSizeAsync(viewModel.Sizes, product.Id);
-
-
-
+            await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, product.Id);
+            await this.productLocationService.CreatingProductLocationAsync(viewModel.Locations, product.Id);
+            await this.productColorService.CreatingProductColorAsync(viewModel.Colors, product.Id);
+            await this.productSizeService.CreatingProductSizeAsync(viewModel.Sizes, product.Id);
         }
 
         public async Task RemoveALLAsync()
         {
-            var all = productRepo.All().ToArray();
+            var all = this.productRepo.All().ToArray();
             for (int i = 0; i < all.Length - 1; i++)
             {
-                productRepo.Delete(all[i]);
+                this.productRepo.Delete(all[i]);
             }
-            await productRepo.SaveChangesAsync();
 
+            await this.productRepo.SaveChangesAsync();
         }
+
         public ICollection<Product> ReturnAll()
         {
             var prods = new List<Product>();
-            foreach (var product in productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn))
+            foreach (var product in this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn))
             {
-
                 prods.Add(product);
             }
+
             return prods;
         }
 
         public async Task RemoveProductAsync(Product product)
         {
             product.IsAvalable = false;
-            productRepo.Delete(product);
-            await productRepo.SaveChangesAsync();
+            this.productRepo.Delete(product);
+            await this.productRepo.SaveChangesAsync();
         }
-
 
         public async Task SoftDeleteProductByIdAsync(Guid id)
         {
-            var product = productRepo.All().Where(x => x.Id == id).FirstOrDefault();
+            var product = this.productRepo.All().Where(x => x.Id == id).FirstOrDefault();
             if (product != null)
             {
-                await RemoveProductAsync(product);
-
+                await this.RemoveProductAsync(product);
             }
         }
 
@@ -125,8 +121,8 @@ namespace SiteX.Services.Data.ShopService
                     Description = x.Description,
                     Gender = x.Gender,
                     Price = x.Price,
-
                 }).ToList();
+
             return output;
         }
 
@@ -137,9 +133,7 @@ namespace SiteX.Services.Data.ShopService
 
         public Product GetProductById(Guid id)
         {
-
             return this.productRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
-
         }
 
         public ProductOutputViewModel GetOutputProductById(Guid id)
@@ -148,10 +142,8 @@ namespace SiteX.Services.Data.ShopService
             return output;
         }
 
-
         public async Task EditAsync(ProductEditViewModel viewModel)
         {
-
             var product = this.productRepo.All().Where(x => x.Id == viewModel.OldProductId).FirstOrDefault();
             product.Name = viewModel.Name;
             product.Description = viewModel.Description;
@@ -171,7 +163,6 @@ namespace SiteX.Services.Data.ShopService
             await this.productLocationService.CreatingProductLocationAsync(viewModel.Locations, product.Id);
 
             await this.productImageService.CreatingProductImageAsync(viewModel.Pictures, product.Id);
-
         }
 
         public ICollection<ProductOutputViewModel> FilterByCategoryId(int id)
@@ -179,24 +170,23 @@ namespace SiteX.Services.Data.ShopService
             var products = this.GetAllProductsAsOutModel().Where(x => x.Categories.Any(x => x.Id == id)).ToList();
             return products;
         }
+
         public ICollection<ProductOutputViewModel> FilterByGenderId(string gender)
         {
-            var products = this.GetAllProductsAsOutModel().Where(x => x.Gender==gender).ToList();
+            var products = this.GetAllProductsAsOutModel().Where(x => x.Gender == gender).ToList();
             return products;
         }
+
         public ICollection<ProductOutputViewModel> FilterBySizeId(int id)
         {
             var products = this.GetAllProductsAsOutModel().Where(x => x.Sizes.Any(x => x.Id == id)).ToList();
             return products;
         }
+
         public ICollection<ProductOutputViewModel> FilterByColorId(int id)
         {
             var products = this.GetAllProductsAsOutModel().Where(x => x.Colors.Any(x => x.Id == id)).ToList();
             return products;
         }
-
-        
     }
 }
-
- 

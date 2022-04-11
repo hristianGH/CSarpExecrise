@@ -6,11 +6,10 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using SiteX.Data.Common.Models;
-    using SiteX.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using SiteX.Data.Common.Models;
+    using SiteX.Data.Models;
     using SiteX.Data.Models.Blog;
     using SiteX.Data.Models.Shop;
 
@@ -28,20 +27,15 @@
 
         public DbSet<Setting> Settings { get; set; }
 
-
         public DbSet<Post> Posts { get; set; }
 
         public DbSet<PostImage> PostImages { get; set; }
 
         public DbSet<Comment> Comments { get; set; }
 
-       
-
-
         public DbSet<Genre> Genres { get; set; }
 
         public DbSet<PostGenre> PostGenres { get; set; }
-
 
         public DbSet<Category> Categories { get; set; }
 
@@ -56,15 +50,14 @@
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Gender> Genders { get; set; }
+
         public DbSet<Color> Colors { get; set; }
+
         public DbSet<ProductColor> ProductColors { get; set; }
 
         public DbSet<Size> Sizes { get; set; }
+
         public DbSet<ProductSize> ProductSizes { get; set; }
-
-
-
-
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -114,11 +107,8 @@
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
-
-
             builder.Entity<ProductCategory>().HasKey(x => new { x.ProductId, x.CategoryId });
             builder.Entity<ProductLocation>().HasKey(x => new { x.ProductId, x.LocationId });
-
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

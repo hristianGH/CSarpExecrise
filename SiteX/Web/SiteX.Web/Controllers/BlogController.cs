@@ -1,37 +1,36 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using SiteX.Data.Models;
-using SiteX.Services.Data.BlogService.Interface;
-using SiteX.Web.ViewModels.BlogViewModels;
-using System.Threading.Tasks;
-
-namespace SiteX.Web.Controllers
+﻿namespace SiteX.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using SiteX.Data.Models;
+    using SiteX.Services.Data.BlogService.Interface;
+    using SiteX.Web.ViewModels.BlogViewModels;
+
     public class BlogController : Controller
     {
         private readonly IGenreService genreService;
         private readonly IPostService postService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public BlogController(IGenreService genreService,
+        public BlogController(
+            IGenreService genreService,
             IPostService postService,
-            UserManager<ApplicationUser> userManager
-             )
+            UserManager<ApplicationUser> userManager)
         {
             this.genreService = genreService;
             this.postService = postService;
             this.userManager = userManager;
         }
+
         public IActionResult Index()
         {
-            var post = postService.GetPost();
-            return View(post);
+            var post = this.postService.GetPost();
+            return this.View(post);
         }
-
-
-
 
         [Authorize(Roles = "Administrator")]
         public IActionResult CreateGenre()
@@ -43,16 +42,17 @@ namespace SiteX.Web.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateGenre(GenreViewModel viewModel)
         {
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }
+
             await this.genreService.CreateAsync(viewModel);
             return this.Redirect("/");
         }
 
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> CreatePost()
+        public IActionResult CreatePost()
         {
             this.ViewBag.Genres = new SelectList(this.genreService.GetGenres(), "Id", "Name");
             return this.View();
@@ -62,31 +62,24 @@ namespace SiteX.Web.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreatePost(PostViewModel viewModel)
         {
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }
+
             viewModel.User = await this.userManager.GetUserAsync(this.User);
             await this.postService.CreatePostAsync(viewModel);
 
             return this.Redirect("/");
         }
 
-
-
-        public async Task<IActionResult> All(int id = 1)
+        public IActionResult All(int id = 1)
         {
+            PostAllViewModel postViewModel = new PostAllViewModel() { Posts = this.postService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 8 };
 
-            PostAllViewModel postViewModel = new PostAllViewModel() { Posts = postService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 8 };
+            postViewModel.ItemsCount = this.postService.GetPostCount();
 
-            postViewModel.ItemsCount = postService.GetPostCount();
-
-            // postViewModel.ToSelectList = toListService.ToSelectList();
             return this.View(postViewModel);
-
         }
-
-        
-
     }
 }

@@ -2,9 +2,8 @@
 {
     using System.Linq;
 
-    using SiteX.Data.Common.Models;
-
     using Microsoft.EntityFrameworkCore;
+    using SiteX.Data.Common.Models;
 
     internal static class EntityIndexesConfiguration
     {

@@ -1,16 +1,17 @@
-﻿using SiteX.Data.Common.Repositories;
-using SiteX.Data.Models.Shop;
-using SiteX.Services.Data.ShopService.Interface;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiteX.Services.Data.ShopService
+﻿namespace SiteX.Services.Data.ShopService
 {
-    public class ProductColorService:IProductColorService
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using SiteX.Data.Common.Repositories;
+    using SiteX.Data.Models.Shop;
+    using SiteX.Services.Data.ShopService.Interface;
+
+    public class ProductColorService : IProductColorService
     {
         private readonly IDeletableEntityRepository<ProductColor> prodColorRepo;
+
         public ProductColorService(IDeletableEntityRepository<ProductColor> prodColorRepo)
         {
             this.prodColorRepo = prodColorRepo;
@@ -26,6 +27,7 @@ namespace SiteX.Services.Data.ShopService
 
                 await this.prodColorRepo.AddAsync(entity);
             }
+
             await this.prodColorRepo.SaveChangesAsync();
         }
     }

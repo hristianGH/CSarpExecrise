@@ -1,8 +1,8 @@
 ﻿namespace SiteX.Data.Configurations
 {
-    using SiteX.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using SiteX.Data.Models;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

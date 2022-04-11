@@ -1,10 +1,9 @@
-﻿using SiteX.Data.Models.Blog;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiteX.Services.Data.BlogService.Interface
+﻿namespace SiteX.Services.Data.BlogService.Interface
 {
+    using System.Collections.Generic;
+
+    using SiteX.Data.Models.Blog;
+
     internal interface IPostImageService
     {
         public ICollection<PostImage> GetPostImages(int id);
