@@ -1,27 +1,31 @@
 ﻿ @model SiteX.Web.ViewModels.ShopViewModels.ToSelectList;
 @{
-    
+
 }
 
-<<div id="Categories" class="btn-group">
+<div id="Categories" class="btn-group">
     <p>Categories: </p>
     @foreach (var category in Model.CategoriesToList)
     {
         <a title="item" asp-action="SearchByCategory" asp-route-id="@category.Id" class="btn btn-primary stretched-link">@category.Name</a>
     }
+</div>
 
+<div id="Genders" class="btn-group">
     <p>Genders: </p>
     @foreach (var gender in Model.GendersToList)
     {
         <a title="item" asp-action="SearchByGender" asp-route-id="@gender" class="btn btn-primary stretched-link">@gender</a>
     }
-
+</div>
+<div id="Sizes" class="btn-group">
     <p>Sizes: </p>
     @foreach (var size in Model.SizesToList)
     {
         <a title="item" asp-action="SearchBySize" asp-route-id="@size.Id" class="btn btn-primary stretched-link">@size.Name</a>
     }
-
+</div>
+<div id="Colors" class="btn-group">
     <p>Colors: </p>
     @foreach (var color in Model.ColorsToList)
     {
