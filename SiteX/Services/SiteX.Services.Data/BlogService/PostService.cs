@@ -13,14 +13,14 @@ namespace SiteX.Services.Data.BlogService
     public class PostService : IPostService
     {
         private readonly IDeletableEntityRepository<Post> postRepo;
-        private readonly IDeletableEntityRepository<PostGenre> postGenreRepo;
+        private readonly IPostGenreService postGenreService;
 
         public PostService(
             IDeletableEntityRepository<Post> postRepo,
-            IDeletableEntityRepository<PostGenre> postGenreRepo)
+            IPostGenreService postGenreService)
         {
             this.postRepo = postRepo;
-            this.postGenreRepo = postGenreRepo;
+            this.postGenreService = postGenreService;
         }
 
         public async Task CreatePostAsync(PostViewModel viewModel)
@@ -37,36 +37,51 @@ namespace SiteX.Services.Data.BlogService
                 Body = viewModel.Body,
                 Title = viewModel.Title,
                 PostImages = pics,
-                
+
             };
 
 
             await this.postRepo.AddAsync(post);
             await this.postRepo.SaveChangesAsync();
-            ;
-            ;
-            ;
-            await this.CreatingPostGenre(viewModel.PostGenres, post.Id);
+            await this.postGenreService.CreatingPostGenreAsync(viewModel.PostGenres, post.Id);
 
         }
 
-        public async Task CreatingPostGenre(ICollection<int> genres, int post)
-        {
-            foreach (var item in genres)
-            {
-                var entity = new PostGenre();
-                entity.PostId = post;
-                entity.GenreId = item;
 
-                await this.postGenreRepo.AddAsync(entity);
-            }
-
-            await this.postGenreRepo.SaveChangesAsync();
-        }
 
         public Post GetPost()
         {
             return postRepo.AllAsNoTracking().FirstOrDefault();
+        }
+
+        public int GetPostCount()
+        {
+            return this.postRepo.AllAsNoTracking().Count();
+        }
+
+
+        public ICollection<PostOutViewModel> GetAllPostsAsOutModel()
+        {
+            var output = this.postRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
+                .Select(x => new PostOutViewModel()
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Body = x.Body,
+                    PostImages = x.PostImages,
+                    PostGenres = x.PostGenres,
+                    User = x.User,
+                    Date = x.CreatedOn,
+                    PreviewImage = x.PostImages.Select(x => x.Path).FirstOrDefault(),
+
+                }).ToList();
+            return output;
+        }
+
+        public ICollection<PostOutViewModel> ToPage(int page = 1, int itemsPerPage = 6)
+        {
+            var output = this.GetAllPostsAsOutModel().Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToList();
+            return output;
         }
     }
 }

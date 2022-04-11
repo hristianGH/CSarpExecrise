@@ -30,5 +30,10 @@ namespace SiteX.Services.Data.BlogService
             var genres = this.genreRepo.AllAsNoTracking().ToList();
             return genres;
         }
+
+        public ICollection<Genre> GetGenresByPostId(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

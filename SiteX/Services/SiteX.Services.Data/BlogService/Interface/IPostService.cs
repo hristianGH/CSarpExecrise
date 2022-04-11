@@ -11,8 +11,14 @@ namespace SiteX.Services.Data.BlogService.Interface
     {
         public Task CreatePostAsync(PostViewModel viewModel);
 
-        public Task CreatingPostGenre(ICollection<int> genres, int product);
 
         public Post GetPost();
+        public int GetPostCount();
+
+        public ICollection<PostOutViewModel> GetAllPostsAsOutModel();
+
+        public ICollection<PostOutViewModel> ToPage(int page = 1, int itemsPerPage = 6);
+
+
     }
 }

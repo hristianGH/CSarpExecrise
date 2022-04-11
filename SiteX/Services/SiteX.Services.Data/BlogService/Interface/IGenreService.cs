@@ -11,6 +11,8 @@ namespace SiteX.Services.Data.BlogService.Interface
     {
         public Task CreateAsync(GenreViewModel viewModel);
         public IEnumerable<Genre> GetGenres();
+        public ICollection<Genre> GetGenresByPostId(int id);
+
 
     }
 }
