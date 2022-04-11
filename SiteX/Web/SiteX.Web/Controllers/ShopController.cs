@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SiteX.Data.Models;
 using SiteX.Services.Data.ShopService.Interface;
-using SiteX.Web.ViewModels.ShopViewModels;
 using SiteX.Web.ViewModels.ShopViewModels.CategoryModels;
 using SiteX.Web.ViewModels.ShopViewModels.ColorModels;
 using SiteX.Web.ViewModels.ShopViewModels.LocationModels;
@@ -149,40 +148,40 @@ namespace SiteX.Web.Controllers
 
             var viewModel = productService.GetProductById(model.ProductId);
 
-            var EditedViewModel = new ProductEditViewModel() { OldProductId = model.ProductId };
-            EditedViewModel.OldProduct = viewModel;
+            var editedViewModel = new ProductEditViewModel() { OldProductId = model.ProductId };
+            editedViewModel.OldProduct = viewModel;
 
-            var locations = locationService.GetLocationsByProductId(EditedViewModel.OldProduct.Id);
-            var categories = categoryService.GetCategoriesByProductId(EditedViewModel.OldProduct.Id);
-            var pictures = pictureService.GetImagesByProductId(EditedViewModel.OldProduct.Id);
-            var colors = colorService.GetColorsByProductId(EditedViewModel.OldProduct.Id);
-            var sizes = sizeService.GetSizesByProductId(EditedViewModel.OldProduct.Id);
+            var locations = this.locationService.GetLocationsByProductId(editedViewModel.OldProduct.Id);
+            var categories = this.categoryService.GetCategoriesByProductId(editedViewModel.OldProduct.Id);
+            var pictures = this.pictureService.GetImagesByProductId(editedViewModel.OldProduct.Id);
+            var colors = this.colorService.GetColorsByProductId(editedViewModel.OldProduct.Id);
+            var sizes = this.sizeService.GetSizesByProductId(editedViewModel.OldProduct.Id);
 
 
-            EditedViewModel.Categories = categories.Select(x => x.Id).ToList();
-            EditedViewModel.Locations = locations.Select(x => x.Id).ToList();
-            EditedViewModel.Pictures = pictures.Select(x => x.Path).ToList();
-            EditedViewModel.Colors = colors.Select(x => x.Id).ToList();
-            EditedViewModel.Sizes = sizes.Select(x => x.Id).ToList();
+            editedViewModel.Categories = categories.Select(x => x.Id).ToList();
+            editedViewModel.Locations = locations.Select(x => x.Id).ToList();
+            editedViewModel.Pictures = pictures.Select(x => x.Path).ToList();
+            editedViewModel.Colors = colors.Select(x => x.Id).ToList();
+            editedViewModel.Sizes = sizes.Select(x => x.Id).ToList();
 
-            if (EditedViewModel.Pictures.Count() == 0)
+            if (editedViewModel.Pictures.Count() == 0)
             {
-                EditedViewModel.Pictures.Add(string.Empty);
+                editedViewModel.Pictures.Add(string.Empty);
             }
 
 
 
-            EditedViewModel.GendersToList = this.genderService.GetGenders();
-            EditedViewModel.CategoriesToList = this.categoryService.GetCategories();
-            EditedViewModel.LocationsToList = this.locationService.GetLocations();
-            EditedViewModel.SizesToList = this.sizeService.GetSizes();
-            EditedViewModel.ColorsToList = this.colorService.GetColors();
+            editedViewModel.GendersToList = this.genderService.GetGenders();
+            editedViewModel.CategoriesToList = this.categoryService.GetCategories();
+            editedViewModel.LocationsToList = this.locationService.GetLocations();
+            editedViewModel.SizesToList = this.sizeService.GetSizes();
+            editedViewModel.ColorsToList = this.colorService.GetColors();
 
 
-            this.ViewBag.CategoriesCount = categoryService.GetCategoryCount();
+            this.ViewBag.CategoriesCount = this.categoryService.GetCategoryCount();
             this.ViewBag.ProductId = viewModel.Id;
 
-            return this.View(EditedViewModel);
+            return this.View(editedViewModel);
         }
 
         [Authorize(Roles = "Administrator")]
@@ -195,7 +194,7 @@ namespace SiteX.Web.Controllers
                 return this.BadRequest();
             }
             viewModel.OldProductId = id;
-            await productService.EditAsync(viewModel);
+            await this.productService.EditAsync(viewModel);
 
             return this.Redirect("/");
         }
@@ -336,10 +335,10 @@ namespace SiteX.Web.Controllers
 
         public async Task<IActionResult> All(int id = 1)
         {
-            ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = productService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 6 };
+            ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = this.productService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 6 };
 
-            productViewModel.RecipesCount = productService.GetProductCount();
-            productViewModel.ToSelectList = toListService.ToSelectList();
+            productViewModel.ItemsCount = this.productService.GetProductCount();
+            productViewModel.ToSelectList = this.toListService.ToSelectList();
             return this.View(productViewModel);
 
         }
@@ -350,10 +349,10 @@ namespace SiteX.Web.Controllers
 
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
-                Products = productService.FilterByCategoryId(id)
+                Products = this.productService.FilterByCategoryId(id),
             };
-            productViewModel.RecipesCount = productService.GetProductCount();
-            productViewModel.ToSelectList = toListService.ToSelectList();
+            productViewModel.ItemsCount = this.productService.GetProductCount();
+            productViewModel.ToSelectList = this.toListService.ToSelectList();
 
             if (productViewModel != null)
             {
@@ -368,11 +367,11 @@ namespace SiteX.Web.Controllers
 
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
-                Products = productService.FilterByGenderId(id)
+                Products = productService.FilterByGenderId(id),
             };
 
-            productViewModel.RecipesCount = productService.GetProductCount();
-            productViewModel.ToSelectList = toListService.ToSelectList();
+            productViewModel.ItemsCount = this.productService.GetProductCount();
+            productViewModel.ToSelectList = this.toListService.ToSelectList();
 
             if (productViewModel != null)
             {
@@ -387,10 +386,10 @@ namespace SiteX.Web.Controllers
 
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
-                Products = productService.FilterByColorId(id)
+                Products = productService.FilterByColorId(id),
             };
-            productViewModel.RecipesCount = productService.GetProductCount();
-            productViewModel.ToSelectList = toListService.ToSelectList();
+            productViewModel.ItemsCount = this.productService.GetProductCount();
+            productViewModel.ToSelectList = this.toListService.ToSelectList();
 
             if (productViewModel != null)
             {
@@ -404,10 +403,10 @@ namespace SiteX.Web.Controllers
 
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
-                Products = productService.FilterBySizeId(id)
+                Products = productService.FilterBySizeId(id),
             };
-            productViewModel.RecipesCount = productService.GetProductCount();
-            productViewModel.ToSelectList = toListService.ToSelectList();
+            productViewModel.ItemsCount = this.productService.GetProductCount();
+            productViewModel.ToSelectList = this.toListService.ToSelectList();
 
             if (productViewModel != null)
             {
