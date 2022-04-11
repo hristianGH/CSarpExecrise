@@ -84,6 +84,8 @@
             services.AddTransient<IProductImageService, ProductImageService>();
             services.AddTransient<IProductLocationService, ProductLocationService>();
             services.AddTransient<IProductSizeService, ProductSizeService>();
+            services.AddTransient<IToListService, ToListService>();
+
 
 
 

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SiteX.Data.Models;
 using SiteX.Services.Data.ShopService.Interface;
+using SiteX.Web.ViewModels.ShopViewModels;
 using SiteX.Web.ViewModels.ShopViewModels.CategoryModels;
 using SiteX.Web.ViewModels.ShopViewModels.ColorModels;
 using SiteX.Web.ViewModels.ShopViewModels.LocationModels;
@@ -28,6 +29,7 @@ namespace SiteX.Web.Controllers
         private readonly IProductImageService productImageService;
         private readonly IProductCategoryService productCategoryService;
         private readonly IProductLocationService productLocationService;
+        private readonly IToListService toListService;
 
 
 
@@ -43,7 +45,8 @@ namespace SiteX.Web.Controllers
             IColorService colorService,
             IProductImageService productImageService,
             IProductCategoryService productCategoryService,
-            IProductLocationService productLocationService)
+            IProductLocationService productLocationService,
+            IToListService toListService)
         {
             this.genderService = genderService;
             this.categoryService = categoryService;
@@ -56,6 +59,7 @@ namespace SiteX.Web.Controllers
             this.productImageService = productImageService;
             this.productCategoryService = productCategoryService;
             this.productLocationService = productLocationService;
+            this.toListService = toListService;
         }
 
 
@@ -89,8 +93,8 @@ namespace SiteX.Web.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateProduct()
         {
-            var viewModel= new ProductViewModel();
- 
+            var viewModel = new ProductViewModel();
+
 
             viewModel.GendersToList = this.genderService.GetGenders();
             viewModel.CategoriesToList = this.categoryService.GetCategories();
@@ -166,7 +170,7 @@ namespace SiteX.Web.Controllers
                 EditedViewModel.Pictures.Add(string.Empty);
             }
 
-            
+
 
             EditedViewModel.GendersToList = this.genderService.GetGenders();
             EditedViewModel.CategoriesToList = this.categoryService.GetCategories();
@@ -333,10 +337,13 @@ namespace SiteX.Web.Controllers
         public async Task<IActionResult> All(int id = 1)
         {
             ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = productService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 6 };
+
             productViewModel.RecipesCount = productService.GetProductCount();
+            productViewModel.ToSelectList = toListService.ToSelectList();
             return this.View(productViewModel);
 
         }
+
 
         public IActionResult SearchByCategory(int id = 1)
         {
@@ -345,6 +352,9 @@ namespace SiteX.Web.Controllers
             {
                 Products = productService.FilterByCategoryId(id)
             };
+            productViewModel.RecipesCount = productService.GetProductCount();
+            productViewModel.ToSelectList = toListService.ToSelectList();
+
             if (productViewModel != null)
             {
                 return this.View("All", productViewModel);
@@ -353,13 +363,17 @@ namespace SiteX.Web.Controllers
             return NotFound();
         }
 
-        public IActionResult SearchByGender(string id="Male")
+        public IActionResult SearchByGender(string id = "Male")
         {
 
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
                 Products = productService.FilterByGenderId(id)
             };
+
+            productViewModel.RecipesCount = productService.GetProductCount();
+            productViewModel.ToSelectList = toListService.ToSelectList();
+
             if (productViewModel != null)
             {
                 return this.View("All", productViewModel);
@@ -375,6 +389,9 @@ namespace SiteX.Web.Controllers
             {
                 Products = productService.FilterByColorId(id)
             };
+            productViewModel.RecipesCount = productService.GetProductCount();
+            productViewModel.ToSelectList = toListService.ToSelectList();
+
             if (productViewModel != null)
             {
                 return this.View("All", productViewModel);
@@ -389,28 +406,31 @@ namespace SiteX.Web.Controllers
             {
                 Products = productService.FilterBySizeId(id)
             };
+            productViewModel.RecipesCount = productService.GetProductCount();
+            productViewModel.ToSelectList = toListService.ToSelectList();
+
             if (productViewModel != null)
             {
-                return this.View("All",productViewModel);
+                return this.View("All", productViewModel);
 
             }
             return NotFound();
         }
 
-      
+
 
         public IActionResult ById(Guid id)
         {
             var product = this.productService.GetOutputProductById(id);
             ViewBag.ImageOne = productImageService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
             ViewBag.Images = productImageService.GetImagesByProductId(id).Select(x => x.Path).Skip(1);
-            var viewmodel= new BuyingProductViewModel() {ProductId=product.Id,Product=product};
+            var viewmodel = new BuyingProductViewModel() { ProductId = product.Id, Product = product };
 
             viewmodel.CategoriesToList = product.Categories;
             viewmodel.LocationsToList = product.Locations;
             viewmodel.SizesToList = product.Sizes;
             viewmodel.ColorsToList = product.Colors;
-             
+
 
             return this.View(viewmodel);
         }
@@ -422,7 +442,7 @@ namespace SiteX.Web.Controllers
             {
                 return this.BadRequest();
             }
-            return RedirectToAction("Buy",viewmodel);
+            return RedirectToAction("Buy", viewmodel);
         }
 
         public IActionResult Buy()

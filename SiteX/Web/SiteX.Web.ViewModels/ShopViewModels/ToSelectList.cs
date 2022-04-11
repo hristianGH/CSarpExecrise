@@ -7,11 +7,11 @@ namespace SiteX.Web.ViewModels.ShopViewModels
 {
     public class ToSelectList
     {
-        public IEnumerable<string> GendersToList { get; set; }
-        public IEnumerable<Category> CategoriesToList { get; set; }
-        public IEnumerable<Location> LocationsToList { get; set; }
-        public IEnumerable<Size> SizesToList { get; set; }
-        public IEnumerable<Color> ColorsToList { get; set; }
+        public IEnumerable<string> GendersToList { get; set; } = new List<string>();
+        public IEnumerable<Category> CategoriesToList { get; set; } = new List<Category>();
+        public IEnumerable<Location> LocationsToList { get; set; } = new List<Location>();
+        public IEnumerable<Size> SizesToList { get; set; } = new List<Size>();
+        public IEnumerable<Color> ColorsToList { get; set; } = new List<Color>();
 
     }
 }

@@ -1,15 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SiteX.Data.Common.Models;
-using SiteX.Data.Common.Repositories;
+﻿using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models.Shop;
 using SiteX.Services.Data.ShopService.Interface;
-using SiteX.Services.Data.ShopService.Models;
 using SiteX.Web.ViewModels.ShopViewModels;
 using SiteX.Web.ViewModels.ShopViewModels.ProductModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SiteX.Services.Data.ShopService
@@ -199,7 +195,7 @@ namespace SiteX.Services.Data.ShopService
             return products;
         }
 
-
+        
     }
 }
 

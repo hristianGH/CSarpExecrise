@@ -42,5 +42,7 @@ namespace SiteX.Services.Data.ShopService.Interface
 
         public Task EditAsync(ProductEditViewModel viewModel);
 
+
+
     }
 }
