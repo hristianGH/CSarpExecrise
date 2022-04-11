@@ -91,6 +91,7 @@
 
             // BlogServices
             services.AddTransient<IGenreService, GenreService>();
+            services.AddTransient<IPostGenreService, PostGenreSevice>();
             services.AddTransient<IPostService, PostService>();
 
 

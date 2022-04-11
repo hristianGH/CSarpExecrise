@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Html
+ @using SiteX.Common
+@model SiteX.Web.ViewModels.BlogViewModels.PostAllViewModel
+
+@{
+    this.ViewData["Title"] = "Blog";
+
+}
+
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+</div>
+
+@foreach (var post in Model.Posts)
+{
+
+
+    <article class="col-sm-6 post-wrap">
+        <div class="featured-media ">
+            <a href="LINK">
+                <div class="image-container" style="background-image:url(" http: //wp.gbjsolution.com/daily-news/wp-content/uploads/sites/6/2016/03/pots-716579_1280-750x406.jpg")></div>
+            </a>
+            <div class="category-list">
+                <ul class="post-categories">
+                    <li><a href="http://wp.gbjsolution.com/daily-news/category/lifestyle/" rel="category tag">@post.PostGenres.FirstOrDefault()</a></li>
+                </ul>
+            </div>
+        </div>
+        <h2 class="title h3"><a href="http://wp.gbjsolution.com/daily-news/plants-at-your-work-place-keeps-you-more-productive/">@post.Title</a></h2>
+        <div class="post-meta">
+
+            <span class="date">
+                <i class="fa fa-calendar-o"></i>
+                <a href="http://wp.gbjsolution.com/daily-news/plants-at-your-work-place-keeps-you-more-productive/">@post.Date</a>
+            </span>
+
+        </div>
+        <div class="post-entry">
+            @(new HtmlString(@post.Body))
+            <div><a class="permalink" href="http://wp.gbjsolution.com/daily-news/plants-at-your-work-place-keeps-you-more-productive/">Read More…</a></div>
+        </div>
+    </article>
+
+}
+
+
+
+
+
+
+
+<partial name="_PagingPartial" model="Model" />
