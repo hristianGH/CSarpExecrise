@@ -4,8 +4,10 @@
 
     using SiteX.Data.Models.Blog;
 
-    internal interface IPostImageService
+    public interface IPostImageService
     {
         public ICollection<PostImage> GetPostImages(int id);
+
+        public ICollection<PostImage> GetImagesByPostId(int id);
     }
 }
