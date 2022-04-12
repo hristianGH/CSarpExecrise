@@ -92,7 +92,6 @@
             var post = this.postService.GetOutputPostById(id);
             this.ViewBag.ImageOne = this.postImageService.GetImagesByPostId(id).Select(x => x.Path).FirstOrDefault();
             this.ViewBag.Images = this.postImageService.GetImagesByPostId(id).Select(x => x.Path).Skip(1);
-            
 
             return this.View(post);
         }
