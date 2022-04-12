@@ -1,5 +1,6 @@
 ﻿namespace SiteX.Web.Controllers
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
@@ -7,6 +8,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using SiteX.Data.Models;
+    using SiteX.Data.Models.Blog;
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Web.ViewModels.BlogViewModels;
 
@@ -15,15 +17,18 @@
         private readonly IGenreService genreService;
         private readonly IPostService postService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IPostImageService postImageService;
 
         public BlogController(
             IGenreService genreService,
             IPostService postService,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            IPostImageService postImageService)
         {
             this.genreService = genreService;
             this.postService = postService;
             this.userManager = userManager;
+            this.postImageService = postImageService;
         }
 
         public IActionResult Index()
@@ -80,6 +85,16 @@
             postViewModel.ItemsCount = this.postService.GetPostCount();
 
             return this.View(postViewModel);
+        }
+
+        public IActionResult ById(int id)
+        {
+            var post = this.postService.GetOutputPostById(id);
+            this.ViewBag.ImageOne = this.postImageService.GetImagesByPostId(id).Select(x => x.Path).FirstOrDefault();
+            this.ViewBag.Images = this.postImageService.GetImagesByPostId(id).Select(x => x.Path).Skip(1);
+            
+
+            return this.View(post);
         }
     }
 }
