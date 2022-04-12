@@ -23,9 +23,9 @@
         //        await dbContext.Posts.AddAsync(posts);
         //    }
         // }
-        public Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
+        public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            throw new NotImplementedException();
+            return;
         }
     }
 }
