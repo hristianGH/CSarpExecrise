@@ -35,6 +35,8 @@
                 Body = viewModel.Body,
                 Title = viewModel.Title,
                 PostImages = pics,
+                User = viewModel.User,
+                UserId = viewModel.User.Id,
             };
 
             await this.postRepo.AddAsync(post);
@@ -60,9 +62,10 @@
                     Id = x.Id,
                     Title = x.Title,
                     Body = x.Body,
+                    PreviewBody = x.Body.Substring(0, 30),
                     PostImages = x.PostImages,
-                    PostGenres = x.PostGenres,
-                    User = x.User,
+                    Genres = x.PostGenres.Select(x => x.Genre).ToList(),
+                    Poster = x.User,
                     Date = x.CreatedOn,
                     PreviewImage = x.PostImages.Select(x => x.Path).FirstOrDefault(),
                 }).ToList();
@@ -73,6 +76,12 @@
         public ICollection<PostOutViewModel> ToPage(int page = 1, int itemsPerPage = 6)
         {
             var output = this.GetAllPostsAsOutModel().Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToList();
+            return output;
+        }
+
+        public PostOutViewModel GetOutputPostById(int id)
+        {
+            var output = this.GetAllPostsAsOutModel().Where(x => x.Id == id).FirstOrDefault();
             return output;
         }
     }

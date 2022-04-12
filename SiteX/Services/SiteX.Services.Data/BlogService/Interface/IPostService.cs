@@ -19,5 +19,7 @@
         public ICollection<PostOutViewModel> GetAllPostsAsOutModel();
 
         public ICollection<PostOutViewModel> ToPage(int page = 1, int itemsPerPage = 6);
+
+        public PostOutViewModel GetOutputPostById(int id);
     }
 }
