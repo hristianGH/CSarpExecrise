@@ -14,13 +14,15 @@
 
         public string Body { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public ApplicationUser Poster { get; set; }
 
         public DateTime Date { get; set; }
 
         public string PreviewImage { get; set; }
 
-        public ICollection<PostGenre> PostGenres { get; set; } = new List<PostGenre>();
+        public string PreviewBody { get; set; }
+
+        public ICollection<Genre> Genres { get; set; } = new List<Genre>();
 
         public ICollection<PostImage> PostImages { get; set; } = new List<PostImage>();
     }
