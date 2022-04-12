@@ -3,7 +3,7 @@
 
 }
 
-<div id="Categories" class="btn-group">
+<div id="Categories" class="btn-group row-cols-md-12">
     <p>Categories: </p>
     @foreach (var category in Model.CategoriesToList)
     {
@@ -11,21 +11,21 @@
     }
 </div>
 
-<div id="Genders" class="btn-group">
+<div id="Genders" class="btn-group row row-cols-md-6">
     <p>Genders: </p>
     @foreach (var gender in Model.GendersToList)
     {
         <a title="item" asp-action="SearchByGender" asp-route-id="@gender" class="btn btn-primary stretched-link">@gender</a>
     }
 </div>
-<div id="Sizes" class="btn-group">
+<div id="Sizes" class="btn-group row-cols-md-12">
     <p>Sizes: </p>
     @foreach (var size in Model.SizesToList)
     {
         <a title="item" asp-action="SearchBySize" asp-route-id="@size.Id" class="btn btn-primary stretched-link">@size.Name</a>
     }
 </div>
-<div id="Colors" class="btn-group">
+<div id="Colors" class="btn-group row-cols-md-12">
     <p>Colors: </p>
     @foreach (var color in Model.ColorsToList)
     {
