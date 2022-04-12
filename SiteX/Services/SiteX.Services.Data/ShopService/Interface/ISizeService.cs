@@ -13,6 +13,10 @@
 
         public IEnumerable<Size> GetSizes();
 
+        public Size GetSizeById(int id);
+
+        public Task EditSizeAsync(Size model);
+
         public ICollection<Size> GetSizesByProductId(Guid id);
 
         public int GetSizesCount();

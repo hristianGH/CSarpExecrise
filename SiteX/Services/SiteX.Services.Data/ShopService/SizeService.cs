@@ -30,9 +30,21 @@
             await this.sizeRepo.SaveChangesAsync();
         }
 
+        public async Task EditSizeAsync(Size model)
+        {
+            var viewmodel = sizeRepo.All().Where(x => x.Id == model.Id).FirstOrDefault();
+            viewmodel.Name = model.Name;
+            await this.sizeRepo.SaveChangesAsync();
+        }
+
         public Dictionary<string, string> GetSizeAsKVP()
         {
             throw new NotImplementedException();
+        }
+
+        public Size GetSizeById(int id)
+        {
+            return this.sizeRepo.All().Where(x => x.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Size> GetSizes()

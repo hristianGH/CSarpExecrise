@@ -30,9 +30,21 @@
             await this.colorRepo.SaveChangesAsync();
         }
 
+        public async Task EditColorAsync(Color color)
+        {
+            var editColor = this.colorRepo.All().Where(x => x.Id == color.Id).FirstOrDefault();
+            editColor.Name = color.Name;
+           await colorRepo.SaveChangesAsync();
+        }
+
         public Dictionary<string, string> GetColorAsKVP()
         {
             throw new NotImplementedException();
+        }
+
+        public Color GetColorById(int id)
+        {
+            return this.colorRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Color> GetColors()

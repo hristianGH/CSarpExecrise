@@ -73,5 +73,17 @@
         {
             return this.categoryRepository.AllAsNoTracking().Count();
         }
+
+        public Category GetCategoryById(int id)
+        {
+            return this.categoryRepository.All().Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public async Task EditCategoryAsync(Category category)
+        {
+            var categoryEdit = this.categoryRepository.All().FirstOrDefault(x => x.Id == category.Id);
+            categoryEdit.Name = category.Name;
+            await this.categoryRepository.SaveChangesAsync();
+        }
     }
 }

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+
     using SiteX.Data.Common.Repositories;
     using SiteX.Data.Models.Blog;
     using SiteX.Services.Data.BlogService.Interface;
@@ -15,6 +16,7 @@
         {
             this.postImageRepo = postImageRepo;
         }
+
         public ICollection<PostImage> GetPostImages(int id)
         {
             throw new NotImplementedException();

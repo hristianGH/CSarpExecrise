@@ -50,6 +50,11 @@
             return locations;
         }
 
+        public Location GetLocationById(int id)
+        {
+            return this.locationRepository.All().Where(x => x.Id == id).FirstOrDefault();
+        }
+
         public ICollection<Location> GetLocationsByProductId(Guid id)
         {
             var productLocations = this.productLocationRepository.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
@@ -62,6 +67,14 @@
             }
 
             return locations;
+        }
+
+        public async Task EditLocationAsync(Location location)
+        {
+            var locationEdit = this.locationRepository.All().FirstOrDefault(x => x.Id == location.Id);
+            locationEdit.Name = location.Name;
+            locationEdit.Address = location.Address;
+            await this.locationRepository.SaveChangesAsync();
         }
     }
 }
