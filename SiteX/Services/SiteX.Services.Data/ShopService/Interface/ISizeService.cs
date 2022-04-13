@@ -21,7 +21,7 @@
 
         public int GetSizesCount();
 
-        // Color view Model uses Name only like SIze so im gonna save some code
+        // TODO Color view Model uses Name only like SIze so im gonna save some code
         public Task CreateAsync(SizeViewModel viewModel);
     }
 }

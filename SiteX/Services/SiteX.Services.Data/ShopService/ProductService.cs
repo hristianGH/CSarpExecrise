@@ -75,13 +75,7 @@
 
         public ICollection<Product> ReturnAll()
         {
-            var prods = new List<Product>();
-            foreach (var product in this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn))
-            {
-                prods.Add(product);
-            }
-
-            return prods;
+            return this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn).ToList();
         }
 
         public async Task RemoveProductAsync(Product product)
@@ -163,6 +157,10 @@
             await this.productLocationService.CreatingProductLocationAsync(viewModel.Locations, product.Id);
 
             await this.productImageService.CreatingProductImageAsync(viewModel.Pictures, product.Id);
+
+            await this.productColorService.CreatingProductColorAsync(viewModel.Colors, product.Id);
+
+            await this.productSizeService.CreatingProductSizeAsync(viewModel.Sizes, product.Id);
         }
 
         public ICollection<ProductOutputViewModel> FilterByCategoryId(int id)
@@ -187,6 +185,70 @@
         {
             var products = this.GetAllProductsAsOutModel().Where(x => x.Colors.Any(x => x.Id == id)).ToList();
             return products;
+        }
+
+        public ICollection<Product> GetProducts()
+        {
+            return this.productRepo.AllAsNoTracking().ToList();
+        }
+
+        public async Task EditProductAsync(ProductEdit viewModel)
+        {
+            var product = this.productRepo.All().Where(x => x.Id == viewModel.Id).FirstOrDefault();
+            product.Name = viewModel.Name;
+            product.Description = viewModel.Description;
+            product.Price = viewModel.Price;
+            product.Gender = viewModel.Gender;
+
+            await this.productRepo.SaveChangesAsync();
+
+            await this.HardDeleteConnectionsByProductIdAsync(viewModel.Id);
+            await this.CreateConnectionsByModel(viewModel, viewModel.Id);
+        }
+
+        public ProductEdit GetProductEditById(Guid id)
+        {
+            var edit = this.productRepo.AllAsNoTracking().Select(x => new ProductEdit
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Categories = x.ProductCategories.Select(x => x.Category.Id).ToList(),
+                Pictures = x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).ToList(),
+                Locations = x.ProductLocations.Select(x => x.Location.Id).ToList(),
+                Colors = x.ProductColors.Select(x => x.Color.Id).ToList(),
+                Sizes = x.ProductSizes.Select(x => x.Size.Id).ToList(),
+                Description = x.Description,
+                Gender = x.Gender,
+                Price = x.Price,
+            }).Where(x => x.Id == id).FirstOrDefault();
+
+            return edit;
+        }
+
+        public async Task HardDeleteConnectionsByProductIdAsync(Guid id)
+        {
+            await this.productLocationService.HardDeleteProductLocationByIdAsync(id);
+
+            await this.productCategoryService.HardDeleteProductCategoriesByIdAsync(id);
+
+            await this.productImageService.HardDeleteProductImagesByIdAsync(id);
+
+            await this.productColorService.HardDeleteProductColorByIdAsync(id);
+
+            await this.productSizeService.HardDeleteProductSizeByIdAsync(id);
+        }
+
+        public async Task CreateConnectionsByModel(ProductEdit viewModel, Guid id)
+        {
+            await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, id);
+
+            await this.productLocationService.CreatingProductLocationAsync(viewModel.Locations, id);
+
+            await this.productImageService.CreatingProductImageAsync(viewModel.Pictures, id);
+
+            await this.productColorService.CreatingProductColorAsync(viewModel.Colors, id);
+
+            await this.productSizeService.CreatingProductSizeAsync(viewModel.Sizes, id);
         }
     }
 }

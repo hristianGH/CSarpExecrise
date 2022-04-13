@@ -35,8 +35,18 @@
 
         public Product GetProductById(Guid id);
 
+        public ICollection<Product> GetProducts();
+
         public ProductOutputViewModel GetOutputProductById(Guid id);
 
+        public ProductEdit GetProductEditById(Guid id);
+
         public Task EditAsync(ProductEditViewModel viewModel);
+
+        public Task EditProductAsync(ProductEdit viewModel);
+
+        public Task HardDeleteConnectionsByProductIdAsync(Guid id);
+
+        public Task CreateConnectionsByModel(ProductEdit list, Guid id);
     }
 }

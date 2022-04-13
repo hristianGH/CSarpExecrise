@@ -32,7 +32,7 @@
 
         public async Task EditSizeAsync(Size model)
         {
-            var viewmodel = sizeRepo.All().Where(x => x.Id == model.Id).FirstOrDefault();
+            var viewmodel = this.sizeRepo.All().Where(x => x.Id == model.Id).FirstOrDefault();
             viewmodel.Name = model.Name;
             await this.sizeRepo.SaveChangesAsync();
         }

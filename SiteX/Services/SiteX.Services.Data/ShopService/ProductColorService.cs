@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using SiteX.Data.Common.Repositories;
@@ -26,6 +27,17 @@
                 entity.ColorId = item;
 
                 await this.prodColorRepo.AddAsync(entity);
+            }
+
+            await this.prodColorRepo.SaveChangesAsync();
+        }
+
+        public async Task HardDeleteProductColorByIdAsync(Guid id)
+        {
+            var colors = this.prodColorRepo.All().Where(x => x.Product.Id == id).ToList();
+            foreach (var color in colors)
+            {
+                this.prodColorRepo.HardDelete(color);
             }
 
             await this.prodColorRepo.SaveChangesAsync();

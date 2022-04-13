@@ -19,7 +19,7 @@
         public IActionResult Index()
         {
             var colors = this.colorService.GetColors();
-            return View(colors);
+            return this.View(colors);
         }
 
         public IActionResult Create()

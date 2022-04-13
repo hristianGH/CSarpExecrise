@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using SiteX.Data.Common.Repositories;
@@ -26,6 +27,17 @@
                 entity.SizeId = item;
 
                 await this.prodSizeRepo.AddAsync(entity);
+            }
+
+            await this.prodSizeRepo.SaveChangesAsync();
+        }
+
+        public async Task HardDeleteProductSizeByIdAsync(Guid id)
+        {
+            var sizes = this.prodSizeRepo.All().Where(x => x.Product.Id == id).ToList();
+            foreach (var size in sizes)
+            {
+                this.prodSizeRepo.HardDelete(size);
             }
 
             await this.prodSizeRepo.SaveChangesAsync();

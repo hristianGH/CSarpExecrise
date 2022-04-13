@@ -7,5 +7,7 @@
     public interface IProductSizeService
     {
         public Task CreatingProductSizeAsync(ICollection<int> sizes, Guid product);
+
+        public Task HardDeleteProductSizeByIdAsync(Guid id);
     }
 }

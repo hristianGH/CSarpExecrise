@@ -7,5 +7,7 @@
     public interface IProductColorService
     {
         public Task CreatingProductColorAsync(ICollection<int> colors, Guid product);
+
+        public Task HardDeleteProductColorByIdAsync(Guid id);
     }
 }
