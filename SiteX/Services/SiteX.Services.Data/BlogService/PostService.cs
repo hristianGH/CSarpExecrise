@@ -9,6 +9,7 @@
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Web.ViewModels.BlogViewModels;
 
+    
     public class PostService : IPostService
     {
         private readonly IDeletableEntityRepository<Post> postRepo;
@@ -62,7 +63,7 @@
                     Id = x.Id,
                     Title = x.Title,
                     Body = x.Body,
-                    PreviewBody = x.Body.Substring(0, 30),
+                    PreviewBody = x.Body.Substring(0, 600),
                     PostImages = x.PostImages,
                     Genres = x.PostGenres.Select(x => x.Genre).ToList(),
                     Poster = x.User,

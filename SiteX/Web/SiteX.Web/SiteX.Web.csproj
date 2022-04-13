@@ -9,10 +9,6 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Remove="Views\Shared\layout-boxed.cshtml" />
-  </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
@@ -51,7 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Shared\layout-boxed.cshtml" />
     <None Include="wwwroot\dist\img\flags\ad.svg" />
     <None Include="wwwroot\dist\img\flags\ae.svg" />
     <None Include="wwwroot\dist\img\flags\af.svg" />
@@ -426,11 +421,5 @@
     <None Include="wwwroot\dist\img\payments\westernunion.svg" />
     <None Include="wwwroot\dist\img\payments\worldpay-dark.svg" />
     <None Include="wwwroot\dist\img\payments\worldpay.svg" />
-    <None Include="wwwroot\dist\js\demo.js" />
-    <None Include="wwwroot\dist\js\demo.min.js" />
-    <None Include="wwwroot\dist\js\tabler.esm.js" />
-    <None Include="wwwroot\dist\js\tabler.esm.min.js" />
-    <None Include="wwwroot\dist\js\tabler.js" />
-    <None Include="wwwroot\dist\js\tabler.min.js" />
   </ItemGroup>
 </Project>
