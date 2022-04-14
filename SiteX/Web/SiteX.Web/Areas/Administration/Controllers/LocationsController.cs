@@ -16,12 +16,14 @@
             this.locationService = locationService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             var locations = this.locationService.GetLocations();
             return this.View(locations);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return this.View();
@@ -39,6 +41,7 @@
             return this.Redirect("/");
         }
 
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var viewModel = this.locationService.GetLocationById(id);

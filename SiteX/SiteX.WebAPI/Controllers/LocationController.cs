@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SiteX.Data.Models.Shop;
 using SiteX.Services.Data.ShopService.Interface;
-using SiteX.Web.ViewModels.ShopViewModels.SizeModels;
+using SiteX.Web.ViewModels.ShopViewModels.LocationModels;
 using System.Threading.Tasks;
 
 namespace SiteX.WebAPI.Controllers
@@ -11,59 +11,60 @@ namespace SiteX.WebAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class SizeController : ControllerBase
+    public class LocationController : ControllerBase
     {
+        private readonly ILocationService locationService;
 
-
-        private readonly ISizeService sizeService;
-
-        public SizeController(ISizeService sizeService)
+        public LocationsController(ILocationService locationService)
         {
-            this.sizeService = sizeService;
+            this.locationService = locationService;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            var sizes = this.sizeService.GetSizes();
-            return this.Ok(sizes);
+            var locations = this.locationService.GetLocations();
+            return this.Ok(locations);
         }
+
         [HttpGet]
         public IActionResult Create()
         {
-            return this.Ok(new SizeViewModel());
+            return this.Ok(new LocationViewModel());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(SizeViewModel viewModel)
+        public async Task<IActionResult> Create(LocationViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }
 
-            await this.sizeService.CreateAsync(viewModel);
+            await this.locationService.CreateAsync(viewModel);
             return this.Ok(viewModel);
         }
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var viewModel = this.sizeService.GetSizeById(id);
+            var viewModel = this.locationService.GetLocationById(id);
 
             return this.Ok(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Size viewModel)
+        public async Task<IActionResult> Edit(Location viewModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }
 
-            await this.sizeService.EditSizeAsync(viewModel);
+            await this.locationService.EditLocationAsync(viewModel);
 
             return this.Ok(viewModel);
         }
+
     }
 }
