@@ -9,7 +9,6 @@
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Web.ViewModels.BlogViewModels;
 
-    
     public class PostService : IPostService
     {
         private readonly IDeletableEntityRepository<Post> postRepo;
@@ -85,5 +84,56 @@
             var output = this.GetAllPostsAsOutModel().Where(x => x.Id == id).FirstOrDefault();
             return output;
         }
+
+        public ICollection<Post> GetPosts()
+        {
+            return this.postRepo.AllAsNoTracking().ToList();
+        }
+
+        public async Task EditPostAsync(PostEditViewModel post)
+        {
+
+            var edit = this.postRepo.All().Where(x => x.Id == post.Id).FirstOrDefault();
+            edit.Title = post.Title;
+            edit.Body = post.Body;
+
+            await this.postRepo.SaveChangesAsync();
+
+            await this.HardDeleteConnectionsByPostIdAsync(post.Id);
+            await this.CreateConnectionsByModel(post, post.Id);
+        }
+
+        public Post GetPostById(int id)
+        {
+            return this.postRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public PostEditViewModel GetEditPostById(int id)
+        {
+            var edit = this.postRepo.AllAsNoTracking().Select(x => new PostEditViewModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+                PostGenres = x.PostGenres.Select(x => x.Genre.Id).ToList(),
+                PostImages = x.PostImages.Select(x => x.Path).ToList(),
+                Body = x.Body,
+            }).Where(x => x.Id == id).FirstOrDefault();
+
+            return edit;
+        }
+
+        public async Task HardDeleteConnectionsByPostIdAsync(int id)
+        {
+
+            await this.postGenreService.HardDeletePostGenreByIdAsync(id);
+
+        }
+
+        public async Task CreateConnectionsByModel(PostEditViewModel list, int id)
+        {
+            await this.postGenreService.CreatingPostGenreAsync(list.PostGenres, id);
+
+        }
+
     }
 }
