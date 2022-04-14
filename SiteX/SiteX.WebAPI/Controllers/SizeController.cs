@@ -23,18 +23,21 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Route("index")]
         public IActionResult Index()
         {
             var sizes = this.sizeService.GetSizes();
             return this.Ok(sizes);
         }
         [HttpGet]
+        [Route("Create")]
         public IActionResult Create()
         {
             return this.Ok(new SizeViewModel());
         }
 
         [HttpPost]
+        [Route("Create")]
         public async Task<IActionResult> Create(SizeViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -46,6 +49,7 @@ namespace SiteX.WebAPI.Controllers
             return this.Ok(viewModel);
         }
         [HttpGet]
+        [Route("Edit")]
         public IActionResult Edit(int id)
         {
             var viewModel = this.sizeService.GetSizeById(id);
@@ -54,6 +58,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Route("Id")]
         public async Task<IActionResult> Edit(Size viewModel)
         {
             if (!this.ModelState.IsValid)

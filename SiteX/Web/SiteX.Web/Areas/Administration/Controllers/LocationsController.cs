@@ -24,12 +24,14 @@
         }
 
         [HttpGet]
+        [Route("Create")]
         public IActionResult Create()
         {
             return this.View();
         }
 
         [HttpPost]
+        [Route("Create")]
         public async Task<IActionResult> Create(LocationViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -42,6 +44,7 @@
         }
 
         [HttpGet]
+        [Route("Edit")]
         public IActionResult Edit(int id)
         {
             var viewModel = this.locationService.GetLocationById(id);
@@ -50,6 +53,7 @@
         }
 
         [HttpPost]
+        [Route("Edit")]
         public async Task<IActionResult> Edit(Location viewModel)
         {
             if (!this.ModelState.IsValid)

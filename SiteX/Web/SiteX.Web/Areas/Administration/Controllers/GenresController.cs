@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using SiteX.Data.Models.Blog;
-using SiteX.Services.Data.BlogService.Interface;
-using SiteX.Web.ViewModels.BlogViewModels;
-using System.Threading.Tasks;
-
-namespace SiteX.Web.Areas.Administration.Controllers
+﻿namespace SiteX.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using SiteX.Data.Models.Blog;
+    using SiteX.Services.Data.BlogService.Interface;
+    using SiteX.Web.ViewModels.BlogViewModels;
+
     public class GenresController : AdministrationController
     {
         private readonly IGenreService genreService;
@@ -16,6 +17,7 @@ namespace SiteX.Web.Areas.Administration.Controllers
             this.genreService = genreService;
         }
         // GET: GenreController
+
         public ActionResult Index()
         {
             var genres =this.genreService.GetGenres();

@@ -22,19 +22,21 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Route("Index")]
         public IActionResult Index()
         {
             var categories = this.categoryService.GetCategories();
             return this.Ok(categories);
         }
         [HttpGet]
-
+        [Route("Create")]
         public ActionResult Create()
         {
             return this.Ok(new CategoryViewModel());
         }
 
         [HttpPost]
+        [Route("Create")]
         public async Task<IActionResult> Create(CategoryViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -46,6 +48,7 @@ namespace SiteX.WebAPI.Controllers
             return this.Redirect("/");
         }
         [HttpGet]
+        [Route("Edit")]
         public IActionResult Edit(int id)
         {
             var viewModel = this.categoryService.GetCategoryById(id);
@@ -53,6 +56,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Route("Edit")]
         public async Task<IActionResult> Edit(Category viewModel)
         {
             if (!this.ModelState.IsValid)

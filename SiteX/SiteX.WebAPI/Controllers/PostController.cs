@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SiteX.Services.Data.BlogService.Interface;
+using SiteX.Web.ViewModels.BlogViewModels;
+using System.Linq;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,43 +15,49 @@ namespace SiteX.WebAPI.Controllers
     public class PostController : ControllerBase
     {
         private readonly IPostService postService;
+        private readonly IGenreService genreService;
 
-        public PostController(IPostService postService)
+        public PostController(IPostService postService,
+            IGenreService genreService)
         {
             this.postService = postService;
+            this.genreService = genreService;
         }
-        // GET: api/<PostController>
         [HttpGet]
-        public  IActionResult GetAll()
+        [Route("Index")]
+        public IActionResult Index()
         {
-           var output= postService.GetAllPostsAsOutModel();
-            return Ok(output);
+            var posts = this.postService.GetPosts();
+            return this.Ok(posts);
         }
 
-        // GET api/<PostController>/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet]
+        [Route("Edit")]
+        public IActionResult Edit(int id)
         {
-            return this.Ok(postService.GetOutputPostById(id));
-        }
+            var viewModel = this.postService.GetEditPostById(id);
 
-        // POST api/<PostController>
+            if (viewModel.PostImages.Count() == 0)
+            {
+                viewModel.PostImages.Add(string.Empty);
+            }
+
+            viewModel.GenresToList = this.genreService.GetGenres();
+
+            return this.Ok(viewModel);
+        }
+        [Route("Edit")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Edit(PostEditViewModel viewModel)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
 
-        }
+            await this.postService.EditPostAsync(viewModel);
 
-        // PUT api/<PostController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<PostController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return this.Ok(viewModel);
         }
     }
 }
