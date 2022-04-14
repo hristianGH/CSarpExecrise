@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SiteX.WebAPI.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PostController : ControllerBase
