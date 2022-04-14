@@ -31,6 +31,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Route("login")]
         public async Task<IActionResult> LogIn([FromBody] LoginInputModel input)
         {
             var user = await userManager.FindByNameAsync(input.Username);
@@ -59,17 +60,19 @@ namespace SiteX.WebAPI.Controllers
             }
             return Unauthorized();
         }
+        //[Authorize]
+        //[Route("test")]
+        //[HttpGet]
+        //public ActionResult<string> WhoAmI()
+        //{
+        //    return this.User.Identity.Name;
+        //}
     }
 }
 
-   
 
 
-//    [Authorize]
-//    public ActionResult<string> WhoAmI()
-//    {
-//        return this.User.Identity.Name;
-//    }
+
 
 
 //public class UserModel

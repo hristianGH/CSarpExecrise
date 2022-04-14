@@ -26,10 +26,22 @@
             await this.genreRepo.SaveChangesAsync();
         }
 
+        public async Task EditAsync(Genre genre)
+        {
+            var edit = this.genreRepo.All().Where(x => x.Id == genre.Id).FirstOrDefault();
+            edit.Name=genre.Name;
+            await this.genreRepo.SaveChangesAsync();
+        }
+
         public IEnumerable<Genre> GetGenres()
         {
             var genres = this.genreRepo.AllAsNoTracking().ToList();
             return genres;
+        }
+
+        public Genre GetGenreById(int id)
+        {
+            return this.genreRepo.AllAsNoTracking().Where(x=>x.Id==id).FirstOrDefault();
         }
 
         public ICollection<Genre> GetGenresByPostId(int id)
