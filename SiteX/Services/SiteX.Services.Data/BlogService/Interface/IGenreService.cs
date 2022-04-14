@@ -10,7 +10,11 @@
     {
         public Task CreateAsync(GenreViewModel viewModel);
 
+        public Task EditAsync(Genre genre);
+
         public IEnumerable<Genre> GetGenres();
+
+        public Genre GetGenreById(int id);
 
         public ICollection<Genre> GetGenresByPostId(int id);
     }

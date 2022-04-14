@@ -8,5 +8,6 @@
         public Task CreatingPostGenreAsync(ICollection<int> genres, int post);
 
         public Task HardDeletePostGenreByIdAsync(int postid);
+
     }
 }
