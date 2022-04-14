@@ -118,5 +118,33 @@
 
             return this.Redirect("/");
         }
-    }
+
+        public IActionResult Delete(Guid id)
+        {
+            var product = this.productService.GetOutputProductById(id);
+            this.ViewBag.ImageOne = this.productImageService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
+            this.ViewBag.Images = this.productImageService.GetImagesByProductId(id).Select(x => x.Path).Skip(1);
+            var viewmodel = new BuyingProductViewModel() { ProductId = product.Id, Product = product };
+
+            viewmodel.CategoriesToList = product.Categories;
+            viewmodel.LocationsToList = product.Locations;
+            viewmodel.SizesToList = product.Sizes;
+            viewmodel.ColorsToList = product.Colors;
+            return this.View(viewmodel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(BuyingProductViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            await this.productService.SoftDeleteProductByIdAsync(model.ProductId);
+
+            return this.Redirect("/");
+        }
+
+}
 }
