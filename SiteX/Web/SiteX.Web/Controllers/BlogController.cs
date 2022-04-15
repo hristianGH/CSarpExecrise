@@ -19,19 +19,22 @@
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IPostImageService postImageService;
         private readonly IBlogListService toListService;
+        private readonly ICommentService commentService;
 
         public BlogController(
             IGenreService genreService,
             IPostService postService,
             UserManager<ApplicationUser> userManager,
             IPostImageService postImageService,
-            IBlogListService toListService)
+            IBlogListService toListService,
+            ICommentService commentService)
         {
             this.genreService = genreService;
             this.postService = postService;
             this.userManager = userManager;
             this.postImageService = postImageService;
             this.toListService = toListService;
+            this.commentService = commentService;
         }
 
         public IActionResult Index()
@@ -115,6 +118,33 @@
             }
 
             return this.NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateComment(CommentViewModel viewModel)
+        {
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            var parentId =
+                 viewModel.ParentId == 0 ?
+                     (int?)null :
+                     viewModel.ParentId;
+
+            if (parentId.HasValue)
+            {
+                if (!this.commentService.IsInPostId(parentId.Value, viewModel.PostId))
+                {
+                    return this.BadRequest();
+                }
+            }
+            viewModel.User = await this.userManager.GetUserAsync(this.User);
+
+            await this.commentService.Create(viewModel);
+            return this.Redirect("/");
         }
     }
 }

@@ -92,6 +92,8 @@
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IPostImageService, PostImageService>();
             services.AddTransient<IBlogListService, BlogListService>();
+            services.AddTransient<ICommentService, CommentService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

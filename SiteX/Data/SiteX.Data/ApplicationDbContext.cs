@@ -109,6 +109,7 @@
 
             builder.Entity<ProductCategory>().HasKey(x => new { x.ProductId, x.CategoryId });
             builder.Entity<ProductLocation>().HasKey(x => new { x.ProductId, x.LocationId });
+            builder.Entity<Comment>().HasOne(x => x.Parent);
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

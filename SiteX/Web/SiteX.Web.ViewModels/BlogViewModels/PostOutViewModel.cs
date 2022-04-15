@@ -16,6 +16,8 @@
 
         public ApplicationUser Poster { get; set; }
 
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
         public DateTime Date { get; set; }
 
         public string PreviewImage { get; set; }

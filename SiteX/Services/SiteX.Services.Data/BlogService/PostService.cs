@@ -13,13 +13,16 @@
     {
         private readonly IDeletableEntityRepository<Post> postRepo;
         private readonly IPostGenreService postGenreService;
+        private readonly ICommentService commentService;
 
         public PostService(
             IDeletableEntityRepository<Post> postRepo,
-            IPostGenreService postGenreService)
+            IPostGenreService postGenreService,
+            ICommentService commentService)
         {
             this.postRepo = postRepo;
             this.postGenreService = postGenreService;
+            this.commentService = commentService;
         }
 
         public async Task CreatePostAsync(PostViewModel viewModel)
@@ -78,6 +81,7 @@
             var posts = this.GetAllPostsAsOutModel().Where(x => x.Genres.Any(x => x.Id == id)).ToList();
             return posts;
         }
+
         public ICollection<PostOutViewModel> ToPage(int page = 1, int itemsPerPage = 6)
         {
             var output = this.GetAllPostsAsOutModel().Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToList();
