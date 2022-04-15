@@ -4,6 +4,8 @@
 
     public class PostAllViewModel : PagingViewModel
     {
+        public BlogToSelectedList ToSelectList { get; set; }
+
         public ICollection<PostOutViewModel> Posts { get; set; } = new List<PostOutViewModel>();
     }
 }

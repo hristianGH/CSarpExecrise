@@ -84,13 +84,14 @@
             services.AddTransient<IProductImageService, ProductImageService>();
             services.AddTransient<IProductLocationService, ProductLocationService>();
             services.AddTransient<IProductSizeService, ProductSizeService>();
-            services.AddTransient<IToListService, ToListService>();
+            services.AddTransient<IShopListService, ShopListService>();
 
             // BlogServices
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IPostGenreService, PostGenreSevice>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IPostImageService, PostImageService>();
+            services.AddTransient<IBlogListService, BlogListService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class PostEditViewModel:ToSelectedList
+    public class PostEditViewModel:BlogToSelectedList
     {
         public int Id { get; set; }
 

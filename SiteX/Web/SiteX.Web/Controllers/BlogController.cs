@@ -18,17 +18,20 @@
         private readonly IPostService postService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IPostImageService postImageService;
+        private readonly IBlogListService toListService;
 
         public BlogController(
             IGenreService genreService,
             IPostService postService,
             UserManager<ApplicationUser> userManager,
-            IPostImageService postImageService)
+            IPostImageService postImageService,
+            IBlogListService toListService)
         {
             this.genreService = genreService;
             this.postService = postService;
             this.userManager = userManager;
             this.postImageService = postImageService;
+            this.toListService = toListService;
         }
 
         public IActionResult Index()
@@ -83,6 +86,7 @@
             PostAllViewModel postViewModel = new PostAllViewModel() { Posts = this.postService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 8 };
 
             postViewModel.ItemsCount = this.postService.GetPostCount();
+            postViewModel.ToSelectList = this.toListService.ToSelectedList();
 
             return this.View(postViewModel);
         }
@@ -94,6 +98,23 @@
             this.ViewBag.Images = this.postImageService.GetImagesByPostId(id).Select(x => x.Path).Skip(1);
 
             return this.View(post);
+        }
+
+        public IActionResult SearchByGenre(int id = 1)
+        {
+            PostAllViewModel postViewModel = new PostAllViewModel()
+            {
+                Posts = this.postService.FilterByGenreId(id),
+            };
+            postViewModel.ItemsCount = this.postService.GetPostCount();
+            postViewModel.ToSelectList = this.toListService.ToSelectedList();
+
+            if (postViewModel != null)
+            {
+                return this.View("All", postViewModel);
+            }
+
+            return this.NotFound();
         }
     }
 }

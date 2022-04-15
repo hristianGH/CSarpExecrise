@@ -73,6 +73,11 @@
             return output;
         }
 
+        public ICollection<PostOutViewModel> FilterByGenreId(int id)
+        {
+            var posts = this.GetAllPostsAsOutModel().Where(x => x.Genres.Any(x => x.Id == id)).ToList();
+            return posts;
+        }
         public ICollection<PostOutViewModel> ToPage(int page = 1, int itemsPerPage = 6)
         {
             var output = this.GetAllPostsAsOutModel().Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToList();
