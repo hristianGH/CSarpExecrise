@@ -6,7 +6,7 @@
 
     using SiteX.Data.Models.Shop;
 
-    public class ProductEditViewModel : ToSelectList
+    public class ProductEditViewModel : ShopToSelectList
     {
         public Product OldProduct { get; set; }
 

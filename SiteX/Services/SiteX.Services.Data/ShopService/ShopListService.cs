@@ -3,14 +3,14 @@
     using SiteX.Services.Data.ShopService.Interface;
     using SiteX.Web.ViewModels.ShopViewModels;
 
-    public class ToListService : IToListService
+    public class ShopListService : IShopListService
     {
         private readonly IGenderService genderService;
         private readonly ICategoryService categoryService;
         private readonly ISizeService sizeService;
         private readonly IColorService colorService;
 
-        public ToListService(
+        public ShopListService(
             IGenderService genderService,
             ICategoryService categoryService,
             ISizeService sizeService,
@@ -22,9 +22,9 @@
             this.colorService = colorService;
         }
 
-        public ToSelectList ToSelectList()
+        public ShopToSelectList ToSelectList()
         {
-            var selectedList = new ToSelectList()
+            var selectedList = new ShopToSelectList()
             {
                 GendersToList = this.genderService.GetGenders(),
 

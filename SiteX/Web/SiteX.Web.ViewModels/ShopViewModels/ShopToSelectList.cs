@@ -4,7 +4,7 @@
 
     using SiteX.Data.Models.Shop;
 
-    public class ToSelectList
+    public class ShopToSelectList
     {
         public IEnumerable<string> GendersToList { get; set; } = new List<string>();
 

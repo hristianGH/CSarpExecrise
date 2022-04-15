@@ -2,8 +2,8 @@
 {
     using SiteX.Web.ViewModels.ShopViewModels;
 
-    public interface IToListService
+    public interface IShopListService
     {
-        public ToSelectList ToSelectList();
+        public ShopToSelectList ToSelectList();
     }
 }

@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class BuyingProductViewModel : ToSelectList
+    public class BuyingProductViewModel : ShopToSelectList
     {
         public ProductOutputViewModel Product { get; set; }
 

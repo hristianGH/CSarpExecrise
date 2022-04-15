@@ -8,7 +8,7 @@
 
     using SiteX.Data.Models;
 
-    public class ProductViewModel : ToSelectList
+    public class ProductViewModel : ShopToSelectList
     {
         [Required]
         [MaxLength(50)]

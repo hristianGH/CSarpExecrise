@@ -7,7 +7,7 @@
     using SiteX.Data.Models;
     using SiteX.Data.Models.Shop;
 
-    public class ProductEdit : ToSelectList
+    public class ProductEdit : ShopToSelectList
     {
         public Guid Id { get; set; }
 

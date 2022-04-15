@@ -29,7 +29,7 @@
         private readonly IProductImageService productImageService;
         private readonly IProductCategoryService productCategoryService;
         private readonly IProductLocationService productLocationService;
-        private readonly IToListService toListService;
+        private readonly IShopListService toListService;
 
         // TODO IdeletableEntityRepository
         public ShopController(
@@ -44,7 +44,7 @@
             IProductImageService productImageService,
             IProductCategoryService productCategoryService,
             IProductLocationService productLocationService,
-            IToListService toListService)
+            IShopListService toListService)
         {
             this.genderService = genderService;
             this.categoryService = categoryService;

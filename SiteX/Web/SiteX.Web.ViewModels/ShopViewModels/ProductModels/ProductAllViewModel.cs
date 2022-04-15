@@ -6,6 +6,6 @@
     {
         public ICollection<ProductOutputViewModel> Products { get; set; } = new List<ProductOutputViewModel>();
 
-        public ToSelectList ToSelectList { get; set; }
+        public ShopToSelectList ToSelectList { get; set; }
     }
 }

@@ -124,7 +124,7 @@ namespace SiteX.WebAPI
             services.AddTransient<IProductImageService, ProductImageService>();
             services.AddTransient<IProductLocationService, ProductLocationService>();
             services.AddTransient<IProductSizeService, ProductSizeService>();
-            services.AddTransient<IToListService, ToListService>();
+            services.AddTransient<IShopListService, BlogListService>();
 
             // BlogServices
             services.AddTransient<IGenreService, GenreService>();
