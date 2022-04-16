@@ -8,7 +8,6 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using SiteX.Data.Models;
-    using SiteX.Data.Models.Blog;
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Web.ViewModels.BlogViewModels;
 
@@ -99,8 +98,7 @@
             var post = this.postService.GetOutputPostById(id);
             this.ViewBag.ImageOne = this.postImageService.GetImagesByPostId(id).Select(x => x.Path).FirstOrDefault();
             this.ViewBag.Images = this.postImageService.GetImagesByPostId(id).Select(x => x.Path).Skip(1);
-            post.Comments = commentService.GetCommentsByPostId(id);
-            
+            post.Comments = this.commentService.GetCommentsByPostId(id);
             return this.View(post);
         }
 
@@ -124,6 +122,7 @@
         [HttpPost]
         public async Task<IActionResult> CreateComment(CommentViewModel viewModel)
         {
+            viewModel.User = await this.userManager.GetUserAsync(this.User);
 
             if (!this.ModelState.IsValid)
             {
@@ -142,9 +141,9 @@
                     return this.BadRequest();
                 }
             }
-            viewModel.User = await this.userManager.GetUserAsync(this.User);
 
-            await this.commentService.Create(viewModel);
+
+            await this.commentService.CreateAsync(viewModel);
             return this.Redirect("/");
         }
     }
