@@ -5,7 +5,9 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Identity;
     using SiteX.Data.Common.Repositories;
+    using SiteX.Data.Models;
     using SiteX.Data.Models.Blog;
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Web.ViewModels.BlogViewModels;
@@ -14,7 +16,8 @@
     {
         private readonly IDeletableEntityRepository<Comment> commentRepo;
 
-        public CommentService(IDeletableEntityRepository<Comment> commentRepo)
+        public CommentService(IDeletableEntityRepository<Comment> commentRepo,
+            UserManager<ApplicationUser> userManager)
         {
             this.commentRepo = commentRepo;
         }
@@ -32,7 +35,6 @@
             Comment comment = new Comment()
             {
                 Body = viewModel.Body,
-                Parent = viewModel.Parent,
                 Post = viewModel.Post,
                 User = viewModel.User,
                 ParentId = viewModel.ParentId,
@@ -50,7 +52,21 @@
 
         public ICollection<Comment> GetCommentsByPostId(int id)
         {
-            return this.commentRepo.AllAsNoTracking().Where(x => x.Post.Id == id).ToList();
+            var lsit = this.commentRepo.AllAsNoTracking().Select(x => new Comment
+            {
+                Id = x.Id,
+                UserId = x.UserId,
+                PostId = x.PostId,
+                User = x.User,
+                Body = x.Body,
+                ParentId = x.ParentId,
+                Parent = x.Parent,
+                Post = x.Post,
+                CreatedOn = x.CreatedOn,
+                
+            }).Where(x => x.Post.Id == id).ToList();
+
+            return lsit;
         }
 
         public bool IsInPostId(int commentId, int postId)

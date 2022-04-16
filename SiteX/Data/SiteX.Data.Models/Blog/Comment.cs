@@ -14,12 +14,13 @@
 
         public string UserId { get; set; }
 
+        [ForeignKey(nameof(UserId))]
+        public ApplicationUser User { get; set; }
+
         public int? ParentId { get; set; }
 
         [ForeignKey(nameof(ParentId))]
         public virtual Comment Parent { get; set; }
-
-        public ApplicationUser User { get; set; }
 
         public Post Post { get; set; }
 

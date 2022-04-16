@@ -72,7 +72,6 @@
                     Date = x.CreatedOn,
                     PreviewImage = x.PostImages.Select(x => x.Path).FirstOrDefault(),
                 }).ToList();
-
             return output;
         }
 
