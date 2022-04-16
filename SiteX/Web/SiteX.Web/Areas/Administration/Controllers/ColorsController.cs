@@ -36,7 +36,8 @@
             }
 
             await this.colorService.CreateAsync(viewModel);
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
         public IActionResult Edit(int id)
@@ -56,7 +57,8 @@
 
             await this.colorService.EditColorAsync(viewModel);
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
     }
 }

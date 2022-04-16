@@ -37,7 +37,8 @@
             }
 
             await this.categoryService.CreateAsync(viewModel);
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
         public IActionResult Edit(int id)
@@ -57,7 +58,8 @@
 
             await this.categoryService.EditCategoryAsync(viewModel);
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
     }
 }

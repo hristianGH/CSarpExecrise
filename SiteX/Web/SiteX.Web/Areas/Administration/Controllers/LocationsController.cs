@@ -40,7 +40,8 @@
             }
 
             await this.locationService.CreateAsync(viewModel);
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
         [HttpGet]
@@ -63,7 +64,8 @@
 
             await this.locationService.EditLocationAsync(viewModel);
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
     }
 }

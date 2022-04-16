@@ -56,54 +56,6 @@
 
 
 
-        @if (this.SignInManager.IsSignedIn(this.User))
-        {
-            @if (this.User.IsInRole("Administrator"))
-            {
-
-                <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
-                    <div class="dropdown show ">
-                        <a class="btn btn-light dropdown-toggle" asp-controller="Shop" asp-action="All" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Shop Menu
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateProduct">Create Product</a>
-
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateCategory">Create Category</a>
-
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateLocation">Create Location</a>
-
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateColor">Create Color</a>
-
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="CreateSize">Create Size</a>
-
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="EditCategory">Edit Category</a>
-
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="EditLocation">Edit Location</a>
-
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="SelectEditProduct">Edit Product</a>
-
-                        </div>
-                    </div>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="CreateGenre">Create Genre</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="CreatePost">Create Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="SearchByCategory">CAtegory </a>
-                    </li>
-
-                </nav>
-            }
-
-        }
-
 
     </header>
 

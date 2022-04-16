@@ -16,7 +16,8 @@
         private readonly IGenreService genreService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public PostsController(IPostService postService,
+        public PostsController(
+            IPostService postService,
             IGenreService genreService,
             UserManager<ApplicationUser> userManager)
         {
@@ -57,7 +58,8 @@
 
             await this.postService.EditPostAsync(viewModel);
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
         [HttpPost]
@@ -68,7 +70,8 @@
                 return this.BadRequest();
             }
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
         public IActionResult Create()
@@ -88,9 +91,8 @@
             viewModel.User = await this.userManager.GetUserAsync(this.User);
             await this.postService.CreatePostAsync(viewModel);
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
-
-
     }
 }

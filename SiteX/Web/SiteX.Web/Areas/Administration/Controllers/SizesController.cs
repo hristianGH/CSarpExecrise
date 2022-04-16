@@ -36,7 +36,8 @@
             }
 
             await this.sizeService.CreateAsync(viewModel);
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
         public IActionResult Edit(int id)
@@ -56,7 +57,7 @@
 
             await this.sizeService.EditSizeAsync(viewModel);
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
         }
     }
 }

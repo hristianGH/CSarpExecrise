@@ -82,7 +82,8 @@
             viewModel.User = await this.userManager.GetUserAsync(this.User);
 
             await this.productService.CreateAsync(viewModel);
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
         public IActionResult Edit(Guid id)
@@ -116,7 +117,8 @@
 
             await this.productService.EditProductAsync(viewModel);
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
         public IActionResult Delete(Guid id)
@@ -143,8 +145,9 @@
 
             await this.productService.SoftDeleteProductByIdAsync(model.ProductId);
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
-}
+    }
 }

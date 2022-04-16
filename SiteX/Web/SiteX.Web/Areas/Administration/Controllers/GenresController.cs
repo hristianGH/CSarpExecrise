@@ -16,18 +16,18 @@
         {
             this.genreService = genreService;
         }
-        // GET: GenreController
 
+        // GET: GenreController
         public ActionResult Index()
         {
-            var genres =this.genreService.GetGenres();
-            return View(genres);
+            var genres = this.genreService.GetGenres();
+            return this.View(genres);
         }
 
         // GET: GenreController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return this.View();
         }
 
         // GET: GenreController/Create
@@ -45,7 +45,8 @@
             }
 
             await this.genreService.CreateAsync(viewModel);
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
         // GET: GenreController/Edit/5
@@ -53,7 +54,7 @@
         {
             var viewModel = this.genreService.GetGenreById(id);
 
-            return View(viewModel);
+            return this.View(viewModel);
         }
 
         // POST: GenreController/Edit/5
@@ -67,13 +68,14 @@
 
             await this.genreService.EditAsync(genre);
 
-            return this.Redirect("/");
+            return this.RedirectToAction("Index");
+
         }
 
         // GET: GenreController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return this.View();
         }
 
         // POST: GenreController/Delete/5
@@ -82,11 +84,11 @@
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(this.Index));
             }
             catch
             {
-                return View();
+                return this.View();
             }
         }
     }
