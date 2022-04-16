@@ -29,7 +29,7 @@
         public async Task EditAsync(Genre genre)
         {
             var edit = this.genreRepo.All().Where(x => x.Id == genre.Id).FirstOrDefault();
-            edit.Name=genre.Name;
+            edit.Name = genre.Name;
             await this.genreRepo.SaveChangesAsync();
         }
 
@@ -41,7 +41,7 @@
 
         public Genre GetGenreById(int id)
         {
-            return this.genreRepo.AllAsNoTracking().Where(x=>x.Id==id).FirstOrDefault();
+            return this.genreRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
         }
 
         public ICollection<Genre> GetGenresByPostId(int id)

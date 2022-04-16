@@ -1,10 +1,10 @@
 ﻿namespace SiteX.Web.ViewModels.BlogViewModels
 {
-    using SiteX.Data.Models;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using SiteX.Data.Models;
 
-    public class PostEditViewModel:BlogToSelectedList
+    public class PostEditViewModel : BlogToSelectedList
     {
         public int Id { get; set; }
 

@@ -34,7 +34,8 @@
         {
             var editColor = this.colorRepo.All().Where(x => x.Id == color.Id).FirstOrDefault();
             editColor.Name = color.Name;
-           await colorRepo.SaveChangesAsync();
+
+            await this.colorRepo.SaveChangesAsync();
         }
 
         public Dictionary<string, string> GetColorAsKVP()

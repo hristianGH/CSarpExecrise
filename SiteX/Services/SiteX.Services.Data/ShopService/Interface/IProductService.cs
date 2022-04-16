@@ -47,6 +47,6 @@
 
         public Task HardDeleteConnectionsByProductIdAsync(Guid id);
 
-        public Task CreateConnectionsByModel(ProductEdit list, Guid id);
+        public Task CreateConnectionsByModelAsync(ProductEdit list, Guid id);
     }
 }

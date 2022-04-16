@@ -1,14 +1,14 @@
-﻿using SiteX.Data.Models;
-using SiteX.Data.Models.Blog;
-using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace SiteX.Web.ViewModels.BlogViewModels
+﻿namespace SiteX.Web.ViewModels.BlogViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+    using SiteX.Data.Models;
+    using SiteX.Data.Models.Blog;
+
     public class CommentViewModel
     {
         public Post Post { get; set; }
 
+        [Required]
         public int PostId { get; set; }
 
         [Required]
@@ -16,6 +16,7 @@ namespace SiteX.Web.ViewModels.BlogViewModels
         [MinLength(3)]
         public string Body { get; set; }
 
+        [Required]
         public ApplicationUser User { get; set; }
 
         public Comment Parent { get; set; }

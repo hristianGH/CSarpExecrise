@@ -1,8 +1,7 @@
 ﻿namespace SiteX.Web.ViewModels.BlogViewModels
 {
-    using SiteX.Data.Models.Blog;
-
     using System.Collections.Generic;
+    using SiteX.Data.Models.Blog;
 
     public class CommentEditViewModel
     {

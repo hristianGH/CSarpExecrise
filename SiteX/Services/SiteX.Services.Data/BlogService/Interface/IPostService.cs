@@ -32,7 +32,7 @@
 
         public Task HardDeleteConnectionsByPostIdAsync(int id);
 
-        public Task CreateConnectionsByModel(PostEditViewModel list, int id);
+        public Task CreateConnectionsByModelAsync(PostEditViewModel list, int id);
 
         public ICollection<PostOutViewModel> FilterByGenreId(int id);
     }

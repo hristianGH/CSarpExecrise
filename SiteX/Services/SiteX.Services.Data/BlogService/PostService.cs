@@ -100,7 +100,6 @@
 
         public async Task EditPostAsync(PostEditViewModel post)
         {
-
             var edit = this.postRepo.All().Where(x => x.Id == post.Id).FirstOrDefault();
             edit.Title = post.Title;
             edit.Body = post.Body;
@@ -108,7 +107,7 @@
             await this.postRepo.SaveChangesAsync();
 
             await this.HardDeleteConnectionsByPostIdAsync(post.Id);
-            await this.CreateConnectionsByModel(post, post.Id);
+            await this.CreateConnectionsByModelAsync(post, post.Id);
         }
 
         public Post GetPostById(int id)
@@ -132,16 +131,12 @@
 
         public async Task HardDeleteConnectionsByPostIdAsync(int id)
         {
-
             await this.postGenreService.HardDeletePostGenreByIdAsync(id);
-
         }
 
-        public async Task CreateConnectionsByModel(PostEditViewModel list, int id)
+        public async Task CreateConnectionsByModelAsync(PostEditViewModel list, int id)
         {
             await this.postGenreService.CreatingPostGenreAsync(list.PostGenres, id);
-
         }
-
     }
 }

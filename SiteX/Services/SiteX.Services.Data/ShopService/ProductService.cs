@@ -203,7 +203,7 @@
             await this.productRepo.SaveChangesAsync();
 
             await this.HardDeleteConnectionsByProductIdAsync(viewModel.Id);
-            await this.CreateConnectionsByModel(viewModel, viewModel.Id);
+            await this.CreateConnectionsByModelAsync(viewModel, viewModel.Id);
         }
 
         public ProductEdit GetProductEditById(Guid id)
@@ -238,7 +238,7 @@
             await this.productSizeService.HardDeleteProductSizeByIdAsync(id);
         }
 
-        public async Task CreateConnectionsByModel(ProductEdit viewModel, Guid id)
+        public async Task CreateConnectionsByModelAsync(ProductEdit viewModel, Guid id)
         {
             await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, id);
 
