@@ -8,10 +8,9 @@
 <script src="~/lib/ckeditor5/ckeditor.js"></script>
 
 <form method="post" class=align-content-md-center>
-
+    <p>Id @Model.Id</p>
     <div class="form-group">
-        <label asp-for="Id"></label>
-        <input asp-for="Id" value="@Model.Id" readonly />
+        <input asp-for="Id" value="@Model.Id" type="hidden" />
     </div>
 
     <div class="form-group">
@@ -48,7 +47,7 @@
          
     </div>
 
-
+    
     <input type="submit" class="btn btn-primary" />
 
 </form>
