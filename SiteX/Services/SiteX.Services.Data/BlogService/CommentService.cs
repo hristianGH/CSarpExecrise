@@ -15,23 +15,28 @@
     public class CommentService : ICommentService
     {
         private readonly IDeletableEntityRepository<Comment> commentRepo;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public CommentService(IDeletableEntityRepository<Comment> commentRepo,
+        public CommentService(
+            IDeletableEntityRepository<Comment> commentRepo,
             UserManager<ApplicationUser> userManager)
         {
             this.commentRepo = commentRepo;
+            this.userManager = userManager;
         }
-        public Task AddCommentToPost(Post post)
+
+        public Task AddCommentToPostAsync(Post post)
         {
             throw new NotImplementedException();
         }
 
-        public async Task Create(CommentViewModel viewModel)
+        public async Task CreateAsync(CommentViewModel viewModel)
         {
             if (viewModel.ParentId == 0)
             {
                 viewModel.ParentId = null;
             }
+
             Comment comment = new Comment()
             {
                 Body = viewModel.Body,
@@ -52,7 +57,7 @@
 
         public ICollection<Comment> GetCommentsByPostId(int id)
         {
-            var lsit = this.commentRepo.AllAsNoTracking().Select(x => new Comment
+            var list = this.commentRepo.AllAsNoTracking().Select(x => new Comment
             {
                 Id = x.Id,
                 UserId = x.UserId,
@@ -63,10 +68,9 @@
                 Parent = x.Parent,
                 Post = x.Post,
                 CreatedOn = x.CreatedOn,
-                
             }).Where(x => x.Post.Id == id).ToList();
 
-            return lsit;
+            return list;
         }
 
         public bool IsInPostId(int commentId, int postId)
@@ -74,6 +78,26 @@
             var commentPostId = this.commentRepo.All().Where(x => x.Id == commentId)
                 .Select(x => x.PostId).FirstOrDefault();
             return commentPostId == postId;
+        }
+
+        public async Task<Comment> GetCommentByIdAsync(int id)
+        {
+            var comment = this.commentRepo.AllAsNoTracking().FirstOrDefault(x => x.Id == id);
+            comment.User = await this.userManager.FindByIdAsync(comment.UserId);
+
+            return comment;
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var comment = this.commentRepo.All().FirstOrDefault(x => x.Id == id);
+            this.commentRepo.Delete(comment);
+            await this.commentRepo.SaveChangesAsync();
+        }
+
+        public bool DoesCommentExistById(int id)
+        {
+            return this.commentRepo.AllAsNoTracking().Any(x => x.Id == id);
         }
     }
 }

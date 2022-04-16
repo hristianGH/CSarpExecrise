@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using SiteX.Services.Data.BlogService.Interface;
-
-namespace SiteX.Web.Areas.Administration.Controllers
+﻿namespace SiteX.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
+    using SiteX.Data.Models.Blog;
+    using SiteX.Services.Data.BlogService.Interface;
+
     public class CommentsController : AdministrationController
     {
         private readonly ICommentService commentService;
@@ -12,6 +15,7 @@ namespace SiteX.Web.Areas.Administration.Controllers
         {
             this.commentService = commentService;
         }
+
         // GET: CommentsController
         public IActionResult Index()
         {
@@ -22,34 +26,13 @@ namespace SiteX.Web.Areas.Administration.Controllers
         // GET: CommentsController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
-        }
-
-        // GET: CommentsController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CommentsController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return this.View();
         }
 
         // GET: CommentsController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return this.View();
         }
 
         // POST: CommentsController/Edit/5
@@ -59,33 +42,32 @@ namespace SiteX.Web.Areas.Administration.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(this.Index));
             }
             catch
             {
-                return View();
+                return this.View();
             }
         }
 
         // GET: CommentsController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            var comment = await this.commentService.GetCommentByIdAsync(id);
+            return this.View(comment);
         }
 
         // POST: CommentsController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(Comment comment)
         {
-            try
+            if (!this.ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                return this.BadRequest();
             }
-            catch
-            {
-                return View();
-            }
+
+            await this.commentService.DeleteAsync(comment.Id);
+            return this.RedirectToAction("Index");
         }
     }
 }

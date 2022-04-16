@@ -11,12 +11,18 @@
     {
         public IEnumerable<Comment> GetComents();
 
-        public Task Create(CommentViewModel comment);
+        public Task CreateAsync(CommentViewModel comment);
 
-        public Task AddCommentToPost(Post post);
+        public Task AddCommentToPostAsync(Post post);
 
         public ICollection<Comment> GetCommentsByPostId(int id);
 
         public bool IsInPostId(int commentId, int postId);
+
+        public Task<Comment> GetCommentByIdAsync(int id);
+
+        public Task DeleteAsync(int id);
+
+        public bool DoesCommentExistById(int id);
     }
 }
