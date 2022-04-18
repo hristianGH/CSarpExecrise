@@ -59,6 +59,9 @@
 
         public DbSet<ProductSize> ProductSizes { get; set; }
 
+        public DbSet<Receit> Receits { get; set; }
+
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

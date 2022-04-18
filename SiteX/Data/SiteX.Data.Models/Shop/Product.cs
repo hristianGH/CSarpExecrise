@@ -29,7 +29,9 @@
 
         public string Gender { get; set; }
 
-        public string Color { get; set; }
+        [Required]
+        [Range(1, int.MaxValue-1)]
+        public int Quantity { get; set; }
 
         public bool IsAvalable { get; set; } = true;
 
