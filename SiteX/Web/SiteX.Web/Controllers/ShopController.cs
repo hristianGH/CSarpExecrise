@@ -9,6 +9,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using SiteX.Data.Models;
+    using SiteX.Data.Models.Shop;
     using SiteX.Services.Data.ShopService.Interface;
     using SiteX.Web.ViewModels.ShopViewModels.CategoryModels;
     using SiteX.Web.ViewModels.ShopViewModels.ColorModels;
@@ -406,9 +407,22 @@
             return this.RedirectToAction("Buy", viewmodel);
         }
 
-        public IActionResult Buy()
+        public IActionResult Buy(BuyingProductViewModel viewModel)
         {
+            var prod = viewModel.Product;
             return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Buy(Product viewModel)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            await this.productService.BuyProductAsync(viewModel);
+            return this.RedirectToAction("All");
         }
     }
 }

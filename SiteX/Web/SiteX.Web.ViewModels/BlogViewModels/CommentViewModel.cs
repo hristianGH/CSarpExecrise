@@ -16,7 +16,7 @@
         [MinLength(3)]
         public string Body { get; set; }
 
-        [Required]
+        
         public ApplicationUser User { get; set; }
 
         public Comment Parent { get; set; }

@@ -33,6 +33,10 @@
 
         [Required]
         [MinLength(1)]
+        public int Quantity { get; set; }
+
+        [Required]
+        [MinLength(1)]
         [Display(Name = "Picture Url")]
         public virtual ICollection<string> Pictures { get; set; } = new List<string>();
 

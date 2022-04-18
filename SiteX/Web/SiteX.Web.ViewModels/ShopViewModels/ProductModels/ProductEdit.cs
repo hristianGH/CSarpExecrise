@@ -33,6 +33,10 @@
         public string Gender { get; set; }
 
         [Required]
+        [Range(1, int.MaxValue - 1)]
+        public int Quantity { get; set; }
+
+        [Required]
         [MinLength(1)]
         [Display(Name = "Picture Url")]
         public virtual ICollection<string> Pictures { get; set; } = new List<string>();

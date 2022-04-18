@@ -17,7 +17,7 @@
 
         public IActionResult Index(int page)
         {
-            this.productService.FilterByCategoryId(2);
+           
             return this.View();
         }
 

@@ -25,7 +25,6 @@
         private readonly IProductLocationService productLocationService;
         private readonly IShopListService toListService;
 
-        // TODO IdeletableEntityRepository
         public ProductsController(
             IGenderService genderService,
             ICategoryService categoryService,

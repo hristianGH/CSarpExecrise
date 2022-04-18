@@ -59,7 +59,6 @@
             await this.postService.EditPostAsync(viewModel);
 
             return this.RedirectToAction("Index");
-
         }
 
         [HttpPost]
@@ -71,7 +70,6 @@
             }
 
             return this.RedirectToAction("Index");
-
         }
 
         public IActionResult Create()
@@ -92,7 +90,6 @@
             await this.postService.CreatePostAsync(viewModel);
 
             return this.RedirectToAction("Index");
-
         }
     }
 }
