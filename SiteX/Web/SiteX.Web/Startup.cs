@@ -83,6 +83,8 @@
             services.AddTransient<IProductLocationService, ProductLocationService>();
             services.AddTransient<IProductSizeService, ProductSizeService>();
             services.AddTransient<IShopListService, ShopListService>();
+            services.AddTransient<IReceitService, ReceitService>();
+
 
             // BlogServices
             services.AddTransient<IGenreService, GenreService>();
