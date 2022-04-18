@@ -18,6 +18,7 @@
         private readonly IProductSizeService productSizeService;
         private readonly IProductColorService productColorService;
         private readonly IProductImageService productImageService;
+        private readonly IReceitService receitService;
 
         public ProductService(
             IDeletableEntityRepository<Product> productRepo,
@@ -25,7 +26,8 @@
             IProductLocationService productLocationService,
             IProductSizeService productSizeService,
             IProductColorService productColorService,
-            IProductImageService productImageService)
+            IProductImageService productImageService,
+            IReceitService receitService)
         {
             this.productRepo = productRepo;
 
@@ -34,6 +36,7 @@
             this.productSizeService = productSizeService;
             this.productColorService = productColorService;
             this.productImageService = productImageService;
+            this.receitService = receitService;
         }
 
         public async Task CreateAsync(ProductViewModel viewModel)
@@ -52,6 +55,7 @@
                 Gender = viewModel.Gender,
                 Price = viewModel.Price,
                 ProductImages = pics,
+                Quantity = viewModel.Quantity,
             };
 
             await this.productRepo.AddAsync(product);
@@ -75,7 +79,9 @@
 
         public ICollection<Product> ReturnAll()
         {
-            return this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn).ToList();
+            var products = this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn).ToList();
+
+            return products;
         }
 
         public async Task RemoveProductAsync(Product product)
@@ -113,6 +119,7 @@
                     Colors = x.ProductColors.Select(x => x.Color).ToList(),
                     Sizes = x.ProductSizes.Select(x => x.Size).ToList(),
                     Description = x.Description,
+                    Quantity = x.Quantity,
                     Gender = x.Gender,
                     Price = x.Price,
                 }).ToList();
@@ -199,6 +206,7 @@
             product.Description = viewModel.Description;
             product.Price = viewModel.Price;
             product.Gender = viewModel.Gender;
+            product.Quantity = viewModel.Quantity;
 
             await this.productRepo.SaveChangesAsync();
 
@@ -218,6 +226,7 @@
                 Colors = x.ProductColors.Select(x => x.Color.Id).ToList(),
                 Sizes = x.ProductSizes.Select(x => x.Size.Id).ToList(),
                 Description = x.Description,
+                Quantity = x.Quantity,
                 Gender = x.Gender,
                 Price = x.Price,
             }).Where(x => x.Id == id).FirstOrDefault();
@@ -249,6 +258,28 @@
             await this.productColorService.CreatingProductColorAsync(viewModel.Colors, id);
 
             await this.productSizeService.CreatingProductSizeAsync(viewModel.Sizes, id);
+        }
+
+        public async Task BuyProductAsync(Product product)
+        {
+            var prod = this.productRepo.All().FirstOrDefault(x => x.Id == product.Id);
+            if (prod.Quantity <= 1)
+            {
+                prod.IsAvalable = false;
+                this.productRepo.Delete(prod);
+            }
+            Receit receit = new Receit()
+            {
+                Product = product,
+                Price = product.Price,
+                ProductId = product.Id,
+                User = product.User,
+                UserId = product.UserId,
+                ProductName = product.Name,
+            };
+
+            await this.receitService.CreateAsync(receit);
+            await this.productRepo.SaveChangesAsync();
         }
     }
 }
