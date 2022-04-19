@@ -1,4 +1,5 @@
-﻿@model SiteX.Web.ViewModels.ShopViewModels.ProductModels.BuyingProductViewModel
+﻿@using Microsoft.AspNetCore.Html
+@model SiteX.Web.ViewModels.ShopViewModels.ProductModels.BuyingProductViewModel
 
 @{
     this.ViewData["Title"] = $"{@Model.Product.Name}";
@@ -89,10 +90,6 @@
 </div>
 
 
-
-
-
-
 <div class="accordion" id="DescriptionAC">
     <div class="card">
         <div class="card-header" id="headingOne">
@@ -105,7 +102,8 @@
 
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#DescriptionAC">
             <div class="card-body">
-                <p>@Model.Product.Description  </p>
+                <p>@(new HtmlString(Model.Product.Description))  </p>
+
             </div>
         </div>
     </div>

@@ -4,24 +4,42 @@
 
     using Microsoft.AspNetCore.Mvc;
     using SiteX.Services.Data.ShopService.Interface;
+    using SiteX.Services.Data.TeamService.Interfaces;
     using SiteX.Web.ViewModels;
 
     public class HomeController : BaseController
     {
-        private readonly IProductService productService;
+        private readonly ITeamService teamService;
 
-        public HomeController(IProductService productService)
+        public HomeController(ITeamService teamService)
         {
-            this.productService = productService;
-        }
-
-        public IActionResult Index(int page)
-        {
-           
-            return this.View();
+            this.teamService = teamService;
         }
 
         // TODO Make List of 5 articles to show on Home page
+        public IActionResult Index()
+        {
+
+            return this.View();
+        }
+
+        public IActionResult About()
+        {
+            return this.View();
+        }
+
+        public IActionResult Team()
+        {
+            var members = this.teamService.GetTeam();
+
+            return this.View(members);
+        }
+
+        public IActionResult Locations()
+        {
+            return this.View();
+        }
+
         public IActionResult Privacy()
         {
             return this.View();
