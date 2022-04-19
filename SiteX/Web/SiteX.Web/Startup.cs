@@ -22,6 +22,8 @@
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Services.Data.ShopService;
     using SiteX.Services.Data.ShopService.Interface;
+    using SiteX.Services.Data.TeamService;
+    using SiteX.Services.Data.TeamService.Interfaces;
     using SiteX.Services.Mapping;
     using SiteX.Services.Messaging;
     using SiteX.Web.ViewModels;
@@ -93,6 +95,9 @@
             services.AddTransient<IPostImageService, PostImageService>();
             services.AddTransient<IBlogListService, BlogListService>();
             services.AddTransient<ICommentService, CommentService>();
+
+            // Team
+            services.AddTransient<ITeamService, TeamService>();
 
         }
 

@@ -12,6 +12,7 @@
     using SiteX.Data.Models;
     using SiteX.Data.Models.Blog;
     using SiteX.Data.Models.Shop;
+    using SiteX.Data.Models.Team;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -60,6 +61,10 @@
         public DbSet<ProductSize> ProductSizes { get; set; }
 
         public DbSet<Receit> Receits { get; set; }
+
+        // Misc
+        public DbSet<Member> Member { get; set; }
+
 
 
         public override int SaveChanges() => this.SaveChanges(true);
