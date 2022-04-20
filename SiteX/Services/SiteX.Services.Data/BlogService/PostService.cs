@@ -13,16 +13,13 @@
     {
         private readonly IDeletableEntityRepository<Post> postRepo;
         private readonly IPostGenreService postGenreService;
-        private readonly ICommentService commentService;
 
         public PostService(
             IDeletableEntityRepository<Post> postRepo,
-            IPostGenreService postGenreService,
-            ICommentService commentService)
+            IPostGenreService postGenreService)
         {
             this.postRepo = postRepo;
             this.postGenreService = postGenreService;
-            this.commentService = commentService;
         }
 
         public async Task CreatePostAsync(PostViewModel viewModel)
