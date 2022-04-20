@@ -39,7 +39,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteX.Web.Tests", "Tests\Si
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteX.Web.ViewModels", "Web\SiteX.Web.ViewModels\SiteX.Web.ViewModels.csproj", "{13B7AACB-9C85-4409-8D4B-95A67D0DFFF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteX.WebAPI", "SiteX.WebAPI\SiteX.WebAPI.csproj", "{ECC666F7-F4EE-4BC8-870F-836441E0114C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteX.WebAPI", "SiteX.WebAPI\SiteX.WebAPI.csproj", "{ECC666F7-F4EE-4BC8-870F-836441E0114C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestScraper", "TestScraper\TestScraper.csproj", "{FBF623C0-9EA9-47C3-B227-5CB58276B971}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +109,10 @@ Global
 		{ECC666F7-F4EE-4BC8-870F-836441E0114C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECC666F7-F4EE-4BC8-870F-836441E0114C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECC666F7-F4EE-4BC8-870F-836441E0114C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBF623C0-9EA9-47C3-B227-5CB58276B971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF623C0-9EA9-47C3-B227-5CB58276B971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF623C0-9EA9-47C3-B227-5CB58276B971}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF623C0-9EA9-47C3-B227-5CB58276B971}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

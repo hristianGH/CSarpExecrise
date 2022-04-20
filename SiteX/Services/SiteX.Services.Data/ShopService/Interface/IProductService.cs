@@ -41,7 +41,7 @@
 
         public ProductEdit GetProductEditById(Guid id);
 
-        public Task EditAsync(ProductEditViewModel viewModel);
+       // public Task EditAsync(ProductEditViewModel viewModel);
 
         public Task EditProductAsync(ProductEdit viewModel);
 

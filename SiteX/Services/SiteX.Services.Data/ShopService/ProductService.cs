@@ -142,34 +142,7 @@
             var output = this.GetAllProductsAsOutModel().Where(x => x.Id == id).FirstOrDefault();
             return output;
         }
-
-        public async Task EditAsync(ProductEditViewModel viewModel)
-        {
-            var product = this.productRepo.All().Where(x => x.Id == viewModel.OldProductId).FirstOrDefault();
-            product.Name = viewModel.Name;
-            product.Description = viewModel.Description;
-            product.Price = viewModel.Price;
-            product.Gender = viewModel.Gender;
-
-            await this.productRepo.SaveChangesAsync();
-
-            await this.productLocationService.HardDeleteProductLocationByIdAsync(viewModel.OldProductId);
-
-            await this.productCategoryService.HardDeleteProductCategoriesByIdAsync(viewModel.OldProductId);
-
-            await this.productImageService.HardDeleteProductImagesByIdAsync(viewModel.OldProductId);
-
-            await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, product.Id);
-
-            await this.productLocationService.CreatingProductLocationAsync(viewModel.Locations, product.Id);
-
-            await this.productImageService.CreatingProductImageAsync(viewModel.Pictures, product.Id);
-
-            await this.productColorService.CreatingProductColorAsync(viewModel.Colors, product.Id);
-
-            await this.productSizeService.CreatingProductSizeAsync(viewModel.Sizes, product.Id);
-        }
-
+       
         public ICollection<ProductOutputViewModel> FilterByCategoryId(int id)
         {
             var products = this.GetAllProductsAsOutModel().Where(x => x.Categories.Any(x => x.Id == id)).ToList();
@@ -268,6 +241,7 @@
                 prod.IsAvalable = false;
                 this.productRepo.Delete(prod);
             }
+
             Receit receit = new Receit()
             {
                 Product = product,
