@@ -29,9 +29,15 @@
             await this.memberRepo.SaveChangesAsync();
         }
 
-        public Task EditMemberAsync(Member member)
+        public async Task EditMemberAsync(Member member)
         {
-            throw new NotImplementedException();
+            var edit = this.memberRepo.All().FirstOrDefault(x => x.Id == member.Id);
+            edit.FirstName = member.FirstName;
+            edit.LastName = member.LastName;
+            edit.Picture = member.Picture;
+            edit.Description = member.Description;
+
+            await this.memberRepo.SaveChangesAsync();
         }
 
         public Member GetMemberById(Guid id)
@@ -42,7 +48,7 @@
 
         public ICollection<Member> GetTeam()
         {
-           return this.memberRepo.AllAsNoTracking().ToList();
+            return this.memberRepo.AllAsNoTracking().ToList();
         }
     }
 }
