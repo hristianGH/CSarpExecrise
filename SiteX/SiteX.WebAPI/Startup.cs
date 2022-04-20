@@ -19,7 +19,8 @@ using SiteX.Services.Data.BlogService;
 using SiteX.Services.Data.BlogService.Interface;
 using SiteX.Services.Data.ShopService;
 using SiteX.Services.Data.ShopService.Interface;
-
+using SiteX.Services.Data.TeamService;
+using SiteX.Services.Data.TeamService.Interfaces;
 using SiteX.WebAPI.Settings;
 using System.Text;
 
@@ -130,7 +131,12 @@ namespace SiteX.WebAPI
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IPostImageService, PostImageService>();
             services.AddTransient<IBlogListService, BlogListService>();
+            services.AddTransient<ICommentService, CommentService>();
 
+
+            // TeamServices
+            services.AddTransient<ITeamService, TeamService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
