@@ -42,47 +42,6 @@
             return this.View(post);
         }
 
-        [Authorize(Roles = "Administrator")]
-        public IActionResult CreateGenre()
-        {
-            return this.View();
-        }
-
-        [HttpPost]
-        [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> CreateGenre(GenreViewModel viewModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            await this.genreService.CreateAsync(viewModel);
-            return this.Redirect("/");
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public IActionResult CreatePost()
-        {
-            this.ViewBag.Genres = new SelectList(this.genreService.GetGenres(), "Id", "Name");
-            return this.View();
-        }
-
-        [HttpPost]
-        [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> CreatePost(PostViewModel viewModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            viewModel.User = await this.userManager.GetUserAsync(this.User);
-            await this.postService.CreatePostAsync(viewModel);
-
-            return this.Redirect("/");
-        }
-
         public IActionResult All(int id = 1)
         {
             PostAllViewModel postViewModel = new PostAllViewModel() { Posts = this.postService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 8 };
@@ -117,34 +76,6 @@
             }
 
             return this.NotFound();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateComment(CommentViewModel viewModel)
-        {
-            viewModel.User = await this.userManager.GetUserAsync(this.User);
-
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            var parentId =
-                 viewModel.ParentId == 0 ?
-                     (int?)null :
-                     viewModel.ParentId;
-
-            if (parentId.HasValue)
-            {
-                if (!this.commentService.IsInPostId(parentId.Value, viewModel.PostId))
-                {
-                    return this.BadRequest();
-                }
-            }
-
-
-            await this.commentService.CreateAsync(viewModel);
-            return this.Redirect("/");
         }
     }
 }

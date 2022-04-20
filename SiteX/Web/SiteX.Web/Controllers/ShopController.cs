@@ -11,11 +11,7 @@
     using SiteX.Data.Models;
     using SiteX.Data.Models.Shop;
     using SiteX.Services.Data.ShopService.Interface;
-    using SiteX.Web.ViewModels.ShopViewModels.CategoryModels;
-    using SiteX.Web.ViewModels.ShopViewModels.ColorModels;
-    using SiteX.Web.ViewModels.ShopViewModels.LocationModels;
     using SiteX.Web.ViewModels.ShopViewModels.ProductModels;
-    using SiteX.Web.ViewModels.ShopViewModels.SizeModels;
 
     public class ShopController : Controller
     {
@@ -65,54 +61,7 @@
         {
             return this.View();
         }
-
-        [Authorize(Roles = "Administrator")]
-        [Authorize]
-        public IActionResult RemoveProduct()
-        {
-            this.ViewBag.Products = new SelectList(this.productService.ReturnAll(), "Id", "Name");
-            return this.View();
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public async Task<IActionResult> RemoveProduct(SelectProductViewModel model)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            await this.productService.SoftDeleteProductByIdAsync(model.ProductId);
-            return this.Redirect("/");
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public IActionResult CreateProduct()
-        {
-            var viewModel = new ProductViewModel();
-            viewModel.GendersToList = this.genderService.GetGenders();
-            viewModel.CategoriesToList = this.categoryService.GetCategories();
-            viewModel.LocationsToList = this.locationService.GetLocations();
-            viewModel.SizesToList = this.sizeService.GetSizes();
-            viewModel.ColorsToList = this.colorService.GetColors();
-            return this.View(viewModel);
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public async Task<IActionResult> CreateProduct(ProductViewModel viewModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            viewModel.User = await this.userManager.GetUserAsync(this.User);
-
-            await this.productService.CreateAsync(viewModel);
-            return this.Redirect("/");
-        }
+ 
 
         [Authorize(Roles = "Administrator")]
         public IActionResult SelectEditProduct()
@@ -134,174 +83,9 @@
         }
 
         [Authorize(Roles = "Administrator")]
-        public IActionResult EditProduct(SelectProductViewModel model)
-        {
-            var viewModel = this.productService.GetProductById(model.ProductId);
-
-            var editedViewModel = new ProductEditViewModel() { OldProductId = model.ProductId };
-            editedViewModel.OldProduct = viewModel;
-            var locations = this.locationService.GetLocationsByProductId(editedViewModel.OldProduct.Id);
-            var categories = this.categoryService.GetCategoriesByProductId(editedViewModel.OldProduct.Id);
-            var pictures = this.pictureService.GetImagesByProductId(editedViewModel.OldProduct.Id);
-            var colors = this.colorService.GetColorsByProductId(editedViewModel.OldProduct.Id);
-            var sizes = this.sizeService.GetSizesByProductId(editedViewModel.OldProduct.Id);
-
-            editedViewModel.Categories = categories.Select(x => x.Id).ToList();
-            editedViewModel.Locations = locations.Select(x => x.Id).ToList();
-            editedViewModel.Pictures = pictures.Select(x => x.Path).ToList();
-            editedViewModel.Colors = colors.Select(x => x.Id).ToList();
-            editedViewModel.Sizes = sizes.Select(x => x.Id).ToList();
-
-            if (editedViewModel.Pictures.Count() == 0)
-            {
-                editedViewModel.Pictures.Add(string.Empty);
-            }
-
-            editedViewModel.GendersToList = this.genderService.GetGenders();
-            editedViewModel.CategoriesToList = this.categoryService.GetCategories();
-            editedViewModel.LocationsToList = this.locationService.GetLocations();
-            editedViewModel.SizesToList = this.sizeService.GetSizes();
-            editedViewModel.ColorsToList = this.colorService.GetColors();
-
-            this.ViewBag.CategoriesCount = this.categoryService.GetCategoryCount();
-            this.ViewBag.ProductId = viewModel.Id;
-
-            return this.View(editedViewModel);
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public async Task<IActionResult> EditProduct(ProductEditViewModel viewModel, [FromQuery(Name = "ProductId")] Guid id)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            viewModel.OldProductId = id;
-            await this.productService.EditAsync(viewModel);
-
-            return this.Redirect("/");
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public ActionResult CreateCategory()
-        {
-            return this.View();
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public async Task<IActionResult> CreateCategory(CategoryViewModel viewModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            await this.categoryService.CreateAsync(viewModel);
-            return this.Redirect("/");
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public IActionResult EditCategory()
-        {
-            var viewModel = new CategoryEditViewModel();
-            this.ViewBag.Categories = new SelectList(this.categoryService.GetCategories(), "Id", "Name");
-            return this.View(viewModel);
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public async Task<IActionResult> EditCategory(CategoryEditViewModel viewModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            await this.categoryService.EditAsync(viewModel);
-
-            return this.Redirect("/");
-        }
-
-        [Authorize(Roles = "Administrator")]
         public IActionResult CreateColor()
         {
             return this.View();
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public async Task<IActionResult> CreateColor(ColorViewModel viewModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            await this.colorService.CreateAsync(viewModel);
-            return this.Redirect("/");
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public IActionResult CreateSize()
-        {
-            return this.View();
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public async Task<IActionResult> CreateSize(SizeViewModel viewModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            await this.sizeService.CreateAsync(viewModel);
-            return this.Redirect("/");
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public IActionResult CreateLocation()
-        {
-            return this.View();
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public async Task<IActionResult> CreateLocation(LocationViewModel viewModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            await this.locationService.CreateAsync(viewModel);
-            return this.Redirect("/");
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public IActionResult EditLocation()
-        {
-            var viewModel = new LocationEditViewModel();
-            this.ViewBag.Locations = new SelectList(this.locationService.GetLocations(), "Id", "Address");
-            return this.View(viewModel);
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public async Task<IActionResult> EditLocation(LocationEditViewModel viewModel)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            await this.locationService.EditAsync(viewModel);
-
-            return this.Redirect("/");
         }
 
         public IActionResult All(int id = 1)
