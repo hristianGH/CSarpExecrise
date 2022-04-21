@@ -43,10 +43,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\News\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\dist\img\flags\ad.svg" />
     <None Include="wwwroot\dist\img\flags\ae.svg" />
     <None Include="wwwroot\dist\img\flags\af.svg" />

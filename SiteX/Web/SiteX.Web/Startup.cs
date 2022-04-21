@@ -18,6 +18,8 @@
     using SiteX.Data.Repositories;
     using SiteX.Data.Seeding;
     using SiteX.Services.Data;
+    using SiteX.Services.Data.ArticleService;
+    using SiteX.Services.Data.ArticleService.Interface;
     using SiteX.Services.Data.BlogService;
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Services.Data.ShopService;
@@ -98,6 +100,9 @@
 
             // Team
             services.AddTransient<ITeamService, TeamService>();
+
+            // Article
+            services.AddTransient<IArticleService, ArticleService>();
 
         }
 
