@@ -48,6 +48,7 @@
                               new GenreSeeder(),
                               new SizeSeeder(),
                               new ColorSeeder(),
+                              new ArticleSeeder(),
                               new UserSeeder(this.userManager),
                           };
 

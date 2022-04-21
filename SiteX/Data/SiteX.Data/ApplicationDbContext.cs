@@ -10,6 +10,7 @@
     using Microsoft.EntityFrameworkCore;
     using SiteX.Data.Common.Models;
     using SiteX.Data.Models;
+    using SiteX.Data.Models.Article;
     using SiteX.Data.Models.Blog;
     using SiteX.Data.Models.Shop;
     using SiteX.Data.Models.Team;
@@ -28,6 +29,7 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        //Blog
         public DbSet<Post> Posts { get; set; }
 
         public DbSet<PostImage> PostImages { get; set; }
@@ -40,6 +42,7 @@
 
         public DbSet<Category> Categories { get; set; }
 
+        // Products
         public DbSet<ProductCategory> ProductCategories { get; set; }
 
         public DbSet<Location> Locations { get; set; }
@@ -63,9 +66,10 @@
         public DbSet<Receit> Receits { get; set; }
 
         // Misc
-        public DbSet<Member> Member { get; set; }
+        public DbSet<Member> Members { get; set; }
 
-
+        // Articles
+        public DbSet<Article> Articles { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
