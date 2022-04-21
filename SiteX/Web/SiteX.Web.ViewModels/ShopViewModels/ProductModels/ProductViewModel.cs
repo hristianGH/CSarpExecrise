@@ -10,6 +10,8 @@
 
     public class ProductViewModel : ShopToSelectList
     {
+        public Guid Id { get; set; }
+
         [Required]
         [MaxLength(50)]
         [MinLength(3)]
@@ -32,7 +34,7 @@
         public string Gender { get; set; }
 
         [Required]
-        [MinLength(1)]
+        [Range(0, int.MaxValue)]
         public int Quantity { get; set; }
 
         [Required]

@@ -4,10 +4,8 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
     using SiteX.Data.Models;
     using SiteX.Data.Models.Shop;
     using SiteX.Services.Data.ShopService.Interface;
@@ -20,7 +18,6 @@
         private readonly IProductImageService productImageService;
         private readonly IShopListService toListService;
 
-        // TODO IdeletableEntityRepository
         public ShopController(
             IProductService productService,
             UserManager<ApplicationUser> userManager,
@@ -34,32 +31,6 @@
         }
 
         public IActionResult Index()
-        {
-            return this.View();
-        }
- 
-
-        [Authorize(Roles = "Administrator")]
-        public IActionResult SelectEditProduct()
-        {
-            this.ViewBag.Products = new SelectList(this.productService.ReturnAll(), "Id", "Name");
-            return this.View();
-        }
-
-        [Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public IActionResult SelectEditProduct(SelectProductViewModel model)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest();
-            }
-
-            return this.RedirectToAction("EditProduct", model);
-        }
-
-        [Authorize(Roles = "Administrator")]
-        public IActionResult CreateColor()
         {
             return this.View();
         }

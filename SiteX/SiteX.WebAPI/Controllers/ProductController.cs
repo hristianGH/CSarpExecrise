@@ -113,7 +113,7 @@ namespace SiteX.WebAPI.Controllers
 
         [HttpPost]
         [Route("Edit")]
-        public async Task<IActionResult> Edit(ProductEdit viewModel)
+        public async Task<IActionResult> Edit(ProductViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
             {

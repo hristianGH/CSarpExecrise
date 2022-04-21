@@ -12,34 +12,22 @@
 
     public class ProductsController : AdministrationController
     {
-        private readonly IGenderService genderService;
         private readonly ICategoryService categoryService;
         private readonly IProductService productService;
-        private readonly ILocationService locationService;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly ISizeService sizeService;
-        private readonly IColorService colorService;
         private readonly IProductImageService productImageService;
         private readonly IShopListService toListService;
 
         public ProductsController(
-            IGenderService genderService,
             ICategoryService categoryService,
             IProductService productService,
-            ILocationService locationService,
             UserManager<ApplicationUser> userManager,
-            ISizeService sizeService,
-            IColorService colorService,
             IProductImageService productImageService,
             IShopListService toListService)
         {
-            this.genderService = genderService;
             this.categoryService = categoryService;
             this.productService = productService;
-            this.locationService = locationService;
             this.userManager = userManager;
-            this.sizeService = sizeService;
-            this.colorService = colorService;
             this.productImageService = productImageService;
             this.toListService = toListService;
         }
@@ -53,11 +41,12 @@
         public IActionResult Create()
         {
             var viewModel = new ProductViewModel();
-            viewModel.GendersToList = this.genderService.GetGenders();
-            viewModel.CategoriesToList = this.categoryService.GetCategories();
-            viewModel.LocationsToList = this.locationService.GetLocations();
-            viewModel.SizesToList = this.sizeService.GetSizes();
-            viewModel.ColorsToList = this.colorService.GetColors();
+            var toList = this.toListService.ToSelectList();
+            viewModel.GendersToList = toList.GendersToList;
+            viewModel.CategoriesToList = toList.CategoriesToList;
+            viewModel.LocationsToList = toList.LocationsToList;
+            viewModel.SizesToList = toList.SizesToList;
+            viewModel.ColorsToList = toList.ColorsToList;
             return this.View(viewModel);
         }
 
@@ -73,7 +62,6 @@
 
             await this.productService.CreateAsync(viewModel);
             return this.RedirectToAction("Index");
-
         }
 
         public IActionResult Edit(Guid id)
@@ -85,11 +73,12 @@
                 viewModel.Pictures.Add(string.Empty);
             }
 
-            viewModel.GendersToList = this.genderService.GetGenders();
-            viewModel.CategoriesToList = this.categoryService.GetCategories();
-            viewModel.LocationsToList = this.locationService.GetLocations();
-            viewModel.SizesToList = this.sizeService.GetSizes();
-            viewModel.ColorsToList = this.colorService.GetColors();
+            var toList = this.toListService.ToSelectList();
+            viewModel.GendersToList = toList.GendersToList;
+            viewModel.CategoriesToList = toList.CategoriesToList;
+            viewModel.LocationsToList = toList.LocationsToList;
+            viewModel.SizesToList = toList.SizesToList;
+            viewModel.ColorsToList = toList.ColorsToList;
 
             this.ViewBag.CategoriesCount = this.categoryService.GetCategoryCount();
             this.ViewBag.ProductId = viewModel.Id;
@@ -98,7 +87,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(ProductEdit viewModel)
+        public async Task<IActionResult> Edit(ProductViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -108,7 +97,6 @@
             await this.productService.EditProductAsync(viewModel);
 
             return this.RedirectToAction("Index");
-
         }
 
         public IActionResult Delete(Guid id)
@@ -136,8 +124,6 @@
             await this.productService.SoftDeleteProductByIdAsync(model.ProductId);
 
             return this.RedirectToAction("Index");
-
         }
-
     }
 }

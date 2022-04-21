@@ -66,7 +66,7 @@ namespace SiteX.WebAPI.Controllers
                 return this.BadRequest();
             }
 
-            await this.locationService.EditLocationAsync(viewModel);
+            await this.locationService.EditAsync(viewModel);
 
             return this.Ok(viewModel);
         }
