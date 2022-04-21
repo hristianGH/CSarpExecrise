@@ -4,8 +4,10 @@
     using System.ComponentModel.DataAnnotations;
 
     using SiteX.Data.Models;
+    using SiteX.Data.Models.Blog;
+    using SiteX.Services.Mapping;
 
-    public class PostViewModel
+    public class PostViewModel: IMapFrom<Post>
     {
         [Required]
         [MaxLength(150)]

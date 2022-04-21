@@ -8,6 +8,7 @@
     using SiteX.Data.Common.Repositories;
     using SiteX.Data.Models.Shop;
     using SiteX.Services.Data.ShopService.Interface;
+    using SiteX.Services.Mapping;
     using SiteX.Web.ViewModels.ShopViewModels.ProductModels;
 
     public class ProductService : IProductService
@@ -98,20 +99,7 @@
         public ICollection<ProductOutputViewModel> GetAllProductsAsOutModel()
         {
             var output = this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
-                .Select(x => new ProductOutputViewModel()
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Categories = x.ProductCategories.Select(x => x.Category).ToList(),
-                    ImageUrl = x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).FirstOrDefault(),
-                    Locations = x.ProductLocations.Select(x => x.Location).ToList(),
-                    Colors = x.ProductColors.Select(x => x.Color).ToList(),
-                    Sizes = x.ProductSizes.Select(x => x.Size).ToList(),
-                    Description = x.Description,
-                    Quantity = x.Quantity,
-                    Gender = x.Gender,
-                    Price = x.Price,
-                }).ToList();
+                .To<ProductOutputViewModel>().ToList();
 
             return output;
         }
@@ -173,20 +161,7 @@
 
         public ProductViewModel GetProductEditById(Guid id)
         {
-            var edit = this.productRepo.AllAsNoTracking().Select(x => new ProductViewModel
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Categories = x.ProductCategories.Select(x => x.Category.Id).ToList(),
-                Pictures = x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).ToList(),
-                Locations = x.ProductLocations.Select(x => x.Location.Id).ToList(),
-                Colors = x.ProductColors.Select(x => x.Color.Id).ToList(),
-                Sizes = x.ProductSizes.Select(x => x.Size.Id).ToList(),
-                Description = x.Description,
-                Quantity = x.Quantity,
-                Gender = x.Gender,
-                Price = x.Price,
-            }).Where(x => x.Id == id).FirstOrDefault();
+            var edit = this.productRepo.AllAsNoTracking().To<ProductViewModel>().Where(x => x.Id == id).FirstOrDefault();
 
             return edit;
         }

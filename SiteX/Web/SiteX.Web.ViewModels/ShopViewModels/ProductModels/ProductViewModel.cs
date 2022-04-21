@@ -5,10 +5,13 @@
     using System.Collections.Generic;
 
     using System.ComponentModel.DataAnnotations;
-
+    using System.Linq;
+    using AutoMapper;
     using SiteX.Data.Models;
+    using SiteX.Data.Models.Shop;
+    using SiteX.Services.Mapping;
 
-    public class ProductViewModel : ShopToSelectList
+    public class ProductViewModel : ShopToSelectList, IMapFrom<Product>, IHaveCustomMappings
     {
         public Guid Id { get; set; }
 
@@ -56,5 +59,43 @@
 
         [MinLength(1)]
         public virtual ICollection<int> Colors { get; set; } = new List<int>();
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<Product, ProductViewModel>()
+                 .ForMember(x => x.Categories, opt =>
+                 {
+                     opt.MapFrom(x => x.ProductCategories.Select(x => x.Category.Id).ToList());
+
+                 });
+
+                 configuration.CreateMap<Product, ProductViewModel>()
+                 .ForMember(x => x.Locations, opt =>
+                 {
+                     opt.MapFrom(x => x.ProductLocations.Select(x => x.Location.Id).ToList());
+
+                 });
+
+            configuration.CreateMap<Product, ProductViewModel>()
+                 .ForMember(x => x.Sizes, opt =>
+                 {
+                     opt.MapFrom(x => x.ProductSizes.Select(x => x.Size.Id).ToList());
+
+                 });
+
+            configuration.CreateMap<Product, ProductViewModel>()
+                 .ForMember(x => x.Colors, opt =>
+                 {
+                     opt.MapFrom(x => x.ProductColors.Select(x => x.Color.Id).ToList());
+
+                 });
+
+            configuration.CreateMap<Product, ProductViewModel>()
+               .ForMember(x => x.Pictures, opt =>
+               {
+                   opt.MapFrom(x => x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).ToList();
+
+               });
+        }
     }
 }
