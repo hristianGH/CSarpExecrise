@@ -1,28 +1,33 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SiteX.Data.Models.Article;
 using SiteX.Services.Data.ArticleService.Interface;
 using System.Threading.Tasks;
 
-namespace SiteX.Web.Areas.Administration.Controllers
+namespace SiteX.WebAPI.Controllers
 {
-    public class ArticlesController : AdministrationController
+    [Route("api/[controller]")]
+    [ApiController]
+    [Authorize]
+    public class ArticleController : ControllerBase
     {
         private readonly IArticleService articleService;
 
-        public ArticlesController(IArticleService articleService)
+        public ArticleController(IArticleService articleService)
         {
             this.articleService = articleService;
         }
 
         // GET: ArticlesController
-        public ActionResult Index()
+        [HttpGet]
+        [Route("All")]
+        public ActionResult All()
         {
             var articles = this.articleService.GetArticles();
             if (articles != null)
             {
 
-                return this.View(articles);
+                return this.Ok(articles);
             }
             else
             {
@@ -30,21 +35,19 @@ namespace SiteX.Web.Areas.Administration.Controllers
             }
         }
 
-        // GET: ArticlesController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
         // GET: ArticlesController/Create
+        [HttpGet]
+        [Route("Create")]
         public ActionResult Create()
         {
             var article = new Article();
-            return View(article);
+            return Ok(article);
         }
 
         // POST: ArticlesController/Create
         [HttpPost]
+        [Route("Create")]
         public async Task<ActionResult> Create(Article article)
         {
             if (!this.ModelState.IsValid)
@@ -53,18 +56,22 @@ namespace SiteX.Web.Areas.Administration.Controllers
             }
 
             await this.articleService.CreateArticleAsync(article);
-            return this.RedirectToAction(nameof(this.Index));
+            return Ok(article);
         }
 
         // GET: ArticlesController/Edit/5
+        [HttpGet]
+        [Route("Edit")]
         public ActionResult Edit(int id)
         {
             var edit = this.articleService.GetArticleById(id);
-            return this.View(edit);
+            return Ok(edit);
+
         }
 
         // POST: ArticlesController/Edit/5
         [HttpPost]
+        [Route("Edit")]
         public ActionResult Edit(Article edit)
         {
             if (!ModelState.IsValid)
@@ -72,18 +79,21 @@ namespace SiteX.Web.Areas.Administration.Controllers
                 return this.BadRequest();
             }
             this.articleService.EditArticleAsync(edit);
-            return RedirectToAction(nameof(Index));
+            return Ok(edit);
         }
 
         // GET: ArticlesController/Delete/5
+        [HttpGet]
+        [Route("Delete")]
         public ActionResult Delete(int id)
         {
             var article = this.articleService.GetArticleById(id);
-            return View(article);
+            return Ok(article);
         }
 
         // POST: ArticlesController/Delete/5
-        [HttpPost]
+        [HttpDelete]
+        [Route("Delete")]
         public async Task<IActionResult> Delete(Article article)
         {
             if (!ModelState.IsValid)
@@ -91,7 +101,7 @@ namespace SiteX.Web.Areas.Administration.Controllers
                 return BadRequest();
             }
             await articleService.DeleteArticleAsync(article);
-            return RedirectToAction(nameof(Index));
+            return Ok(article);
         }
     }
 }

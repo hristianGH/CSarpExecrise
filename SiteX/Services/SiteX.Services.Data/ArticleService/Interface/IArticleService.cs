@@ -10,7 +10,7 @@
     {
         public Task CreateArticleAsync(Article article);
 
-        public Task DeleteArticleAsync(int id);
+        public Task DeleteArticleAsync(Article article);
 
         public Article GetArticleById(int id);
 

@@ -27,8 +27,10 @@
             }
         }
 
-        public async Task DeleteArticleAsync(int id)
+        public async Task DeleteArticleAsync(Article article)
         {
+            this.arcticleRepo.Delete(article);
+            await this.arcticleRepo.SaveChangesAsync();
         }
 
         public IEnumerable<Article> GetArticles()
@@ -60,7 +62,7 @@
             edit.IdLink = article.IdLink;
             edit.Url = article.Url;
 
-           await this.arcticleRepo.SaveChangesAsync();
+            await this.arcticleRepo.SaveChangesAsync();
         }
     }
 }
