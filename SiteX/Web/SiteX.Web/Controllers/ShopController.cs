@@ -15,45 +15,21 @@
 
     public class ShopController : Controller
     {
-        private readonly IGenderService genderService;
-        private readonly ICategoryService categoryService;
         private readonly IProductService productService;
-        private readonly ILocationService locationService;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IProductImageService pictureService;
-        private readonly ISizeService sizeService;
-        private readonly IColorService colorService;
         private readonly IProductImageService productImageService;
-        private readonly IProductCategoryService productCategoryService;
-        private readonly IProductLocationService productLocationService;
         private readonly IShopListService toListService;
 
         // TODO IdeletableEntityRepository
         public ShopController(
-            IGenderService genderService,
-            ICategoryService categoryService,
             IProductService productService,
-            ILocationService locationService,
             UserManager<ApplicationUser> userManager,
-            IProductImageService pictureService,
-            ISizeService sizeService,
-            IColorService colorService,
             IProductImageService productImageService,
-            IProductCategoryService productCategoryService,
-            IProductLocationService productLocationService,
             IShopListService toListService)
         {
-            this.genderService = genderService;
-            this.categoryService = categoryService;
             this.productService = productService;
-            this.locationService = locationService;
             this.userManager = userManager;
-            this.pictureService = pictureService;
-            this.sizeService = sizeService;
-            this.colorService = colorService;
             this.productImageService = productImageService;
-            this.productCategoryService = productCategoryService;
-            this.productLocationService = productLocationService;
             this.toListService = toListService;
         }
 

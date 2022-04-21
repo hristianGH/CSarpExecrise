@@ -1,19 +1,15 @@
 ﻿namespace SiteX.Web.Controllers
 {
     using System.Linq;
-    using System.Threading.Tasks;
 
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
     using SiteX.Data.Models;
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Web.ViewModels.BlogViewModels;
 
     public class BlogController : Controller
     {
-        private readonly IGenreService genreService;
         private readonly IPostService postService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IPostImageService postImageService;
@@ -21,14 +17,12 @@
         private readonly ICommentService commentService;
 
         public BlogController(
-            IGenreService genreService,
             IPostService postService,
             UserManager<ApplicationUser> userManager,
             IPostImageService postImageService,
             IBlogListService toListService,
             ICommentService commentService)
         {
-            this.genreService = genreService;
             this.postService = postService;
             this.userManager = userManager;
             this.postImageService = postImageService;
