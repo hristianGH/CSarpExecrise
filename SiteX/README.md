@@ -68,6 +68,8 @@ Dillinger uses a number of open source projects to work properly:
 - HTML/CSS
 - SendGrid
 - CkEditor5
+- JWT
+- WebApi
  
 ## Installation
 Download the project
