@@ -1,39 +1,34 @@
-﻿@model SiteX.Data.Models.Article.Article;
+﻿@model SiteX.Data.Models.Article.Article
 @{
-    this.ViewData["Title"] = "Creating Article";
+    this.ViewData["Title"] = "Edit Article";
 
 }
 <script src="~/lib/ckeditor5/ckeditor.js"></script>
 
 <form method="post" class=align-content-md-center>
+    <p>Id @Model.Id</p>
+    <div class="form-group">
+        <input asp-for="Id" value="@Model.Id" type="hidden" />
+    </div>
 
     <div class="form-group">
         <label asp-for="Title"></label>
-        <input asp-for="Title" class="form-control" />
+        <input asp-for="Title" value="@Model.Title" class="form-control" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
+
       <div class="form-group">
         <label asp-for="Abstract"></label>
-        <input asp-for="Abstract" class="form-control" />
+        <input asp-for="Abstract" value="@Model.Abstract" class="form-control" />
         <span asp-validation-for="Abstract" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="IdLink"></label>
-        <input asp-for="IdLink" class="form-control" />
-        <span asp-validation-for="IdLink" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Url"></label>
-        <input asp-for="Url" class="form-control" />
-        <span asp-validation-for="Url" class="text-danger"></span>
-    </div>
-
+    
     <input type="submit" class="btn btn-primary" />
 
 </form>
+
 
 
 <script>
@@ -43,3 +38,6 @@
             console.error( error );
         } );
 </script>
+
+
+<script src="~/js~/js/jquery-3.6.0.js"> </script>

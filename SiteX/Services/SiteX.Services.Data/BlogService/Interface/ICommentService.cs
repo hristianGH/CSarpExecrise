@@ -24,5 +24,7 @@
         public Task DeleteAsync(int id);
 
         public bool DoesCommentExistById(int id);
+
+        public Task EditCommentAsync(Comment comment);
     }
 }

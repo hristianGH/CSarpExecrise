@@ -30,24 +30,23 @@
         }
 
         // GET: CommentsController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return this.View();
+            var comment = await this.commentService.GetCommentByIdAsync(id);
+            return this.View(comment);
         }
 
         // POST: CommentsController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(Comment comment)
         {
-            try
+            if (!this.ModelState.IsValid)
             {
-                return this.RedirectToAction(nameof(this.Index));
+                return this.BadRequest();
             }
-            catch
-            {
-                return this.View();
-            }
+
+            await this.commentService.EditCommentAsync(comment);
+            return this.RedirectToAction(nameof(this.Index));
         }
 
         // GET: CommentsController/Delete/5

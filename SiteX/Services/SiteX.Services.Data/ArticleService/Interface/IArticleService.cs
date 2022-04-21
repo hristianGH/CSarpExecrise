@@ -8,11 +8,9 @@
 
     public interface IArticleService
     {
-        public Task CreateArticleAsync();
+        public Task CreateArticleAsync(Article article);
 
         public Task DeleteArticleAsync(int id);
-
-        public Task CreateArticlesAsync();
 
         public Article GetArticleById(int id);
 
@@ -21,6 +19,8 @@
         public ICollection<Article> ToPage(int page = 1, int itemsPerPage = 6);
 
         public int GetArticlesCount();
+
+        public Task EditArticleAsync(Article article);
 
     }
 }

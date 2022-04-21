@@ -14,7 +14,8 @@ using SiteX.Data.Common;
 using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models;
 using SiteX.Data.Repositories;
-
+using SiteX.Services.Data.ArticleService;
+using SiteX.Services.Data.ArticleService.Interface;
 using SiteX.Services.Data.BlogService;
 using SiteX.Services.Data.BlogService.Interface;
 using SiteX.Services.Data.ShopService;
@@ -136,7 +137,10 @@ namespace SiteX.WebAPI
 
             // TeamServices
             services.AddTransient<ITeamService, TeamService>();
-            
+
+            // Article 
+            services.AddTransient<IArticleService, ArticleService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

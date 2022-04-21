@@ -99,5 +99,12 @@
         {
             return this.commentRepo.AllAsNoTracking().Any(x => x.Id == id);
         }
+
+        public async Task EditCommentAsync(Comment comment)
+        {
+            var edit = this.commentRepo.All().FirstOrDefault(x => x.Id == comment.Id);
+            edit.Body = comment.Body;
+           await this.commentRepo.SaveChangesAsync();
+        }
     }
 }

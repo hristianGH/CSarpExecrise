@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SiteX.Data.Models.Article;
 using SiteX.Services.Data.ArticleService.Interface;
+using System.Threading.Tasks;
 
 namespace SiteX.Web.Areas.Administration.Controllers
 {
@@ -37,43 +39,40 @@ namespace SiteX.Web.Areas.Administration.Controllers
         // GET: ArticlesController/Create
         public ActionResult Create()
         {
-            return View();
+            var article = new Article();
+            return View(article);
         }
 
         // POST: ArticlesController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Article article)
         {
-            try
+            if (!this.ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                return this.BadRequest();
             }
-            catch
-            {
-                return View();
-            }
+
+            await this.articleService.CreateArticleAsync(article);
+            return this.RedirectToAction(nameof(this.Index));
         }
 
         // GET: ArticlesController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var edit = this.articleService.GetArticleById(id);
+            return this.View(edit);
         }
 
         // POST: ArticlesController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Article edit)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                return this.BadRequest();
             }
-            catch
-            {
-                return View();
-            }
+            this.articleService.EditArticleAsync(edit);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: ArticlesController/Delete/5
