@@ -7,6 +7,7 @@
     using SiteX.Data.Common.Repositories;
     using SiteX.Data.Models.Blog;
     using SiteX.Services.Data.BlogService.Interface;
+    using SiteX.Services.Mapping;
     using SiteX.Web.ViewModels.BlogViewModels;
 
     public class PostService : IPostService
@@ -57,18 +58,7 @@
         public ICollection<PostOutViewModel> GetAllPostsAsOutModel()
         {
             var output = this.postRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
-                .Select(x => new PostOutViewModel()
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Body = x.Body,
-                    PreviewBody = x.Body.Substring(0, 600),
-                    PostImages = x.PostImages,
-                    Genres = x.PostGenres.Select(x => x.Genre).ToList(),
-                    Poster = x.User,
-                    Date = x.CreatedOn,
-                    PreviewImage = x.PostImages.Select(x => x.Path).FirstOrDefault(),
-                }).ToList();
+                .To<PostOutViewModel>().ToList();
             return output;
         }
 
