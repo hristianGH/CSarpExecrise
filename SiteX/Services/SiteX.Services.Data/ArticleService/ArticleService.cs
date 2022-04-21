@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using AngleSharp;
     using SiteX.Data.Common.Repositories;
@@ -14,8 +15,7 @@
         private readonly IConfiguration configuration;
         private readonly IBrowsingContext context;
 
-        public ArticleService(IDeletableEntityRepository<Article> arcticleRepo
-            )
+        public ArticleService(IDeletableEntityRepository<Article> arcticleRepo)
         {
             this.arcticleRepo = arcticleRepo;
             this.configuration = Configuration.Default.WithDefaultLoader();
@@ -70,6 +70,27 @@
         public Task DeleteArticleAsync(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<Article> GetArticles()
+        {
+           return this.arcticleRepo.AllAsNoTracking().ToList();
+        }
+
+        public ICollection<Article> ToPage(int page = 1, int itemsPerPage = 6)
+        {
+            var output = this.arcticleRepo.AllAsNoTracking().Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToList();
+            return output;
+        }
+
+        public int GetArticlesCount()
+        {
+            return this.arcticleRepo.AllAsNoTracking().Count();
+        }
+
+        public Article GetArticleById(int id)
+        {
+            return this.arcticleRepo.AllAsNoTracking().FirstOrDefault(x => x.Id == id);
         }
     }
 }

@@ -109,7 +109,7 @@
 
         public Post GetPostById(int id)
         {
-            return this.postRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
+            return this.postRepo.AllAsNoTracking().FirstOrDefault(x => x.Id == id);
         }
 
         public PostEditViewModel GetEditPostById(int id)

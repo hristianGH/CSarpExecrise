@@ -8,7 +8,7 @@
 
     public interface ITeamService
     {
-        public ICollection<Member> GetTeam();
+        public IEnumerable<Member> GetTeam();
 
         public Task CrateMemberAsync(Member member);
 

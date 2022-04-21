@@ -46,9 +46,10 @@
             return member;
         }
 
-        public ICollection<Member> GetTeam()
+        public IEnumerable<Member> GetTeam()
         {
-            return this.memberRepo.AllAsNoTracking().ToList();
+            var members = this.memberRepo.AllAsNoTracking().ToList();
+            return members;
         }
     }
 }
