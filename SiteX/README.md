@@ -71,6 +71,7 @@ Dillinger uses a number of open source projects to work properly:
 - JWT
 - WebApi
 - JQuery
+- AutoMapper
  
 ## Installation
 Download the project
