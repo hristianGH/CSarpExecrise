@@ -70,6 +70,7 @@ Dillinger uses a number of open source projects to work properly:
 - CkEditor5
 - JWT
 - WebApi
+- JQuery
  
 ## Installation
 Download the project
