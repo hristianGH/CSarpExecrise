@@ -38,11 +38,6 @@
             await this.colorRepo.SaveChangesAsync();
         }
 
-        public Dictionary<string, string> GetColorAsKVP()
-        {
-            throw new NotImplementedException();
-        }
-
         public Color GetColorById(int id)
         {
             return this.colorRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
@@ -51,20 +46,6 @@
         public IEnumerable<Color> GetColors()
         {
             var colors = this.colorRepo.AllAsNoTracking().ToList();
-            return colors;
-        }
-
-        public ICollection<Color> GetColorsByProductId(Guid id)
-        {
-            var productColors = this.prodColorRepo.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
-            List<Color> colors = new List<Color>();
-            var all = this.colorRepo.AllAsNoTracking().ToList();
-            foreach (var color in productColors)
-            {
-                var name = all.Where(x => x.Id == color.ColorId).Select(x => x.Name).ToString();
-                colors.Add(new Color { Id = color.ColorId, Name = name });
-            }
-
             return colors;
         }
 

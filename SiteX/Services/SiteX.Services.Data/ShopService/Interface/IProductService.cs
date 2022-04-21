@@ -25,8 +25,6 @@
 
         public Task RemoveProductAsync(Product product);
 
-        public Task RemoveALLAsync();
-
         public Task SoftDeleteProductByIdAsync(Guid id);
 
         public ICollection<Product> ReturnAll();
@@ -35,19 +33,15 @@
 
         public Product GetProductById(Guid id);
 
-        public ICollection<Product> GetProducts();
-
         public ProductOutputViewModel GetOutputProductById(Guid id);
 
-        public ProductEdit GetProductEditById(Guid id);
+        public ProductViewModel GetProductEditById(Guid id);
 
-       // public Task EditAsync(ProductEditViewModel viewModel);
-
-        public Task EditProductAsync(ProductEdit viewModel);
+        public Task EditProductAsync(ProductViewModel viewModel);
 
         public Task HardDeleteConnectionsByProductIdAsync(Guid id);
 
-        public Task CreateConnectionsByModelAsync(ProductEdit list, Guid id);
+        public Task CreateConnectionsByModelAsync(ProductViewModel list, Guid id);
 
         public Task BuyProductAsync(Product product);
     }

@@ -12,6 +12,5 @@
 
         public Task HardDeleteProductLocationByIdAsync(Guid productId);
 
-        public ICollection<Location> GetLocationsByProductId(Guid id);
     }
 }

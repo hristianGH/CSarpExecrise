@@ -23,17 +23,6 @@
             this.productCategoryRepository = productCategoryRepository;
         }
 
-        public Dictionary<string, string> GetCategoryAsKVP()
-        {
-            var dictionary = this.categoryRepository.AllAsNoTracking().Select(x => new { x.Id, x.Name }).ToDictionary(x => x.Id.ToString(), x => x.Name);
-            return dictionary;
-        }
-
-        public IEnumerable<string> GetCategoriesName()
-        {
-            var category = this.categoryRepository.AllAsNoTracking().Select(x => x.Name).ToArray();
-            return category;
-        }
 
         public IEnumerable<Category> GetCategories()
         {
@@ -46,27 +35,6 @@
             var category = new Category() { Name = viewModel.Name };
             await this.categoryRepository.AddAsync(category);
             await this.categoryRepository.SaveChangesAsync();
-        }
-
-        public async Task EditAsync(CategoryEditViewModel category)
-        {
-            var categoryEdit = this.categoryRepository.All().FirstOrDefault(x => x.Id == category.OldId);
-            categoryEdit.Name = category.NewName;
-            await this.categoryRepository.SaveChangesAsync();
-        }
-
-        public ICollection<Category> GetCategoriesByProductId(Guid id)
-        {
-            var productCategories = this.productCategoryRepository.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
-            List<Category> categories = new List<Category>();
-            var all = this.categoryRepository.AllAsNoTracking().ToList();
-            foreach (var category in productCategories)
-            {
-                var name = all.Where(x => x.Id == category.CategoryId).Select(x => x.Name).ToString();
-                categories.Add(new Category { Id = category.CategoryId, Name = name });
-            }
-
-            return categories;
         }
 
         public int GetCategoryCount()

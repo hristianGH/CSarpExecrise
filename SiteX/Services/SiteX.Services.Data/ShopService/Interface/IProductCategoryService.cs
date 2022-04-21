@@ -12,6 +12,5 @@
 
         public Task HardDeleteProductCategoriesByIdAsync(Guid productId);
 
-        public ICollection<Category> GetCategoriesByProductId(Guid id);
     }
 }

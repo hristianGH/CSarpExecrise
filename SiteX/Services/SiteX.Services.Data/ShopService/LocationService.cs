@@ -30,20 +30,6 @@
             await this.locationRepository.SaveChangesAsync();
         }
 
-        public async Task EditAsync(LocationEditViewModel location)
-        {
-            var locationEdit = this.locationRepository.All().FirstOrDefault(x => x.Id == location.OldId);
-            locationEdit.Name = location.NewName;
-            locationEdit.Address = location.NewAddress;
-            await this.locationRepository.SaveChangesAsync();
-        }
-
-        public Dictionary<string, string> GetLocationAsKVP()
-        {
-            var dictionary = this.locationRepository.AllAsNoTracking().Select(x => new { x.Id, x.Address }).ToDictionary(x => x.Id.ToString(), x => x.Address);
-            return dictionary;
-        }
-
         public IEnumerable<Location> GetLocations()
         {
             var locations = this.locationRepository.AllAsNoTracking().ToArray();
@@ -55,21 +41,7 @@
             return this.locationRepository.All().Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public ICollection<Location> GetLocationsByProductId(Guid id)
-        {
-            var productLocations = this.productLocationRepository.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
-            List<Location> locations = new List<Location>();
-            var all = this.locationRepository.AllAsNoTracking().ToList();
-            foreach (var location in productLocations)
-            {
-                var name = all.Where(x => x.Id == location.LocationId).Select(x => x.Name).ToString();
-                locations.Add(new Location { Id = location.LocationId, Name = name });
-            }
-
-            return locations;
-        }
-
-        public async Task EditLocationAsync(Location location)
+        public async Task EditAsync(Location location)
         {
             var locationEdit = this.locationRepository.All().FirstOrDefault(x => x.Id == location.Id);
             locationEdit.Name = location.Name;

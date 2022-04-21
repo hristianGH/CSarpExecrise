@@ -13,14 +13,10 @@
     public class SizeService : ISizeService
     {
         private readonly IRepository<Size> sizeRepo;
-        private readonly IDeletableEntityRepository<ProductSize> prodSizeRepo;
 
-        public SizeService(
-            IRepository<Size> sizeRepo,
-            IDeletableEntityRepository<ProductSize> prodSizeRepo)
+        public SizeService(IRepository<Size> sizeRepo)
         {
             this.sizeRepo = sizeRepo;
-            this.prodSizeRepo = prodSizeRepo;
         }
 
         public async Task CreateAsync(SizeViewModel viewModel)
@@ -50,20 +46,6 @@
         public IEnumerable<Size> GetSizes()
         {
             var sizes = this.sizeRepo.AllAsNoTracking().ToList();
-            return sizes;
-        }
-
-        public ICollection<Size> GetSizesByProductId(Guid id)
-        {
-            var productSizes = this.prodSizeRepo.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
-            List<Size> sizes = new List<Size>();
-            var all = this.sizeRepo.AllAsNoTracking().ToList();
-            foreach (var size in productSizes)
-            {
-                var name = all.Where(x => x.Id == size.SizeId).Select(x => x.Name).ToString();
-                sizes.Add(new Size { Id = size.SizeId, Name = name });
-            }
-
             return sizes;
         }
 

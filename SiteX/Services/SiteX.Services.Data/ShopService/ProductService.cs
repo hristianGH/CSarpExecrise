@@ -66,17 +66,6 @@
             await this.productSizeService.CreatingProductSizeAsync(viewModel.Sizes, product.Id);
         }
 
-        public async Task RemoveALLAsync()
-        {
-            var all = this.productRepo.All().ToArray();
-            for (int i = 0; i < all.Length - 1; i++)
-            {
-                this.productRepo.Delete(all[i]);
-            }
-
-            await this.productRepo.SaveChangesAsync();
-        }
-
         public ICollection<Product> ReturnAll()
         {
             var products = this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn).ToList();
@@ -167,12 +156,7 @@
             return products;
         }
 
-        public ICollection<Product> GetProducts()
-        {
-            return this.productRepo.AllAsNoTracking().ToList();
-        }
-
-        public async Task EditProductAsync(ProductEdit viewModel)
+        public async Task EditProductAsync(ProductViewModel viewModel)
         {
             var product = this.productRepo.All().Where(x => x.Id == viewModel.Id).FirstOrDefault();
             product.Name = viewModel.Name;
@@ -187,9 +171,9 @@
             await this.CreateConnectionsByModelAsync(viewModel, viewModel.Id);
         }
 
-        public ProductEdit GetProductEditById(Guid id)
+        public ProductViewModel GetProductEditById(Guid id)
         {
-            var edit = this.productRepo.AllAsNoTracking().Select(x => new ProductEdit
+            var edit = this.productRepo.AllAsNoTracking().Select(x => new ProductViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -220,7 +204,7 @@
             await this.productSizeService.HardDeleteProductSizeByIdAsync(id);
         }
 
-        public async Task CreateConnectionsByModelAsync(ProductEdit viewModel, Guid id)
+        public async Task CreateConnectionsByModelAsync(ProductViewModel viewModel, Guid id)
         {
             await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, id);
 

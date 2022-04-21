@@ -31,11 +31,6 @@
             await this.productCategoryRepo.SaveChangesAsync();
         }
 
-        public ICollection<Category> GetCategoriesByProductId(Guid id)
-        {
-            return this.productCategoryRepo.AllAsNoTracking().Where(x => x.ProductId == id).Select(x => x.Category).ToList();
-        }
-
         public async Task HardDeleteProductCategoriesByIdAsync(Guid productId)
         {
             var categories = this.productCategoryRepo.All().Where(x => x.ProductId == productId).ToList();

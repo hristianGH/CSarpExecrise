@@ -42,9 +42,5 @@
             await this.productLocationRepo.SaveChangesAsync();
         }
 
-        public ICollection<Location> GetLocationsByProductId(Guid id)
-        {
-            return this.productLocationRepo.AllAsNoTracking().Where(x => x.ProductId == id).Select(x => x.Location).ToList();
-        }
     }
 }

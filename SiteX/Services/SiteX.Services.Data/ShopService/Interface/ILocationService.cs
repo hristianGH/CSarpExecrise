@@ -9,17 +9,11 @@
 
     public interface ILocationService
     {
-        Dictionary<string, string> GetLocationAsKVP();
-
         public IEnumerable<Location> GetLocations();
 
-        public Task EditLocationAsync(Location location);
+        public Task EditAsync(Location location);
 
         public Task CreateAsync(LocationViewModel viewModel);
-
-        public Task EditAsync(LocationEditViewModel location);
-
-        public ICollection<Location> GetLocationsByProductId(Guid id);
 
         public Location GetLocationById(int id);
 

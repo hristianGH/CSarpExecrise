@@ -17,10 +17,6 @@
 
         public Task EditSizeAsync(Size model);
 
-        public ICollection<Size> GetSizesByProductId(Guid id);
-
-        public int GetSizesCount();
-
         // TODO Color view Model uses Name only like SIze so im gonna save some code
         public Task CreateAsync(SizeViewModel viewModel);
     }
