@@ -37,7 +37,7 @@ namespace SiteX.WebAPI.Controllers
 
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> Create(CategoryViewModel viewModel)
+        public async Task<IActionResult> Create(Category viewModel)
         {
             if (!this.ModelState.IsValid)
             {

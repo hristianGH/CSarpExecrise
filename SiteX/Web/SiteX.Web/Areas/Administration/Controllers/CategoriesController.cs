@@ -29,7 +29,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CategoryViewModel viewModel)
+        public async Task<IActionResult> Create(Category viewModel)
         {
             if (!this.ModelState.IsValid)
             {

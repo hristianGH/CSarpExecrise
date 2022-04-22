@@ -28,7 +28,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ColorViewModel viewModel)
+        public async Task<IActionResult> Create(Color viewModel)
         {
             if (!this.ModelState.IsValid)
             {

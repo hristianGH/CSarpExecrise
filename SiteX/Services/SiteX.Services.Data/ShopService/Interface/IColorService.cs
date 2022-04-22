@@ -17,6 +17,6 @@
 
         public int GetColorsCount();
 
-        public Task CreateAsync(ColorViewModel viewModel);
+        public Task CreateAsync(Color viewModel);
     }
 }

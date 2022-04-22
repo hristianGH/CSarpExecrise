@@ -15,12 +15,12 @@
         private readonly IRepository<Color> colorRepo;
 
         public ColorService(
-            IRepository<Color> colorRepo )
+            IRepository<Color> colorRepo)
         {
             this.colorRepo = colorRepo;
         }
 
-        public async Task CreateAsync(ColorViewModel viewModel)
+        public async Task CreateAsync(Color viewModel)
         {
             var color = new Color() { Name = viewModel.Name };
             await this.colorRepo.AddAsync(color);
@@ -35,12 +35,12 @@
             await this.colorRepo.SaveChangesAsync();
         }
 
-        public  Color GetColorById(int id)
+        public Color GetColorById(int id)
         {
             return this.colorRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public  IEnumerable<Color> GetColors()
+        public IEnumerable<Color> GetColors()
         {
             var colors = this.colorRepo.AllAsNoTracking().ToList();
             return colors;

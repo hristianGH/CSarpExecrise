@@ -67,35 +67,27 @@
                  {
                      opt.MapFrom(x => x.ProductCategories.Select(x => x.Category.Id).ToList());
 
-                 });
-
-                 configuration.CreateMap<Product, ProductViewModel>()
+                 })
                  .ForMember(x => x.Locations, opt =>
                  {
                      opt.MapFrom(x => x.ProductLocations.Select(x => x.Location.Id).ToList());
 
-                 });
-
-            configuration.CreateMap<Product, ProductViewModel>()
+                 })
                  .ForMember(x => x.Sizes, opt =>
                  {
                      opt.MapFrom(x => x.ProductSizes.Select(x => x.Size.Id).ToList());
 
-                 });
-
-            configuration.CreateMap<Product, ProductViewModel>()
+                 })
                  .ForMember(x => x.Colors, opt =>
                  {
                      opt.MapFrom(x => x.ProductColors.Select(x => x.Color.Id).ToList());
 
-                 });
-
-            configuration.CreateMap<Product, ProductViewModel>()
-               .ForMember(x => x.Pictures, opt =>
-               {
+                 })
+                 .ForMember(x => x.Pictures, opt =>
+                 {
                    opt.MapFrom(x => x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).ToList());
 
-               });
+                 });
         }
     }
 }

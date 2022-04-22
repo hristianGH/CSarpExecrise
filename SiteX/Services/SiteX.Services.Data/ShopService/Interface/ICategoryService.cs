@@ -15,7 +15,7 @@
 
         public Task EditCategoryAsync(Category category);
 
-        public Task CreateAsync(CategoryViewModel viewModel);
+        public Task CreateAsync(Category viewModel);
 
         public int GetCategoryCount();
     }
