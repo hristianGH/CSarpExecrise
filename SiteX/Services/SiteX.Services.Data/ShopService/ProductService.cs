@@ -111,15 +111,16 @@
 
         public Product GetProductById(Guid id)
         {
-            return this.productRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
+            var product = this.productRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
+            return product;
         }
 
         public ProductOutputViewModel GetOutputProductById(Guid id)
         {
-            var output = this.GetAllProductsAsOutModel().Where(x => x.Id == id).FirstOrDefault();
-            return output;
+            var result = this.productRepo.AllAsNoTracking().To<ProductOutputViewModel>().FirstOrDefault(x => x.Id == id);
+            return result;
         }
-       
+
         public ICollection<ProductOutputViewModel> FilterByCategoryId(int id)
         {
             var products = this.GetAllProductsAsOutModel().Where(x => x.Categories.Any(x => x.Id == id)).ToList();

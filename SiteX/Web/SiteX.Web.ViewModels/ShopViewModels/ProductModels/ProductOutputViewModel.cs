@@ -24,13 +24,13 @@
 
         public string Description { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        public ICollection<Category> Categories { get; set; } = new List<Category>();
 
-        public ICollection<Location> Locations { get; set; }
+        public ICollection<Location> Locations { get; set; } = new List<Location>();
 
-        public ICollection<Size> Sizes { get; set; }
+        public ICollection<Size> Sizes { get; set; } = new List<Size>();
 
-        public ICollection<Color> Colors { get; set; }
+        public ICollection<Color> Colors { get; set; } = new List<Color>();
 
         public void CreateMappings(IProfileExpression configuration)
         {
@@ -39,35 +39,27 @@
                 {
                     opt.MapFrom(x => x.ProductCategories.Select(x => x.Category).ToList());
 
+                })
+                .ForMember(x => x.Locations, opt =>
+                {
+                    opt.MapFrom(x => x.ProductLocations.Select(x => x.Location).ToList());
+
+                })
+                .ForMember(x => x.Sizes, opt =>
+                {
+                    opt.MapFrom(x => x.ProductSizes.Select(x => x.Size).ToList());
+
+                })
+                .ForMember(x => x.Colors, opt =>
+                {
+                    opt.MapFrom(x => x.ProductColors.Select(x => x.Color).ToList());
+
+                })
+                .ForMember(x => x.ImageUrl, opt =>
+                {
+                    opt.MapFrom(x => x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).FirstOrDefault());
+
                 });
-
-            configuration.CreateMap<Product, ProductOutputViewModel>()
-            .ForMember(x => x.Locations, opt =>
-            {
-                opt.MapFrom(x => x.ProductLocations.Select(x => x.Location).ToList());
-
-            });
-
-            configuration.CreateMap<Product, ProductOutputViewModel>()
-                 .ForMember(x => x.Sizes, opt =>
-                 {
-                     opt.MapFrom(x => x.ProductSizes.Select(x => x.Size).ToList());
-
-                 });
-
-            configuration.CreateMap<Product, ProductOutputViewModel>()
-                 .ForMember(x => x.Colors, opt =>
-                 {
-                     opt.MapFrom(x => x.ProductColors.Select(x => x.Color).ToList());
-
-                 });
-
-            configuration.CreateMap<Product, ProductOutputViewModel>()
-               .ForMember(x => x.ImageUrl, opt =>
-               {
-                   opt.MapFrom(x => x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).FirstOrDefault());
-
-               });
         }
     }
 }

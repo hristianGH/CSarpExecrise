@@ -93,7 +93,7 @@
             configuration.CreateMap<Product, ProductViewModel>()
                .ForMember(x => x.Pictures, opt =>
                {
-                   opt.MapFrom(x => x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).ToList();
+                   opt.MapFrom(x => x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).ToList());
 
                });
         }

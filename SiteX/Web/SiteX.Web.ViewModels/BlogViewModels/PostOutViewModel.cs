@@ -36,19 +36,20 @@
                   .ForMember(x => x.PreviewBody, opt =>
                   {
                       opt.MapFrom(x => x.Body.Substring(0, 600));
-                  });
-
-            configuration.CreateMap<Post, PostOutViewModel>()
+                  })
                   .ForMember(x => x.Genres, opt =>
                   {
                       opt.MapFrom(x => x.PostGenres.Select(x => x.Genre).ToList());
-                  });
-
-            configuration.CreateMap<Post, PostOutViewModel>()
+                  })
                   .ForMember(x => x.PreviewImage, opt =>
                   {
-                      opt.MapFrom(x => x.PostImages.Select(x => x.Path).FirstOrDefault());
+                      opt.MapFrom(x => x.PostImages.Select(x=>x.Path).FirstOrDefault());
+                  })
+                  .ForMember(x => x.Date, opt =>
+                  {
+                      opt.MapFrom(x => x.CreatedOn);
                   });
+
         }
     }
 }

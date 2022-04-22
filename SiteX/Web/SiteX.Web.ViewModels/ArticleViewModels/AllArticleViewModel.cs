@@ -7,7 +7,6 @@ namespace SiteX.Web.ViewModels.ArticleViewModels
 {
     public class AllArticleViewModel : PagingViewModel
     {
-
         public ICollection<Article> Articles { get; set; } = new List<Article>();
     }
 }
