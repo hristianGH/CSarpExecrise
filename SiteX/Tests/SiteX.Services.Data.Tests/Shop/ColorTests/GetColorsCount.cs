@@ -11,7 +11,7 @@ using Xunit;
 
 namespace SiteX.Services.Data.Tests.Shop.ColorTests
 {
-    public class GetColorsCount
+    public class GetLocationCount
     {
         [Fact]
         public async Task ColorsCountShouldReturnValue()

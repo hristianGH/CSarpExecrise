@@ -35,7 +35,7 @@
 
         public Location GetLocationById(int id)
         {
-            return this.locationRepository.All().Where(x => x.Id == id).FirstOrDefault();
+            return this.locationRepository.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
         }
 
         public async Task EditAsync(Location location)

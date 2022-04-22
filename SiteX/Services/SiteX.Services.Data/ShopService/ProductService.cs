@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
+    using AutoMapper;
     using SiteX.Data.Common.Repositories;
     using SiteX.Data.Models.Shop;
     using SiteX.Services.Data.ShopService.Interface;
@@ -20,6 +20,7 @@
         private readonly IProductColorService productColorService;
         private readonly IProductImageService productImageService;
         private readonly IReceitService receitService;
+
 
         public ProductService(
             IDeletableEntityRepository<Product> productRepo,
@@ -38,6 +39,7 @@
             this.productColorService = productColorService;
             this.productImageService = productImageService;
             this.receitService = receitService;
+
         }
 
         public async Task CreateAsync(ProductViewModel viewModel)
@@ -47,8 +49,7 @@
             {
                 pics.Add(new ProductImage() { Path = pic });
             }
-
-            var product = new Product
+            var product = new Product()
             {
                 Name = viewModel.Name,
                 User = viewModel.User,
@@ -58,7 +59,28 @@
                 ProductImages = pics,
                 Quantity = viewModel.Quantity,
             };
+            //foreach (var category in viewModel.Categories)
+            //{
+            //    product.ProductCategories.Add(new ProductCategory() { CategoryId = category });
 
+            //}
+
+            //foreach (var location in viewModel.Locations)
+            //{
+            //    product.ProductLocations.Add(new ProductLocation() { LocationId = location });
+
+            //}
+
+            //foreach (var color in viewModel.Colors)
+            //{
+            //    product.ProductColors.Add(new ProductColor() { ColorId = color });
+
+            //}
+            //foreach (var size in viewModel.Sizes)
+            //{
+            //    product.ProductSizes.Add(new ProductSize() { SizeId = size });
+
+            //}
             await this.productRepo.AddAsync(product);
             await this.productRepo.SaveChangesAsync();
             await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, product.Id);
@@ -169,7 +191,7 @@
 
         public async Task HardDeleteConnectionsByProductIdAsync(Guid id)
         {
-            
+
             await this.productLocationService.HardDeleteProductLocationByIdAsync(id);
 
             await this.productCategoryService.HardDeleteProductCategoriesByIdAsync(id);

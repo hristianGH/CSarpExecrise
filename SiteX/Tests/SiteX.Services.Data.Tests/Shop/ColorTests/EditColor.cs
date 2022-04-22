@@ -11,7 +11,7 @@ using Xunit;
 
 namespace SiteX.Services.Data.Tests.Shop.ColorTests
 {
-    public class EditColor
+    public class EditLocation
     {
 
         [Fact]

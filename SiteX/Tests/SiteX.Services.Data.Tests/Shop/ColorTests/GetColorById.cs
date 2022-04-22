@@ -9,7 +9,7 @@ using Xunit;
 
 namespace SiteX.Services.Data.Tests.Shop.ColorTests
 {
-    public class GetColorById
+    public class GetLocationById
     {
             [Fact]
             public async Task GetColorByIdShouldReturnValue()
