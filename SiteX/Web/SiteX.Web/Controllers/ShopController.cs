@@ -32,7 +32,7 @@
 
         public IActionResult Index()
         {
-            return this.View();
+            return this.RedirectToAction("All");
         }
 
         public IActionResult All(int id = 1)

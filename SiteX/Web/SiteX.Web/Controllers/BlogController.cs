@@ -1,7 +1,7 @@
 ﻿namespace SiteX.Web.Controllers
 {
     using System.Linq;
-
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SiteX.Data.Models;
@@ -32,8 +32,7 @@
 
         public IActionResult Index()
         {
-            var post = this.postService.GetPost();
-            return this.View(post);
+            return this.RedirectToAction("All");
         }
 
         public IActionResult All(int id = 1)
@@ -70,6 +69,34 @@
             }
 
             return this.NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateComment(CommentViewModel viewModel)
+        {
+            viewModel.User = await this.userManager.GetUserAsync(this.User);
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            var parentId =
+                 viewModel.ParentId == 0 ?
+                     (int?)null :
+                     viewModel.ParentId;
+
+            if (parentId.HasValue)
+            {
+                if (!this.commentService.IsInPostId(parentId.Value, viewModel.PostId))
+                {
+                    return this.BadRequest();
+                }
+            }
+
+            await this.commentService.CreateAsync(viewModel);
+            return this.RedirectToAction("All");
+
         }
     }
 }
