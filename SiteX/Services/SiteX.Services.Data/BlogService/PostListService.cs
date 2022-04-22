@@ -3,11 +3,11 @@
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Web.ViewModels.BlogViewModels;
 
-    public class BlogListService : IBlogListService
+    public class PostListService : IPostListService
     {
         private readonly IGenreService genreService;
 
-        public BlogListService(IGenreService genreService)
+        public PostListService(IGenreService genreService)
         {
             this.genreService = genreService;
         }

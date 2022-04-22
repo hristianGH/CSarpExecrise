@@ -5,7 +5,7 @@
     using System.Text;
     using SiteX.Web.ViewModels.BlogViewModels;
 
-    public interface IBlogListService
+    public interface IPostListService
     {
         public BlogToSelectedList ToSelectedList();
     }
