@@ -28,15 +28,6 @@ namespace SiteX.WebAPI.Controllers
             return this.Ok(this.teamService.GetTeam());
         }
 
-        // GET: MemberController/Create
-        [HttpGet]
-        [Route("Create")]
-        public ActionResult Create()
-        {
-            var member = new Member();
-            return this.Ok(member);
-        }
-
         // POST: MemberController/Create
         [HttpPost]
         [Route("Create")]
@@ -51,17 +42,10 @@ namespace SiteX.WebAPI.Controllers
             return this.Ok(member);
         }
 
-        // GET: MemberController/Edit/5
-        [HttpGet]
-        [Route("Edit")]
-        public ActionResult Edit(Guid id)
-        {
-            Member member = teamService.GetMemberById(id);
-            return this.Ok(member);
-        }
+         
 
         // POST: MemberController/Edit/5
-        [HttpPost]
+        [HttpPut]
         [Route("Edit")]
         public async Task<IActionResult> Edit(Member member)
         {
@@ -71,15 +55,6 @@ namespace SiteX.WebAPI.Controllers
             }
 
             await this.teamService.EditMemberAsync(member);
-            return this.Ok(member);
-        }
-
-        // GET: MemberController/Delete/5
-        [HttpGet]
-        [Route("Delete")]
-        public ActionResult Delete(Guid id)
-        {
-            Member member = teamService.GetMemberById(id);
             return this.Ok(member);
         }
 

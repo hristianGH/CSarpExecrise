@@ -27,14 +27,7 @@ namespace SiteX.WebAPI.Controllers
             return Ok(genres);
         }
 
-
-
-        [HttpGet]
-        [Route("Create")]
-        public IActionResult Create()
-        {
-            return this.Ok(new GenreViewModel());
-        }
+ 
 
         [HttpPost]
         [Route("Create")]
@@ -49,17 +42,8 @@ namespace SiteX.WebAPI.Controllers
             return this.Ok(viewModel);
         }
 
-        [HttpGet]
-        [Route("Edit")]
-        public ActionResult Edit(int id)
-        {
-            var viewModel = this.genreService.GetGenreById(id);
-
-            return Ok(viewModel);
-        }
-
         // POST: GenreController/Edit/5
-        [HttpPost]
+        [HttpPut]
         [Route("Edit")]
         public async Task<IActionResult> Edit(Genre genre)
         {

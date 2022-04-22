@@ -26,12 +26,6 @@ namespace SiteX.WebAPI.Controllers
             var colors = this.colorService.GetColors();
             return this.Ok(colors);
         }
-        [HttpGet]
-        [Route("Create")]
-        public IActionResult Create()
-        {
-            return this.Ok(new ColorViewModel());
-        }
 
         [HttpPost]
         [Route("Create")]
@@ -45,16 +39,8 @@ namespace SiteX.WebAPI.Controllers
             await this.colorService.CreateAsync(viewModel);
             return this.Ok(viewModel);
         }
-        [HttpGet]
-        [Route("Edit")]
-        public IActionResult Edit(int id)
-        {
-            var viewModel = this.colorService.GetColorById(id);
 
-            return this.Ok(viewModel);
-        }
-
-        [HttpPost]
+        [HttpPut]
         [Route("Edit")]
         public async Task<IActionResult> Edit(Color viewModel)
         {

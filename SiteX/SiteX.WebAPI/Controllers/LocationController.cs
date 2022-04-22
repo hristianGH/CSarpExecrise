@@ -28,12 +28,7 @@ namespace SiteX.WebAPI.Controllers
             return this.Ok(locations);
         }
 
-        [HttpGet]
-        [Route("Create")]
-        public IActionResult Create()
-        {
-            return this.Ok(new LocationViewModel());
-        }
+        
 
         [HttpPost]
         [Route("Create")]
@@ -47,17 +42,9 @@ namespace SiteX.WebAPI.Controllers
             await this.locationService.CreateAsync(viewModel);
             return this.Ok(viewModel);
         }
+ 
 
-        [HttpGet]
-        [Route("Edit")]
-        public IActionResult Edit(int id)
-        {
-            var viewModel = this.locationService.GetLocationById(id);
-
-            return this.Ok(viewModel);
-        }
-
-        [HttpPost]
+        [HttpPut]
         [Route("Edit")]
         public async Task<IActionResult> Edit(Location viewModel)
         {

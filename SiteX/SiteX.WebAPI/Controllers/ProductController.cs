@@ -62,18 +62,7 @@ namespace SiteX.WebAPI.Controllers
             return this.NotFound();
         }
 
-        [HttpGet]
-        [Route("Create")]
-        public IActionResult Create()
-        {
-            var viewModel = new ProductViewModel();
-            viewModel.GendersToList = this.genderService.GetGenders();
-            viewModel.CategoriesToList = this.categoryService.GetCategories();
-            viewModel.LocationsToList = this.locationService.GetLocations();
-            viewModel.SizesToList = this.sizeService.GetSizes();
-            viewModel.ColorsToList = this.colorService.GetColors();
-            return this.Ok(viewModel);
-        }
+      
 
         [HttpPost]
         [Route("Create")]
@@ -90,27 +79,9 @@ namespace SiteX.WebAPI.Controllers
             return this.Redirect("/");
         }
 
-        [HttpGet]
-        [Route("Edit")]
-        public IActionResult Edit(Guid id)
-        {
-            var viewModel = this.productService.GetProductEditById(id);
+       
 
-            if (viewModel.Pictures.Count() == 0)
-            {
-                viewModel.Pictures.Add(string.Empty);
-            }
-
-            viewModel.GendersToList = this.genderService.GetGenders();
-            viewModel.CategoriesToList = this.categoryService.GetCategories();
-            viewModel.LocationsToList = this.locationService.GetLocations();
-            viewModel.SizesToList = this.sizeService.GetSizes();
-            viewModel.ColorsToList = this.colorService.GetColors();
-
-            return this.Ok(viewModel);
-        }
-
-        [HttpPost]
+        [HttpPut]
         [Route("Edit")]
         public async Task<IActionResult> Edit(ProductViewModel viewModel)
         {
@@ -124,21 +95,7 @@ namespace SiteX.WebAPI.Controllers
             return this.Redirect("/");
         }
 
-        [HttpGet]
-        [Route("Delete")]
-        public IActionResult Delete(Guid id)
-        {
-            var product = this.productService.GetOutputProductById(id);
-            var viewmodel = new BuyingProductViewModel() { ProductId = product.Id, Product = product };
-
-            viewmodel.CategoriesToList = product.Categories;
-            viewmodel.LocationsToList = product.Locations;
-            viewmodel.SizesToList = product.Sizes;
-            viewmodel.ColorsToList = product.Colors;
-            return this.Ok(viewmodel);
-        }
-
-        [HttpPost]
+        [HttpDelete]
         [Route("Delete")]
         public async Task<IActionResult> Delete(BuyingProductViewModel model)
         {

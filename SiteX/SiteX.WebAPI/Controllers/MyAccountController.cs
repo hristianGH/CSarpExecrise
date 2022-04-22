@@ -60,32 +60,6 @@ namespace SiteX.WebAPI.Controllers
             }
             return Unauthorized();
         }
-        //[Authorize]
-        //[Route("test")]
-        //[HttpGet]
-        //public ActionResult<string> WhoAmI()
-        //{
-        //    return this.User.Identity.Name;
-        //}
+       
     }
 }
-
-
-
-
-
-
-//public class UserModel
-//{
-//    public string Token { get; set; }
-//}
-
-//public class LoginInputModel
-//{
-//    public string Username { get; set; }
-
-//    public string Password { get; set; }
-//}
-
-//}
-

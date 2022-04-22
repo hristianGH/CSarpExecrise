@@ -29,12 +29,7 @@ namespace SiteX.WebAPI.Controllers
             var sizes = this.sizeService.GetSizes();
             return this.Ok(sizes);
         }
-        [HttpGet]
-        [Route("Create")]
-        public IActionResult Create()
-        {
-            return this.Ok(new SizeViewModel());
-        }
+      
 
         [HttpPost]
         [Route("Create")]
@@ -48,14 +43,7 @@ namespace SiteX.WebAPI.Controllers
             await this.sizeService.CreateAsync(viewModel);
             return this.Ok(viewModel);
         }
-        [HttpGet]
-        [Route("Edit")]
-        public IActionResult Edit(int id)
-        {
-            var viewModel = this.sizeService.GetSizeById(id);
-
-            return this.Ok(viewModel);
-        }
+       
 
         [HttpPost]
         [Route("Id")]

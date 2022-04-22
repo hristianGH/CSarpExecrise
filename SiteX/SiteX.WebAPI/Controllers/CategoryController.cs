@@ -28,12 +28,6 @@ namespace SiteX.WebAPI.Controllers
             var categories = this.categoryService.GetCategories();
             return this.Ok(categories);
         }
-        [HttpGet]
-        [Route("Create")]
-        public ActionResult Create()
-        {
-            return this.Ok(new CategoryViewModel());
-        }
 
         [HttpPost]
         [Route("Create")]
@@ -47,15 +41,8 @@ namespace SiteX.WebAPI.Controllers
             await this.categoryService.CreateAsync(viewModel);
             return this.Redirect("/");
         }
-        [HttpGet]
-        [Route("Edit")]
-        public IActionResult Edit(int id)
-        {
-            var viewModel = this.categoryService.GetCategoryById(id);
-            return this.Ok(viewModel);
-        }
 
-        [HttpPost]
+        [HttpPut]
         [Route("Edit")]
         public async Task<IActionResult> Edit(Category viewModel)
         {

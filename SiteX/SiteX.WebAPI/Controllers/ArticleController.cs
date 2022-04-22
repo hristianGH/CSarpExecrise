@@ -35,16 +35,6 @@ namespace SiteX.WebAPI.Controllers
             }
         }
 
-
-        // GET: ArticlesController/Create
-        [HttpGet]
-        [Route("Create")]
-        public async Task<IActionResult> Create()
-        {
-            var article = new Article();
-            return Ok(article);
-        }
-
         // POST: ArticlesController/Create
         [HttpPost]
         [Route("Create")]
@@ -58,19 +48,10 @@ namespace SiteX.WebAPI.Controllers
             await this.articleService.CreateArticleAsync(article);
             return Ok(article);
         }
-
-        // GET: ArticlesController/Edit/5
-        [HttpGet]
-        [Route("Edit")]
-        public async Task<IActionResult> Edit(int id)
-        {
-            var edit = this.articleService.GetArticleById(id);
-            return Ok(edit);
-
-        }
+ 
 
         // POST: ArticlesController/Edit/5
-        [HttpPost]
+        [HttpPut]
         [Route("Edit")]
         public async Task<IActionResult> Edit(Article edit)
         {
@@ -80,15 +61,6 @@ namespace SiteX.WebAPI.Controllers
             }
             this.articleService.EditArticleAsync(edit);
             return Ok(edit);
-        }
-
-        // GET: ArticlesController/Delete/5
-        [HttpGet]
-        [Route("Delete")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var article = this.articleService.GetArticleById(id);
-            return Ok(article);
         }
 
         // POST: ArticlesController/Delete/5

@@ -31,21 +31,6 @@ namespace SiteX.WebAPI.Controllers
             return this.Ok(posts);
         }
 
-        [HttpGet]
-        [Route("Edit")]
-        public IActionResult Edit(int id)
-        {
-            var viewModel = this.postService.GetEditPostById(id);
-
-            if (viewModel.PostImages.Count() == 0)
-            {
-                viewModel.PostImages.Add(string.Empty);
-            }
-
-            viewModel.GenresToList = this.genreService.GetGenres();
-
-            return this.Ok(viewModel);
-        }
         [Route("Edit")]
         [HttpPost]
         public async Task<IActionResult> Edit(PostEditViewModel viewModel)
