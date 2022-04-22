@@ -169,6 +169,7 @@
 
         public async Task HardDeleteConnectionsByProductIdAsync(Guid id)
         {
+            
             await this.productLocationService.HardDeleteProductLocationByIdAsync(id);
 
             await this.productCategoryService.HardDeleteProductCategoriesByIdAsync(id);

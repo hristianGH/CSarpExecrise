@@ -2,8 +2,9 @@
 {
     using SiteX.Services.Data.ShopService.Interface;
     using SiteX.Web.ViewModels.ShopViewModels;
+    using System.Threading.Tasks;
 
-    public class ShopListService : IShopListService
+    public class ProductListService : IProductListService
     {
         private readonly IGenderService genderService;
         private readonly ICategoryService categoryService;
@@ -11,7 +12,7 @@
         private readonly IColorService colorService;
         private readonly ILocationService locationService;
 
-        public ShopListService(
+        public ProductListService(
             IGenderService genderService,
             ICategoryService categoryService,
             ISizeService sizeService,
@@ -25,15 +26,15 @@
             this.locationService = locationService;
         }
 
-        public ShopToSelectList ToSelectList()
+        public async  Task<ShopToSelectList> ToSelectListAsync()
         {
             var selectedList = new ShopToSelectList()
             {
-                GendersToList = this.genderService.GetGenders(),
-                CategoriesToList = this.categoryService.GetCategories(),
-                SizesToList = this.sizeService.GetSizes(),
-                ColorsToList = this.colorService.GetColors(),
-                LocationsToList=this.locationService.GetLocations(),
+                GendersToList =  this.genderService.GetGenders(),
+                CategoriesToList =  this.categoryService.GetCategories(),
+                SizesToList =  this.sizeService.GetSizes(),
+                ColorsToList =  this.colorService.GetColors(),
+                LocationsToList =  this.locationService.GetLocations(),
             };
             return selectedList;
         }

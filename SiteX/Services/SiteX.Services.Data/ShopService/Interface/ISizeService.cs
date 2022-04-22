@@ -9,8 +9,6 @@
 
     public interface ISizeService
     {
-        Dictionary<string, string> GetSizeAsKVP();
-
         public IEnumerable<Size> GetSizes();
 
         public Size GetSizeById(int id);

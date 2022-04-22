@@ -46,5 +46,6 @@
         {
             return this.prodImageRepo.AllAsNoTracking().Where(x => x.ProductId == id).ToList();
         }
+
     }
 }

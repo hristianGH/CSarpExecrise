@@ -13,14 +13,11 @@
     public class LocationService : ILocationService
     {
         private readonly IRepository<Location> locationRepository;
-        private readonly IRepository<ProductLocation> productLocationRepository;
 
         public LocationService(
-            IRepository<Location> locationRepository,
-            IRepository<ProductLocation> productLocationRepository)
+            IRepository<Location> locationRepository)
         {
             this.locationRepository = locationRepository;
-            this.productLocationRepository = productLocationRepository;
         }
 
         public async Task CreateAsync(LocationViewModel viewModel)

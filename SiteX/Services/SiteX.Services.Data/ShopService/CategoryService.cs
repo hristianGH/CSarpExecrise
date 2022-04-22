@@ -1,6 +1,5 @@
 ﻿namespace SiteX.Services.Data.ShopService
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -23,8 +22,7 @@
             this.productCategoryRepository = productCategoryRepository;
         }
 
-
-        public IEnumerable<Category> GetCategories()
+        public  IEnumerable<Category> GetCategories()
         {
             var category = this.categoryRepository.AllAsNoTracking().ToArray();
             return category;

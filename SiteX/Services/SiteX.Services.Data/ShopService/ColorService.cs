@@ -13,14 +13,11 @@
     public class ColorService : IColorService
     {
         private readonly IRepository<Color> colorRepo;
-        private readonly IDeletableEntityRepository<ProductColor> prodColorRepo;
 
         public ColorService(
-            IRepository<Color> colorRepo,
-            IDeletableEntityRepository<ProductColor> prodColorRepo)
+            IRepository<Color> colorRepo )
         {
             this.colorRepo = colorRepo;
-            this.prodColorRepo = prodColorRepo;
         }
 
         public async Task CreateAsync(ColorViewModel viewModel)
@@ -38,12 +35,12 @@
             await this.colorRepo.SaveChangesAsync();
         }
 
-        public Color GetColorById(int id)
+        public  Color GetColorById(int id)
         {
             return this.colorRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public IEnumerable<Color> GetColors()
+        public  IEnumerable<Color> GetColors()
         {
             var colors = this.colorRepo.AllAsNoTracking().ToList();
             return colors;
