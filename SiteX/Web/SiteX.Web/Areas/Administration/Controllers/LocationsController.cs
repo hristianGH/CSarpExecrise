@@ -17,7 +17,7 @@
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var locations = this.locationService.GetLocations();
             return this.View(locations);
@@ -25,7 +25,7 @@
 
         [HttpGet]
         [Route("Create")]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return this.View();
         }
@@ -46,7 +46,7 @@
 
         [HttpGet]
         [Route("Edit")]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var viewModel = this.locationService.GetLocationById(id);
 

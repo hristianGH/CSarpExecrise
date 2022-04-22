@@ -16,14 +16,14 @@
         private readonly IProductService productService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IProductImageService productImageService;
-        private readonly IShopListService toListService;
+        private readonly IProductListService toListService;
 
         public ProductsController(
             ICategoryService categoryService,
             IProductService productService,
             UserManager<ApplicationUser> userManager,
             IProductImageService productImageService,
-            IShopListService toListService)
+            IProductListService toListService)
         {
             this.categoryService = categoryService;
             this.productService = productService;
@@ -32,16 +32,16 @@
             this.toListService = toListService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var products = this.productService.ReturnAll();
             return this.View(products);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var viewModel = new ProductViewModel();
-            var toList = this.toListService.ToSelectList();
+            var toList = await this.toListService.ToSelectListAsync();
             viewModel.GendersToList = toList.GendersToList;
             viewModel.CategoriesToList = toList.CategoriesToList;
             viewModel.LocationsToList = toList.LocationsToList;
@@ -64,7 +64,7 @@
             return this.RedirectToAction("Index");
         }
 
-        public IActionResult Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             var viewModel = this.productService.GetProductEditById(id);
 
@@ -73,7 +73,7 @@
                 viewModel.Pictures.Add(string.Empty);
             }
 
-            var toList = this.toListService.ToSelectList();
+            var toList = await this.toListService.ToSelectListAsync();
             viewModel.GendersToList = toList.GendersToList;
             viewModel.CategoriesToList = toList.CategoriesToList;
             viewModel.LocationsToList = toList.LocationsToList;
@@ -99,7 +99,7 @@
             return this.RedirectToAction("Index");
         }
 
-        public IActionResult Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var product = this.productService.GetOutputProductById(id);
             this.ViewBag.ImageOne = this.productImageService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();

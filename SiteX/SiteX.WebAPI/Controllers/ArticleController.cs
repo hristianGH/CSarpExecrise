@@ -21,7 +21,7 @@ namespace SiteX.WebAPI.Controllers
         // GET: ArticlesController
         [HttpGet]
         [Route("All")]
-        public ActionResult All()
+        public async Task<IActionResult> All()
         {
             var articles = this.articleService.GetArticles();
             if (articles != null)
@@ -39,7 +39,7 @@ namespace SiteX.WebAPI.Controllers
         // GET: ArticlesController/Create
         [HttpGet]
         [Route("Create")]
-        public ActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var article = new Article();
             return Ok(article);
@@ -62,7 +62,7 @@ namespace SiteX.WebAPI.Controllers
         // GET: ArticlesController/Edit/5
         [HttpGet]
         [Route("Edit")]
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var edit = this.articleService.GetArticleById(id);
             return Ok(edit);
@@ -72,7 +72,7 @@ namespace SiteX.WebAPI.Controllers
         // POST: ArticlesController/Edit/5
         [HttpPost]
         [Route("Edit")]
-        public ActionResult Edit(Article edit)
+        public async Task<IActionResult> Edit(Article edit)
         {
             if (!ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace SiteX.WebAPI.Controllers
         // GET: ArticlesController/Delete/5
         [HttpGet]
         [Route("Delete")]
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var article = this.articleService.GetArticleById(id);
             return Ok(article);

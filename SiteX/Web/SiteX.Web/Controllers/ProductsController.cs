@@ -30,15 +30,15 @@
             this.toListService = toListService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return this.RedirectToAction("All");
         }
 
         public async Task<IActionResult> All(int id = 1)
         {
-            ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = await this.productService.ToPageAsync(id, 6), PageNumber = id, ItemsPerPage = 6 };
-            productViewModel.ItemsCount = await this.productService.GetProductCountAsync();
+            ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = this.productService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 6 };
+            productViewModel.ItemsCount = this.productService.GetProductCount();
             productViewModel.ToSelectList = await this.toListService.ToSelectListAsync();
             return this.View(productViewModel);
         }
@@ -49,7 +49,7 @@
             {
                 Products = this.productService.FilterByCategoryId(id),
             };
-            productViewModel.ItemsCount = await this.productService.GetProductCountAsync();
+            productViewModel.ItemsCount = this.productService.GetProductCount();
             productViewModel.ToSelectList = await this.toListService.ToSelectListAsync();
 
             if (productViewModel != null)
@@ -67,7 +67,7 @@
                 Products = this.productService.FilterByGenderId(id),
             };
 
-            productViewModel.ItemsCount = await this.productService.GetProductCountAsync();
+            productViewModel.ItemsCount = this.productService.GetProductCount();
             productViewModel.ToSelectList = await this.toListService.ToSelectListAsync();
 
             if (productViewModel != null)
@@ -78,13 +78,13 @@
             return this.NotFound();
         }
 
-        public   async Task<IActionResult> SearchByColor(int id = 1)
+        public async Task<IActionResult> SearchByColor(int id = 1)
         {
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
                 Products = this.productService.FilterByColorId(id),
             };
-            productViewModel.ItemsCount = await this.productService.GetProductCountAsync();
+            productViewModel.ItemsCount = this.productService.GetProductCount();
             productViewModel.ToSelectList = await this.toListService.ToSelectListAsync();
 
             if (productViewModel != null)
@@ -101,8 +101,8 @@
             {
                 Products = this.productService.FilterBySizeId(id),
             };
-            productViewModel.ItemsCount = await this.productService.GetProductCountAsync();
-            productViewModel.ToSelectList = await this.toListService.ToSelectListAsync();
+            productViewModel.ItemsCount = this.productService.GetProductCount();
+            productViewModel.ToSelectList =await this.toListService.ToSelectListAsync();
 
             if (productViewModel != null)
             {
@@ -115,8 +115,8 @@
         public async Task<IActionResult> ById(Guid id)
         {
             var product = this.productService.GetOutputProductById(id);
-            this.ViewBag.ImageOne =await this.productImageService.GetImagesByProductIdAsync(id).Select(x => x.Path).FirstOrDefault();
-            this.ViewBag.Images =await this.productImageService.GetImagesByProductIdAsync(id).Select(x => x.Path).Skip(1);
+            this.ViewBag.ImageOne = this.productImageService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
+            this.ViewBag.Images = this.productImageService.GetImagesByProductId(id).Select(x => x.Path).Skip(1);
             var viewmodel = new BuyingProductViewModel() { ProductId = product.Id, Product = product };
 
             viewmodel.CategoriesToList = product.Categories;
@@ -128,7 +128,7 @@
         }
 
         [HttpPost]
-        public IActionResult ById(BuyingProductViewModel viewmodel)
+        public async Task<IActionResult> ById(BuyingProductViewModel viewmodel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -138,7 +138,7 @@
             return this.RedirectToAction("Buy", viewmodel);
         }
 
-        public IActionResult Buy(BuyingProductViewModel viewModel)
+        public async Task<IActionResult> Buy(BuyingProductViewModel viewModel)
         {
             var prod = viewModel.Product;
             return this.View();

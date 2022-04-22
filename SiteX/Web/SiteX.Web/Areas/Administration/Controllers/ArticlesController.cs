@@ -16,7 +16,7 @@ namespace SiteX.Web.Areas.Administration.Controllers
         }
 
         // GET: ArticlesController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             var articles = this.articleService.GetArticles();
             if (articles != null)
@@ -31,13 +31,13 @@ namespace SiteX.Web.Areas.Administration.Controllers
         }
 
         // GET: ArticlesController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
             return View();
         }
 
         // GET: ArticlesController/Create
-        public ActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var article = new Article();
             return View(article);
@@ -45,7 +45,7 @@ namespace SiteX.Web.Areas.Administration.Controllers
 
         // POST: ArticlesController/Create
         [HttpPost]
-        public async Task<ActionResult> Create(Article article)
+        public async Task<IActionResult> Create(Article article)
         {
             if (!this.ModelState.IsValid)
             {
@@ -57,21 +57,30 @@ namespace SiteX.Web.Areas.Administration.Controllers
         }
 
         // GET: ArticlesController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var edit = this.articleService.GetArticleById(id);
+            var edit = new Article();
+            try
+            {
+                edit = this.articleService.GetArticleById(id);
+
+            }
+            catch (System.Exception)
+            {
+                return this.NotFound(id);
+            }
             return this.View(edit);
         }
 
         // POST: ArticlesController/Edit/5
         [HttpPost]
-        public ActionResult Edit(Article edit)
+        public async Task<IActionResult> Edit(Article edit)
         {
             if (!ModelState.IsValid)
             {
                 return this.BadRequest();
             }
-            this.articleService.EditArticleAsync(edit);
+           await this.articleService.EditArticleAsync(edit);
             return RedirectToAction(nameof(Index));
         }
 

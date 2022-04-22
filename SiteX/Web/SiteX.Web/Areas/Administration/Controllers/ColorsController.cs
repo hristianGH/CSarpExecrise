@@ -16,13 +16,13 @@
             this.colorService = colorService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var colors = this.colorService.GetColors();
             return this.View(colors);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return this.View();
         }
@@ -40,7 +40,7 @@
 
         }
 
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var viewModel = this.colorService.GetColorById(id);
 

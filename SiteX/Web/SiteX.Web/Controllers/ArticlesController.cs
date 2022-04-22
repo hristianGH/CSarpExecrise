@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SiteX.Services.Data.ArticleService.Interface;
     using SiteX.Web.ViewModels.ArticleViewModels;
+    using System.Threading.Tasks;
 
     public class ArticlesController : Controller
     {
@@ -13,12 +14,12 @@
             this.articleService = articleService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return this.RedirectToAction("All");
         }
 
-        public IActionResult All(int page = 1)
+        public async Task<IActionResult> All(int page = 1)
         {
 
             AllArticleViewModel articleViewModel = new AllArticleViewModel() { Articles = this.articleService.ToPage(page, 20), PageNumber = page, ItemsPerPage = 20 };
@@ -28,7 +29,7 @@
             return this.View(articleViewModel);
         }
 
-        public IActionResult ById(int id)
+        public async Task<IActionResult> ById(int id)
         {
             var article = this.articleService.GetArticleById(id);
             return this.View(article);

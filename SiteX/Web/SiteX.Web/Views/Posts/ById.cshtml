@@ -85,10 +85,10 @@
                     <i class="icon-bookmark-empty"></i>
                     @foreach (var genres in Model.Genres)
                     {
-                        <a href="" rel="category tag">@genres.Name ,</a>
+                        <a asp-action="SearchByGenre" asp-route-id="@genres.Id" rel="category tag">@genres.Name ,</a>
                     }
                     <br>
-                    <p>@Model.Comments.Count()</p>
+                    <p>@Model.Comments.Count() Comments</p>
                 </div>
                 <p> --- </p>
 

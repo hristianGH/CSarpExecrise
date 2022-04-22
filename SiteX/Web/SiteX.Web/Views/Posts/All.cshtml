@@ -25,7 +25,7 @@
                                 {
                                     foreach (var genre in post.Genres)
                                     {
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">@genre.Name</button>
+                                        <a type="button" asp-action="SearchByGenre" asp-route-id="@genre.Id"  class="btn btn-sm btn-outline-secondary">@genre.Name</a>
                                     }
                                 }
                             </div>
