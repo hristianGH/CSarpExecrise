@@ -8,19 +8,19 @@
     using SiteX.Services.Data.BlogService.Interface;
     using SiteX.Web.ViewModels.BlogViewModels;
 
-    public class BlogController : Controller
+    public class PostsController : Controller
     {
         private readonly IPostService postService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IPostImageService postImageService;
-        private readonly IBlogListService toListService;
+        private readonly IPostListService toListService;
         private readonly ICommentService commentService;
 
-        public BlogController(
+        public PostsController(
             IPostService postService,
             UserManager<ApplicationUser> userManager,
             IPostImageService postImageService,
-            IBlogListService toListService,
+            IPostListService toListService,
             ICommentService commentService)
         {
             this.postService = postService;

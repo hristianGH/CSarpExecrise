@@ -86,7 +86,7 @@
             services.AddTransient<IProductImageService, ProductImageService>();
             services.AddTransient<IProductLocationService, ProductLocationService>();
             services.AddTransient<IProductSizeService, ProductSizeService>();
-            services.AddTransient<IShopListService, ShopListService>();
+            services.AddTransient<IProductListService, ProductListService>();
             services.AddTransient<IReceitService, ReceitService>();
 
 
@@ -95,7 +95,7 @@
             services.AddTransient<IPostGenreService, PostGenreSevice>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IPostImageService, PostImageService>();
-            services.AddTransient<IBlogListService, BlogListService>();
+            services.AddTransient<IPostListService, PostListService>();
             services.AddTransient<ICommentService, CommentService>();
 
             // Team

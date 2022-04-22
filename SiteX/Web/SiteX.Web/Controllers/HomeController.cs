@@ -28,12 +28,7 @@
             return this.View();
         }
 
-        public IActionResult Team()
-        {
-            var members = this.teamService.GetTeam();
-
-            return this.View(members);
-        }
+      
 
         public IActionResult Locations()
         {

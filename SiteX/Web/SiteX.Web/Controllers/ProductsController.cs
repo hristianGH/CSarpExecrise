@@ -11,18 +11,18 @@
     using SiteX.Services.Data.ShopService.Interface;
     using SiteX.Web.ViewModels.ShopViewModels.ProductModels;
 
-    public class ShopController : Controller
+    public class ProductsController : Controller
     {
         private readonly IProductService productService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IProductImageService productImageService;
-        private readonly IShopListService toListService;
+        private readonly IProductListService toListService;
 
-        public ShopController(
+        public ProductsController(
             IProductService productService,
             UserManager<ApplicationUser> userManager,
             IProductImageService productImageService,
-            IShopListService toListService)
+            IProductListService toListService)
         {
             this.productService = productService;
             this.userManager = userManager;
@@ -35,22 +35,22 @@
             return this.RedirectToAction("All");
         }
 
-        public IActionResult All(int id = 1)
+        public async Task<IActionResult> All(int id = 1)
         {
-            ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = this.productService.ToPage(id, 6), PageNumber = id, ItemsPerPage = 6 };
-            productViewModel.ItemsCount = this.productService.GetProductCount();
-            productViewModel.ToSelectList = this.toListService.ToSelectList();
+            ProductAllViewModel productViewModel = new ProductAllViewModel() { Products = await this.productService.ToPageAsync(id, 6), PageNumber = id, ItemsPerPage = 6 };
+            productViewModel.ItemsCount = await this.productService.GetProductCountAsync();
+            productViewModel.ToSelectList = await this.toListService.ToSelectListAsync();
             return this.View(productViewModel);
         }
 
-        public IActionResult SearchByCategory(int id = 1)
+        public async Task<IActionResult> SearchByCategory(int id = 1)
         {
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
                 Products = this.productService.FilterByCategoryId(id),
             };
-            productViewModel.ItemsCount = this.productService.GetProductCount();
-            productViewModel.ToSelectList = this.toListService.ToSelectList();
+            productViewModel.ItemsCount = await this.productService.GetProductCountAsync();
+            productViewModel.ToSelectList = await this.toListService.ToSelectListAsync();
 
             if (productViewModel != null)
             {
@@ -60,15 +60,15 @@
             return this.NotFound();
         }
 
-        public IActionResult SearchByGender(string id = "Male")
+        public async Task<IActionResult> SearchByGender(string id = "Male")
         {
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
                 Products = this.productService.FilterByGenderId(id),
             };
 
-            productViewModel.ItemsCount = this.productService.GetProductCount();
-            productViewModel.ToSelectList = this.toListService.ToSelectList();
+            productViewModel.ItemsCount = await this.productService.GetProductCountAsync();
+            productViewModel.ToSelectList = await this.toListService.ToSelectListAsync();
 
             if (productViewModel != null)
             {
@@ -78,14 +78,14 @@
             return this.NotFound();
         }
 
-        public IActionResult SearchByColor(int id = 1)
+        public   async Task<IActionResult> SearchByColor(int id = 1)
         {
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
                 Products = this.productService.FilterByColorId(id),
             };
-            productViewModel.ItemsCount = this.productService.GetProductCount();
-            productViewModel.ToSelectList = this.toListService.ToSelectList();
+            productViewModel.ItemsCount = await this.productService.GetProductCountAsync();
+            productViewModel.ToSelectList = await this.toListService.ToSelectListAsync();
 
             if (productViewModel != null)
             {
@@ -95,14 +95,14 @@
             return this.NotFound();
         }
 
-        public IActionResult SearchBySize(int id = 1)
+        public async Task<IActionResult> SearchBySize(int id = 1)
         {
             ProductAllViewModel productViewModel = new ProductAllViewModel()
             {
                 Products = this.productService.FilterBySizeId(id),
             };
-            productViewModel.ItemsCount = this.productService.GetProductCount();
-            productViewModel.ToSelectList = this.toListService.ToSelectList();
+            productViewModel.ItemsCount = await this.productService.GetProductCountAsync();
+            productViewModel.ToSelectList = await this.toListService.ToSelectListAsync();
 
             if (productViewModel != null)
             {
@@ -112,11 +112,11 @@
             return this.NotFound();
         }
 
-        public IActionResult ById(Guid id)
+        public async Task<IActionResult> ById(Guid id)
         {
             var product = this.productService.GetOutputProductById(id);
-            this.ViewBag.ImageOne = this.productImageService.GetImagesByProductId(id).Select(x => x.Path).FirstOrDefault();
-            this.ViewBag.Images = this.productImageService.GetImagesByProductId(id).Select(x => x.Path).Skip(1);
+            this.ViewBag.ImageOne =await this.productImageService.GetImagesByProductIdAsync(id).Select(x => x.Path).FirstOrDefault();
+            this.ViewBag.Images =await this.productImageService.GetImagesByProductIdAsync(id).Select(x => x.Path).Skip(1);
             var viewmodel = new BuyingProductViewModel() { ProductId = product.Id, Product = product };
 
             viewmodel.CategoriesToList = product.Categories;
