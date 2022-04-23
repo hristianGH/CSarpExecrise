@@ -122,6 +122,14 @@
             builder.Entity<ProductCategory>().HasKey(x => new { x.ProductId, x.CategoryId });
             builder.Entity<ProductLocation>().HasKey(x => new { x.ProductId, x.LocationId });
             builder.Entity<Comment>().HasOne(x => x.Parent);
+
+            builder.Entity<ProductCategory>().HasOne(x=>x.Product).WithMany(x=>x.ProductCategories).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<ProductCategory>().HasOne(x => x.Category).WithMany(x => x.ProductCategories).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<ProductColor>().HasOne(x => x.Product).WithMany(x => x.ProductColors).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<ProductLocation>().HasOne(x => x.Product).WithMany(x => x.ProductLocations).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<ProductSize>().HasOne(x => x.Product).WithMany(x => x.ProductSizes).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<ProductImage>().HasOne(x => x.Product).WithMany(x => x.ProductImages).OnDelete(DeleteBehavior.Cascade);
+
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

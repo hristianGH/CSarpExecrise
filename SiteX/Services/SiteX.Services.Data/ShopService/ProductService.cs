@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using AutoMapper;
+    using Microsoft.EntityFrameworkCore;
     using SiteX.Data.Common.Repositories;
     using SiteX.Data.Models.Shop;
     using SiteX.Services.Data.ShopService.Interface;
@@ -14,41 +15,15 @@
     public class ProductService : IProductService
     {
         private readonly IDeletableEntityRepository<Product> productRepo;
-        private readonly IProductCategoryService productCategoryService;
-        private readonly IProductLocationService productLocationService;
-        private readonly IProductSizeService productSizeService;
-        private readonly IProductColorService productColorService;
-        private readonly IProductImageService productImageService;
-        private readonly IReceitService receitService;
 
-
-        public ProductService(
-            IDeletableEntityRepository<Product> productRepo,
-            IProductCategoryService productCategoryService,
-            IProductLocationService productLocationService,
-            IProductSizeService productSizeService,
-            IProductColorService productColorService,
-            IProductImageService productImageService,
-            IReceitService receitService)
+        public ProductService(IDeletableEntityRepository<Product> productRepo
+            )
         {
             this.productRepo = productRepo;
-
-            this.productCategoryService = productCategoryService;
-            this.productLocationService = productLocationService;
-            this.productSizeService = productSizeService;
-            this.productColorService = productColorService;
-            this.productImageService = productImageService;
-            this.receitService = receitService;
-
         }
 
         public async Task CreateAsync(ProductViewModel viewModel)
         {
-            var pics = new List<ProductImage>();
-            foreach (var pic in viewModel.Pictures.Where(x => x != null))
-            {
-                pics.Add(new ProductImage() { Path = pic });
-            }
             var product = new Product()
             {
                 Name = viewModel.Name,
@@ -56,37 +31,15 @@
                 Description = viewModel.Description,
                 Gender = viewModel.Gender,
                 Price = viewModel.Price,
-                ProductImages = pics,
                 Quantity = viewModel.Quantity,
             };
-            //foreach (var category in viewModel.Categories)
-            //{
-            //    product.ProductCategories.Add(new ProductCategory() { CategoryId = category });
-
-            //}
-
-            //foreach (var location in viewModel.Locations)
-            //{
-            //    product.ProductLocations.Add(new ProductLocation() { LocationId = location });
-
-            //}
-
-            //foreach (var color in viewModel.Colors)
-            //{
-            //    product.ProductColors.Add(new ProductColor() { ColorId = color });
-
-            //}
-            //foreach (var size in viewModel.Sizes)
-            //{
-            //    product.ProductSizes.Add(new ProductSize() { SizeId = size });
-
-            //}
+            CreateProductPeriphery(viewModel, product);
             await this.productRepo.AddAsync(product);
             await this.productRepo.SaveChangesAsync();
-            await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, product.Id);
-            await this.productLocationService.CreatingProductLocationAsync(viewModel.Locations, product.Id);
-            await this.productColorService.CreatingProductColorAsync(viewModel.Colors, product.Id);
-            await this.productSizeService.CreatingProductSizeAsync(viewModel.Sizes, product.Id);
+            //await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, product.Id);
+            //await this.productLocationService.CreatingProductLocationAsync(viewModel.Locations, product.Id);
+            //await this.productColorService.CreatingProductColorAsync(viewModel.Colors, product.Id);
+            //await this.productSizeService.CreatingProductSizeAsync(viewModel.Sizes, product.Id);
         }
 
         public ICollection<Product> ReturnAll()
@@ -169,17 +122,16 @@
 
         public async Task EditProductAsync(ProductViewModel viewModel)
         {
-            var product = this.productRepo.All().Where(x => x.Id == viewModel.Id).FirstOrDefault();
-            product.Name = viewModel.Name;
-            product.Description = viewModel.Description;
-            product.Price = viewModel.Price;
-            product.Gender = viewModel.Gender;
-            product.Quantity = viewModel.Quantity;
+            var product = this.productRepo.All().Where(x => x.Id == viewModel.Id)
+                .Include(x => x.ProductCategories)
+                .Include(x => x.ProductColors)
+                .Include(x => x.ProductImages)
+                .Include(x => x.ProductLocations)
+                .Include(x => x.ProductSizes).FirstOrDefault();
+            await this.DeleteProductPeriphery(product);
+            await this.CreateProductPeriphery(viewModel, product);
 
             await this.productRepo.SaveChangesAsync();
-
-            await this.HardDeleteConnectionsByProductIdAsync(viewModel.Id);
-            await this.CreateConnectionsByModelAsync(viewModel, viewModel.Id);
         }
 
         public ProductViewModel GetProductEditById(Guid id)
@@ -187,33 +139,6 @@
             var edit = this.productRepo.AllAsNoTracking().To<ProductViewModel>().Where(x => x.Id == id).FirstOrDefault();
 
             return edit;
-        }
-
-        public async Task HardDeleteConnectionsByProductIdAsync(Guid id)
-        {
-
-            await this.productLocationService.HardDeleteProductLocationByIdAsync(id);
-
-            await this.productCategoryService.HardDeleteProductCategoriesByIdAsync(id);
-
-            await this.productImageService.HardDeleteProductImagesByIdAsync(id);
-
-            await this.productColorService.HardDeleteProductColorByIdAsync(id);
-
-            await this.productSizeService.HardDeleteProductSizeByIdAsync(id);
-        }
-
-        public async Task CreateConnectionsByModelAsync(ProductViewModel viewModel, Guid id)
-        {
-            await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, id);
-
-            await this.productLocationService.CreatingProductLocationAsync(viewModel.Locations, id);
-
-            await this.productImageService.CreatingProductImageAsync(viewModel.Pictures, id);
-
-            await this.productColorService.CreatingProductColorAsync(viewModel.Colors, id);
-
-            await this.productSizeService.CreatingProductSizeAsync(viewModel.Sizes, id);
         }
 
         public async Task BuyProductAsync(Product product)
@@ -235,8 +160,46 @@
                 ProductName = product.Name,
             };
 
-            await this.receitService.CreateAsync(receit);
-            await this.productRepo.SaveChangesAsync();
+
+            //await this.receitService.CreateAsync(receit);
+            //await this.productRepo.SaveChangesAsync();
+        }
+
+        public async Task CreateProductPeriphery(ProductViewModel viewModel, Product product)
+        {
+            foreach (var category in viewModel.Categories)
+            {
+                product.ProductCategories.Add(new ProductCategory() { ProductId = product.Id, CategoryId = category });
+            }
+
+            foreach (var image in viewModel.Pictures.Where(x => x != null))
+            {
+                product.ProductImages.Add(new ProductImage() { ProductId = product.Id, Path = image });
+            }
+
+            foreach (var location in viewModel.Locations)
+            {
+                product.ProductLocations.Add(new ProductLocation() { ProductId = product.Id, LocationId = location });
+            }
+
+            foreach (var color in viewModel.Colors)
+            {
+                product.ProductColors.Add(new ProductColor() { ProductId = product.Id, ColorId = color });
+            }
+
+            foreach (var size in viewModel.Sizes)
+            {
+                product.ProductSizes.Add(new ProductSize() { ProductId = product.Id, SizeId = size });
+            }
+        }
+
+        public async Task DeleteProductPeriphery(Product product)
+        {
+            product.ProductCategories.Clear();
+            product.ProductImages.Clear();
+            product.ProductLocations.Clear();
+            product.ProductColors.Clear();
+            product.ProductSizes.Clear();
         }
     }
 }

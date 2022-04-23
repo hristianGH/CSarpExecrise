@@ -39,9 +39,9 @@
 
         public Task EditProductAsync(ProductViewModel viewModel);
 
-        public Task HardDeleteConnectionsByProductIdAsync(Guid id);
+        public Task CreateProductPeriphery(ProductViewModel viewModel,Product product);
 
-        public Task CreateConnectionsByModelAsync(ProductViewModel list, Guid id);
+        public Task DeleteProductPeriphery(Product product);
 
         public Task BuyProductAsync(Product product);
     }

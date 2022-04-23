@@ -48,7 +48,6 @@ namespace SiteX.WebAPI
             // .AddEntityFrameworkStores<ApplicationDbContext>()
             // .AddDefaultTokenProviders();
 
-
             services.AddIdentityCore<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
