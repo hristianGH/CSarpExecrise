@@ -36,10 +36,6 @@
             CreateProductPeriphery(viewModel, product);
             await this.productRepo.AddAsync(product);
             await this.productRepo.SaveChangesAsync();
-            //await this.productCategoryService.CreatingProductCategoryAsync(viewModel.Categories, product.Id);
-            //await this.productLocationService.CreatingProductLocationAsync(viewModel.Locations, product.Id);
-            //await this.productColorService.CreatingProductColorAsync(viewModel.Colors, product.Id);
-            //await this.productSizeService.CreatingProductSizeAsync(viewModel.Sizes, product.Id);
         }
 
         public ICollection<Product> ReturnAll()
@@ -128,6 +124,12 @@
                 .Include(x => x.ProductImages)
                 .Include(x => x.ProductLocations)
                 .Include(x => x.ProductSizes).FirstOrDefault();
+            product.Name = viewModel.Name;
+            product.Description=viewModel.Description;
+            product.Price=viewModel.Price;
+            product.Gender = viewModel.Gender;
+            product.Quantity=viewModel.Quantity;
+
             await this.DeleteProductPeriphery(product);
             await this.CreateProductPeriphery(viewModel, product);
 
