@@ -40,6 +40,7 @@
                           {
                               new RolesSeeder(),
                               new SettingsSeeder(),
+                              new UserSeeder(this.userManager),
                               new CategorySeeder(),
                               new LocationSeeder(),
                               new GenderSeeder(),
@@ -49,7 +50,6 @@
                               new SizeSeeder(),
                               new ColorSeeder(),
                               new ArticleSeeder(),
-                              new UserSeeder(this.userManager),
                           };
 
             foreach (var seeder in seeders)

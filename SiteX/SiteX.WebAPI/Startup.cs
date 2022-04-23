@@ -14,6 +14,7 @@ using SiteX.Data.Common;
 using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models;
 using SiteX.Data.Repositories;
+using SiteX.Data.Seeding;
 using SiteX.Services.Data.ArticleService;
 using SiteX.Services.Data.ArticleService.Interface;
 using SiteX.Services.Data.BlogService;
@@ -43,9 +44,16 @@ namespace SiteX.WebAPI
             services.AddDbContext<ApplicationDbContext>(
                options => options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-             .AddEntityFrameworkStores<ApplicationDbContext>()
-             .AddDefaultTokenProviders();
+            //services.AddIdentityCore<ApplicationUser, IdentityRole>(IdentityOptionsProvider.GetIdentityOptions)
+            // .AddEntityFrameworkStores<ApplicationDbContext>()
+            // .AddDefaultTokenProviders();
+
+
+            services.AddIdentityCore<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
+                .AddRoles<ApplicationRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders(); ;
+    
 
             services.AddSwaggerGen(c =>
             {
@@ -146,6 +154,14 @@ namespace SiteX.WebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                dbContext.Database.Migrate();
+                new ApplicationDbContextSeeder(userManager).SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+            }
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

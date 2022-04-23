@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Services\SiteX.Services.Mapping\SiteX.Services.Mapping.csproj" />
     <ProjectReference Include="..\SiteX.Data.Common\SiteX.Data.Common.csproj" />
   </ItemGroup>
   
