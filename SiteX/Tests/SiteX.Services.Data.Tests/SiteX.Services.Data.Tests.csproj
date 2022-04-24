@@ -31,4 +31,8 @@
     <ProjectReference Include="..\..\Services\SiteX.Services.Data\SiteX.Services.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Blog\" />
+  </ItemGroup>
+
 </Project>
