@@ -44,14 +44,14 @@ namespace SiteX.Services.Data.Tests.Shop.ProductTests
             list[0].Id=guid;
 
             Assert.True(list.Count() > 0);
-            Assert.True(list[0].Name == "Big Shirt");
-            Assert.True(list[0].Price == 120);
-            Assert.True(list[0].Gender == "Unisex");
-            Assert.True(list[0].ProductCategories.Count() == 3);
-            Assert.True(list[0].ProductLocations.Count() == 1);
-            Assert.True(list[0].ProductColors.Count() == 2);
-            Assert.True(list[0].ProductSizes.Count() == 2);
-            Assert.True(list[0].Quantity == 22);
+            Assert.True(list.First().Name == "Big Shirt");
+            Assert.True(list.First().Price == 120);
+            Assert.True(list.First().Gender == "Unisex");
+            Assert.True(list.First().ProductCategories.Count() == 3);
+            Assert.True(list.First().ProductLocations.Count() == 1);
+            Assert.True(list.First().ProductColors.Count() == 2);
+            Assert.True(list.First().ProductSizes.Count() == 2);
+            Assert.True(list.First().Quantity == 22);
 
             var edit = new ProductViewModel()
             {
@@ -70,14 +70,14 @@ namespace SiteX.Services.Data.Tests.Shop.ProductTests
             await service.EditProductAsync(edit);
 
             Assert.True(list.Count() > 0);
-            Assert.True(list[0].Name == "Small Shirt");
-            Assert.True(list[0].Price == 12);
-            Assert.True(list[0].Gender == "Male");
-            Assert.True(list[0].ProductCategories.Count() == 1);
-            Assert.True(list[0].ProductLocations.Count() == 2);
-            Assert.True(list[0].ProductColors.Count() == 1);
-            Assert.True(list[0].ProductSizes.Count() == 1);
-            Assert.True(list[0].Quantity == 1);
+            Assert.True(list.First().Name == "Small Shirt");
+            Assert.True(list.First().Price == 12);
+            Assert.True(list.First().Gender == "Male");
+            Assert.True(list.First().ProductCategories.Count() == 1);
+            Assert.True(list.First().ProductLocations.Count() == 2);
+            Assert.True(list.First().ProductColors.Count() == 1);
+            Assert.True(list.First().ProductSizes.Count() == 1);
+            Assert.True(list.First().Quantity == 1);
         }
     }
 }

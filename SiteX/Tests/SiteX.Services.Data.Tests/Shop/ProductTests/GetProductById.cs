@@ -65,7 +65,10 @@ namespace SiteX.Services.Data.Tests.Shop.ProductTests
             var list = new List<Product>();
 
             var mockProductRepo = new Mock<IDeletableEntityRepository<Product>>();
-            AutoMapperConfig.RegisterMappings(typeof(IndexViewModel).GetTypeInfo().Assembly);
+            if (AutoMapperConfig.MapperInstance == null)
+            {
+                AutoMapperConfig.RegisterMappings(typeof(IndexViewModel).GetTypeInfo().Assembly);
+            }
 
             mockProductRepo.Setup(x => x.AllAsNoTracking()).Returns(list.AsQueryable());
             mockProductRepo.Setup(x => x.AddAsync(It.IsAny<Product>())).Callback((Product x) => list.Add(x));
@@ -98,8 +101,16 @@ namespace SiteX.Services.Data.Tests.Shop.ProductTests
                 var get = service.GetOutputProductById(list[i].Id);
                 Assert.True(get.Id == list[i].Id);
                 Assert.True(get.Name == $"Big Shirt {i}");
+                Assert.True(get.ImageUrl == "image1");
+                Assert.True(get.Gender == "Unisex");
+                Assert.True(get.Price == 120);
+                Assert.True(get.Quantity == 22);
+                Assert.True(get.Description == "Product");
+                Assert.True(get.Categories.Count == 3);
+                Assert.True(get.Locations.Count == 1);
+                Assert.True(get.Colors.Count == 2);
+                Assert.True(get.Sizes.Count == 2);
             }
-
         }
     }
 }

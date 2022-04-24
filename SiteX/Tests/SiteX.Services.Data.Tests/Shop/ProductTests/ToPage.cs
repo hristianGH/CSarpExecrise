@@ -16,12 +16,16 @@ namespace SiteX.Services.Data.Tests.Shop.ProductTests
 {
     public class ToPage
     {
+        // Might FAIL try running test alone might work
         [Fact]
         public async Task ToPageSholdReturnProducts()
         {
             var list = new List<Product>();
 
-            AutoMapperConfig.RegisterMappings(typeof(IndexViewModel).GetTypeInfo().Assembly);
+            if (AutoMapperConfig.MapperInstance == null)
+            {
+                AutoMapperConfig.RegisterMappings(typeof(IndexViewModel).GetTypeInfo().Assembly);
+            }
 
             var mockProductRepo = new Mock<IDeletableEntityRepository<Product>>();
 
@@ -54,16 +58,16 @@ namespace SiteX.Services.Data.Tests.Shop.ProductTests
                 guid = Guid.NewGuid();
             }
 
-            for (int i = 1; i <= 20; i++)
+            for (int page = 1; page <= 20; page++)
             {
-                var page = service.ToPage(i, 6);
-                if (Math.Ceiling((double)list.Count / 6) >= i)
+                var currentPage = service.ToPage(page, 6);
+                if (Math.Ceiling((double)list.Count / 6) >= page)
                 {
-                    Assert.True(page.Any());
+                    Assert.True(currentPage.Any());
                 }
                 else
                 {
-                    Assert.True(page.Count == 0);
+                    Assert.True(currentPage.Count == 0);
                 }
             }
 

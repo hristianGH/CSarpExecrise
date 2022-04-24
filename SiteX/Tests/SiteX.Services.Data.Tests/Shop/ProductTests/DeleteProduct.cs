@@ -92,7 +92,7 @@ namespace SiteX.Services.Data.Tests.Shop.ProductTests
                 Id = guid,
                 Description = "Product",
             };
-            
+
             await service.CreateAsync(product);
             list[0].Id=guid;
             Assert.True(list.Count() > 0);
