@@ -32,7 +32,7 @@
                 Price = viewModel.Price,
                 Quantity = viewModel.Quantity,
             };
-            CreateProductPeriphery(viewModel, product);
+           await CreateProductPeriphery(viewModel, product);
             await this.productRepo.AddAsync(product);
             await this.productRepo.SaveChangesAsync();
         }
