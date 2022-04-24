@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using AutoMapper;
     using Microsoft.EntityFrameworkCore;
     using SiteX.Data.Common.Repositories;
     using SiteX.Data.Models.Shop;
@@ -69,8 +68,10 @@
 
         public ICollection<ProductOutputViewModel> GetAllProductsAsOutModel()
         {
-            var output = this.productRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
-                .To<ProductOutputViewModel>().ToList();
+            var output = this.productRepo.AllAsNoTracking()
+                .OrderByDescending(x => x.CreatedOn)
+                .To<ProductOutputViewModel>()
+                .ToList();
 
             return output;
         }

@@ -80,7 +80,8 @@
                 {
                     opt.MapFrom(x => x.ProductImages.OrderBy(x => x.Id).Select(x => x.Path).FirstOrDefault());
 
-                });
+                })
+                .ReverseMap();
         }
     }
 }
