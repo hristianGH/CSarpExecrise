@@ -13,7 +13,6 @@
 
         public Task CreateAsync(CommentViewModel comment);
 
-        public Task AddCommentToPostAsync(Post post);
 
         public ICollection<Comment> GetCommentsByPostId(int id);
 

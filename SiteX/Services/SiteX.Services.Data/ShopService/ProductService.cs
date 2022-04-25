@@ -162,8 +162,6 @@
                 UserId = product.UserId,
                 ProductName = product.Name,
             };
-
-
             //await this.receitService.CreateAsync(receit);
             //await this.productRepo.SaveChangesAsync();
         }

@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Identity;
     using SiteX.Data.Common.Repositories;
@@ -23,11 +22,6 @@
         {
             this.commentRepo = commentRepo;
             this.userManager = userManager;
-        }
-
-        public Task AddCommentToPostAsync(Post post)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task CreateAsync(CommentViewModel viewModel)
@@ -104,7 +98,7 @@
         {
             var edit = this.commentRepo.All().FirstOrDefault(x => x.Id == comment.Id);
             edit.Body = comment.Body;
-           await this.commentRepo.SaveChangesAsync();
+            await this.commentRepo.SaveChangesAsync();
         }
     }
 }
