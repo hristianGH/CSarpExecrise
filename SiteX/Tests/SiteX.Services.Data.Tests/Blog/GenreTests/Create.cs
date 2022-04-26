@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace SiteX.Services.Data.Tests.Blog.GenreTest
+namespace SiteX.Services.Data.Tests.Blog.GenreTests
 {
     public class Create
     {

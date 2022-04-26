@@ -43,10 +43,5 @@
         {
             return this.genreRepo.AllAsNoTracking().Where(x => x.Id == id).FirstOrDefault();
         }
-
-        public ICollection<Genre> GetGenresByPostId(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

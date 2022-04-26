@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace SiteX.Services.Data.Tests.Blog.CommentTest
+namespace SiteX.Services.Data.Tests.Blog.CommentTests
 {
     public class GetCount
     {

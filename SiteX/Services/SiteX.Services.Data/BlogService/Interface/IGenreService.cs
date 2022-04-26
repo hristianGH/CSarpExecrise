@@ -16,6 +16,5 @@
 
         public Genre GetGenreById(int id);
 
-        public ICollection<Genre> GetGenresByPostId(int id);
     }
 }
