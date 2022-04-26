@@ -45,11 +45,6 @@
             await this.postGenreService.CreatingPostGenreAsync(viewModel.PostGenres, post.Id);
         }
 
-        public Post GetPost()
-        {
-            return this.postRepo.AllAsNoTracking().FirstOrDefault();
-        }
-
         public int GetPostCount()
         {
             return this.postRepo.AllAsNoTracking().Count();
@@ -57,27 +52,23 @@
 
         public ICollection<PostOutViewModel> GetAllPostsAsOutModel()
         {
-            var output = this.postRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
+            return this.postRepo.AllAsNoTracking().OrderByDescending(x => x.CreatedOn)
                 .To<PostOutViewModel>().ToList();
-            return output;
         }
 
         public ICollection<PostOutViewModel> FilterByGenreId(int id)
         {
-            var posts = this.GetAllPostsAsOutModel().Where(x => x.Genres.Any(x => x.Id == id)).ToList();
-            return posts;
+            return this.GetAllPostsAsOutModel().Where(x => x.Genres.Any(x => x.Id == id)).ToList();
         }
 
         public ICollection<PostOutViewModel> ToPage(int page = 1, int itemsPerPage = 6)
         {
-            var output = this.GetAllPostsAsOutModel().Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToList();
-            return output;
+            return this.GetAllPostsAsOutModel().Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToList();
         }
 
         public PostOutViewModel GetOutputPostById(int id)
         {
-            var output = this.postRepo.AllAsNoTracking().To<PostOutViewModel>().FirstOrDefault(x => x.Id == id);
-            return output;
+            return  this.postRepo.AllAsNoTracking().To<PostOutViewModel>().FirstOrDefault(x => x.Id == id);
         }
 
         public ICollection<Post> GetPosts()

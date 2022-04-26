@@ -12,8 +12,6 @@
     {
         public Task CreatePostAsync(PostViewModel viewModel);
 
-        public Post GetPost();
-
         public PostEditViewModel GetEditPostById(int id);
 
         public ICollection<Post> GetPosts();
