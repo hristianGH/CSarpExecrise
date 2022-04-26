@@ -35,7 +35,7 @@
             configuration.CreateMap<Post, PostOutViewModel>()
                   .ForMember(x => x.PreviewBody, opt =>
                   {
-                      opt.MapFrom(x => x.Body.Substring(0, 600));
+                      opt.MapFrom(x => x.Body.Substring(0, x.Body.Length >= 600 ? 600 : x.Body.Length));
                   })
                   .ForMember(x => x.Genres, opt =>
                   {
@@ -43,7 +43,7 @@
                   })
                   .ForMember(x => x.PreviewImage, opt =>
                   {
-                      opt.MapFrom(x => x.PostImages.Select(x=>x.Path).FirstOrDefault());
+                      opt.MapFrom(x => x.PostImages.Select(x => x.Path).FirstOrDefault());
                   })
                   .ForMember(x => x.Date, opt =>
                   {
