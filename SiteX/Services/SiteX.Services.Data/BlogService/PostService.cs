@@ -77,8 +77,6 @@
         public PostOutViewModel GetOutputPostById(int id)
         {
             var output = this.postRepo.AllAsNoTracking().To<PostOutViewModel>().FirstOrDefault(x => x.Id == id);
-
-            var raw = this.postRepo.AllAsNoTracking().FirstOrDefault(x => x.Id == id);
             return output;
         }
 
