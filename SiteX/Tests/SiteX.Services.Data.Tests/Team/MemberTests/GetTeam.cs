@@ -2,6 +2,7 @@
 using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models.Team;
 using SiteX.Services.Data.TeamService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,10 +10,11 @@ using Xunit;
 
 namespace SiteX.Services.Data.Tests.Team.MemberTests
 {
-    public class CreateMember
+    public class GetTeam
     {
+
         [Fact]
-        public async Task CreateMemberShouldAddMemberToRepository()
+        public async Task GetTeamShouldReturnAllMembers()
         {
             var list = new List<Member>();
 
@@ -24,13 +26,18 @@ namespace SiteX.Services.Data.Tests.Team.MemberTests
 
             var service = new TeamService.TeamService(mockProductRepo.Object);
 
-            var member = new Member() { FirstName = "FirstName", LastName = "LastName" };
+            for (int i = 0; i < 3; i++)
+            {
+                var member = new Member() { FirstName = "FirstName", LastName = "LastName" };
+                await service.CrateMemberAsync(member);
+                var memberId = Guid.NewGuid();
+                list[i].Id = memberId;
+            }
 
-            await service.CrateMemberAsync(member);
+            var team = service.GetTeam();
 
-            Assert.NotNull(list);
-            Assert.True(list.First().FirstName == "FirstName");
-            Assert.True(list.First().LastName == "LastName");
+            Assert.NotEmpty(team);
+            Assert.True(team.Count() == 3);
 
         }
     }

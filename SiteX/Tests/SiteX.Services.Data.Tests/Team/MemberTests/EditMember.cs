@@ -2,6 +2,7 @@
 using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models.Team;
 using SiteX.Services.Data.TeamService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,29 +10,31 @@ using Xunit;
 
 namespace SiteX.Services.Data.Tests.Team.MemberTests
 {
-    public class CreateMember
+    public class EditMember
     {
         [Fact]
-        public async Task CreateMemberShouldAddMemberToRepository()
+        public async Task EditMemberShouldEditMemberData()
         {
             var list = new List<Member>();
 
             var mockProductRepo = new Mock<IDeletableEntityRepository<Member>>();
 
-            mockProductRepo.Setup(x => x.AllAsNoTracking()).Returns(list.AsQueryable());
+            mockProductRepo.Setup(x => x.All()).Returns(list.AsQueryable());
 
             mockProductRepo.Setup(x => x.AddAsync(It.IsAny<Member>())).Callback((Member x) => list.Add(x));
 
             var service = new TeamService.TeamService(mockProductRepo.Object);
 
             var member = new Member() { FirstName = "FirstName", LastName = "LastName" };
-
+            var memberId = Guid.NewGuid();
             await service.CrateMemberAsync(member);
+            list.First().Id = memberId;
 
-            Assert.NotNull(list);
-            Assert.True(list.First().FirstName == "FirstName");
-            Assert.True(list.First().LastName == "LastName");
+            var edit = new Member() { FirstName = "Edit", LastName = "Edit", Id = memberId };
+            await service.EditMemberAsync(edit);
 
+            Assert.True(list.First().FirstName == "Edit") ;
+            Assert.True(list.First().LastName == "Edit");
         }
     }
 }

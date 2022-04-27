@@ -2,6 +2,7 @@
 using SiteX.Data.Common.Repositories;
 using SiteX.Data.Models.Team;
 using SiteX.Services.Data.TeamService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,10 +10,11 @@ using Xunit;
 
 namespace SiteX.Services.Data.Tests.Team.MemberTests
 {
-    public class CreateMember
+    public class GetMemberById
     {
+
         [Fact]
-        public async Task CreateMemberShouldAddMemberToRepository()
+        public async Task GetMemberByIdShouldReturnMemberWithValue()
         {
             var list = new List<Member>();
 
@@ -23,15 +25,18 @@ namespace SiteX.Services.Data.Tests.Team.MemberTests
             mockProductRepo.Setup(x => x.AddAsync(It.IsAny<Member>())).Callback((Member x) => list.Add(x));
 
             var service = new TeamService.TeamService(mockProductRepo.Object);
+            var memberId = Guid.NewGuid();
 
             var member = new Member() { FirstName = "FirstName", LastName = "LastName" };
 
             await service.CrateMemberAsync(member);
+            list[0].Id = memberId;
 
-            Assert.NotNull(list);
-            Assert.True(list.First().FirstName == "FirstName");
-            Assert.True(list.First().LastName == "LastName");
+            var getMember = service.GetMemberById(memberId);
 
+            Assert.NotNull(getMember);
+            Assert.True(getMember.FirstName == "FirstName" && getMember.LastName == "LastName");
         }
+
     }
 }

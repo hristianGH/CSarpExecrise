@@ -9,10 +9,11 @@ using Xunit;
 
 namespace SiteX.Services.Data.Tests.Team.MemberTests
 {
-    public class CreateMember
+    public class DeleteMember
     {
+
         [Fact]
-        public async Task CreateMemberShouldAddMemberToRepository()
+        public async Task DeleteMemberShoulRemoveMemberFromRepository()
         {
             var list = new List<Member>();
 
@@ -21,16 +22,18 @@ namespace SiteX.Services.Data.Tests.Team.MemberTests
             mockProductRepo.Setup(x => x.AllAsNoTracking()).Returns(list.AsQueryable());
 
             mockProductRepo.Setup(x => x.AddAsync(It.IsAny<Member>())).Callback((Member x) => list.Add(x));
+            mockProductRepo.Setup(x => x.Delete(It.IsAny<Member>())).Callback((Member x) => list.Remove(x));
+
 
             var service = new TeamService.TeamService(mockProductRepo.Object);
 
             var member = new Member() { FirstName = "FirstName", LastName = "LastName" };
 
             await service.CrateMemberAsync(member);
+            Assert.True(list.Any());
 
-            Assert.NotNull(list);
-            Assert.True(list.First().FirstName == "FirstName");
-            Assert.True(list.First().LastName == "LastName");
+            await service.DeleteMemberAsync(member);
+            Assert.False(list.Any());
 
         }
     }
