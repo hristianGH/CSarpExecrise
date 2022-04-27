@@ -1,10 +1,8 @@
 ﻿namespace SiteX.Services.Data.ArticleService
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using AngleSharp;
     using SiteX.Data.Common.Repositories;
     using SiteX.Data.Models.Article;
     using SiteX.Services.Data.ArticleService.Interface;
