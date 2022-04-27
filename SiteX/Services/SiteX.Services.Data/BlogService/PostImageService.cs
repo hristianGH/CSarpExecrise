@@ -18,11 +18,6 @@
             this.postImageRepo = postImageRepo;
         }
 
-        public ICollection<PostImage> GetPostImages(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public ICollection<PostImage> GetImagesByPostId(int id)
         {
             return this.postImageRepo.AllAsNoTracking().Where(x => x.PostId == id).ToList();

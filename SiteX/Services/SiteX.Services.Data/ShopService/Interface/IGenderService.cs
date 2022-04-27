@@ -4,8 +4,6 @@
 
     public interface IGenderService
     {
-        Dictionary<string, string> GetGenderAsKVP();
-
         public IEnumerable<string> GetGenders();
     }
 }

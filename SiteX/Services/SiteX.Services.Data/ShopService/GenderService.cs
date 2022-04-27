@@ -16,12 +16,6 @@
             this.genderRepository = repository;
         }
 
-        public Dictionary<string, string> GetGenderAsKVP()
-        {
-            var dictionary = this.genderRepository.AllAsNoTracking().Select(x => new { x.Id, x.Name }).ToDictionary(x => x.Id.ToString(), x => x.Name);
-            return dictionary;
-        }
-
         public IEnumerable<string> GetGenders()
         {
             var genders = this.genderRepository.AllAsNoTracking().Select(x => x.Name).ToArray();

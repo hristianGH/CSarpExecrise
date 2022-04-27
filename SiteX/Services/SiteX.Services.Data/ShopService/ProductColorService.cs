@@ -34,7 +34,7 @@
 
         public async Task HardDeleteProductColorByIdAsync(Guid id)
         {
-            var colors = this.prodColorRepo.All().Where(x => x.Product.Id == id).ToList();
+            var colors = this.prodColorRepo.All().Where(x => x.ProductId == id).ToList();
             foreach (var color in colors)
             {
                 this.prodColorRepo.HardDelete(color);

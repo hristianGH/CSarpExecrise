@@ -34,7 +34,7 @@
 
         public async Task HardDeleteProductSizeByIdAsync(Guid id)
         {
-            var sizes = this.prodSizeRepo.All().Where(x => x.Product.Id == id).ToList();
+            var sizes = this.prodSizeRepo.All().Where(x => x.ProductId == id).ToList();
             foreach (var size in sizes)
             {
                 this.prodSizeRepo.HardDelete(size);

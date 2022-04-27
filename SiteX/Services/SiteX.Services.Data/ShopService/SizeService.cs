@@ -33,12 +33,12 @@
             await this.sizeRepo.SaveChangesAsync();
         }
 
-        public  Size GetSizeById(int id)
+        public Size GetSizeById(int id)
         {
             return this.sizeRepo.All().Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public  IEnumerable<Size> GetSizes()
+        public IEnumerable<Size> GetSizes()
         {
             var sizes = this.sizeRepo.AllAsNoTracking().ToList();
             return sizes;

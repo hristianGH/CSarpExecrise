@@ -33,7 +33,7 @@
 
         public async Task HardDeleteProductImagesByIdAsync(Guid productId)
         {
-            var images = this.prodImageRepo.All().Where(x => x.Product.Id == productId).ToList();
+            var images = this.prodImageRepo.All().Where(x => x.ProductId == productId).ToList();
             foreach (var image in images)
             {
                 this.prodImageRepo.HardDelete(image);
