@@ -14,26 +14,6 @@ namespace SiteX.Services.Data.Tests.Blog.CommentTests
 {
     public class GetCount
     {
-        [Fact]
-        public async Task GetGenreCountShouldBeAccurate()
-        {
-            var list = new List<Genre>();
-
-            var mockRepo = new Mock<IRepository<Genre>>();
-
-            mockRepo.Setup(x => x.AllAsNoTracking()).Returns(list.AsQueryable());
-            mockRepo.Setup(x => x.AddAsync(It.IsAny<Genre>())).Callback((Genre x) => list.Add(x));
-            var service = new GenreService(mockRepo.Object);
-
-            for (int i = 0; i < 3; i++)
-            {
-                var name = "Test Genre";
-                var color = new GenreViewModel() { Name = name };
-                await service.CreateAsync(color);
-            }
-
-            Assert.True(list.Count() > 0);
-            Assert.True(list.Count() == 3);
-        }
+       
     }
 }
