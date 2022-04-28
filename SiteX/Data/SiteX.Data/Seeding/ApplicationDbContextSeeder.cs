@@ -44,11 +44,11 @@
                               new CategorySeeder(),
                               new LocationSeeder(),
                               new GenderSeeder(),
-                              new PostSeeder(),
-                              new ProductSeeder(),
                               new GenreSeeder(),
                               new SizeSeeder(),
+                              new PostSeeder(),
                               new ColorSeeder(),
+                              new ProductSeeder(),
                               new ArticleSeeder(),
                           };
 

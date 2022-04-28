@@ -16,7 +16,7 @@ namespace SiteX.Data.Seeding
                 var configuration = Configuration.Default.WithDefaultLoader();
                 var context = BrowsingContext.New(configuration);
                 var articles = new List<Article>();
-                Parallel.For(35_438_900, 35_439_900, (i) =>
+                Parallel.For(35_438_900, 35_439_200, (i) =>
                 {
                     var article = GetArticle(context, i);
                     if (article != null)
