@@ -120,11 +120,9 @@
 
 
 
-        
-
 
 <div>
-    <form asp-controller="Blog" asp-action="CreateComment" method="post" id="AddCommentForm" style="display: none">
+    <form asp-controller="Posts" asp-action="CreateComment" method="post" id="AddCommentForm" style="display: none">
         <input type="hidden" name="PostId" value="@this.Model.Id" />
         <input type="hidden" name="ParentId" value="0" />
         <div>

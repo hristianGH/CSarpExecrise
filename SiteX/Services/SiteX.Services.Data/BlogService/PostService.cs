@@ -68,7 +68,7 @@
 
         public PostOutViewModel GetOutputPostById(int id)
         {
-            return  this.postRepo.AllAsNoTracking().To<PostOutViewModel>().FirstOrDefault(x => x.Id == id);
+            return this.postRepo.AllAsNoTracking().To<PostOutViewModel>().FirstOrDefault(x => x.Id == id);
         }
 
         public ICollection<Post> GetPosts()
@@ -115,6 +115,19 @@
         public async Task CreateConnectionsByModelAsync(PostEditViewModel list, int id)
         {
             await this.postGenreService.CreatingPostGenreAsync(list.PostGenres, id);
+        }
+
+        public async Task HardDeletePostAsync(Post viewModel)
+        {
+            this.postRepo.HardDelete(viewModel);
+            await this.postRepo.SaveChangesAsync();
+        }
+
+        public async Task SoftDeletePostAsync(int id)
+        {
+            var post = this.GetPostById(id);
+            this.postRepo.Delete(post);
+            await this.postRepo.SaveChangesAsync();
         }
     }
 }

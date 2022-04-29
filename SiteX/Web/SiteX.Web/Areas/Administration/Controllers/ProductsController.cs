@@ -113,7 +113,7 @@
             return this.View(viewmodel);
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<IActionResult> Delete(BuyingProductViewModel model)
         {
             if (!this.ModelState.IsValid)

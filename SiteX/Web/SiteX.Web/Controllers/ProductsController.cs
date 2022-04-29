@@ -140,8 +140,8 @@
 
         public async Task<IActionResult> Buy(BuyingProductViewModel viewModel)
         {
-            var prod = viewModel.Product;
-            return this.View();
+            var prod = productService.GetOutputProductById(viewModel.ProductId);
+            return this.View(prod);
         }
 
         [HttpPost]

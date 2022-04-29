@@ -12,6 +12,10 @@
     {
         public Task CreatePostAsync(PostViewModel viewModel);
 
+        public Task HardDeletePostAsync(Post viewModel);
+
+        public Task SoftDeletePostAsync(int id);
+
         public PostEditViewModel GetEditPostById(int id);
 
         public ICollection<Post> GetPosts();
