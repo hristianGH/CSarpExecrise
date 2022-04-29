@@ -31,8 +31,7 @@ namespace SiteX.WebAPI.Controllers
             return this.Ok(posts);
         }
 
-        [Route("Edit")]
-        [HttpPost]
+        [HttpPut]
         public async Task<IActionResult> Edit(PostEditViewModel viewModel)
         {
             if (!this.ModelState.IsValid)

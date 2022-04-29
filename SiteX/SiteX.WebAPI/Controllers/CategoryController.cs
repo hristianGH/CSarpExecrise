@@ -22,7 +22,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Index")]
+       // [Route("Index")]
         public IActionResult Index()
         {
             var categories = this.categoryService.GetCategories();
@@ -30,7 +30,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
+        //[Route("Create")]
         public async Task<IActionResult> Create(Category viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -43,7 +43,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpPut]
-        [Route("Edit")]
+       // [Route("Edit")]
         public async Task<IActionResult> Edit(Category viewModel)
         {
             if (!this.ModelState.IsValid)

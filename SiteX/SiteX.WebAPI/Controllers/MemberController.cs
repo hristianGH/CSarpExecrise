@@ -30,7 +30,6 @@ namespace SiteX.WebAPI.Controllers
 
         // POST: MemberController/Create
         [HttpPost]
-        [Route("Create")]
         public async Task<IActionResult> Create(Member member)
         {
             if (!this.ModelState.IsValid)
@@ -46,7 +45,6 @@ namespace SiteX.WebAPI.Controllers
 
         // POST: MemberController/Edit/5
         [HttpPut]
-        [Route("Edit")]
         public async Task<IActionResult> Edit(Member member)
         {
             if (!this.ModelState.IsValid)
@@ -60,7 +58,6 @@ namespace SiteX.WebAPI.Controllers
 
         // POST: MemberController/Delete/5
         [HttpDelete]
-        [Route("Delete")]
         public async Task<IActionResult> Delete(Member member)
         {
             await this.teamService.DeleteMemberAsync(member);

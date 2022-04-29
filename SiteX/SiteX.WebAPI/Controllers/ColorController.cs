@@ -20,7 +20,6 @@ namespace SiteX.WebAPI.Controllers
             this.colorService = colorService;
         }
         [HttpGet]
-        [Route("Index")]
         public IActionResult Index()
         {
             var colors = this.colorService.GetColors();
@@ -28,7 +27,6 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
         public async Task<IActionResult> Create(Color viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -41,7 +39,6 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpPut]
-        [Route("Edit")]
         public async Task<IActionResult> Edit(Color viewModel)
         {
             if (!this.ModelState.IsValid)

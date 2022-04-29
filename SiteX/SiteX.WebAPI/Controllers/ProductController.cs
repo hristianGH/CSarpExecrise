@@ -43,7 +43,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("all")]
+        [Route("All")]
         public IActionResult All()
         {
             var products = this.productService.ReturnAll();
@@ -51,7 +51,6 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("byid")]
         public IActionResult Byid(Guid id)
         {
             var product = this.productService.GetProductById(id);
@@ -65,7 +64,6 @@ namespace SiteX.WebAPI.Controllers
       
 
         [HttpPost]
-        [Route("Create")]
         public async Task<IActionResult> Create(ProductViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -82,7 +80,6 @@ namespace SiteX.WebAPI.Controllers
        
 
         [HttpPut]
-        [Route("Edit")]
         public async Task<IActionResult> Edit(ProductViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -96,7 +93,6 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete")]
         public async Task<IActionResult> Delete(BuyingProductViewModel model)
         {
             if (!this.ModelState.IsValid)

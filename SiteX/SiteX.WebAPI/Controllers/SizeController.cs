@@ -45,8 +45,7 @@ namespace SiteX.WebAPI.Controllers
         }
        
 
-        [HttpPost]
-        [Route("Id")]
+        [HttpPut]
         public async Task<IActionResult> Edit(Size viewModel)
         {
             if (!this.ModelState.IsValid)

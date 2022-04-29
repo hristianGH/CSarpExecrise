@@ -20,7 +20,6 @@ namespace SiteX.WebAPI.Controllers
             this.genreService = genreService;
         }
         [HttpGet]
-        [Route("Index")]
         public ActionResult Index()
         {
             var genres = this.genreService.GetGenres();
@@ -30,7 +29,6 @@ namespace SiteX.WebAPI.Controllers
  
 
         [HttpPost]
-        [Route("Create")]
         public async Task<IActionResult> Create(GenreViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -44,7 +42,6 @@ namespace SiteX.WebAPI.Controllers
 
         // POST: GenreController/Edit/5
         [HttpPut]
-        [Route("Edit")]
         public async Task<IActionResult> Edit(Genre genre)
         {
             if (!this.ModelState.IsValid)

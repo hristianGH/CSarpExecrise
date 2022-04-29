@@ -21,7 +21,6 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Index")]
         public IActionResult Index()
         {
             var locations = this.locationService.GetLocations();
@@ -31,7 +30,6 @@ namespace SiteX.WebAPI.Controllers
         
 
         [HttpPost]
-        [Route("Create")]
         public async Task<IActionResult> Create(LocationViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -45,7 +43,6 @@ namespace SiteX.WebAPI.Controllers
  
 
         [HttpPut]
-        [Route("Edit")]
         public async Task<IActionResult> Edit(Location viewModel)
         {
             if (!this.ModelState.IsValid)
