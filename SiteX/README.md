@@ -57,6 +57,33 @@ Blog site but mostly shop site.
 -View single article
 ```
 ## Pictures
+### Sql diagram
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/Diagram.png Diagram of SiteX.db
+### Blog
+
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/PostsAll.png view of all posts
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/PostById.png view of single post
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/CommentsInPost.png comments under post
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/CreatePost.png create post
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/EditPost.png edit post
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/DeletePost.png delete post
+### Shop
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/ProductAll.png view of all products
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/ProductById.png product by id
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/CreateProduct.png create product
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/Billing.png buy product
+### Admin board
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/AdminBoard.png Admin board
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/AdminBoardAll.png All products
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/AdminArticles.png All articles
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/AdminEdit.png edit product
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/AdminDelete.png delete product
+### Articles
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/ArticlesAll.png All articles
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/ArticleById.png Articles by id
+### Members
+- https://github.com/hristianGH/SoftUni-CSharp/blob/main/SiteX/ReadMeImages/MembersAll.png All members
+
 
 ## WebApi
 ```python
