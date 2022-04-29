@@ -10,9 +10,6 @@
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            var images = new List<PostImage>();
-            images.Add(new PostImage() { Path = "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F084%2F732%2Foriginal%2Fvector-grand-opening-retro-style-background.jpg&f=1&nofb=1" });
-
             if (dbContext.Users.Count() > 0 && dbContext.Posts.Count() <= 1)
             {
                 var post = new Post
