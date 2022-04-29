@@ -30,8 +30,7 @@ namespace SiteX.WebAPI.Controllers
             this.userManager = userManager;
         }
 
-        [HttpPost]
-        [Route("login")]
+        [HttpPost("login")]
         public async Task<IActionResult> LogIn([FromBody] LoginInputModel input)
         {
             var user = await userManager.FindByNameAsync(input.Username);

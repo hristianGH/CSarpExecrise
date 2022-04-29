@@ -22,7 +22,7 @@ namespace SiteX.WebAPI.Controllers
             this.commentService = commentService;
         }
         // GET: api/<CommentController>
-        [HttpGet]
+        [HttpGet("All")]
         public IEnumerable<Comment> GetAll()
         {
             return this.commentService.GetComents();
@@ -36,7 +36,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         // POST api/<CommentController>
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<IActionResult> Post(CommentViewModel viewModel)
         {
             if (!ModelState.IsValid)

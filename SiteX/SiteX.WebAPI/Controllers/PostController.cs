@@ -15,23 +15,19 @@ namespace SiteX.WebAPI.Controllers
     public class PostController : ControllerBase
     {
         private readonly IPostService postService;
-        private readonly IGenreService genreService;
 
-        public PostController(IPostService postService,
-            IGenreService genreService)
+        public PostController(IPostService postService )
         {
             this.postService = postService;
-            this.genreService = genreService;
         }
-        [HttpGet]
-        [Route("Index")]
+        [HttpGet("GetPosts")]
         public IActionResult Index()
         {
             var posts = this.postService.GetPosts();
             return this.Ok(posts);
         }
 
-        [HttpPut]
+        [HttpPut("Edit")]
         public async Task<IActionResult> Edit(PostEditViewModel viewModel)
         {
             if (!this.ModelState.IsValid)

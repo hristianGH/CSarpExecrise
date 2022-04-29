@@ -20,16 +20,14 @@ namespace SiteX.WebAPI.Controllers
             this.locationService = locationService;
         }
 
-        [HttpGet]
+        [HttpGet("All")]
         public IActionResult Index()
         {
             var locations = this.locationService.GetLocations();
             return this.Ok(locations);
         }
 
-        
-
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<IActionResult> Create(LocationViewModel viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -40,9 +38,8 @@ namespace SiteX.WebAPI.Controllers
             await this.locationService.CreateAsync(viewModel);
             return this.Ok(viewModel);
         }
- 
 
-        [HttpPut]
+        [HttpPut("Edit")]
         public async Task<IActionResult> Edit(Location viewModel)
         {
             if (!this.ModelState.IsValid)

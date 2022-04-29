@@ -18,8 +18,6 @@
         [MinLength(10)]
         public string Body { get; set; }
 
-        public ApplicationUser User { get; set; }
-
         [MinLength(1)]
         [Display(Name = "Tumbnail picure Url")]
         public virtual ICollection<string> PostImages { get; set; } = new List<string>();

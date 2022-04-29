@@ -19,14 +19,14 @@ namespace SiteX.WebAPI.Controllers
         {
             this.colorService = colorService;
         }
-        [HttpGet]
+        [HttpGet("All")]
         public IActionResult Index()
         {
             var colors = this.colorService.GetColors();
             return this.Ok(colors);
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<IActionResult> Create(Color viewModel)
         {
             if (!this.ModelState.IsValid)
@@ -38,7 +38,7 @@ namespace SiteX.WebAPI.Controllers
             return this.Ok(viewModel);
         }
 
-        [HttpPut]
+        [HttpPut("Edit")]
         public async Task<IActionResult> Edit(Color viewModel)
         {
             if (!this.ModelState.IsValid)

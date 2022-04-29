@@ -40,7 +40,6 @@ namespace SiteX.Services.Data.Tests.Blog.PostTests
                 Title = "Title",
                 PostImages = new string[] { "image1", "image2" },
                 PostGenres = new int[] { 1, 2 },
-                User = new ApplicationUser() { Id = "id" },
             };
             await service.CreatePostAsync(post);
             listPosts[0].Id = 1;
@@ -53,7 +52,6 @@ namespace SiteX.Services.Data.Tests.Blog.PostTests
                 Title = "Title Edited",
                 PostImages = new string[] { "image1", "image2" },
                 PostGenres = new int[] { 1, 2 },
-                User = new ApplicationUser() { Id = "id" },
                 Id = 1,
             };
            await service.EditPostAsync(editModel);

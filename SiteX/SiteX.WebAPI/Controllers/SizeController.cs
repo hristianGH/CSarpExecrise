@@ -23,7 +23,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("index")]
+        [Route("All")]
         public IActionResult Index()
         {
             var sizes = this.sizeService.GetSizes();
@@ -45,7 +45,7 @@ namespace SiteX.WebAPI.Controllers
         }
        
 
-        [HttpPut]
+        [HttpPut("Edit")]
         public async Task<IActionResult> Edit(Size viewModel)
         {
             if (!this.ModelState.IsValid)

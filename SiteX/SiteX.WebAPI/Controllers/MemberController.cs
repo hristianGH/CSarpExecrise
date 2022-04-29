@@ -29,7 +29,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         // POST: MemberController/Create
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<IActionResult> Create(Member member)
         {
             if (!this.ModelState.IsValid)
@@ -44,7 +44,7 @@ namespace SiteX.WebAPI.Controllers
          
 
         // POST: MemberController/Edit/5
-        [HttpPut]
+        [HttpPut("Edit")]
         public async Task<IActionResult> Edit(Member member)
         {
             if (!this.ModelState.IsValid)
@@ -57,7 +57,7 @@ namespace SiteX.WebAPI.Controllers
         }
 
         // POST: MemberController/Delete/5
-        [HttpDelete]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(Member member)
         {
             await this.teamService.DeleteMemberAsync(member);
